@@ -25,6 +25,21 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
+# master.keyのアップロード
+# from https://github.com/capistrano/rails
+append :linked_files, "config/master.key"
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/master.key ]")
+          upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
+      end
+    end
+  end
+end
+
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
