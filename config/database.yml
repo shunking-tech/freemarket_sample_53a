@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: mercari-clone_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
   socket: /var/lib/mysql/mysql.sock
