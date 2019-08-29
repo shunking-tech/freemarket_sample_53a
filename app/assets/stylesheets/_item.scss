@@ -1,5 +1,56 @@
 // ここに「items/index.html.haml」のCSSを記述して下さい。
 // ファイル名や置き場所は仮置きの状態です。必要に応じて変更して下さい。
-.helloworld {
-  color: red;
+.default-meinpage{
+  outline: 1px solid #036cdb!important;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 0;
+  font-size: inherit;
+  line-height: inherit;
+  display: block;
 }
+.pc-header-guide{
+background:#fff;
+height:100px;
+background-color:green;
+}
+
+.recommended{
+  margin: 0 auto;
+  .home-advertisement{
+    height:300px;
+    
+  }
+
+  .homemein-new-items{
+    height:700px;
+    background-color:blue;
+  }
+}
+
+.app-band{
+  height:260px;
+
+}
+
+.various-footer{
+  height:664px;
+  background-color:black;
+}
+
+.footer-exhibit-btn{
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  font-size: 22px;
+  position: fixed;
+  z-index: 1000;
+  border-radius: 50%;
+  background: #ea352d;
+  color: #fff;
+  text-align: center;
+}
+
