@@ -2,6 +2,8 @@
 
 ## creditcardテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |user_id|references|foreign_key: true|
 |customer_id|string|null: false|
 |card_id|string|null: false|
