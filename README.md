@@ -20,10 +20,11 @@
 |email|string|add_index unique: true|
 |password|string||
 |avatar|string||
-|discription|text||
-|firstname|string||
-|firstname_kana|string||
-|lastname_kana|string||
+|description|text||
+|first_name|string||
+|first_name_kana|string||
+|last_name|string||
+|last_name_kana|string||
 |birth_date|string||
 |phone_number|string||
 |prefecture_id|references|foreign_key: true|
