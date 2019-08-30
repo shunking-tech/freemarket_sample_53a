@@ -16,7 +16,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|index: true|
+|nickname|string||
 |email|string|add_index unique: true|
 |password|string||
 |avatar|string||
@@ -31,7 +31,7 @@
 |city|string||
 |house_address|string||
 |building_name|string||
-|zipcode|string|add_index unique: true|
+|zipcode|string||
 
 ### Association
 - has_many :items
@@ -49,7 +49,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|validates, presence: true|
+|name|string|add index|
 |price|integer||
 |description|text|validates, presence: true|
 |condition|integer||
@@ -92,6 +92,17 @@
 
 ### Association
 - has_many :items
+
+
+## item_imagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|image|string||
+|item_id|references|foreign_key: true|
+
+### Association
+- belongs_to :item
 
 
 ## item_likesテーブル
