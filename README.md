@@ -72,6 +72,8 @@
 
 ## prefecturesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |name|string||
 
 ### Association
@@ -81,6 +83,8 @@
 
 ## sizesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |size|string||
 
 ### Association
@@ -89,6 +93,8 @@
 
 ## item_likesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |user_id|references|foreign_key: true|
 |item_id|references|foreign_key: true|
 
@@ -99,6 +105,8 @@
 
 ## item_commentsテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |content|string||
 |user_id|references|foreign_key: true|
 |item_id|references|foreign_key: true|
@@ -110,6 +118,8 @@
 
 ## l_categoriesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |name|string||
 
 ### Association
@@ -119,6 +129,8 @@
 
 ## m_categoriesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |name|string||
 |l_category_id|references|foreign_key: true|
 
@@ -129,6 +141,8 @@
 
 ## s_categoriesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |name|string||
 |s_category_id|references|foreign_key: true|
 
@@ -138,6 +152,8 @@
 
 ## tradesテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |seller_id|references|foreign_key: true|
 |buyer_id|references|foreign_key: true|
 |item_id|references|foreign_key: true|
@@ -151,6 +167,8 @@
 
 ## trade_commentsテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |content|string||
 |user_id|references|foreign_key: true|
 |trade_id|references|foreign_key: true|
@@ -162,6 +180,8 @@
 
 ## user_reviewsテーブル
 
+|Column|Type|Options|
+|------|----|-------|
 |score|integer||
 |comment|string||
 |user_id|references|foreign_key: true|
