@@ -5,7 +5,7 @@ class TestsController < ApplicationController
   
   def create
     Test.create(test_params)
-    render :index
+    redirect_to root_path
   end
 
   private
