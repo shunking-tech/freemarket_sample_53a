@@ -51,7 +51,7 @@
 |------|----|-------|
 |name|string|add index|
 |price|integer||
-|description|text|validates, presence: true|
+|description|text||
 |condition|integer||
 |task|integer||
 |payer_delivery_expense|integer||
