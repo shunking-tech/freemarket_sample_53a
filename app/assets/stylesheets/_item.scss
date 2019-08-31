@@ -12,9 +12,14 @@
   display: block;
 }
 .pc-header-guide{
-background:#fff;
-height:100px;
-background-color:green;
+  background:#fff;
+  height:100px;
+  background-color:rgb(255,255,255);
+  position: relative;
+  margin:0px auto;
+  width:1020px;
+  padding:8px 0 0 ;
+  // @media (min-width: 1068px);
 }
 
 .recommended{
@@ -53,4 +58,3 @@ background-color:green;
   color: #fff;
   text-align: center;
 }
-
