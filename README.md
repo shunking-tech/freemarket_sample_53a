@@ -27,7 +27,7 @@
 |last_name_kana|string||
 |birth_date|string||
 |phone_number|string||
-|prefecture_id|references|foreign_key: true|
+|prefecture|string||
 |city|string||
 |house_address|string||
 |building_name|string||
@@ -56,32 +56,21 @@
 |task|integer||
 |payer_delivery_expense|integer||
 |delivery_days|integer||
-|prefecture_id|references|foreign_key: true|
+|prefecture|string||
 |user_id|references|foreign_key: true|
-|l_category_id|references|foreign_key: true|
+|category_id|references|foreign_key: true|
 |size_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
 - has_many :item_images
-- belongs_to :l_category
+- belongs_to :category
 - belongs_to :size, optional: true
 - belongs_to :prefecture
 - has_many :item_likes
 - has_many :liked_users, through: :items_likes, source: :user
 - has_many :item_comments
 - has_one :trade
-
-
-## prefecturesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-
-### Association
-- has_many :users
-- has_many :items
 
 
 ## sizesテーブル
@@ -130,38 +119,15 @@
 - belongs_to :item
 
 
-## l_categoriesテーブル
+## categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
+|ancestry|string|add index|
 
 ### Association
 - has_many :items
-- has_many :m_categories
-
-
-## m_categoriesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-|l_category_id|references|foreign_key: true|
-
-### Association
-- belongs_to :l_category
-- has_many :s_category
-
-
-## s_categoriesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-|s_category_id|references|foreign_key: true|
-
-### Association
-- belongs_to :m_category
 
 
 ## tradesテーブル
