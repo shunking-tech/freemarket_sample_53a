@@ -39,6 +39,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  #自動デプロイのためのgem
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -58,5 +65,14 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 画像アップロードで利用
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
