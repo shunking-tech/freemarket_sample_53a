@@ -36,7 +36,7 @@
 ### Association
 - has_many :items
 - has_many :item_likes
-- has_many :liked_items, through: :item_likes, source: :items
+- has_many :liked_items, through: :item_likes, source: :item
 - has_many :item_comments
 - has_many :trades
 - has_many :trade_comments
