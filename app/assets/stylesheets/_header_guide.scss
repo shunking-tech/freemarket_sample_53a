@@ -1,0 +1,46 @@
+.topmein-search-band{
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  .topmein-mercari-icon{
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    height: 40px;
+    margin-right: 45px;
+    background-color:red;
+    width:94px;
+  }
+  .topmein-search-form{
+    position: relative;
+    width: 100%;
+  }
+}
+
+.topmein-select-band{
+  display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-top: 8px;
+    .topmein-search-category{
+      display: flex;
+      margin-left: -3px;
+      &__box{
+        cursor: pointer;
+        height: 44px;
+        position: relative;
+        z-index: 3;
+        padding: 0px 10px;
+        padding-left:0;
+        padding-right:0;
+      }
+    }
+    .topmein-select-command{
+      display: flex;
+      position: relative;
+      &__box{
+        height: 44px;
+        padding: 0px 7px;
+      }
+    }
+}
