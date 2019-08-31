@@ -41,7 +41,7 @@
 - has_many :trades
 - has_many :trade_comments
 - has_many :user_reviews
-- has_many :credit_cards
+- has_one :credit_card
 - belongs_to :prefecture, optional: true
 
 
