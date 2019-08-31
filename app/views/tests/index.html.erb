@@ -1,9 +1,0 @@
-testだよ！
-<%= form_for Test.new do |f|  %>
-  <%= f.file_field :image %>
-  <%= f.submit "upload" %>
-<% end %>
-<% @tests.each do |test| %>
-  <div>image ID: <%= test.id %></div>
-  <div><%= image_tag test.image.url %></div>
-<% end %>
