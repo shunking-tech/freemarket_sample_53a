@@ -68,7 +68,7 @@
 - belongs_to :size, optional: true
 - belongs_to :prefecture
 - has_many :item_likes
-- has_many :liked_users, through: :likes, source: :user
+- has_many :liked_users, through: :items_likes, source: :user
 - has_many :item_comments
 - has_one :trade
 
