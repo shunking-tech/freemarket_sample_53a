@@ -1,24 +1,172 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## creditcardテーブル
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
-* Ruby version
+### Association
+- belongs_to :user
 
-* System dependencies
 
-* Configuration
+## usersテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string||
+|email|string|add_index unique: true|
+|password|string||
+|avatar|string||
+|description|text||
+|first_name|string||
+|first_name_kana|string||
+|last_name|string||
+|last_name_kana|string||
+|birth_date|string||
+|phone_number|string||
+|prefecture|string||
+|city|string||
+|house_address|string||
+|building_name|string||
+|zipcode|string||
 
-* Database initialization
+### Association
+- has_many :items
+- has_many :item_likes
+- has_many :liked_items, through: :item_likes, source: :item
+- has_many :item_comments
+- has_many :trades
+- has_many :trade_comments
+- has_many :user_reviews
+- has_one :credit_card
+- belongs_to :prefecture, optional: true
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## itemsテーブル
 
-* Deployment instructions
+|Column|Type|Options|
+|------|----|-------|
+|name|string|add index|
+|price|integer||
+|description|text||
+|condition|integer||
+|task|integer||
+|payer_delivery_expense|integer||
+|delivery_days|integer||
+|prefecture|string||
+|user_id|references|foreign_key: true|
+|category_id|references|foreign_key: true|
+|size_id|references|foreign_key: true|
 
-* ...
+### Association
+- belongs_to :user
+- has_many :item_images
+- belongs_to :category
+- belongs_to :size, optional: true
+- belongs_to :prefecture
+- has_many :item_likes
+- has_many :liked_users, through: :items_likes, source: :user
+- has_many :item_comments
+- has_one :trade
+
+
+## sizesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|size|string||
+
+### Association
+- has_many :items
+
+
+## item_imagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|image|string||
+|item_id|references|foreign_key: true|
+
+### Association
+- belongs_to :item
+
+
+## item_likesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## item_commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|content|string||
+|user_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## categoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+|ancestry|string|add index|
+
+### Association
+- has_many :items
+
+
+## tradesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|seller_id|references|foreign_key: true|
+|buyer_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
+|status|integer||
+
+### Association
+- belongs_to :seller, class_name: "User"
+- belongs_to :buyer, class_name: "User"
+- belongs_to :item
+
+
+## trade_commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|content|string||
+|user_id|references|foreign_key: true|
+|trade_id|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :trade
+
+
+## user_reviewsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|score|integer||
+|comment|string||
+|user_id|references|foreign_key: true|
+|trade_id|references|foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :trade
