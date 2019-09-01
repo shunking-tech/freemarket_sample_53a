@@ -20,13 +20,13 @@
     %section.mypage-container__content__tab-container-notification-todo
       %ul.mypage-container__content__tab-container-notification-todo__tabs
         %li.active
-          %h3
+          %h3.bold
             %a{href: "#", "data-toggle": "tab"}
               お知らせ
               %span.mypage-container__content__tab-container-notification-todo__tabs__nav-number.hidden-large
                 2
         %li
-          %h3
+          %h3.bold
             %a{href: "#", "data-toggle": "tab"}
               やることリスト
       .mypage-container__content__tab-container-notification-todo__tab-content
@@ -49,7 +49,7 @@
                 %img.lazyloaded{src: "https://static.mercdn.net/images/mercari_profile.png"}
               .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body
                 .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body__text
-                  事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+                  《友達を招待すると必ずP1,000プレゼント》友達誘ってメルペイしようぜ！
                 %time
                   %i.icon-time
                   %span
@@ -61,11 +61,11 @@
                 %img.lazyloaded{src: "https://static.mercdn.net/images/mercari_profile.png"}
               .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body
                 .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body__text
-                  事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+                  事務局から個別メッセージ「Googleログイン通知」
                 %time
                   %i.icon-time
                   %span
-                    1日前
+                    4日前
               %i
           %li
             %a.mypage-container__content__tab-container-notification-todo__tab-content__items__item{href: "#"}
@@ -87,6 +87,37 @@
             現在、やることリストはありません
 
     %section.mypage-container__content__tab-container
+      %h2.mypage-container__content__tab-container__head
+        購入した商品
+      %ul.mypage-container__content__tab-container__tabs
+        %li.active
+          %h3
+            %a{href: "#", "data-toggle": "tab"}
+              取引中
+        %li
+          %h3
+            %a{href: "#", "data-toggle": "tab"}
+              過去の取引
+      .mypage-container__content__tab-container__tab-content
+        %ul#tab-trade-now.mypage-container__content__tab-container__tab-content__items.tabe-pane.active
+          %li.mypage-container__content__tab-container__tab-content__items__item-not.bold
+            取引中の商品がありません
+        %ul#tab-trade-old.mypage-container__content__tab-container__tab-content__items.tabe-pane
+          %li
+            %a.mypage-container__content__tab-container__tab-content__items__item{href: "#"}
+              %figure
+                %img.lazyloaded{src: "http://via.placeholder.com/300x200"}
+              .mypage-container__content__tab-container__tab-content__items__item__body
+                .mypage-container__content__tab-container__tab-content__items__item__body__text
+                  即購入OK！サンプル商品abcdefghijklm...を購入したってばよ！
+                  %span
+                    取引が完了しました
+                .mypage-container__content__tab-container__tab-content__items__item__body__status.bold.done
+                  取引完了
+              %i
+          %li.mypage-container__content__tab-container__tab-content__items__go-list
+            %a{href: "#"}
+              一覧に戻る
 
 
   .mypage-container__side
