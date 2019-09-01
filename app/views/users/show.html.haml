@@ -2,7 +2,90 @@
 
   .mypage-container__content
     %section.mypage-container__content__user-icon
+      %a{href: "#"}
+        %figure
+          %img{src: "https://static.mercdn.net/thumb/members/352188235.jpg?1465816726", width: "60", height: "60"}
+        %h2
+          サンプルユーザー
+        .mypage-container__content__user-icon__number
+          %div
+            評価
+            %span.bold
+              0
+          %div
+            出品数
+            %span.bold
+              0
+
     %section.mypage-container__content__tab-container-notification-todo
+      %ul.mypage-container__content__tab-container-notification-todo__tabs
+        %li.active
+          %h3
+            %a{href: "#", "data-toggle": "tab"}
+              お知らせ
+              %span.mypage-container__content__tab-container-notification-todo__tabs__nav-number.hidden-large
+                2
+        %li
+          %h3
+            %a{href: "#", "data-toggle": "tab"}
+              やることリスト
+      .mypage-container__content__tab-container-notification-todo__tab-content
+        %ul#tab-notification.mypage-container__content__tab-container-notification-todo__tab-content__items.tab-pane.active
+          %li
+            %a.mypage-container__content__tab-container-notification-todo__tab-content__items__item{href: "#"}
+              %figure
+                %img.lazyloaded{src: "https://static.mercdn.net/images/mercari_profile.png"}
+              .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body
+                .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body__text
+                  事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+                %time
+                  %i.icon-time
+                  %span
+                    1日前
+              %i
+          %li
+            %a.mypage-container__content__tab-container-notification-todo__tab-content__items__item{href: "#"}
+              %figure
+                %img.lazyloaded{src: "https://static.mercdn.net/images/mercari_profile.png"}
+              .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body
+                .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body__text
+                  事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+                %time
+                  %i.icon-time
+                  %span
+                    1日前
+              %i
+          %li
+            %a.mypage-container__content__tab-container-notification-todo__tab-content__items__item{href: "#"}
+              %figure
+                %img.lazyloaded{src: "https://static.mercdn.net/images/mercari_profile.png"}
+              .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body
+                .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body__text
+                  事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+                %time
+                  %i.icon-time
+                  %span
+                    1日前
+              %i
+          %li
+            %a.mypage-container__content__tab-container-notification-todo__tab-content__items__item{href: "#"}
+              %figure
+                %img.lazyloaded{src: "https://static.mercdn.net/images/mercari_profile.png"}
+              .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body
+                .mypage-container__content__tab-container-notification-todo__tab-content__items__item__body__text
+                  事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+                %time
+                  %i.icon-time
+                  %span
+                    1日前
+              %i
+          %li.mypage-container__content__tab-container-notification-todo__tab-content__items__go-list
+            %a{href: "#"}
+              一覧に戻る
+        %ul#tab-todo.mypage-container__content__tab-container-notification-todo__tab-content__items.tab-pane
+          %li.mypage-container__content__tab-container-notification-todo__tab-content__items__item-not.bold
+            現在、やることリストはありません
+
     %section.mypage-container__content__tab-container
 
 
