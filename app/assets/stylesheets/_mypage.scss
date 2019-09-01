@@ -1,0 +1,162 @@
+.mypage-container {
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  &__content {
+    float: right;
+    width: 700px;
+    &__user-icon {
+      height: 200px;
+      position: relative;
+      padding: 20px;
+      background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?716030");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      >a {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        color: black;
+      }
+      & figure {
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+      & h2 {
+        margin: 8px 0 0;
+        font-size: 14px;
+      }
+      &__number {
+        margin: 8px 0 0;
+        font-size: 0;
+        & div {
+          display: inline-block;
+          font-size: 14px;
+          & +div {
+            margin: 0 0 0 16px;
+          }
+        }
+      }
+        & span {
+          margin: 0 0 0 8px;
+          font-size: 16px;
+        }
+      }
+    &__tab-container-notification-todo {
+      margin: 0;
+      background: #fff;
+      &__tabs {
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        & li {
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+          &.active {
+            background: #fff;
+            & a {
+              border-top: 2px solid #ea352d;
+            }
+          }
+        }
+        & a {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        &__nav-number {
+          position: absolute;
+          top: 50%;
+          right: 32px;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: #ea352d;
+          text-align: center;
+          line-height: 24px;
+          color: #fff;
+          transform: translate(0, -50%);
+        }
+      }
+      &__tab-content {
+        &__items {
+          &.tab-pane {
+            display: none;
+            &.active {
+              display: block;
+            }
+          }
+          & li:first-child {
+            border-bottom: 1px solid #eee;
+          }
+          & li {
+            position: relative;
+            border-bottom: 1px solid #eee;
+          }
+          &__item {
+            display: block;
+            min-height: 80px;
+            padding: 16px;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
+
+main {
+  display: block;
+}
+
+h2 {
+  line-height: 1.4;
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+a {
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.mypage-container__content__tab-container-notification-todo__tabs__nav-number {
+  top: 16px;
+  right: 2px;
+}
+
+.hidden-large {
+  display: none;
+}
