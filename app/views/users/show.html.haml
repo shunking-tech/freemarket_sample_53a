@@ -87,22 +87,22 @@
             現在、やることリストはありません
 
     %section.mypage-container__content__tab-container
-      %h2.mypage-container__content__tab-container__head
+      %h2.mypage-container__content__tab-container__head.bold
         購入した商品
       %ul.mypage-container__content__tab-container__tabs
         %li.active
-          %h3
+          %h3.bold
             %a{href: "#", "data-toggle": "tab"}
               取引中
         %li
-          %h3
+          %h3.bold
             %a{href: "#", "data-toggle": "tab"}
               過去の取引
       .mypage-container__content__tab-container__tab-content
-        %ul#tab-trade-now.mypage-container__content__tab-container__tab-content__items.tabe-pane.active
+        %ul#tab-trade-now.mypage-container__content__tab-container__tab-content__items.tab-pane.active
           %li.mypage-container__content__tab-container__tab-content__items__item-not.bold
             取引中の商品がありません
-        %ul#tab-trade-old.mypage-container__content__tab-container__tab-content__items.tabe-pane
+        %ul#tab-trade-old.mypage-container__content__tab-container__tab-content__items.tab-pane
           %li
             %a.mypage-container__content__tab-container__tab-content__items__item{href: "#"}
               %figure
