@@ -100,15 +100,64 @@
           & li:first-child {
             border-bottom: 1px solid #eee;
           }
+          & li:last-child {
+            border: 0;
+          }
           & li {
             position: relative;
             border-bottom: 1px solid #eee;
+            min-height: 80px;
           }
           &__item {
             display: block;
-            min-height: 80px;
             padding: 16px;
             color: #333;
+            & figure {
+              margin: 0;
+              position: relative;
+              overflow: hidden;
+              float: left;
+              width: 48px;
+              height: 48px;
+            }
+            & img {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1;
+              width: 100%;
+            }
+            &__body {
+              margin: 0 40px 0 68px;
+              &__text {
+                overflow: hidden;
+                max-height: 4.4em;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                line-height: 1.5;
+              }
+            }
+            & time {
+              display: inline-block;
+              color: #888;
+            }
+            & .icon-time {
+              margin: 0 8px 0 0;
+            }
+          }
+          &__go-list {
+            padding: 16px;
+            & a {
+              display: block;
+              height: 56px;
+              margin: 0 auto;
+              background: #eee;
+              color: #333;
+              line-height: 56px;
+              text-align: center;
+            }
           }
         }
       }
@@ -144,6 +193,14 @@ a {
   touch-action: manipulation;
 }
 
+figure {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
 img {
   vertical-align: middle;
 }
@@ -159,4 +216,9 @@ img {
 
 .hidden-large {
   display: none;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: opacity .3s;
 }
