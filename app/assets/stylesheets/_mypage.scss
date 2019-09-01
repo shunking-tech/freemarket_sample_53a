@@ -162,6 +162,40 @@
         }
       }
     }
+    &__tab-container {
+      margin: 40px 0 0;
+      background: #fff;
+      &__head {
+        padding: 0 16px;
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      &__tabs {
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        & li {
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+          &.active {
+            background: #fff;
+            & a {
+              border-top: 2px solid #ea352d;
+            }
+          }
+        }
+        & a {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+      }
+    }
   }
 }
 
