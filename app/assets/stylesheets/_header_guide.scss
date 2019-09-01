@@ -8,8 +8,15 @@
     display: flex;
     height: 40px;
     margin-right: 45px;
-    background-color:red;
-    width:94px;
+    // background-color:red;
+    width:134px;
+    background-size:auto;
+    &__m{
+      height:36px;
+      width:134px;
+      background-image: url(mercari__icon.png);
+      background-size:auto;
+    }
   }
   .topmein-search-form{
     position: relative;
@@ -33,6 +40,13 @@
         padding: 0px 10px;
         padding-left:0;
         padding-right:0;
+        
+      }
+      &__box:first-child{
+        padding-left: 0px;
+      }
+      &__box:last-child{
+        padding-right: 0px;
       }
     }
     .topmein-select-command{
