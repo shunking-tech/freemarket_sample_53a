@@ -102,16 +102,18 @@
           }
           & li:last-child {
             border: 0;
+            min-height: initial;
           }
           & li {
             position: relative;
             border-bottom: 1px solid #eee;
+            min-height: 80px;
           }
           &__item {
             display: block;
             padding: 16px;
             color: #333;
-            min-height: 80px;
+            // min-height: 80px;
             & figure {
               margin: 0;
               position: relative;
@@ -348,7 +350,7 @@
         }
       }
       &__head {
-        margin: 40px 0 0;
+        margin: 40px 0 5px;
         font-size: 16px;
       }
     }
