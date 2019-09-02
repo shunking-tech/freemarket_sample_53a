@@ -144,7 +144,26 @@
               color: #888;
             }
             & .icon-time {
+              &::before {
+                content: '\f017'
+              }
+              font-family: FontAwesome;
+              font-style: normal;
+              font-size: 16px;
               margin: 0 8px 0 0;
+            }
+            & .icon-arrow-right {
+              &::before {
+                content: '\f054';
+              }
+              font-family: FontAwesome;
+              font-style: normal;
+              display: inline-block;
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              // color: #ccc;
+              transition: all ease-out .2s;
             }
           }
           &__go-list {
@@ -289,6 +308,9 @@
           &.active {
             background: #eee;
             font-weight: 600;
+            & .icon-arrow-right {
+              color: #333;
+            }
           }
           position: relative;
           display: block;
@@ -309,6 +331,19 @@
             line-height: 24px;
             color: #fff;
             transform: translate(0, -50%);
+          }
+          & .icon-arrow-right {
+            &::before {
+              content: '\f054';
+            }
+            font-family: FontAwesome;
+            font-style: normal;
+            display: inline-block;
+            position: absolute;
+            // top: 50%;
+            right: 16px;
+            color: #ccc;
+            transition: all ease-out .2s;
           }
         }
       }
