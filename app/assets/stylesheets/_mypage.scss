@@ -229,16 +229,17 @@
           }
           & li:last-child {
             border: 0;
+            min-height: initial;
           }
           & li {
             position: relative;
             border-bottom: 1px solid #eee;
+            min-height: 80px;
           }
           &__item {
             display: block;
             padding: 16px;
             color: #333;
-            min-height: 80px;
             & figure {
               margin: 0;
               position: relative;
