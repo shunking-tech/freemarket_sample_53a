@@ -77,8 +77,8 @@
         }
         &__nav-number {
           position: absolute;
-          top: 50%;
-          right: 32px;
+          top: 16px;
+          right: 2px;
           width: 24px;
           height: 24px;
           border-radius: 50%;
@@ -407,11 +407,6 @@ img {
 
 .bold {
   font-weight: bold;
-}
-
-.mypage-container__content__tab-container-notification-todo__tabs__nav-number {
-  top: 16px;
-  right: 2px;
 }
 
 .hidden-large {
