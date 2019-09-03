@@ -1,4 +1,6 @@
 $banner_width: 750px;
+$banner_iconlink_height: 40px;
+$banner_iconlink_width: 144px;
 
 .banner {
   background-image: url('download_bg_pc.jpg');
@@ -48,19 +50,17 @@ $banner_width: 750px;
       width: 68px;
       margin-right: 20px;
     }
-    &--app-icon {
-      
-    }
+
     &--app-icon, &--google-icon {
-      height: 40px;
-      width: 144px;
+      height: $banner_iconlink_height;
+      width: $banner_iconlink_width;
     }
   }
 
   &--link {
     display: inline-block;
-    height: 40px;
-    width: 144px;
+    height: $banner_iconlink_height;
+    width: $banner_iconlink_width;
     text-decoration: none;
     margin-right: 8px;
 
