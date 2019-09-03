@@ -6,6 +6,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  include ActiveModel::Validations
   validates_with UserValidator
 end
