@@ -2,10 +2,12 @@
   margin: 0 auto;
   width: 1020px;
   padding: 40px 0 40px;
-  &__content {
+
+  & .content {
     float: right;
     width: 700px;
-    &__user-icon {
+
+    & .user-icon {
       height: 200px;
       position: relative;
       padding: 20px;
@@ -44,15 +46,16 @@
           }
         }
       }
-        & span {
-          margin: 0 0 0 8px;
-          font-size: 16px;
-        }
+      & span {
+        margin: 0 0 0 8px;
+        font-size: 16px;
       }
-    &__tab-container-notification-todo {
+    }
+
+    & .tab-container-notification-todo {
       margin: 0;
       background: #fff;
-      &__tabs {
+      & .tabs {
         border: 0;
         background: #eee;
         font-size: 0;
@@ -89,7 +92,7 @@
           transform: translate(0, -50%);
         }
       }
-      &__tab-content {
+      & .tab-content {
         &__items {
           &.tab-pane {
             display: none;
@@ -183,16 +186,17 @@
         }
       }
     }
-    &__tab-container {
+
+    & .tab-container {
       margin: 40px 0 0;
       background: #fff;
-      &__head {
+      & .tab-head {
         padding: 0 16px;
         background: #fafafa;
         font-size: 16px;
         line-height: 72px;
       }
-      &__tabs {
+      & .tabs {
         border: 0;
         background: #eee;
         font-size: 0;
@@ -216,7 +220,7 @@
           line-height: 72px;
         }
       }
-      &__tab-content {
+      & .tab-content {
         &__items {
           &.tab-pane {
             display: none;
@@ -295,12 +299,13 @@
     }
   }
 
-  &__side {
+  & .side {
     float: left;
     width: 280px;
     margin: 0 40px 0 0;
-    &__nav {
-      &__list {
+
+    & nav {
+      & .items {
         & li:first-child {
           border: 0;
         }
@@ -350,7 +355,8 @@
           }
         }
       }
-      &__head {
+
+      & .items-head {
         margin: 40px 0 5px;
         font-size: 16px;
       }
