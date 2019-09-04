@@ -1,0 +1,6 @@
+@mixin lazyloaded() {
+  .lazyloaded {
+    opacity: 1;
+    transition: opacity .3s;
+  }
+}
