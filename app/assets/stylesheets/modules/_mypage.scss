@@ -1,4 +1,10 @@
+@include mercari-style();
+@include bold();
+@include hidden-large();
+@include lazyloaded();
+
 .mypage-container {
+  @include clearfix();
   margin: 0 auto;
   width: 1020px;
   padding: 40px 0 40px;
@@ -11,7 +17,7 @@
       height: 200px;
       position: relative;
       // padding: 20px;
-      background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?716030");
+      background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;
@@ -183,6 +189,16 @@
               text-align: center;
             }
           }
+          &__item-not {
+            padding: 160px 0 60px;
+            background: url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg");
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 78px 85px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+          }
         }
       }
     }
@@ -286,7 +302,7 @@
           }
           &__item-not {
             padding: 160px 0 60px;
-            background: url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?716030");
+            background: url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg");
             background-repeat: no-repeat;
             background-position: center 40px;
             background-size: 78px 85px;
@@ -298,6 +314,7 @@
       }
     }
   }
+
 
   & .side {
     float: left;
@@ -363,63 +380,4 @@
     }
   }
 
-}
-
-body {
-  position: relative;
-  min-height: 100%;
-  background: #f5f5f5;
-  font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
-  font-size: 14px;
-  color: #333;
-  line-height: 1;
-}
-
-main {
-  display: block;
-}
-
-h2 {
-  line-height: 1.4;
-  font-size: 22px;
-}
-
-h3 {
-  font-size: 22px;
-}
-
-a {
-  text-decoration: none;
-  touch-action: manipulation;
-}
-
-figure {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-}
-
-img {
-  vertical-align: middle;
-}
-
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.hidden-large {
-  display: none;
-}
-
-.lazyloaded {
-  opacity: 1;
-  transition: opacity .3s;
 }
