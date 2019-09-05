@@ -1,5 +1,6 @@
 @import "./reset";
-@import "mixins/mixin";
 @import "font-awesome";
-@import "modules/items";
-@import "modules/mypage";
+@import "./mixins/mixin";
+@import "./config/variable";
+@import "./modules/items";
+@import "./modules/mypage";
