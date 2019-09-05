@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         transform: translate(0, -50%);
-        color: #333;
+        color: $black;
       }
       & figure {
         overflow: hidden;
@@ -60,10 +60,10 @@
 
     & .tab-container-notification-todo {
       margin: 0;
-      background: #fff;
+      background: $white;
       & .tabs {
         border: 0;
-        background: #eee;
+        background: $gray;
         font-size: 0;
         & li {
           width: 50%;
@@ -71,16 +71,16 @@
           text-align: center;
           vertical-align: top;
           &.active {
-            background: #fff;
+            background: $white;
             & a {
-              border-top: 2px solid #ea352d;
+              border-top: 2px solid $active_red;
             }
           }
         }
         & a {
           position: relative;
           display: block;
-          color: #333;
+          color: $black;
           font-size: 16px;
           line-height: 72px;
         }
@@ -91,10 +91,10 @@
           width: 24px;
           height: 24px;
           border-radius: 50%;
-          background: #ea352d;
+          background: $active_red;
           text-align: center;
           line-height: 24px;
-          color: #fff;
+          color: $white;
           transform: translate(0, -50%);
         }
       }
@@ -107,7 +107,7 @@
             }
           }
           & li:first-child {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid $gray;
           }
           & li:last-child {
             border: 0;
@@ -115,13 +115,13 @@
           }
           & li {
             position: relative;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid $gray;
             min-height: 80px;
           }
           &__item {
             display: block;
             padding: 16px;
-            color: #333;
+            color: $black;
             // min-height: 80px;
             & figure {
               margin: 0;
@@ -173,7 +173,7 @@
               position: absolute;
               top: 50%;
               right: 16px;
-              // color: #ccc;
+              // color: $dark_gray;
               transition: all ease-out .2s;
             }
           }
@@ -183,8 +183,8 @@
               display: block;
               height: 56px;
               margin: 0 auto;
-              background: #eee;
-              color: #333;
+              background: $gray;
+              color: $black;
               line-height: 56px;
               text-align: center;
             }
@@ -197,7 +197,7 @@
             background-size: 78px 85px;
             text-align: center;
             font-size: 16px;
-            color: #ccc;
+            color: $dark_gray;
           }
         }
       }
@@ -205,7 +205,7 @@
 
     & .tab-container {
       margin: 40px 0 0;
-      background: #fff;
+      background: $white;
       & .tab-head {
         padding: 0 16px;
         background: #fafafa;
@@ -214,7 +214,7 @@
       }
       & .tabs {
         border: 0;
-        background: #eee;
+        background: $gray;
         font-size: 0;
         & li {
           width: 50%;
@@ -222,16 +222,16 @@
           text-align: center;
           vertical-align: top;
           &.active {
-            background: #fff;
+            background: $white;
             & a {
-              border-top: 2px solid #ea352d;
+              border-top: 2px solid $active_red;
             }
           }
         }
         & a {
           position: relative;
           display: block;
-          color: #333;
+          color: $black;
           font-size: 16px;
           line-height: 72px;
         }
@@ -245,7 +245,7 @@
             }
           }
           & li:first-child {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid $gray;
           }
           & li:last-child {
             border: 0;
@@ -253,13 +253,13 @@
           }
           & li {
             position: relative;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid $gray;
             min-height: 80px;
           }
           &__item {
             display: block;
             padding: 16px;
-            color: #333;
+            color: $black;
             & figure {
               margin: 0;
               position: relative;
@@ -294,8 +294,8 @@
               display: block;
               height: 56px;
               margin: 0 auto;
-              background: #eee;
-              color: #333;
+              background: $gray;
+              color: $black;
               line-height: 56px;
               text-align: center;
             }
@@ -308,7 +308,7 @@
             background-size: 78px 85px;
             text-align: center;
             font-size: 16px;
-            color: #ccc;
+            color: $dark_gray;
           }
         }
       }
@@ -327,23 +327,23 @@
           border: 0;
         }
         & li {
-          border-top: 1px solid #eee;
+          border-top: 1px solid $gray;
         }
         &__item {
           &.active {
-            background: #eee;
+            background: $gray;
             font-weight: 600;
             & .icon-arrow-right {
-              color: #333;
+              color: $black;
             }
           }
           position: relative;
           display: block;
           max-height: 48px;
           padding: 16px;
-          background: #fff;
+          background: $white;
           font-size: 14px;
-          color: #333;
+          color: $black;
           &__nav-number {
             position: absolute;
             top: 50%;
@@ -351,10 +351,10 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #ea352d;
+            background: $active_red;
             text-align: center;
             line-height: 24px;
-            color: #fff;
+            color: $white;
             transform: translate(0, -50%);
           }
           & .icon-arrow-right {
@@ -367,7 +367,7 @@
             position: absolute;
             // top: 50%;
             right: 16px;
-            color: #ccc;
+            color: $dark_gray;
             transition: all ease-out .2s;
           }
         }
