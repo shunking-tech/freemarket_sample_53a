@@ -64,3 +64,109 @@
     }
     }
 }
+
+.topmein-select-band{
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-top: 8px;
+  &__left{
+    display: flex;
+    margin-left: -3px;
+    &__category{
+      cursor: pointer;
+      height: 44px;
+      position: relative;
+      z-index: 3;
+      padding: 0px 10px;
+      &__tag{
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 36px;
+        white-space: nowrap;
+        &__search{
+          max-width: 100%;
+          max-height: 100%;
+          color: rgb(234, 53, 45);
+          height: 12px;
+          margin-right: 4px;
+        }
+        &__bland{
+          max-width: 100%;
+          max-height: 100%;
+          color: rgb(234, 53, 45);
+          height: 12px;
+          margin-right: 4px;
+        }
+      }
+    }
+    &__category:first-child{
+      padding-left: 0px;
+    }
+    &__category:last-child{
+      padding-right: 0px;
+    }
+  }
+  &__right{
+    display: flex;
+    position: relative;
+    list-style: none;
+    &__command{
+      height:44px;
+      &__box{
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        font-size: 14px;
+        height: 32px;
+        transform: scale(1);
+        transition: all 0.3s ease-out 0s;
+        &__mypage{
+          margin-right: 10px;
+          width: 32px;
+          border-radius: 50%;
+          overflow: hidden;
+          vertical-align: middle;
+        }
+        &__mark{
+          max-width: 100%;
+          height: auto;
+          max-height: 100%;
+          color: rgb(204, 204, 204);
+          margin-right: 10px;
+        }
+        &__manu{
+          max-width: 100%;
+          height: auto;
+          max-height: 100%;
+          color: rgb(204, 204, 204);
+          margin-right: 10px;
+          width: 17px;
+        }
+        &__icon{
+          background-color: rgb(234, 53, 45);
+          color: rgb(255, 255, 255);
+          font-size: 12px;
+          height: 20px;
+          left: 6px;
+          line-height: 20px;
+          position: absolute;
+          text-align: center;
+          top: -2px;
+          width: 20px;
+          border-radius: 50%;
+        }
+        }
+      &__command:first-child{
+        padding-left: 0px;
+      }
+      &__command:nth-child(2){
+        padding: 0px 14px;
+      }
+      &__command:last-child{
+        padding-right: 0px;
+      }
+    }
+  }
+}
