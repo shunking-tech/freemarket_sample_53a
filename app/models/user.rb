@@ -6,5 +6,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates_with UserValidator
+  validates_with UserValidator,
+  attributes: ["nickname",
+               "email",
+               "password",
+               "first_name",
+               "first_name_kana",
+               "last_name",
+               "last_name_kana",
+               "birth_date",
+               "phone_number",
+               "city",
+               "house_address",
+               "building_name",
+               "zipcode"]
 end
