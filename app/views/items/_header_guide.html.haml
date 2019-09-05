@@ -1,38 +1,11 @@
 .topmein-search-band
   
-  %h1.topmein-mercari-icon
-    %a{:href => "https://www.mercari.com/jp/"}
-      %img{:alt => "mercari", :height => "36", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2394192159", :width => "134"}/
+  .topmein-mercari
+    %a.topmein-mercari__box{href: "/jp/"}
+      %img.topmein-mercari__box__icon{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg"}/
 
-  %form.topmein-search-form{:action => "https://www.mercari.com/jp/search/"}
-    %input.topmein-search-form__write{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
+  %form.topmein-search-form{action: "/jp/search/"}
+    %input.topmein-search-form__write{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
     %button.topmein-search-form__button
-      %svg.topmein-serch-form__button__icon{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 16 16", :width => "16"}
-        %path{:d => "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", :fill => "currentColor", "fill-rule" => "nonzero"}
-
--# --------------------------------------------
-.topmein-select-band.clearfix
-  %nav.topmein-select-band.clearfix__left
-    %ul.topmein-select-band.clearfix__left__category
-      %li
-        %h2
-          %a.topmein-select-band.clearfix__left__category__bland{:href => "https://www.mercari.com/jp/category/"}
-            %i.topmein-select-band.clearfix__left__category__bland__icon
-              -# アイコン
-            %span カテゴリーから探す
-        -# %ul ここにハンバーガーの中身
-      %li
-        %h2
-          %a.topmein-select-band.clearfix__left__category__tag{:href => "https://www.mercari.com/jp/brand/"}
-            %i.topmein-select-band.clearfix__left__category__tag__icon
-              -# アイコン
-            %span ブランドから探す
-          -# %ul ここにハンバーガーの中身
-
-  .topmein-select-band.clearfix__right
-
-
-  -# %ul.topmein-select-command
-  -#   %li.topmein-select-command__box おしらせ
-  -#   %li.topmein-select-command__box やることリスト
-  -#   %li.topmein-select-command__box マイページ
+      %svg.topmein-search-form__button__icon{"aria-hidden": "true", height: "16", viewbox: "0 0 16 16", width: "16"}
+        %path{d: "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", fill: "currentColor", "fill-rule": "nonzero"}
