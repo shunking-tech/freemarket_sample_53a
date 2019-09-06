@@ -9,11 +9,11 @@
   width: 1020px;
   padding: 40px 0 40px;
 
-  & .content {
+  .content {
     float: right;
     width: 700px;
 
-    & .user-icon {
+    .user-icon {
       height: 200px;
       position: relative;
       // padding: 20px;
@@ -30,54 +30,54 @@
         transform: translate(0, -50%);
         color: $black;
       }
-      & figure {
+      figure {
         overflow: hidden;
         width: 60px;
         height: 60px;
         margin: 0 auto;
         border-radius: 50%;
       }
-      & h2 {
+      h2 {
         margin: 8px 0 0;
         font-size: 14px;
       }
       &__number {
         margin: 8px 0 0;
         font-size: 0;
-        & div {
+        div {
           display: inline-block;
           font-size: 14px;
-          & +div {
+          +div {
             margin: 0 0 0 16px;
           }
         }
       }
-      & span {
+      span {
         margin: 0 0 0 8px;
         font-size: 16px;
       }
     }
 
-    & .tab-container-notification-todo {
+    .tab-container-notification-todo {
       margin: 0;
       background: $white;
-      & .tabs {
+      .tabs {
         border: 0;
         background: $gray;
         font-size: 0;
-        & li {
+        li {
           width: 50%;
           display: inline-block;
           text-align: center;
           vertical-align: top;
           &.active {
             background: $white;
-            & a {
+            a {
               border-top: 2px solid $active_red;
             }
           }
         }
-        & a {
+        a {
           position: relative;
           display: block;
           color: $black;
@@ -98,7 +98,7 @@
           transform: translate(0, -50%);
         }
       }
-      & .tab-content {
+      .tab-content {
         &__items {
           &.tab-pane {
             display: none;
@@ -106,14 +106,14 @@
               display: block;
             }
           }
-          & li:first-child {
+          li:first-child {
             border-bottom: 1px solid $gray;
           }
-          & li:last-child {
+          li:last-child {
             border: 0;
             min-height: initial;
           }
-          & li {
+          li {
             position: relative;
             border-bottom: 1px solid $gray;
             min-height: 80px;
@@ -123,7 +123,7 @@
             padding: 16px;
             color: $black;
             // min-height: 80px;
-            & figure {
+            figure {
               margin: 0;
               position: relative;
               overflow: hidden;
@@ -131,7 +131,7 @@
               width: 48px;
               height: 48px;
             }
-            & img {
+            img {
               position: absolute;
               top: 0;
               right: 0;
@@ -150,11 +150,11 @@
                 line-height: 1.5;
               }
             }
-            & time {
+            time {
               display: inline-block;
               color: #888;
             }
-            & .icon-time {
+            .icon-time {
               &::before {
                 content: '\f017'
               }
@@ -163,7 +163,7 @@
               font-size: 16px;
               margin: 0 8px 0 0;
             }
-            & .icon-arrow-right {
+            .icon-arrow-right {
               &::before {
                 content: '\f054';
               }
@@ -179,7 +179,7 @@
           }
           &__go-list {
             padding: 16px;
-            & a {
+            a {
               display: block;
               height: 56px;
               margin: 0 auto;
@@ -203,32 +203,32 @@
       }
     }
 
-    & .tab-container {
+    .tab-container {
       margin: 40px 0 0;
       background: $white;
-      & .tab-head {
+      .tab-head {
         padding: 0 16px;
         background: #fafafa;
         font-size: 16px;
         line-height: 72px;
       }
-      & .tabs {
+      .tabs {
         border: 0;
         background: $gray;
         font-size: 0;
-        & li {
+        li {
           width: 50%;
           display: inline-block;
           text-align: center;
           vertical-align: top;
           &.active {
             background: $white;
-            & a {
+            a {
               border-top: 2px solid $active_red;
             }
           }
         }
-        & a {
+        a {
           position: relative;
           display: block;
           color: $black;
@@ -236,7 +236,7 @@
           line-height: 72px;
         }
       }
-      & .tab-content {
+      .tab-content {
         &__items {
           &.tab-pane {
             display: none;
@@ -244,14 +244,14 @@
               display: block;
             }
           }
-          & li:first-child {
+          li:first-child {
             border-bottom: 1px solid $gray;
           }
-          & li:last-child {
+          li:last-child {
             border: 0;
             min-height: initial;
           }
-          & li {
+          li {
             position: relative;
             border-bottom: 1px solid $gray;
             min-height: 80px;
@@ -260,7 +260,7 @@
             display: block;
             padding: 16px;
             color: $black;
-            & figure {
+            figure {
               margin: 0;
               position: relative;
               overflow: hidden;
@@ -268,7 +268,7 @@
               width: 48px;
               height: 48px;
             }
-            & img {
+            img {
               position: absolute;
               top: 0;
               right: 0;
@@ -290,7 +290,7 @@
           }
           &__go-list {
             padding: 16px;
-            & a {
+            a {
               display: block;
               height: 56px;
               margin: 0 auto;
@@ -316,24 +316,24 @@
   }
 
 
-  & .side {
+  .side {
     float: left;
     width: 280px;
     margin: 0 40px 0 0;
 
-    & nav {
-      & .items {
-        & li:first-child {
+    nav {
+      .items {
+        li:first-child {
           border: 0;
         }
-        & li {
+        li {
           border-top: 1px solid $gray;
         }
         &__item {
           &.active {
             background: $gray;
             font-weight: 600;
-            & .icon-arrow-right {
+            .icon-arrow-right {
               color: $black;
             }
           }
@@ -357,7 +357,7 @@
             color: $white;
             transform: translate(0, -50%);
           }
-          & .icon-arrow-right {
+          .icon-arrow-right {
             &::before {
               content: '\f054';
             }
@@ -373,7 +373,7 @@
         }
       }
 
-      & .items-head {
+      .items-head {
         margin: 40px 0 5px;
         font-size: 16px;
       }
