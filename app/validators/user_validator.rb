@@ -5,10 +5,6 @@ class UserValidator < ActiveModel::Validator
       validator = column + "_validator(record, record.#{column})"
       eval(validator)
     end
-    if record.errors.present?
-      record.errors[:base] << "ユーザー登録に失敗しました"
-      puts record.errors[:base]
-    end
   end
 
   private
@@ -16,7 +12,7 @@ class UserValidator < ActiveModel::Validator
   def nickname_validator(record, nickname)
     if nickname.blank?
       record.errors[:nickname] << "ニックネームを入力してください"
-    elsif nickname.length > 20
+    elsif 20 < nickname.length
       record.errors[:nickname] << "20文字以下で入力してください"
     end
   end
@@ -24,23 +20,20 @@ class UserValidator < ActiveModel::Validator
   def email_validator(record, email)
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     if email.blank?
-      record.errors[:email] << "メールアドレスを入力してください"
+      record.errors[:email].push("メールアドレスを入力してください").shift()
     elsif email.match(email_regex) == nil
-      record.errors[:email] << "フォーマットが不適切です"
+      record.errors[:email].push("フォーマットが不適切です").shift()
     end
   end
 
   def password_validator(record, password)
     password_regex = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
     if password.blank?
-      record.errors[:password] << "パスワードを入力してください"
-    end
-    if password.length < 7 || 128 < password.length
-      record.errors[:password] << "パスワードは7文字以上128文字以下で入力してください"
-    end
-
-    unless password.match(password_regex)
-      record.errors[:password] << "英字と数字両方を含むパスワードを設定してください"
+      record.errors[:password].push("パスワードを入力してください").shift()
+    elsif password.length < 7 || 128 < password.length
+      record.errors[:password].push("パスワードを入力してください", "パスワードは7文字以上128文字以下で入力してください").shift()
+    elsif password.match(password_regex) == nil
+      record.errors[:password].push("パスワードを入力してください", "パスワードは7文字以上128文字以下で入力してください", "英字と数字両方を含むパスワードを設定してください").shift()
     end
   end
 
@@ -93,7 +86,7 @@ class UserValidator < ActiveModel::Validator
 
   def phone_number_validator(record, phone_number)
     phone_regex = /\A\d{10,11}\z/
-    unless phone_number.match(phone_regex)
+    if phone_number && phone_number.match(phone_regex) == nil
       record.errors[:phone_number] << "フォーマットが不適切です"
     end
   end
