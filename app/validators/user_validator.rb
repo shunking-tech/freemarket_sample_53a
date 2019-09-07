@@ -29,11 +29,14 @@ class UserValidator < ActiveModel::Validator
   def password_validator(record, password)
     password_regex = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
     if password.blank?
-      record.errors[:password].push("パスワードを入力してください").shift()
-    elsif password.length < 7 || 128 < password.length
-      record.errors[:password].push("パスワードを入力してください", "パスワードは7文字以上128文字以下で入力してください").shift()
-    elsif password.match(password_regex) == nil
       record.errors[:password].push("パスワードを入力してください", "パスワードは7文字以上128文字以下で入力してください", "英字と数字両方を含むパスワードを設定してください").shift()
+    else
+      if password.length < 7 || 128 < password.length
+        record.errors[:password].push("パスワードは7文字以上128文字以下で入力してください").shift()
+      end
+      unless password.match(password_regex)
+        record.errors[:password] << "英字と数字両方を含むパスワードを設定してください"
+      end
     end
   end
 
