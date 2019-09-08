@@ -1,0 +1,36 @@
+@include mercari-style();
+
+.logout {
+
+  // 一番上のボックス
+  &__container {
+    box-sizing: border-box;
+    background-color: $white;
+  }
+
+  // フォームのボックス
+  &__form {
+    box-sizing: inherit;
+    padding: 64px;
+  }
+
+  // ボタンが入っているボックス
+  &__content {
+    box-sizing: inherit;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  // ボタン
+  &__submit {
+    box-sizing: inherit;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: $white;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    padding: 0;
+  }
+
+}
