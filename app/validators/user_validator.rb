@@ -1,15 +1,27 @@
 class UserValidator < ActiveModel::Validator
 
   def validate(record)
-    options[:attributes].each do |column|
-      validator = column + "_validator(record, record.#{column})"
+    validate_methods.each do |method|
+      method.slice!(0, 6)
+      validator = method.gsub(/record, /, "record, record.").chomp
       eval(validator)
     end
   end
 
   private
 
-  def nickname_validator(record, nickname)
+  def validate_methods
+    methods = []
+    File.open("./app/validators/user_validator.rb") do |file|
+      file.each_line do |line|
+        methods << line if line =~ /.+_validate/
+      end
+    end
+    methods.shift()
+    return methods
+  end
+
+  def nickname_validate(record, nickname)
     if nickname.blank?
       record.errors[:nickname] << "ニックネームを入力してください"
     elsif 20 < nickname.length
@@ -17,7 +29,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def email_validator(record, email)
+  def email_validate(record, email)
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     if email.blank?
       record.errors[:email].push("メールアドレスを入力してください").shift()
@@ -26,7 +38,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def password_validator(record, password)
+  def password_validate(record, password)
     password_regex = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
     if password.blank?
       record.errors[:password].push("パスワードを入力してください", "パスワードは7文字以上128文字以下で入力してください", "英字と数字両方を含むパスワードを設定してください").shift()
@@ -40,7 +52,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def first_name_validator(record, first_name)
+  def first_name_validate(record, first_name)
     if first_name.blank?
       record.errors[:first_name] << "名を入力してください"
     elsif 35 < first_name.length
@@ -48,7 +60,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def first_name_kana_validator(record, first_name_kana)
+  def first_name_kana_validate(record, first_name_kana)
     katakana_regex = /\A[\p{katakana}]+\z/
     if first_name_kana.blank?
       record.errors[:first_name_kana] << "名カナを入力してください"
@@ -59,7 +71,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def last_name_validator(record, last_name)
+  def last_name_validate(record, last_name)
     if last_name.blank?
       record.errors[:last_name] << "姓を入力してください"
     elsif 35 < last_name.length
@@ -67,7 +79,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def last_name_kana_validator(record, last_name_kana)
+  def last_name_kana_validate(record, last_name_kana)
     katakana_regex = /\A[\p{katakana}]+\z/
     if last_name_kana.blank?
       record.errors[:last_name_kana] << "姓カナを入力してください"
@@ -78,7 +90,7 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def birth_date_validator(record, birth_date)
+  def birth_date_validate(record, birth_date)
     birth_date_regex = /\A\d{4}\/\d+\/\d+\z/
     if birth_date.blank?
       record.errors[:birth_date] << "生年月日を入力してください"
@@ -87,32 +99,32 @@ class UserValidator < ActiveModel::Validator
     end
   end
 
-  def phone_number_validator(record, phone_number)
+  def phone_number_validate(record, phone_number)
     phone_regex = /\A\d{10,11}\z/
     if phone_number && phone_number.match(phone_regex) == nil
       record.errors[:phone_number] << "フォーマットが不適切です"
     end
   end
 
-  def city_validator(record, city)
+  def city_validate(record, city)
     if city && 50 < city.length
       record.errors[:zipcode] << "50文字以下で入力してください"
     end
   end
 
-  def house_address_validator(record, house_address)
+  def house_address_validate(record, house_address)
     if house_address && 100 < house_address.length
       record.errors[:house_address] << "100文字以下で入力してください"
     end
   end
 
-  def building_name_validator(record, building_name)
+  def building_name_validate(record, building_name)
     if building_name && 100 < building_name.length
       record.errors[:building_name] << "100文字以下で入力してください"
     end
   end
 
-  def zipcode_validator(record, zipcode)
+  def zipcode_validate(record, zipcode)
     zipcode_regex = /\A\d{7}\z/
     if zipcode && zipcode.match(zipcode_regex) == nil
       record.errors[:zipcode] << "フォーマットが不適切です"
