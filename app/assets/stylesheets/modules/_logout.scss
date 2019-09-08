@@ -23,14 +23,7 @@
 
   // ボタン
   &__submit {
-    box-sizing: inherit;
-    background: #ea352d;
-    border: 1px solid #ea352d;
-    color: $white;
-    width: 100%;
-    line-height: 48px;
-    font-size: 14px;
-    padding: 0;
+    @include button();
   }
 
 }
