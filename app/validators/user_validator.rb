@@ -3,8 +3,8 @@ class UserValidator < ActiveModel::Validator
   def validate(record)
     validate_methods.each do |method|
       method.slice!(0, 6)
-      validator = method.gsub(/record, /, "record, record.").chomp
-      eval(validator)
+      validate_method = method.gsub(/record, /, "record, record.").chomp
+      eval(validate_method)
     end
   end
 
