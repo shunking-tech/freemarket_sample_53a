@@ -162,10 +162,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|score|integer||
-|comment|string||
-|user_id|references|foreign_key: true|
-|trade_id|references|foreign_key: true|
+|score|integer|null: false|
+|comment|string|null: false|
+|user_id|references|null: false, foreign_key: true|
+|trade_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
