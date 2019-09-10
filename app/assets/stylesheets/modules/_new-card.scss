@@ -116,6 +116,8 @@
 
 
       &__submit {
+        outline: 0;
+        cursor: pointer;
         margin-top: 32px;
         @include button();
       }
