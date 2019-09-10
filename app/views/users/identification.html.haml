@@ -1,0 +1,79 @@
+%main.mypage-container.clearfix
+
+  = render 'users/mypage/side'
+
+  %section.identification
+    %h2.identification__head
+      本人情報の登録
+    = form_with url: "#", class: "identification__form" do |f|
+      %div
+        %p
+          お客さまの本人情報をご登録ください。
+          %br
+          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        %p.identification__form__text-right
+          = link_to '#' do
+            本人確認書類のアップロードについて
+            = fa_icon("chevron-right")
+      
+      .identification__form__form-group
+        %label
+          お名前
+        %p
+          浦島 太朗
+
+      .identification__form__form-group
+        %label
+          お名前カナ
+        %p
+          ウラシマ タロウ
+
+      .identification__form__form-group
+        %label
+          生年月日
+        %p
+          1999/9/9
+
+      .identification__form__form-group
+        %label
+          郵便番号
+        %span.identification__form__form-group__form-arbitrary
+          任意
+        = f.text_field :zipcode, {placeholder: "例) 1234567", class: "identification__form__form-group__input-default"}
+
+      .identification__form__form-group
+        %label
+          都道府県
+        %span.identification__form__form-group__form-arbitrary
+          任意
+        .identification__form__form-group__select-wrap
+          = fa_icon("chevron-down")
+          = f.select :prefecture, [["--", ""], ["北海道", "北海道"]], {}, {class: "identification__form__form-group__select-default"}
+
+      .identification__form__form-group
+        %label
+          市区町村
+        %span.identification__form__form-group__form-arbitrary
+          任意
+        = f.text_field :city, {placeholder: "例) 竜宮市亀区", class: "identification__form__form-group__input-default"}
+
+      .identification__form__form-group
+        %label
+          番地
+        %span.identification__form__form-group__form-arbitrary
+          任意
+        = f.text_field :house_address, {placeholder: "例) 竜宮城1-1-1", class: "identification__form__form-group__input-default"}
+
+      .identification__form__form-group
+        %label
+          建物名
+        %span.identification__form__form-group__form-arbitrary
+          任意
+        = f.text_field :building_name, {placeholder: "例) 玉手箱ビルディング 102号", class: "identification__form__form-group__input-default"}
+
+      = f.submit '登録する', class: "identification__form__submit"
+
+      .identification__form__form-group.identification__form__text-right
+        = link_to '#' do
+          本人情報の登録について
+          = fa_icon("chevron-right")
