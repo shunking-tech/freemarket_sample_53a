@@ -123,8 +123,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
-|ancestry|string|add index|
+|name|string|null: false|
+|ancestry|string|null: false, add index|
 
 ### Association
 - has_many :items
