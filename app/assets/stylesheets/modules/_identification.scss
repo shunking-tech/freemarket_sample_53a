@@ -1,0 +1,91 @@
+@include mercari-style();
+
+.identification {
+  float: right;
+  width: 700px;
+  background-color: #fff;
+  &__head {
+    font-size: 24px;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__form {
+    border-top: 1px solid #f5f5f5;
+    padding: 64px;
+    p {
+      margin: 8px 0 0;
+      line-height: 1.5;
+    }
+    a {
+      color: #0099e8;
+    }
+    &__text-right {
+      text-align: right;
+    }
+    &__form-group {
+      margin: 40px 0 0;
+      label {
+        font-weight: 600;
+      }
+      &__form-arbitrary {
+        background: #ccc;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        vertical-align: top;
+      }
+      &__input-default {
+        box-sizing: border-box;
+        height: 48px;
+        width: 100%;
+        padding: 10px 16px 8px;
+        margin: 8px 0 0;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: #fff;
+        line-height: 1.5;
+        font-size: 16px;
+      }
+      &__select-wrap {
+        margin: 8px 0 0;
+        position: relative;
+        background: #fff;
+        select {
+          outline: 0;
+          -webkit-appearance: none;
+          color: #888;
+        }
+        .fa-chevron-down {
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          z-index: 2;
+          color: #888;
+          font-size: 16px;
+          transform: translate(0, -50%);
+        }
+      }
+      &__select-default {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+      }
+    }
+    &__submit {
+      @include button();
+      margin: 40px 0 0 0;
+    }
+  }
+}
