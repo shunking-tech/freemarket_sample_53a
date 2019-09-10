@@ -110,9 +110,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|content|string||
-|user_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
+|content|string|null: false|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
