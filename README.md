@@ -134,10 +134,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|references|foreign_key: true|
-|buyer_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
-|status|integer||
+|seller_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|status|integer|null: false|
 
 ### Association
 - belongs_to :seller, class_name: "User"
