@@ -4,7 +4,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user|references|foreign_key: true|
 |customer_id|string|null: false|
 |card_id|string|null: false|
 
@@ -57,9 +57,9 @@
 |payer_delivery_expense|integer|null: false|
 |delivery_days|integer|null: false|
 |prefecture|string|null: false|
-|user_id|references|null: false, foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
+|size|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -88,7 +88,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -98,8 +98,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -111,8 +111,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|string|null: false|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -134,9 +134,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|references|null: false, foreign_key: true|
-|buyer_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|seller|references|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 |status|integer|null: false|
 
 ### Association
@@ -150,8 +150,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|string|null: false|
-|user_id|references|null: false, foreign_key: true|
-|trade_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|trade|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -164,8 +164,8 @@
 |------|----|-------|
 |score|integer|null: false|
 |comment|string|null: false|
-|user_id|references|null: false, foreign_key: true|
-|trade_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|trade|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
