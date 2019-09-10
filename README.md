@@ -49,17 +49,17 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|add index|
-|price|integer||
-|description|text||
-|condition|integer||
-|task|integer||
-|payer_delivery_expense|integer||
-|delivery_days|integer||
-|prefecture|string||
-|user_id|references|foreign_key: true|
-|category_id|references|foreign_key: true|
-|size_id|references|foreign_key: true|
+|name|string|null: false, add index|
+|price|integer|null: false|
+|description|text|null: false|
+|condition|integer|null: false|
+|task|integer|null: false|
+|payer_delivery_expense|integer|null: false|
+|delivery_days|integer|null: false|
+|prefecture|string|null: false|
+|user_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
+|size_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
