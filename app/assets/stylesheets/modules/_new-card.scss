@@ -1,0 +1,124 @@
+.registration-card {
+
+
+  &__form {
+    padding: 40px 40px 64px;
+    border-top: 1px solid #f5f5f5;
+    &__content {
+      max-width: 343px;
+      margin: 0 auto;
+      label {
+        display: inline-block;
+      }
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 8px 0 0;
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid $dark_gray;
+        background: $white;
+        line-height: 1.5;
+        font-size: 16px;
+        outline: 0;
+      }
+      .form-require {
+        background-color: $active_red;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        vertical-align: top;
+      }
+      &__number {
+        .card-images {
+          display: flex;
+          margin: 8px 0 0;
+          li:first-child {
+            margin: 0;
+          }
+          li {
+            display: inline-block;
+            margin: 0 0 0 8px;
+            vertical-align: middle;
+          }
+        }
+      }
+
+
+      &__limit {
+        margin-top: 32px;
+        .select {
+          margin: 8px 0 0;
+          position: relative;
+          background: $white;
+          &.half {
+            display: inline-block;
+            width: calc(50% - 2px);
+          }
+          select {
+            width: calc(100% - 38px);
+            position: relative;
+            z-index: 2;
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 4px;
+            border: 1px solid $dark_gray;
+            background: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+            outline: 0;
+            -webkit-appearance: none;
+          }
+          .icon-arrow-bottom {
+            &::before {
+              content: '\f078';
+            }
+            font-family: FontAwesome;
+            font-style: normal;
+            // font-size: 10px;
+            margin: 0 6px 0 -15px;
+            position: relative;
+            top: 50%;
+            pointer-events: none;
+            right: 16px;
+            z-index: 2;
+            color: #888;
+          }
+        }
+      }
+
+
+      &__securitycode {
+        margin-top: 32px;
+        .what-is-securitycode {
+          cursor: pointer;
+          position: relative;
+          margin: 8px 0 0;
+          text-align: right;
+          color: #0099e8;
+          span {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0099e8;
+            color: $white;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+
+
+      &__submit {
+        margin-top: 32px;
+        @include button();
+      }
+    }
+  }
+}

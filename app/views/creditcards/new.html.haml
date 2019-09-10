@@ -1,0 +1,60 @@
+%main.mypage-container.clearfix
+
+  .content
+    %section.registration-card
+      %h2.registration-card__head.bold
+        クレジットカード情報入力
+
+      = form_tag root_path, method: :post, class: 'registration-card__form' do
+        .registration-card__form__content
+
+          .registration-card__form__content__number
+            %label.bold カード番号
+            %span.form-require 必須
+            %input{type: "text", placeholder: "半角数字のみ", maxlength: "19"}
+            %ul.card-images
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg', height: '20', width: '49', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg', height: '20', width: '34', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg', height: '20', width: '30', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg', height: '20', width: '32', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg', height: '20', width: '21', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg', height: '20', width: '32', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg', height: '20', width: '32', class: 'card-images__image'
+
+          .registration-card__form__content__limit
+            %label.bold 有効期限
+            %span.form-require 必須
+            %br
+            .select.half
+              %select#limit-month
+                %option{value: "1"} 01
+                %option{value: "2"} 02
+                %option{value: "99"} 99
+              %i.icon-arrow-bottom
+              %span 月
+            .select.half
+              %select#limit-year
+                %option{value: "19"} 19
+                %option{value: "20"} 20
+                %option{value: "99"} 99
+              %i.icon-arrow-bottom
+              %span 年
+
+          .registration-card__form__content__securitycode
+            %label.bold セキュリティコード
+            %span.form-require 必須
+            %input{type: "text", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4"}
+            .what-is-securitycode
+              %span ?
+              カード裏面の番号とは？
+
+          = button_tag "追加する", type: 'submit', class: 'registration-card__form__content__submit'
+
+  = render 'users/mypage/side'
