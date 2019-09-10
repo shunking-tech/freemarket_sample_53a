@@ -16,22 +16,22 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string||
-|email|string|add_index unique: true|
-|password|string||
+|nickname|string|null: false|
+|email|string|null: false, add_index unique: true|
+|password|string|null: false|
+|first_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name|string|null: false|
+|last_name_kana|string|null: false|
+|birth_date|string|null: false|
+|zipcode|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|house_address|string|null: false|
+|building_name|string||
+|phone_number|string||
 |avatar|string||
 |description|text||
-|first_name|string||
-|first_name_kana|string||
-|last_name|string||
-|last_name_kana|string||
-|birth_date|string||
-|phone_number|string||
-|prefecture|string||
-|city|string||
-|house_address|string||
-|building_name|string||
-|zipcode|string||
 
 ### Association
 - has_many :items
