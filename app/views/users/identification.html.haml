@@ -14,7 +14,7 @@
         %p.identification__form__text-right
           = link_to '#' do
             本人確認書類のアップロードについて
-            = fa_icon("chevron-right")
+            = fa_icon "chevron-right"
       
       .identification__form__form-group
         %label
@@ -47,7 +47,7 @@
         %span.identification__form__form-group__form-arbitrary
           任意
         .identification__form__form-group__select-wrap
-          = fa_icon("chevron-down")
+          = fa_icon "chevron-down"
           = f.select :prefecture, [["--", ""], ["北海道", "北海道"]], {}, {class: "identification__form__form-group__select-default"}
 
       .identification__form__form-group
@@ -76,4 +76,4 @@
       .identification__form__form-group.identification__form__text-right
         = link_to '#' do
           本人情報の登録について
-          = fa_icon("chevron-right")
+          = fa_icon "chevron-right"
