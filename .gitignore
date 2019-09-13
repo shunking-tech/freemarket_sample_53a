@@ -28,3 +28,5 @@
 
 # Ignore images
 /public/uploads/*
+
+/app/views/users/registrations/memo.html.erb
