@@ -1,0 +1,38 @@
+.sellpage{
+  padding: 0 0 220px;
+  // background-repeat: no-repeat;
+  // margin: 0;
+  .sellheader{
+    height: 128px;
+    text-align: center;
+    h1{
+      margin: 40px 0 0;
+      display: inline-block;
+      a{
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+        display: inline-block;
+        margin: 0 8px 0 0;
+        img{
+            width: 185px;
+            height: 49px;
+            vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+label{
+  font-weight: 600;
+  display: inline-block;
+}
+
+h2{
+  display: block;
+  font-size: 1.5em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
