@@ -4,6 +4,34 @@
       = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763"),'https://www.mercari.com/jp/'
 
 
+  %main.sellmain
+    %section.sellmain__page
+      #sell_list
+        %div{"data-reactroot":  ""}
+          .sellmain__page__box
+            %h2.sellmain__page__box__top 商品の情報を入力
+            %form.sellmain__page__box__form
+              .sellmain__page__box__form__upload
+                %h3.sellmain__page__box__form__upload__haed
+                  / react-text: 7
+                  出品画像
+                  / /react-text
+                  %span.require_sheet 必須
+                %p 最大10枚までアップロードできます
+                .sellmain__page__box__form__upload__first
+                  .sellmain__page__box__form__upload__first__phone
+                    .sellmain__page__box__form__upload__first__phone__items
+                      %ul
+                  .sellmain__page__box__form__upload__first__pc
+                    %input.sellmain__page__box__form__upload__first__pc__print{multiple: "multiple", name: "image1",style: "display: none;", type: "file"}
+                    %pre.sellmain__page__box__form__upload__first__pc__text
+                      :preserve
+                        ドラッグアンドドロップ
+                        またはクリックしてファイルをアップロード      
+                    %i.icon-camera
+
+
+
 
   %footer.sellfooter
     %nav
