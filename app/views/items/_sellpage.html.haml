@@ -1,0 +1,19 @@
+.sellpage
+  %header.sellheader
+    %h1
+      = link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763"),'https://www.mercari.com/jp/'
+
+
+
+  %footer.sellfooter
+    %nav
+      %ul.clearfix
+        %li
+          =link_to "プライバリーポリシー","https://www.mercari.com/jp/privacy/"
+        %li
+          =link_to "メルカリ利用規約", "https://www.mercari.com/jp/tos/"
+        %li
+          =link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
+    =link_to image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763",alt: "mercari", height: "65", width: "80"), "https://www.mercari.com/jp/", class: "sellfooter__icon"
+    %p
+      %small © 2019 Mercari
