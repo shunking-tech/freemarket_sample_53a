@@ -1,0 +1,35 @@
+.logo-footer {
+  width: 456px;
+  margin: 0 auto;
+  position: absolute;
+  padding: 40px 0;
+  text-align: center;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  ul {
+    @include clearfix();
+    font-size: 0;
+    li {
+      display: inline-block;
+      margin: 0 0 0 16px;
+      font-size: 12px;
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+  a {
+    display: block;
+    color: $black;
+    text-decoration: none;
+  }
+  p {
+    margin: 8px 0 0;
+  }
+  &__logo {
+    width: 80px;
+    height: 65px;
+    margin: 40px auto 0;
+  }
+}
