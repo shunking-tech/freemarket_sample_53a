@@ -1,0 +1,9 @@
+%main.mypage-container.clearfix
+
+  .content
+    %section.logout__container
+      = form_tag root_path, method: :post, class: 'logout__form' do
+        .logout__content
+          = button_tag "ログアウト", type: 'submit', class: 'logout__submit'
+
+  = render 'users/mypage/side'

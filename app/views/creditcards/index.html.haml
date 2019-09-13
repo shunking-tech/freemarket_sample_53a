@@ -1,0 +1,27 @@
+%main.mypage-container.clearfix
+
+  .content
+    %section.registration-card
+      %h2.registration-card__head.bold
+        支払い方法
+
+      .registration-card__body
+        .registration-card__body__upper
+          %h3.registration-card__body__upper__head.bold
+            クレジットカード一覧
+          %ul.registration-card__body__upper__list
+            %li.registrated-card
+
+        .registration-card__body__inner
+          .registration-card__body__inner__add-card
+            .registration-card__body__inner__add-card__btn
+              = link_to new_user_creditcard_path do
+                %i.icon-card
+                クレジットカードを追加する
+
+        .registration-card__body__lower
+          = link_to root_path, traget: "_blank" do
+            %span 支払い方法について
+            %i.icon-right-arrow
+
+  = render 'users/mypage/side'

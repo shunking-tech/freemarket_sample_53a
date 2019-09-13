@@ -4,7 +4,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user|references|foreign_key: true|
 |customer_id|string|null: false|
 |card_id|string|null: false|
 
@@ -16,22 +16,22 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string||
-|email|string|add_index unique: true|
-|password|string||
+|nickname|string|null: false|
+|email|string|null: false, add_index unique: true|
+|password|string|null: false|
+|first_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name|string|null: false|
+|last_name_kana|string|null: false|
+|birth_date|string|null: false|
+|zipcode|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|house_address|string|null: false|
+|building_name|string||
+|phone_number|string||
 |avatar|string||
 |description|text||
-|first_name|string||
-|first_name_kana|string||
-|last_name|string||
-|last_name_kana|string||
-|birth_date|string||
-|phone_number|string||
-|prefecture|string||
-|city|string||
-|house_address|string||
-|building_name|string||
-|zipcode|string||
 
 ### Association
 - has_many :items
@@ -49,17 +49,17 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|add index|
-|price|integer||
-|description|text||
-|condition|integer||
-|task|integer||
-|payer_delivery_expense|integer||
-|delivery_days|integer||
-|prefecture|string||
-|user_id|references|foreign_key: true|
-|category_id|references|foreign_key: true|
-|size_id|references|foreign_key: true|
+|name|string|null: false, add index|
+|price|integer|null: false|
+|description|text|null: false|
+|condition|integer|null: false|
+|task|integer|null: false|
+|payer_delivery_expense|integer|null: false|
+|delivery_days|integer|null: false|
+|prefecture|string|null: false|
+|user|references|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
+|size|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -77,7 +77,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|size|string||
+|size|string|null: false|
 
 ### Association
 - has_many :items
@@ -87,8 +87,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|image|string||
-|item_id|references|foreign_key: true|
+|image|string|null: false|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -98,8 +98,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -110,9 +110,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|content|string||
-|user_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
+|content|string|null: false|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -123,8 +123,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
-|ancestry|string|add index|
+|name|string|null: false|
+|ancestry|string|null: false, add index|
 
 ### Association
 - has_many :items
@@ -134,10 +134,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|references|foreign_key: true|
-|buyer_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
-|status|integer||
+|seller|references|null: false, foreign_key: true|
+|buyer|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|status|integer|null: false|
 
 ### Association
 - belongs_to :seller, class_name: "User"
@@ -149,9 +149,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|content|string||
-|user_id|references|foreign_key: true|
-|trade_id|references|foreign_key: true|
+|content|string|null: false|
+|user|references|null: false, foreign_key: true|
+|trade|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -162,10 +162,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|score|integer||
-|comment|string||
-|user_id|references|foreign_key: true|
-|trade_id|references|foreign_key: true|
+|score|integer|null: false|
+|comment|string|null: false|
+|user|references|null: false, foreign_key: true|
+|trade|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
