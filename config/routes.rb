@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     resources :creditcards, only: [:index, :new, :create]
   end
   get 'logout', to: 'users#logout'
+  get 'profile_edit', to: 'users#profile_edit'
 end
