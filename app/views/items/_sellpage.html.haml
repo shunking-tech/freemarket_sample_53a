@@ -90,6 +90,31 @@
                       %i.icon-arrow-bottom
                       %select.select-block__choice
 
+              .sellmain__page__box__form__content.clearfix
+                %h3.sellmain__page__box__form__content__sub 販売価格(300〜9,999,999)
+                =link_to "?" , "/jp/help_center/article/68/" ,target:"_blank", class:"question-mark"
+                .sellmain__page__box__form__content__box
+                  %ul.sell-money
+                    %li.sell-money__group
+                      .sell-money__group__box
+                        %label.sell-left
+                          価格
+                          %span.require_sheet 必須
+                        .sell-right
+                          ¥
+                          %div
+                            %input.input-fee{placeholder: "例）300", value: ""}/
+                    %li.sell-money__fee
+                      .sell-money__fee__left
+                        販売手数料
+                      .sell-money__fee__right 
+                    %li.sell-money__profit  
+                      販売利益
+                      .sell-money__profit__left
+                      .sell-money__profit__right
+
+
+
 
 
 
