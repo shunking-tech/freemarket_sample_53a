@@ -43,6 +43,27 @@
                     %span.require_sheet 必須
                   %textarea.textarea-box{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
 
+              .sellmain__page__box__form__content.clearfix
+                %h3.sellmain__page__box__form__content__sub 商品の詳細
+                .sellmain__page__box__form__content__box
+                  .sellmain__page__box__form__content__box__details
+                    %label 
+                      カテゴリー
+                      %span.require_sheet 必須
+                    %div
+                      .select-block
+                        %i.icon-arrow-bottom
+                        %select.select-block__choice
+                          -# %option 以下レディースやメンズなどの選択view
+                  .sellmain__page__box__form__content__box__details
+                    %label
+                      商品の状態
+                      %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      %select.select-block__choice
+                      -# %option　以下　状態のview
+
 
 
 
