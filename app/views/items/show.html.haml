@@ -1,11 +1,8 @@
 .detail-item
-
   %h1.detail-item__name="【新品】テスト01"
 
   .detail-item__content
-
     .detail-item--flex
-
       .detail-item__photo
 
         .detail-item__photo--image
@@ -20,7 +17,6 @@
             .detail-item__photo-small--image
               .detail-item__photo-small--inner
                 = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m30974049772_2.jpg?1567097619'
-
 
       .detail-item__item-info
         %table.detail-item__item-info--table
@@ -81,7 +77,6 @@
               %th 発送日の目安
               %td 1~2日で発送
 
-
   .detail-item__price.text-center
     %span.detail-item__price--text.bold="¥999"
     %span.detail-item__price--tax="(税込)"
@@ -119,27 +114,27 @@
 .detail-item__message-box
 
   .detail-item__messages
-    .detail-item__message
-      = link_to item_path, class: 'detail-item__message__user-icon' do
-        %figure
-          = image_tag '//static.mercdn.net/thumb/members/817785720.jpg?1504962677'
-          %figcaption.bold
-            テストおお
-      .detail-item__message__body
-        .detail-item__message__body--text
-          なんで
-          ここは
-          BR使うの？
-        .detail-item__message__body__icons
-          .detail-item__message__body__icons--left
-            %i.icon-clock
-            %span="39分前"
-          .detail-item__message__body__icons--right
-            = form_with url: item_path do
-              = button_tag type: :submit do
-                .icon-callout
-
-    .detail-item__message
+    - (1..5).each do
+      .detail-item__message
+        = link_to item_path, class: 'detail-item__message__user-icon' do
+          %div
+            = image_tag '//static.mercdn.net/thumb/members/817785720.jpg?1504962677'
+            %span.bold
+              テストおお
+        .detail-item__message__body
+          .detail-item__message__body--text<>
+            なんで  aa
+            ここは
+            BR使うの？
+          .detail-item__message__body__icons
+            .detail-item__message__body__icons--left
+              %i.icon-clock
+              %span="39分前"
+            .detail-item__message__body__icons--right
+              = form_with url: item_path do
+                = button_tag type: :submit do
+                  %i.icon-flag 
+          %i.icon-balloon
 
   .detail-item__input-message
     = form_with url: root_path, method: :post, class: 'detail-item__input-message__form' do |f|
@@ -158,6 +153,7 @@
       テスト2
       %i.icon-arrow-right
 
+
 .detail-item__sns
   .detail-item__sns--facebook
     = link_to root_path, nil, class: 'detail-item__sns--button', target: :_blank do
@@ -168,6 +164,7 @@
   .detail-item__sns--pinterest
     = link_to root_path, nil, class: 'detail-item__sns--button', target: :_blank do
       %i.icon-pinterest
+
 
 .detail-item__other-items
   .detail-item__other-items--users
@@ -187,7 +184,6 @@
                   %i.icon-like
                   %span="4"
 
-
   .detail-item__other-items--brand-category
     %h2.detail-item__other-items--title
       = link_to 'マイブランドのTシャツ その他の出品', root_path
@@ -204,6 +200,7 @@
                 .detail-item__other-items__content__box--like.font-2
                   %i.icon-like
                   %span="4"
+
 
 .detail-item__bread-crumbs
   %ul
