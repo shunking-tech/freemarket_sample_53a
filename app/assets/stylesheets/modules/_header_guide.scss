@@ -1,3 +1,7 @@
+.mercari-header {
+  background: $white;
+  position: relative;
+}
 .mercari-top{
   width: 1020px;
   margin: 0px auto;
@@ -26,7 +30,7 @@
       position: relative;
       width: 100%;
       &__write{
-        background-color: rgb(245, 245, 245);
+        background-color: $white;
         font-size: 16px;
         height: 40px;
         line-height: 1.4em;
@@ -92,14 +96,14 @@
           &__search{
             max-width: 100%;
             max-height: 100%;
-            color: rgb(234, 53, 45);
+            color: $active-red;
             height: 12px;
             margin-right: 4px;
           }
           &__bland{
             max-width: 100%;
             max-height: 100%;
-            color: rgb(234, 53, 45);
+            color: $active-red;
             height: 12px;
             margin-right: 4px;
           }
@@ -117,7 +121,11 @@
       position: relative;
       list-style: none;
       &__command{
+        &:first-child {
+          padding-left: 0px;
+        }
         height:44px;
+        padding: 0px 14px;
         &__box{
           -webkit-box-align: center;
           align-items: center;
@@ -140,7 +148,7 @@
             color: rgb(204, 204, 204);
             margin-right: 10px;
           }
-          &__manu{
+          &__menu{
             max-width: 100%;
             height: auto;
             max-height: 100%;
@@ -149,8 +157,8 @@
             width: 17px;
           }
           &__icon{
-            background-color: rgb(234, 53, 45);
-            color: rgb(255, 255, 255);
+            background-color: $active-red;
+            color: $white;
             font-size: 12px;
             height: 20px;
             left: 6px;
@@ -178,13 +186,13 @@
       &__signin{
         text-align: center;
         &__box{
-          background-color: rgb(234, 53, 45);
-          color: rgb(255, 255, 255);
+          background-color: $active-red;
+          color: $white;
           display: block;
           font-size: 14px;
           border-width: 1px;
           border-style: solid;
-          border-color: rgb(234, 53, 45);
+          border-color: $active-red;
           border-image: initial;
           border-radius: 4px;
           padding: 8px 10px;
@@ -195,7 +203,7 @@
         text-align: center;
         margin-left: 11px;
         &__box{
-          background-color: rgb(255, 255, 255);
+          background-color: $white;
           color: rgb(0, 149, 238);
           display: block;
           font-size: 14px;

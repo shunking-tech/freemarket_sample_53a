@@ -1,14 +1,16 @@
+// 基本となるスタイルのグループです。このグループより下の行にスタイルのimportお願いします！
+// base style group start
 @import "./reset";
-@import "items";
-@import "./header_guide";
-@import "./category";
-@import "./footer";
-@import "./footer_btn";
-@import "./banner";
 @import "font-awesome";
 @import "./mixins/mixin";
 @import "./config/variable";
-@import "./modules/items";
+// base style group end
+
+@import "./modules/header_guide";
+@import "./modules/category";
+@import "./modules/footer";
+@import "./modules/footer_btn";
+@import "./modules/banner";
 @import "./modules/mypage";
 @import "./modules/logout";
 @import "./modules/index-card";
