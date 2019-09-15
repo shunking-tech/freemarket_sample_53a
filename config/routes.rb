@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   end
   get 'logout', to: 'users#logout'
 
-  get 'conformation', to: 'items#conformation'
+  resources :trades, only: [:new, :create]
 end
