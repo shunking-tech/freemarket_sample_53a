@@ -1,9 +1,9 @@
-<div class="single-container">
-  <header class="single-header"></header>
-  <main class="l-single-container">
-    <section class="l-single-container">
-      <h2 class="l-single-head registration">会員情報入力</h2>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="registration">
+  <header class="registration__header"></header>
+  <main class="registration__main">
+    <section class="registration__main__section">
+      <h2 class="registration__main__section-head">会員情報入力</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "registration-form"}) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-group">
@@ -101,10 +101,7 @@
           </div>
 
         </div>
-
-        <div class="actions">
-          <%= f.submit "次へ進む", class: "btn-default btn-red" %>
-        </div>
+        <%= f.submit "次へ進む", class: "btn-default btn-red" %>
       <% end %>
     </section>
   </main>
