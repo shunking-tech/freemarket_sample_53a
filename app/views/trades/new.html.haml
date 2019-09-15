@@ -14,7 +14,7 @@
             = image_tag 'http://via.placeholder.com/300x300', class: 'lazyloaded'
           %p.buy-item__inner__title.bold
             中古新品サンプルアイテム
-          = form_with url: "#", class: 'buy-item__inner__form' do |f|
+          = form_with url: root_path, class: 'buy-item__inner__form' do |f|
             %p.buy-item__inner__form__price.bold
               ¥12,345
               %span.buy-item__inner__form__fee
@@ -30,6 +30,9 @@
                 .buy-item__inner__form__actual-price__content
                   %span{data: {buy: {pay: "12345"}}}
                     ¥12,345
+            = f.text_field :seller_id, {type: "hidden", value: "12345"}
+            = f.text_field :buyer_id, {type: "hidden", value: "67890"}
+            = f.text_field :item_id, {type: "hidden", value: "99999"}
             = f.button "購入する", class: 'buy-item__inner__form__submit'
 
       %section.buyer-info
