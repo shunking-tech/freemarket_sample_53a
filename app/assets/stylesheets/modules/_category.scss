@@ -100,8 +100,9 @@
             border-color: initial;
             border-image: initial;
             padding: 0px;
-            
-          }  
+
+
+          }
         }
 
           &__button{
@@ -110,7 +111,7 @@
             left: 50%;
             text-align: center;
             -webkit-transform: translateX(-50%);
-          
+
 
 
             &__box{
@@ -153,7 +154,7 @@
     width: 100vw;
     // padding: 40px 20px 20px;
     padding: 56px 0px 30px;
-  
+
 
     h2{
       font-size: 28px;
@@ -175,6 +176,7 @@
         font: inherit;
 
         &__list{
+          height: 40px;
           display: block;
           text-align: center;
           width: 100%;
@@ -184,7 +186,6 @@
           box-sizing: border-box;
 
 
-          
 
           li{
             margin: 10px 0px 0px 10px;
@@ -200,7 +201,7 @@
               // display: inline;
             }
           }
-      } 
+      }
   }
   .main__product{
     padding: 42px 0px 100px;
@@ -209,7 +210,7 @@
       width: 1020px;
       height: 573px;
       margin-bottom: 60px;
-  
+
       &__name{
         box-sizing: border-box;
         margin-bottom: 16px;
@@ -226,7 +227,7 @@
         line-height: 1.4em;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;  
+        box-sizing: border-box;
       }
 
       a{
@@ -265,23 +266,45 @@
         gap: 20px 20px;
         display: grid;
         border-image-slice: 100%;
-      
+
         &__parts{
 
           figure{
             width: 100%;
-            display: flex; 
+            display: flex;
             align-items: center;
             flex-direction: column-reverse;
             margin: 0;
             box-shadow: 0 2px 4px rgba(0,0,0,.18);
             background-color: #fff;
-            
+
             figcaption{
-              display:flex;
+              display: flex;
               width: 100%;
               height: 64px;
-              box-sizing:border-box;
+              box-sizing: border-box;
+              color: #222;
+              font-size: 14px;
+              height: 64px;
+              line-height: 1.4em;
+              padding: 0 12px;
+              white-space: normal;
+              word-break: break-word;
+              align-items: center;
+              span {
+                display: inline-block;
+                height: 2.8em;
+                overflow: hidden;
+                position: relative;
+                &::after {
+                  bottom: 0;
+                  content: "";
+                  height: 50%;
+                  position: absolute;
+                  right: 0;
+                  width: 50%;
+                }
+              }
             }
           }
 

@@ -1,58 +1,59 @@
+%header.mercari-header
+  .mercari-top
+    .topmein-search-band
 
-.mercari-top
-  .topmein-search-band
-    
-    .topmein-mercari
-      %a.topmein-mercari__box{href: "/jp/"}
-        %img.topmein-mercari__box__icon{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg"}/
-
-    %form.topmein-search-form{action: "/jp/search/"}
-      %input.topmein-search-form__write{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
-      %button.topmein-search-form__button
-        %svg.topmein-search-form__button__icon{"aria-hidden": "true", height: "16", viewbox: "0 0 16 16", width: "16"}
-          %path{d: "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", fill: "currentColor", "fill-rule": "nonzero"}
+      .topmein-mercari
+        %a.topmein-mercari__box{href: "/jp/"}
+          %img.topmein-mercari__box__icon{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg"}/
 
 
-  .topmein-select-band
-    .topmein-select-band__left
-      .topmein-select-band__left__category
-        %a.topmein-select-band__left__category__tag{href: "/jp/category/"}
-          %svg.topmein-select-band__left__category__tag__search{"aria-hidden": "true", height: "16", viewbox: "0 0 20 16", width: "20"}
-            %path{d: "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", fill: "currentColor", "fill-rule": "nonzero"}
-          カテゴリーから探す
-      .topmein-select-band__left__category
-        %a.topmein-select-band__left__category__tag{href: "/jp/brand/"}
-          %svg.topmein-select-band__left__category__tag__bland{"aria-hidden": "true", height: "16", viewbox: "0 0 23 16", width: "23"}>
-            %path{d: "M6.315 0L4.473 1.806 2.833.019.73 1.977l1.69 1.84L1.198 5.02c-1.594 1.594-1.594 4.188-.01 5.772L6.3 16h13.272a3.08 3.08 0 0 0 3.077-3.077V3.076A3.08 3.08 0 0 0 19.57 0H6.315zm13.46 12.925a.211.211 0 0 1-.205.205H7.504L3.227 8.771a1.226 1.226 0 0 1-.01-1.71L4.38 5.92l1.28 1.371a2.68 2.68 0 1 0 2.13-1.93L6.433 3.907 7.49 2.87h12.082a.211.211 0 0 1 .206.205v9.848h-.002z", fill: "currentColor", "fill-rule": "nonzero"}
-          ブランドから探す
+      %form.topmein-search-form{action: "/jp/search/"}
+        %input.topmein-search-form__write{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
+        %button.topmein-search-form__button
+          %svg.topmein-search-form__button__icon{"aria-hidden": "true", height: "16", viewbox: "0 0 16 16", width: "16"}
+            %path{d: "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", fill: "currentColor", "fill-rule": "nonzero"}
+
+
+    .topmein-select-band
+      .topmein-select-band__left
+        .topmein-select-band__left__category
+          %a.topmein-select-band__left__category__tag{href: "/jp/category/"}
+            %svg.topmein-select-band__left__category__tag__search{"aria-hidden": "true", height: "16", viewbox: "0 0 20 16", width: "20"}
+              %path{d: "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", fill: "currentColor", "fill-rule": "nonzero"}
+            カテゴリーから探す
+        .topmein-select-band__left__category
+          %a.topmein-select-band__left__category__tag{href: "/jp/brand/"}
+            %svg.topmein-select-band__left__category__tag__bland{"aria-hidden": "true", height: "16", viewbox: "0 0 23 16", width: "23"}>
+              %path{d: "M6.315 0L4.473 1.806 2.833.019.73 1.977l1.69 1.84L1.198 5.02c-1.594 1.594-1.594 4.188-.01 5.772L6.3 16h13.272a3.08 3.08 0 0 0 3.077-3.077V3.076A3.08 3.08 0 0 0 19.57 0H6.315zm13.46 12.925a.211.211 0 0 1-.205.205H7.504L3.227 8.771a1.226 1.226 0 0 1-.01-1.71L4.38 5.92l1.28 1.371a2.68 2.68 0 1 0 2.13-1.93L6.433 3.907 7.49 2.87h12.082a.211.211 0 0 1 .206.205v9.848h-.002z", fill: "currentColor", "fill-rule": "nonzero"}
+            ブランドから探す
 
 
 
 
-    %ul.topmein-select-band__right
-      %li.topmein-select-band__right__command
-        %a.topmein-select-band__right__command__box{"data-url": "https://www.mercari.com/jp/mypage/notification_and_todo_json/", href: "https://www.mercari.com/jp/mypage/notification/"}
-          %svg.topmein-select-band__right__command__box__menu{"aria-hidden": "true", height: "16", viewbox: "0 0 14 16", width: "14"}
-            %path{d: "M6.592 16c.89 0 1.632-.734 1.632-1.632H4.928c0 .898.742 1.632 1.664 1.632zm4.896-4.928V6.976c-.008-2.521-1.345-4.63-3.712-5.184v-.576C7.79.55 7.241 0 6.56 0c-.68 0-1.23.55-1.216 1.216v.576c-2.36.554-3.704 2.654-3.712 5.184v4.096L0 12.704v.832h13.12v-.832l-1.632-1.632zm-1.632.832h-6.56V6.976c0-2.024 1.238-3.68 3.296-3.68 2.026 0 3.264 1.656 3.264 3.68v4.928z", fill: "currentColor", "fill-rule": "nonzero"}
-          おしらせ
-          %span.topmein-select-band__right__command__box__icon
-            1
-      %li.topmein-select-band__right__command
-        %a.topmein-select-band__right__command__box{"data-url": "https://www.mercari.com/jp/mypage/notification_and_todo_json/", href: "https://www.mercari.com/jp/mypage/todo/"}
-          %svg.topmein-select-band__right__command__box__mark{"aria-hidden": "true", height: "16", viewbox: "0 0 21 16", width: "21"}
-            %path{d: "M6.682 12.657L1.67 7.642 0 9.313 6.682 16 21 1.672 19.33 0z", fill: "currentColor", "fill-rule": "nonzero"}
-          やることリスト
-          %span.topmein-select-band__right__command__box__icon
-            4
-      %li.topmein-select-band__right__command
-        %a.topmein-select-band__right__command__box{href: "https://www.mercari.com/jp/mypage/"}
-          %img.topmein-select-band__right__command__box__mypage{alt: "", src: "https://static.mercdn.net/images/member_photo_noimage_thumb.png"}/
-          マイページ
+      %ul.topmein-select-band__right
+        %li.topmein-select-band__right__command
+          %a.topmein-select-band__right__command__box{"data-url": "https://www.mercari.com/jp/mypage/notification_and_todo_json/", href: "https://www.mercari.com/jp/mypage/notification/"}
+            %svg.topmein-select-band__right__command__box__menu{"aria-hidden": "true", height: "16", viewbox: "0 0 14 16", width: "14"}
+              %path{d: "M6.592 16c.89 0 1.632-.734 1.632-1.632H4.928c0 .898.742 1.632 1.664 1.632zm4.896-4.928V6.976c-.008-2.521-1.345-4.63-3.712-5.184v-.576C7.79.55 7.241 0 6.56 0c-.68 0-1.23.55-1.216 1.216v.576c-2.36.554-3.704 2.654-3.712 5.184v4.096L0 12.704v.832h13.12v-.832l-1.632-1.632zm-1.632.832h-6.56V6.976c0-2.024 1.238-3.68 3.296-3.68 2.026 0 3.264 1.656 3.264 3.68v4.928z", fill: "currentColor", "fill-rule": "nonzero"}
+            おしらせ
+            %span.topmein-select-band__right__command__box__icon
+              1
+        %li.topmein-select-band__right__command
+          %a.topmein-select-band__right__command__box{"data-url": "https://www.mercari.com/jp/mypage/notification_and_todo_json/", href: "https://www.mercari.com/jp/mypage/todo/"}
+            %svg.topmein-select-band__right__command__box__mark{"aria-hidden": "true", height: "16", viewbox: "0 0 21 16", width: "21"}
+              %path{d: "M6.682 12.657L1.67 7.642 0 9.313 6.682 16 21 1.672 19.33 0z", fill: "currentColor", "fill-rule": "nonzero"}
+            やることリスト
+            %span.topmein-select-band__right__command__box__icon
+              4
+        %li.topmein-select-band__right__command
+          %a.topmein-select-band__right__command__box{href: "https://www.mercari.com/jp/mypage/"}
+            %img.topmein-select-band__right__command__box__mypage{alt: "", src: "https://static.mercdn.net/images/member_photo_noimage_thumb.png"}/
+            マイページ
 
 
-    -# .topmein-select-band__user
-    -#   .topmein-select-band__user__signin
-    -#     %a.topmein-select-band__user__signin__box{href: "/jp/signup/"} 新規会員登録
+      -# .topmein-select-band__user
+      -#   .topmein-select-band__user__signin
+      -#     %a.topmein-select-band__user__signin__box{href: "/jp/signup/"} 新規会員登録
 
-    -#   .topmein-select-band__user__logout
-    -#     %a.topmein-select-band__user__logout__box{href: "/jp/login/?login_callback=%2Fjp%2F"} ログイン
+      -#   .topmein-select-band__user__logout
+      -#     %a.topmein-select-band__user__logout__box{href: "/jp/login/?login_callback=%2Fjp%2F"} ログイン
