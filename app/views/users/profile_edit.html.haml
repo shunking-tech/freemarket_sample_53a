@@ -4,8 +4,15 @@
   .profile
     .profile__contener
       %h2 プロフィール
-      .profile__contener__head
-      .profile__contener__icon
-      .profile__contener__footer
+    .profile__greeting  
+      .profile__greeting__icon
+        %figure
+          = image_tag("https://static.mercdn.net/thumb/members/865862665.jpg?1552136734")
+        %input
         
-  
+    .profile__sentence
+      .profile__sentence__text
+        -# %input{:name : "introduction", :placeholder : "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+
+      .profile__sentence__change_content
+        = button_tag "変更する",type: 'submit', class: 'btn-default'
