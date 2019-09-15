@@ -1,7 +1,5 @@
 .sellpage{
   padding: 0 0 220px;
-  // background-repeat: no-repeat;
-  // margin: 0;
   .sellheader{
     height: 128px;
     text-align: center;
@@ -83,8 +81,6 @@
                 background-origin: padding-box;
                 background-position-x: 0%;
                 background-position-y: 0%;
-                // background-repeat-x: ;
-                // background-repeat-y: ;
                 background-size: auto;
                 border-color: rgb(204, 204, 204);
                 border-style: dashed;
@@ -211,7 +207,7 @@
                 line-height: 1.5;
                 a{
                   color: #0099e8;
-    text-decoration: none;
+                  text-decoration: none;
                 }
               }
             }
@@ -455,11 +451,9 @@ h2{
   z-index: 2;
   color: #888;
   font-size: 30px;
-  // -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
   display: inline-block;
   font-family: 'FontAwesome';
-  // speak: none;
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
