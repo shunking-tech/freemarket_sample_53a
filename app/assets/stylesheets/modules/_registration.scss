@@ -1,0 +1,19 @@
+@include mercari-style();
+@include button();
+
+.registration {
+  padding: 0 0 220px;
+  &__header {
+
+  }
+
+  &__main {
+    &__section {
+      width: 700px;
+      margin: 0 auto;
+      &__head {
+
+      }
+  }
+  }
+}
