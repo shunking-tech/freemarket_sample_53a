@@ -3,7 +3,7 @@ class UserValidator < ActiveModel::Validator
   def validate(record)
     validate_methods.each do |method|
       method.slice!(0, 6)
-      validate_method = method.gsub(/record, /, "record, record.").chomp
+      validate_method = method.gsub(/, /, ", record.").chomp
       eval(validate_method)
     end
   end
@@ -48,6 +48,19 @@ class UserValidator < ActiveModel::Validator
       end
       unless password.match(password_regex)
         record.errors[:password] << "英字と数字両方を含むパスワードを設定してください"
+      end
+    end
+  end
+
+  def password_confirmation_validate(record, password, password_confirmation)
+    password_regex = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+    if password_confirmation.blank?
+      record.errors[:password_confirmation] << "パスワード (確認) を入力してください"
+    elsif password_confirmation != password
+      if password.present?
+        record.errors[:password_confirmation].push("パスワードとパスワード (確認) が一致しません").shift()
+      else
+        record.errors[:password_confirmation].shift()
       end
     end
   end
