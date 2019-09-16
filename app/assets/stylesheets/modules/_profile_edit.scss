@@ -14,49 +14,51 @@
   }
 
   &__greeting{
+
     &__icon{
       padding: 72px 16px 24px;
       background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?45085161");
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;
-      font-size: 0;
-      display: flex
     }
       figure{
-        // width: 60px;
-        height: 60px;
+        display: inline-block;
         overflow: hidden;
-        text-align: center;
-        font-size: 0;
-        display: flex;
-        margin: 0 auto;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 40px;
-        margin-inline-end: 40px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin: 0;
+        
+        // margin-block-start: 1em;
+        // margin-block-end: 1em;
+        // margin-inline-start: 40px;
+        // margin-inline-end: 40px;
         border-radius: 50%;
       // }
       //   &__img{
       //     position: relative;
         img{
-          max-width: 100%;
-          max-height: 100%;
+          width: 60px;
+          height: 60px;
           text-align: center;
         }
-        input[type=text] {
-          width: 220px;
-          // margin: 0 0 0 8px;
-          // vertical-align: middle;
-          // height: 48px;
-          // padding: 10px 16px 8px;
-          // border-radius: 4px;
-          // border: 1px solid #ccc;
-          // background: #fff;
-          // line-height: 1.5;
-          // font-size: 16px;  
-        }
       }
+      .input-box {
+
+        width: 220px;
+        margin: 0 0 0 8px;
+        vertical-align: middle;
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        line-height: 1.5;
+        font-size: 16px;  
+        box-sizing: border-box;
+      }
+
     }
 
   &__sentence{
@@ -65,18 +67,18 @@
     
   
     
-    &__text{
-      // min-height: 216px;
+    textarea {
+      min-height: 216px;
       display: block;
-      // width: 100%;
+      width: 100%;
       max-width: 100%;
-      min-height: 104px;
       padding: 10px;
       border: 1px solid #ccc;
       background-color: #fff;
       color: cornflowerblue;
       font-size: 16px;
       line-height: 1.5;
+      box-sizing: border-box;
     }
 
 
@@ -89,21 +91,13 @@
       background: #ea352d;
       border: 1px solid #ea352d;
       color: #fff;
+      text-align: center;
       
-      // &__submit{
-      //   display: block;
-      //   width: 100%;
-      //   // line-height: 48px;
-      //   font-size: 14px;
-      //   background: #ea352d;
-      //   border: 1px solid #ea352d;
-      //   color: #fff;
-      // }
       button{
         background: #ea352d;
         border: 1px solid #ea352d;
         color: #fff;
-        display: center;
+        font-size: 14px;
       }
     }
   }
