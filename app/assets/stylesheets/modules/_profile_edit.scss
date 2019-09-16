@@ -30,15 +30,8 @@
         border-radius: 50%;
         vertical-align: middle;
         margin: 0;
-        
-        // margin-block-start: 1em;
-        // margin-block-end: 1em;
-        // margin-inline-start: 40px;
-        // margin-inline-end: 40px;
         border-radius: 50%;
-      // }
-      //   &__img{
-      //     position: relative;
+
         img{
           width: 60px;
           height: 60px;
@@ -65,8 +58,6 @@
     padding: 40px 16px;
     background-color: #fff;
     
-  
-    
     textarea {
       min-height: 216px;
       display: block;
@@ -80,7 +71,6 @@
       line-height: 1.5;
       box-sizing: border-box;
     }
-
 
     &__change_content{
       display: block;
