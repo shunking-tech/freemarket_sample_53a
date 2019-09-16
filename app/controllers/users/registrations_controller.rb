@@ -42,18 +42,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    birth_date = "#{params[:year]}/#{params[:month]}/#{params[:day]}"
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:nickname,
-               :email,
-               :password,
-               :password_confirmation,
-               :first_name,
-               :first_name_kana,
-               :last_name,
-               :last_name_kana)
-               .merge(birth_date: birth_date)
-    end
+    # birth_date = "#{params[:year]}/#{params[:month]}/#{params[:day]}"
+    # devise_parameter_sanitizer.permit(:sign_up) do |u|
+    #   u.permit(:nickname,
+    #            :email,
+    #            :password,
+    #            :password_confirmation,
+    #            :first_name,
+    #            :first_name_kana,
+    #            :last_name,
+    #            :last_name_kana)
+    #            .merge(birth_date: birth_date)
+    # end
+    devise_parameter_sanitizer.permit(
+      :sign_up,
+      keys: [:nickname,
+             :email,
+             :password,
+             :password_confirmation,
+             :first_name,
+             :first_name_kana,
+             :last_name,
+             :last_name_kana,
+             :birth_date])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

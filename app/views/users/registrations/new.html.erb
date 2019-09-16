@@ -4,30 +4,31 @@
     <section class="l-single-container">
       <h2 class="l-single-head registration">会員情報入力</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+        <%# 念のためdeviseがデフォルトで表示するエラーメッセージを残している %>
+        <%# render "devise/shared/error_messages", resource: resource %>
+
+        <div class="form-group">
+          <%= f.label :nickname, "ニックネーム" %><span class="form-require">必須</span><br />
+          <%= f.text_field :nickname, autocomplete: "nickname", class: "input-default" %>
+          <%= render "errors", errors: resource.errors[:nickname] %>
+        </div>
 
         <div class="form-group">
           <%= f.label :email, "メールアドレス" %><span class="form-require">必須</span><br />
           <%= f.email_field :email, autocomplete: "email", class: "input-default" %>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
+          <%= render "errors", errors: resource.errors[:email] %>
         </div>
 
         <div class="form-group">
           <%= f.label :password, "パスワード" %><span class="form-require">必須</span><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "input-default" %>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
+          <%= render "errors", errors: resource.errors[:password] %>
         </div>
 
         <div class="form-group">
           <%= f.label :password_confirmation, "パスワード(確認)" %><span class="form-require">必須</span><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-default" %>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
+          <%= render "errors", errors: resource.errors[:password_confirmation] %>
         </div>
 
         <div class="form-group">
@@ -41,53 +42,44 @@
           <label>お名前(全角)</label><span class="form-require">必須</span><br />
           <%= f.text_field :last_name, autocomplete: "last_name", class: "input-default half" %>
           <%= f.text_field :first_name, autocomplete: "first_name", class: "input-default half" %>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
+          <%= render "errors", errors: resource.errors[:last_name] %>
+          <%= render "errors", errors: resource.errors[:first_name] %>
         </div>
 
         <div class="form-group">
           <label>お名前カナ(全角)</label><span class="form-require">必須</span><br />
           <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "input-default half" %>
           <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "input-default half" %>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
-          <ul class="has-error-text">
-            <li>error</li>
-          </ul>
+          <%= render "errors", errors: resource.errors[:last_name_kana] %>
+          <%= render "errors", errors: resource.errors[:first_name_kana] %>
         </div>
 
         <div class="form-group">
           <%= f.label :birth_date, "生年月日" %><span class="form-require">必須</span><br />
+          <%= f.hidden_field :birth_date, value: "" %>
           <div class="birthday-select-wrap">
             <div class="select-wrap">
               <i class="icon-arrow-bottom"></i>
-              <select name="year" class="select-default"></select>
+              <%= select_tag :year, options_for_select(years), prompt: "--", class: "select-default" %>
             </div>
             <span>年</span>
           </div>
           <div class="select-wrap select-wrap__month">
             <div class="select-wrap">
               <i class="icon-arrow-bottom"></i>
-              <select name="month" class="select-default"></select>
+              <%= select_tag :month, options_for_select(months), prompt: "--", class: "select-default" %>
             </div>
             <span>月</span>
           </div>
           <div class="select-wrap select-wrap__day">
             <div class="select-wrap">
               <i class="icon-arrow-bottom"></i>
-              <select name="day" class="select-default"></select>
+              <%= select_tag :day, options_for_select([["--",""]]), class: "select-default" %>
             </div>
             <span>日</span>
           </div>
           <div class="clearfix">
-            <ul class="has-error-text">
-              <li>error</li>
-            </ul>
+            <%= render "errors", errors: resource.errors[:birth_date] %>
           </div>
         </div>
         <p class="form-info-text">

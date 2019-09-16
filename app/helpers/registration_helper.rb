@@ -8,7 +8,7 @@ module RegistrationHelper
   end
 
   def months
-    months = (1..12).map do |month|
+    (1..12).map do |month|
       month
     end
   end
