@@ -1,19 +1,168 @@
-@include mercari-style();
-@include button();
-
 .registration {
-  padding: 0 0 220px;
+  padding: 0;
   &__header {
-
+    height: 128px;
+    text-align: center;
+    h1 {
+      padding-top: 40px;
+      a {
+        display: inline-block;
+        line-height: 49px;
+        margin: 0 8px 0 0;
+      }
+    }
   }
 
   &__main {
     &__section {
+      background: #fff;
       width: 700px;
       margin: 0 auto;
       &__head {
-
+        font-size: 22px;
+        padding: 32px;
+        line-height: 1.5;
+        text-align: center;
       }
+      .registration-form {
+        padding: 40px 40px 64px;
+        border-top: 1px solid #f5f5f5;
+        &__content {
+          max-width: 343px;
+          margin: 0 auto;
+          &__info-text {
+            color: #888;
+            line-height: 1.5;
+          }
+          &__form-group {
+            margin: 24px 0 0;
+            width: 100%;
+            &-first {
+              margin: 0;
+            }
+            label {
+              font-weight: 600;
+              display: inline-block;
+            }
+            &__form-require {
+              background: $active_red;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
+            &__input {
+              height: 48px;
+              width: 100%;
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+            }
+            .has-error {
+              border-color: $active_red;
+            }
+            .has-error-text {
+              color: $active_red;
+              line-height: 1.5;
+              font-size: 14px;
+              li {
+                margin: 8px 0 0;
+              }
+            }
+            &__sub-head {
+              font-size: 16px;
+            }
+            &__text {
+              margin: 8px 0 0;
+              padding: 0;
+              line-height: 1.5;
+            }
+            &__input {
+              &--last_name {
+                margin-right: 8px;
+              }
+              &--last_name_kana {
+                margin-right: 8px;
+              }
+            }
+            .half {
+              width: calc(50% - 6px);
+            }
+            &__birthday-select {
+              position: relative;
+              background: $white;
+              &-wrap {
+                width: 76px;
+                display: inline-block;
+                &__select {
+                  position: relative;
+                  z-index: 2;
+                  width: 100%;
+                  padding: 0 10px;
+                  margin: 8px 0 0;
+                  height: 48px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  cursor: pointer;
+                  outline: 0;
+                  -webkit-appearance: none;
+                }
+                .icon-arrow-bottom {
+                  &::before {
+                    content: '\f078';
+                  }
+                  font-family: FontAwesome;
+                  font-style: normal;
+                  font-size: 14px;
+                  margin: 0 6px 0 -15px;
+                  position: absolute;
+                  pointer-events: none;
+                  z-index: 2;
+                  color: #888;
+                  &-year {
+                    top: 25px;
+                    left: 70px;
+                  }
+                  &-month {
+                    top: 25px;
+                    left: 168px;
+                  }
+                  &-day {
+                    top: 25px;
+                    left: 267px;
+                  }
+                }
+              }
+            }
+            &__text-center {
+              text-align: center;
+            }
+          }
+          &__btn {
+            @include button();
+            margin: 24px 0 0;
+          }
+        }
+      }
+    }
   }
+  &__footer {
+    width: 456px;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    &-logo {
+      width: 80px;
+      height: 65px;
+      margin: 40px auto 0;
+    }
   }
 }

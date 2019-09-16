@@ -1,4 +1,13 @@
 @mixin mercari-style() {
+  * {
+    background-repeat: no-repeat;
+    font-size: inherit;
+    line-height: inherit;
+    border-style: solid;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+  }
   body {
     position: relative;
     min-height: 100%;
@@ -20,11 +29,23 @@
 
   h3 {
     font-size: 22px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
   }
 
   a {
     text-decoration: none;
     touch-action: manipulation;
+  }
+
+  p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
   }
 
   figure {
@@ -40,3 +61,14 @@
   }
 }
 
+  ul {
+    list-style: none;
+  }
+
+  .clearfix {
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
