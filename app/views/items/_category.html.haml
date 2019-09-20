@@ -1,0 +1,55 @@
+.recommended
+  .main
+    .main__box
+      .main__slideshow
+        .main__slideshow__frame
+          %ul.main__slideshow__list
+            %li.main__slideshow__list__slide
+              = link_to root_path do
+                .active
+        .main__slideshow__left
+          .main__slideshow__left__box
+
+        .main__slideshow__right
+          .main__slideshow__right__box
+
+        .main__slideshow__button
+          .main__slideshow__button__box
+            %span
+            %span
+            %span
+
+  .main__category
+    %h2 人気のカテゴリー
+    .main__category__Heading
+      %ul.main__category__Heading__list
+        %li
+          %a レディース
+        %li
+          %a メンズ
+        %li
+          %a 家電・スマホ・カメラ
+        %li
+          %a おもちゃ・ホビー・グッズ
+
+  .main__product
+    - (0...4).each do
+      .main__product__contener
+        .main__product__contener__name
+          %h3 レディース新着アイテム
+          %a もっと見る
+
+        .main__collection
+          .main__collection__box
+            - (0...10).each do
+              .main__collection__box__parts
+                %figure
+                  %figcaption
+                    %span
+                      できたできたできたできたできたできたできたできたできたできたできたできたできたできたできたできたできたできた
+                  .main__collection__box__parts__img
+                    %span
+                      ¥
+                      5,000
+                    = image_tag('https://static.mercdn.net/thumb/photos/m59262016579_1.jpg?1566553999')
+

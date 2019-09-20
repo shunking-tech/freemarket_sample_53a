@@ -1,0 +1,73 @@
+$banner_width: 750px;
+$banner_iconlink_height: 40px;
+$banner_iconlink_width: 144px;
+
+.banner {
+  background-image: url('download_bg_pc.jpg');
+  background-size: cover;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+
+  &__contents {
+    width: $banner_width;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &--text {
+      color: white;
+      margin-bottom: 20px;
+      font-weight: 400;
+      font-size: 35px;
+      line-height: 35px;
+
+      &:first-child {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &-iconbox {
+      display: flex;
+      align-items: center;
+    }
+
+    &--icon {
+      height: 260px;
+      width: 300px;
+    }
+  }
+
+  &__content-app {
+    &--mercari-icon {
+      height: 68px;
+      width: 68px;
+      margin-right: 20px;
+    }
+
+    &--app-icon, &--google-icon {
+      height: $banner_iconlink_height;
+      width: $banner_iconlink_width;
+    }
+  }
+
+  &--link {
+    display: inline-block;
+    height: $banner_iconlink_height;
+    width: $banner_iconlink_width;
+    text-decoration: none;
+    margin-right: 8px;
+
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+}
