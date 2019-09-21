@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
-  resources :items, only: [:index, :new]
+  resources :items, only: [:index, :new, :show]
   resources :users, only: :show do
     resources :creditcards, only: [:index, :new, :create]
 
