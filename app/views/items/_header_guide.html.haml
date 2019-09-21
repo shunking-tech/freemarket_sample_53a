@@ -4,7 +4,7 @@
 
       .topmein-mercari
         =link_to root_path ,class: "topmein-mercari__box" do
-          = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg",alt: "Mercari",class:"topmein-mercari__box__icon")
+          = image_tag("/logo.svg",alt: "Mercari",class:"topmein-mercari__box__icon")
 
 
       %form.topmein-search-form{action: "/jp/search/"}
@@ -47,7 +47,7 @@
               4
         %li.topmein-select-band__right__command
           = link_to root_path , class: "topmein-select-band__right__command__box" do
-            = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", alt: "", class:"topmein-select-band__right__command__box__mypage")
+            = image_tag("/member_photo_noimage_thumb.png", alt: "", class:"topmein-select-band__right__command__box__mypage")
             マイページ
 
 

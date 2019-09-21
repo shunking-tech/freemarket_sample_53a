@@ -4,13 +4,13 @@
       .banner__content--text="スマホでかんたんフリマアプリ"
       .banner__content--text="今すぐ無料ダウンロード！"
       .banner__content-iconbox
-        = image_tag 'mercari_icon.png', class: "banner__content-app--mercari-icon"
+        = image_tag '/mercari_icon.png', class: "banner__content-app--mercari-icon"
         = link_to "#", class: "banner--link" do
-          = image_tag 'app-store.svg', class: "banner__content-app--app-icon"
+          = image_tag '/app-store.svg', class: "banner__content-app--app-icon"
         = link_to "#", class: "banner--link" do
-          = image_tag 'google-play.svg', class: "banner__content-app--google-icon"
+          = image_tag '/google-play.svg', class: "banner__content-app--google-icon"
     .banner__content
-      = image_tag 'download_content_pc.png', class: "banner__content--icon"
+      = image_tag '/download_content_pc.png', class: "banner__content--icon"
 
 %footer.footer
 
@@ -89,5 +89,5 @@
 
   .footer__copyright
     = link_to root_path, class: "footer__copyright__link" do
-      = image_tag 'logo-white.svg', class: "footer__copyright__image"
+      = image_tag '/logo-white.svg', class: "footer__copyright__image"
     %span.footer__copyright__text="© 2019 freemarket_sample_53a"
