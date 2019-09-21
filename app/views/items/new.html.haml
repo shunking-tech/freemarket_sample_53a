@@ -1,0 +1,161 @@
+.sellpage
+  %header.sellheader
+    %h1
+      = link_to root_path do
+        =image_tag("/logo.svg")
+
+
+  %main.sellmain
+    %section.sellmain__page
+      #sell_list
+        %div{"data-reactroot":  ""}
+          .sellmain__page__box
+            %h2.sellmain__page__box__top 商品の情報を入力
+            %form_with.sellmain__page__box__form
+              .sellmain__page__box__form__upload
+                %h3.sellmain__page__box__form__upload__haed
+                  / react-text: 7
+                  出品画像
+                  / /react-text
+                  %span.require_sheet 必須
+                %p 最大10枚までアップロードできます
+                .sellmain__page__box__form__upload__first
+                  .sellmain__page__box__form__upload__first__phone
+                    .sellmain__page__box__form__upload__first__phone__items
+                      %ul
+                  .sellmain__page__box__form__upload__first__pc
+                    %input.sellmain__page__box__form__upload__first__pc__print{multiple: "multiple", name: "image1",style: "display: none;", type: "file"}
+                    %pre.sellmain__page__box__form__upload__first__pc__text
+                      :preserve
+                        ドラッグアンドドロップ
+                        またはクリックしてファイルをアップロード
+                    %i.icon-camera
+
+              .sellmain__page__box__form__content
+                .sellmain__page__box__form__content__group
+                  %label
+                    商品名
+                    %span.require_sheet 必須
+                  %div
+                    %input.input-box{placeholder: "商品名（必須 40文字まで)", value: ""}/
+                .sellmain__page__box__form__content__group
+                  %label
+                    商品の説明
+                    %span.require_sheet 必須
+                  %textarea.textarea-box{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
+
+              .sellmain__page__box__form__content.clearfix
+                %h3.sellmain__page__box__form__content__sub 商品の詳細
+                .sellmain__page__box__form__content__box
+                  .sellmain__page__box__form__content__box__details
+                    %label
+                      カテゴリー
+                      %span.require_sheet 必須
+                    %div
+                      .select-block
+                        %i.icon-arrow-bottom
+                        %select.select-block__choice
+                          -# %option 以下レディースやメンズなどの選択view
+                  .sellmain__page__box__form__content__box__details
+                    %label
+                      商品の状態
+                      %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      %select.select-block__choice
+                      -# %option　以下　状態のview
+
+              .sellmain__page__box__form__content.clearfix
+                %h3.sellmain__page__box__form__content__sub 配送について
+                =link_to  root_path ,target:"_blank", class:"question-mark" do
+                  ?
+                .sellmain__page__box__form__content__box
+                  .sellmain__page__box__form__content__box__details
+                    %label
+                      発送料の負担
+                      %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      %select.select-block__choice
+                  .sellmain__page__box__form__content__box__details
+                    %label
+                      発送元の地域
+                      %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      %select.select-block__choice
+                  .sellmain__page__box__form__content__box__details
+                    %label
+                      発送までの日数
+                      %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      %select.select-block__choice
+
+              .sellmain__page__box__form__content.clearfix
+                %h3.sellmain__page__box__form__content__sub 販売価格(300〜9,999,999)
+                =link_to  root_path ,target:"_blank", class:"question-mark" do
+                  ?
+                .sellmain__page__box__form__content__box
+                  %ul.sell-money
+                    %li.sell-money__group
+                      .sell-money__group__box
+                        %label.sell-left
+                          価格
+                          %span.require_sheet 必須
+                        .sell-right
+                          ¥
+                          %div
+                            %input.input-fee{placeholder: "例）300", value: ""}/
+                    %li.sell-money__fee
+                      .sell-money__fee__left
+                        販売手数料
+                      .sell-money__fee__right
+                    %li.sell-money__profit
+                      販売利益
+                      .sell-money__profit__left
+                      .sell-money__profit__right
+
+
+
+              .sellmain__page__box__form__content.clearfix
+                %div
+                  %p
+                    =link_to root_path,target: "_blank" do
+                      禁止されている出品
+                    、
+                    =link_to root_path, target: "_blank" do
+                      行為
+                    を必ずご確認ください。
+                  %p
+                    またブランド品でシリアルナンバー等がある場合はご記載ください。
+                    =link_to root_path, target: "_blank" do
+                      偽ブランドの発売
+                    は犯罪であり処罰される可能性があります。
+                  %p
+                    また、出品をもちまして
+                    =link_to root_path do
+                      加盟店規約
+                    に同意したことになります。
+                %button.sell-first-btn{type: "submit"}
+                  出品する
+                =link_to "もどる", :back , class: 'back-gray-btn'
+            .selllay
+
+
+  %footer.sellfooter
+    %nav
+      %ul.clearfix
+        %li
+          =link_to root_path do
+            プライバリーポリシー
+        %li
+          =link_to root_path  do
+            メルカリ利用規約
+        %li
+          =link_to root_path do
+            特定商取引に関する表記
+    =link_to root_path, class: "sellfooter__icon" do
+      =image_tag("/logo-gray-icon.svg",alt: "mercari", height: "65", width: "80")
+    %p
+      %small © 2019 Mercari
