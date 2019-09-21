@@ -7,16 +7,16 @@
 
         .detail-item__photo--image
           .detail-item__photo--inner
-            = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m30974049772_1.jpg?1567097619'
+            = image_tag '/item_1.jpg'
 
         .detail-item__photo-small
           .detail-item__photo-small--image.active
             .detail-item__photo-small--inner
-              = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m30974049772_1.jpg?1567097619'
+              = image_tag '/item_1.jpg'
           -(1..6).each do
             .detail-item__photo-small--image
               .detail-item__photo-small--inner
-                = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m30974049772_2.jpg?1567097619'
+                = image_tag '/item_2.jpg'
 
       .detail-item__item-info
         %table.detail-item__item-info--table
@@ -118,7 +118,7 @@
       .detail-item__message
         = link_to item_path, class: 'detail-item__message__user-icon' do
           %div
-            = image_tag '//static.mercdn.net/thumb/members/817785720.jpg?1504962677'
+            = image_tag '/message_icon.jpg'
             %span.bold
               テストおお
         .detail-item__message__body
@@ -175,7 +175,7 @@
         .detail-item__other-items__content
           = link_to item_path, nil do
             %figure.detail-item__other-items__content--figure
-              = image_tag 'https://static.mercdn.net/thumb/photos/m99172967628_1.jpg?1565167805', class: "lazyloaded"
+              = image_tag '/other_item.jpg', class: "lazyloaded"
             .detail-item__other-items__content__box
               %h3.detail-item__other-items__content__box--title.font-2="これはタイトルですあああああああああああああああああ"
               .detail-item__other-items__content__box--footer
@@ -192,7 +192,7 @@
         .detail-item__other-items__content
           = link_to item_path, nil do
             %figure.detail-item__other-items__content--figure
-              = image_tag 'https://static.mercdn.net/thumb/photos/m99172967628_1.jpg?1565167805', class: "lazyloaded"
+              = image_tag '/other_item.jpg', class: "lazyloaded"
             .detail-item__other-items__content__box
               %h3.detail-item__other-items__content__box--title.font-2="これはタイトルですあああああああああああああああああ"
               .detail-item__other-items__content__box--footer
