@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     end
   end
   get 'logout', to: 'users#logout'
+
+  resources :trades, only: [:new, :create]
 end
