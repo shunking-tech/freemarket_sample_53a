@@ -2,7 +2,7 @@
   %header.sellheader
     %h1
       = link_to root_path do
-        =image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763")
+        =image_tag("/logo.svg")
 
 
   %main.sellmain
@@ -28,7 +28,7 @@
                     %pre.sellmain__page__box__form__upload__first__pc__text
                       :preserve
                         ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード      
+                        またはクリックしてファイルをアップロード
                     %i.icon-camera
 
               .sellmain__page__box__form__content
@@ -39,7 +39,7 @@
                   %div
                     %input.input-box{placeholder: "商品名（必須 40文字まで)", value: ""}/
                 .sellmain__page__box__form__content__group
-                  %label 
+                  %label
                     商品の説明
                     %span.require_sheet 必須
                   %textarea.textarea-box{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
@@ -48,7 +48,7 @@
                 %h3.sellmain__page__box__form__content__sub 商品の詳細
                 .sellmain__page__box__form__content__box
                   .sellmain__page__box__form__content__box__details
-                    %label 
+                    %label
                       カテゴリー
                       %span.require_sheet 必須
                     %div
@@ -110,8 +110,8 @@
                     %li.sell-money__fee
                       .sell-money__fee__left
                         販売手数料
-                      .sell-money__fee__right 
-                    %li.sell-money__profit  
+                      .sell-money__fee__right
+                    %li.sell-money__profit
                       販売利益
                       .sell-money__profit__left
                       .sell-money__profit__right
@@ -139,7 +139,7 @@
                     に同意したことになります。
                 %button.sell-first-btn{type: "submit"}
                   出品する
-                =link_to "もどる", :back , class: 'back-gray-btn' 
+                =link_to "もどる", :back , class: 'back-gray-btn'
             .selllay
 
 
@@ -156,6 +156,6 @@
           =link_to root_path do
             特定商取引に関する表記
     =link_to root_path, class: "sellfooter__icon" do
-      =image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763",alt: "mercari", height: "65", width: "80")
+      =image_tag("/logo-gray-icon.svg",alt: "mercari", height: "65", width: "80")
     %p
       %small © 2019 Mercari
