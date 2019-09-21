@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
   get 'logout', to: 'users#logout'
+  get 'profile_edit', to: 'users#profile_edit'
+  # ルートの仮置きです
 
   resources :trades, only: [:new, :create]
 end
