@@ -1,0 +1,154 @@
+.confirmation-container {
+  padding: 0 0 220px;
+
+
+  .confirmation-main {
+    .content {
+      width: 700px;
+      margin: 0 auto;
+      background: $white;
+      &__head {
+        padding: 16px;
+        line-height: 1.5;
+        text-align: center;
+      }
+      section {
+        margin: 40px 0 0;
+        padding: 24px 12.5% 0;
+        border-top: 1px solid #f5f5f5;
+      }
+
+      .buy-item {
+        text-align: center;
+        margin: 0;
+        &__inner {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 320px;
+          margin: 0 auto;
+          &__image {
+            img {
+              width: 64px;
+              max-height: 148px;
+            }
+          }
+          &__title {
+            width: calc(100% - 80px);
+            margin: 0 0 0 16px;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.5;
+          }
+          &__form {
+            p {
+              margin: 8px 0 0;
+              line-height: 1.5;
+            }
+            width: 100%;
+            &__price {
+              margin: 8px 0 0;
+              line-height: 1.5;
+              font-size: 22px;
+            }
+            &__fee {
+              margin: 0 0 0 8px;
+              font-size: 14px;
+              font-weight: 400;
+              display: inline-block;
+            }
+            &__mercari-point {
+              @include button();
+              background: $dark_gray;
+              color: $black;
+              border: 1px solid $dark_gray;
+              margin: 16px 0 0;
+              &__optional {
+                cursor: default;
+                position: relative;
+              }
+            }
+            &__actual-price {
+              display: table;
+              border-collapse: collapse;
+              width: 100%;
+              li:first-child {
+                border: 0;
+              }
+              li {
+                font-size: 18px;
+                display: table-row;
+              }
+              &__content {
+                display: table-cell;
+                padding: 16px 0;
+                text-align: right;
+                &:first-child {
+                  text-align: left;
+                }
+                span {
+                  font-size: 28px;
+                }
+              }
+            }
+            &__submit {
+              @include button();
+              margin: 8px 0 0;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .buyer-info {
+        a {
+          color: #0099e8;
+          text-decoration: none;
+        }
+        &__inner {
+          max-width: 320px;
+          margin: 0 auto;
+          h3 {
+            margin: 0;
+            font-size: 14px;
+          }
+          &__body {
+            display: block;
+            margin: 8px 0 0;
+            font-size: 14px;
+            line-height: 1.4;
+            font-style: normal;
+          }
+          &__fix {
+            margin: 8px 0 0;
+            display: block;
+            text-align: right;
+            .icon-arrow-right {
+              &::before {
+                content: '\f054';
+              }
+              vertical-align: middle;
+              margin: 0 0 0 8px;
+              font-family: FontAwesome;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 400;
+              font-variant: normal;
+              text-transform: none;
+              line-height: 1;
+              display: inline-block;
+            }
+          }
+        }
+      }
+
+      .buyer-payment {
+        padding: 24px 12.5% 40px;
+        figure {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+
+}

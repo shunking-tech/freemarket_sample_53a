@@ -1,0 +1,18 @@
+%main.mypage-container.clearfix
+  = render 'users/mypage/side'
+
+  .profile
+    .profile__contener
+      %h2 プロフィール
+    = form_with url: '#', class: 'profile__greeting' do |f|
+      .profile__greeting  
+        .profile__greeting__icon
+          %figure
+            = image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbM5lmk9ySlH6e3nKSxCUsmKEkIxPwsPIFuvDikBpe-I2pSSNQ")
+          = f.text_field :nickname ,value:"テックエキスパー子", placeholder:"(例)AYA★セール中", class:"input-box"
+
+      .profile__sentence
+        = f.text_area :introduction,placeholder: "例）こんにちは☆ テックエキスパー子です！ピンク中心に出品しています。楽しくプログラミングできるように心がけています。お気軽にどうぞ♪"
+
+        .profile__sentence__change_content
+          = button_tag "変更する",type: 'submit', class: 'btn-default'
