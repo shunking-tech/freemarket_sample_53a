@@ -1,0 +1,68 @@
+.confirmation-container
+
+  = render 'items/logo-header'
+  = render 'items/logo-footer'
+
+
+  %main.confirmation-main
+    .content
+      %h2.content__head.bold
+        購入内容の確認
+      %section.buy-item
+        .buy-item__inner
+          %h3.buy-item__inner__image
+            = image_tag 'http://via.placeholder.com/300x300', class: 'lazyloaded'
+          %p.buy-item__inner__title.bold
+            中古新品サンプルアイテム
+          = form_with url: root_path, class: 'buy-item__inner__form' do |f|
+            %p.buy-item__inner__form__price.bold
+              ¥12,345
+              %span.buy-item__inner__form__fee
+                送料込み
+            %ul.buy-item__inner__form__mercari-point
+              %li
+                .buy-item__inner__form__mercari-point__optional
+                  ポイントはありません
+            %ul.buy-item__inner__form__actual-price
+              %li.bold
+                .buy-item__inner__form__actual-price__content
+                  支払い金額
+                .buy-item__inner__form__actual-price__content
+                  %span{data: {buy: {pay: "12345"}}}
+                    ¥12,345
+            = f.text_field :seller_id, {type: "hidden", value: "12345"}
+            = f.text_field :buyer_id, {type: "hidden", value: "67890"}
+            = f.text_field :item_id, {type: "hidden", value: "99999"}
+            = f.button "購入する", class: 'buy-item__inner__form__submit'
+
+      %section.buyer-info
+        .buyer-info__inner
+          %h3.bold
+            配送先
+          %address.buyer-info__inner__body
+            〒542-0076
+            %br
+            大阪府大阪市中央区難波5丁目1-60
+            %br
+            なんばスカイオ 15階
+            %br
+            TECH::EXPERT なんばスカイオ校
+          = link_to root_path, class: "buyer-info__inner__fix" do
+            %span
+              変更する
+            %i.icon-arrow-right
+
+      %section.buyer-info.buyer-payment
+        .buyer-info__inner
+          %h3.bold
+            支払い方法
+          %p.buyer-info__inner__body
+            ************1234
+            %br
+            12/34
+          %figure
+            = image_tag '/jcb.svg', alt: 'jcb', height: '20', width: '26'
+          = link_to root_path, class: "buyer-info__inner__fix" do
+            %span
+              変更する
+            %i.icon-arrow-right
