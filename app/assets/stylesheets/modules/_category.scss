@@ -32,7 +32,7 @@
         padding: 0px;
         height: 390px;
         width: 100%;
-        background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-autumn-fes-a7110221c33156103c25257e8531fc8f.jpg");
+        background-image: image-url("/top-banner-autumn-fes.jpg");
         background-size: auto;
         background-position: center center;
       }
@@ -74,7 +74,7 @@
               height: 46px;
               width: 31px;
               -webkit-appearance: none;
-              background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png");
+              background-image: image-url("/carousel-prev.png");
               border-width: initial;
               border-style: none;
               border-color: initial;
@@ -94,7 +94,7 @@
             height: 46px;
             width: 31px;
             -webkit-appearance: none;
-            background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/carousel-next-bc3a1438a1435e953bc67d720cd05c61.png");
+            background-image: image-url("/carousel-next.png");
             border-width: initial;
             border-style: none;
             border-color: initial;
