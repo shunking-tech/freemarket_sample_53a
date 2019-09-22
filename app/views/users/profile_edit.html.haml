@@ -1,11 +1,13 @@
+= render 'items/header_guide'
+
 %main.mypage-container.clearfix
   = render 'users/mypage/side'
 
   .profile
     .profile__contener
-      %h2 プロフィール
+      %h2.bold プロフィール
     = form_with url: '#', class: 'profile__greeting' do |f|
-      .profile__greeting  
+      .profile__greeting
         .profile__greeting__icon
           %figure
             = image_tag("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbM5lmk9ySlH6e3nKSxCUsmKEkIxPwsPIFuvDikBpe-I2pSSNQ")
@@ -16,3 +18,7 @@
 
         .profile__sentence__change_content
           = button_tag "変更する",type: 'submit', class: 'btn-default'
+
+  = render 'items/footer_btn'
+
+= render 'items/footer'

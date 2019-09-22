@@ -1,3 +1,5 @@
+= render 'items/header_guide'
+
 %main.mypage-container.clearfix
 
   = render 'users/mypage/side'
@@ -15,7 +17,7 @@
           = link_to '#' do
             本人確認書類のアップロードについて
             = fa_icon "chevron-right"
-      
+
       .identification__form__form-group
         %label
           お名前
@@ -77,3 +79,7 @@
         = link_to '#' do
           本人情報の登録について
           = fa_icon "chevron-right"
+
+  = render 'items/footer_btn'
+
+= render 'items/footer'

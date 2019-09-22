@@ -1,8 +1,6 @@
 .sellpage
-  %header.sellheader
-    %h1
-      = link_to root_path do
-        =image_tag("/logo.svg")
+  = render 'items/logo-header'
+  = render 'items/logo-footer'
 
 
   %main.sellmain
@@ -141,21 +139,3 @@
                   出品する
                 =link_to "もどる", :back , class: 'back-gray-btn'
             .selllay
-
-
-  %footer.sellfooter
-    %nav
-      %ul.clearfix
-        %li
-          =link_to root_path do
-            プライバリーポリシー
-        %li
-          =link_to root_path  do
-            メルカリ利用規約
-        %li
-          =link_to root_path do
-            特定商取引に関する表記
-    =link_to root_path, class: "sellfooter__icon" do
-      =image_tag("/logo-gray-icon.svg",alt: "mercari", height: "65", width: "80")
-    %p
-      %small © 2019 Mercari

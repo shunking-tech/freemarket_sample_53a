@@ -7,12 +7,11 @@
           = image_tag("/logo.svg",alt: "Mercari",class:"topmein-mercari__box__icon")
 
 
-      %form.topmein-search-form{action: "/jp/search/"}
-        %input.topmein-search-form__write{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
-        %button.topmein-search-form__button
+      = form_with url: root_path, class: 'topmein-search-form' do |f|
+        = f.search_field :keyword, {name: "keyword", class: "topmein-search-form__write", placeholder: '何かお探しですか？', value: ""}
+        = f.button "", class: "topmein-search-form__button" do
           %svg.topmein-search-form__button__icon{"aria-hidden": "true", height: "16", viewbox: "0 0 16 16", width: "16"}
             %path{d: "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", fill: "currentColor", "fill-rule": "nonzero"}
-
 
     .topmein-select-band
       .topmein-select-band__left
@@ -47,7 +46,7 @@
               4
         %li.topmein-select-band__right__command
           = link_to root_path , class: "topmein-select-band__right__command__box" do
-            = image_tag("/member_photo_noimage_thumb.png", alt: "", class:"topmein-select-band__right__command__box__mypage")
+            = image_tag("/member_photo_noimage_thumb.png", alt: "", class: "topmein-select-band__right__command__box__mypage")
             マイページ
 
 
@@ -58,5 +57,5 @@
 -#           =link_to root_path , class: "topmein-select-band__user__signin__box" do
 -#             新規会員登録
 
--#           =link_to root_path , class: "topmein-select-band__user__logout__box" do 
+-#           =link_to root_path , class: "topmein-select-band__user__logout__box" do
 -#             ログイン

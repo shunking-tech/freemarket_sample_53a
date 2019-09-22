@@ -1,6 +1,6 @@
 .profile{
   width: 700px;
-  float: right;  
+  float: right;
 
   &__contener{
     background-color: #fff;
@@ -48,7 +48,7 @@
         border-radius: 4px;
         border: 1px solid #ccc;
         line-height: 1.5;
-        font-size: 16px;  
+        font-size: 16px;
         box-sizing: border-box;
       }
 
@@ -57,7 +57,7 @@
   &__sentence{
     padding: 40px 16px;
     background-color: #fff;
-    
+
     textarea {
       min-height: 216px;
       display: block;
@@ -82,7 +82,7 @@
       border: 1px solid #ea352d;
       color: #fff;
       text-align: center;
-      
+
       button{
         background: #ea352d;
         border: 1px solid #ea352d;
