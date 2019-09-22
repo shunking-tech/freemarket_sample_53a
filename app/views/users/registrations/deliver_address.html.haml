@@ -1,7 +1,7 @@
 .registration
   %header.registration__header
     %h1
-      = link_to root_path, class: "registration__header-logo" do
+      = link_to root_path, class: "registration__header--logo" do
         = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
     %nav.registration__header__bar
       %ol.clearfix
@@ -67,13 +67,13 @@
             = render "errors", errors: @deliver_address.errors[:house_address]
           .registration-form__content__form-group
             = f.label :building_name, "建物名"
-            %span.registration-form__content__form-group__form-require 任意
+            %span.registration-form__content__form-group__form-arbitrary 任意
             %br/
             = f.text_field :building_name, autocomplete: "building_name", class: "registration-form__content__form-group__input", placeholder: "例）柳ビル103"
             = render "errors", errors: @deliver_address.errors[:building_name]
           .registration-form__content__form-group
             = f.label :phone_number, "電話"
-            %span.registration-form__content__form-group__form-require 任意
+            %span.registration-form__content__form-group__form-arbitrary 任意
             %br/
             = f.text_field :phone_number, autocomplete: "phone_number", class: "registration-form__content__form-group__input", placeholder: "例）09012345678"
             = render "errors", errors: @deliver_address.errors[:phone_number]
