@@ -50,6 +50,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     bcrypt (3.1.13)
+    bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -107,6 +108,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    ed25519 (1.2.4)
     erubi (1.8.0)
     erubis (2.7.0)
     excon (0.66.0)
@@ -328,6 +330,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   byebug
   capistrano
@@ -340,6 +343,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  ed25519
   factory_bot_rails
   faker
   fog-aws
