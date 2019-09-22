@@ -1,0 +1,130 @@
+.content
+  %section.user-icon
+    = link_to root_path do
+      %figure
+        = image_tag "/sample-avatar.jpg", height: '60', width: '60'
+      %h2.bold
+        サンプルユーザー
+      .user-icon__number
+        %div
+          評価
+          %span.bold
+            0
+        %div
+          出品数
+          %span.bold
+            0
+
+  %section.tab-container-notification-todo
+    %ul.tabs
+      %li.active
+        %h3.bold
+          = link_to root_path, {data: {toggle: "tab"}} do
+            お知らせ
+            %span.tabs__nav-number.hidden-large
+              2
+      %li
+        %h3.bold
+          = link_to root_path, {data: {toggle: "tab"}} do
+            やることリスト
+    .tab-content
+      %ul#tab-notification.tab-content__items.tab-pane.active
+        %li
+          = link_to root_path, class: "tab-content__items__item" do
+            %figure
+              = image_tag "/mercari_profile.png", class: 'lazyloaded'
+            .tab-content__items__item__body
+              .tab-content__items__item__body__text
+                事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+              %time
+                %i.icon-time
+                %span
+                  1日前
+            %i.icon-arrow-right
+        %li
+          = link_to root_path, class: "tab-content__items__item" do
+            %figure
+              = image_tag "/mercari_profile.png", class: 'lazyloaded'
+            .tab-content__items__item__body
+              .tab-content__items__item__body__text
+                《友達を招待すると必ずP1,000プレゼント》友達誘ってメルペイしようぜ！
+              %time
+                %i.icon-time
+                %span
+                  1日前
+            %i.icon-arrow-right
+        %li
+          = link_to root_path, class: "tab-content__items__item" do
+            %figure
+              = image_tag "/mercari_profile.png", class: 'lazyloaded'
+            .tab-content__items__item__body
+              .tab-content__items__item__body__text
+                事務局から個別メッセージ「Googleログイン通知」
+              %time
+                %i.icon-time
+                %span
+                  4日前
+            %i.icon-arrow-right
+        %li
+          = link_to root_path, class: "tab-content__items__item" do
+            %figure
+              = image_tag "/mercari_profile.png", class: 'lazyloaded'
+            .tab-content__items__item__body
+              .tab-content__items__item__body__text
+                事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+              %time
+                %i.icon-time
+                %span
+                  4日前
+            %i.icon-arrow-right
+        %li
+          = link_to root_path, class: "tab-content__items__item" do
+            %figure
+              = image_tag "/mercari_profile.png", class: 'lazyloaded'
+            .tab-content__items__item__body
+              .tab-content__items__item__body__text
+                事務局から個別メッセージ「《明日まで》メルペイ電子マネー(iD)を設定するだけでP500プレゼント！」
+              %time
+                %i.icon-time
+                %span
+                  4日前
+            %i.icon-arrow-right
+        %li.tab-content__items__go-list
+          = link_to root_path do
+            一覧に戻る
+      %ul#tab-todo.tab-content__items.tab-pane
+        %li.tab-content__items__item-not.bold
+          現在、やることリストはありません
+
+  %section.tab-container
+    %h2.tab-head.bold
+      購入した商品
+    %ul.tabs
+      %li.active
+        %h3.bold
+          = link_to root_path, {data: {toggle: "tab"}} do
+            取引中
+      %li
+        %h3.bold
+          = link_to root_path, {data: {toggle: "tab"}} do
+            過去の取引
+    .tab-content
+      %ul#tab-trade-now.tab-content__items.tab-pane.active
+        %li.tab-content__items__item-not.bold
+          取引中の商品がありません
+      %ul#tab-trade-old.tab-content__items.tab-pane
+        %li
+          = link_to root_path, class: "tab-content__items__item" do
+            %figure
+              = image_tag "/300x300.png", class: 'lazyloaded'
+            .tab-content__items__item__body
+              .tab-content__items__item__body__text
+                即購入OK！サンプル商品abcdefghijklm...を購入したってばよ！
+                %span
+                  取引が完了しました
+              .tab-content__items__item__body__status.bold.done
+                取引完了
+            %i.icon-arrow-right
+        %li.tab-content__items__go-list
+          = link_to root_path do
+            一覧に戻る

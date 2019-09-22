@@ -91,3 +91,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'devise'
+gem 'haml-rails'
+gem 'pry-rails'
+gem "font-awesome-rails"

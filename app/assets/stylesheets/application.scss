@@ -1,0 +1,24 @@
+// 基本となるスタイルのグループです。このグループより下の行にスタイルのimportお願いします！
+// base style group start
+@import "./reset";
+@import "font-awesome";
+@import "./mixins/mixin";
+@import "./config/variable";
+// base style group end
+
+@import "./modules/header_guide";
+@import "./modules/category";
+@import "./modules/footer";
+@import "./modules/footer_btn";
+@import "./modules/banner";
+@import "./modules/detail-items";
+@import "./modules/mypage";
+@import "./modules/sellpage";
+@import "./modules/logout";
+@import "./modules/identification";
+@import "./modules/index-card";
+@import "./modules/new-card";
+@import "./modules/profile_edit";
+@import "./modules/logo-header";
+@import "./modules/logo-footer";
+@import "./modules/conformation";
