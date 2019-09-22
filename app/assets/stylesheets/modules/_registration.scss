@@ -5,13 +5,16 @@
     text-align: center;
     h1 {
       margin: 40px 0 0;
-      margin-left : 30px;
+      margin-left: 30px;
       display: inline-block;
-      a {
-        display: inline-block;
-        line-height: 49px;
-        margin: 0 8px 0 0;
-      }
+    }
+    &--logo {
+      display: inline-block;
+      line-height: 49px;
+      margin: 0 8px 0 0;
+    }
+    &--top-h1 {
+      margin-left: 0px !important;
     }
     &__bar {
       padding: 40px 0 0 44px;
@@ -143,6 +146,15 @@
               font-size: 12px;
               vertical-align: top;
             }
+            &__form-arbitrary {
+              background: #ccc;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
             &__input {
               height: 48px;
               width: 100%;
@@ -154,6 +166,12 @@
               line-height: 1.5;
               font-size: 16px;
               box-sizing: border-box;
+              &--last_name {
+                margin-right: 8px;
+              }
+              &--last_name_kana {
+                margin-right: 8px;
+              }
             }
             .has-error {
               border-color: $active_red;
@@ -173,14 +191,6 @@
             &__text {
               padding: 0;
             }
-            &__input {
-              &--last_name {
-                margin-right: 8px;
-              }
-              &--last_name_kana {
-                margin-right: 8px;
-              }
-            }
             .half {
               width: calc(50% - 6px);
             }
@@ -191,8 +201,6 @@
                 width: 76px;
                 display: inline-block;
                 &__select {
-                  position: relative;
-                  z-index: 2;
                   width: 100%;
                   padding: 0 10px;
                   margin: 8px 0 0;
@@ -204,12 +212,7 @@
                   outline: 0;
                   -webkit-appearance: none;
                 }
-                .icon-arrow-bottom {
-                  &::before {
-                    content: '\f078';
-                  }
-                  font-family: FontAwesome;
-                  font-style: normal;
+                .fa-chevron-down {
                   font-size: 14px;
                   margin: 0 6px 0 -15px;
                   position: absolute;
