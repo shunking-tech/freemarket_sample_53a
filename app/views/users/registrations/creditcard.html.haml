@@ -1,0 +1,70 @@
+.registration
+  %header.registration__header
+    %h1
+      %a{href: "#", class: "registration__header-logo"}= image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
+    %nav.registration__header__bar
+      %ol.clearfix
+        %li.through
+          会員情報
+          .registration__header__bar__status
+        %li.through
+          電話番号認証
+          .registration__header__bar__status
+        %li.through
+          お届け先住所入力
+          .registration__header__bar__status
+        %li.active
+          支払い方法
+          .registration__header__bar__status
+        %li
+          完了
+          .registration__header__bar__status
+  %main.registration__main
+    %section.registration__main__section
+      %h2.registration__main__section__head クレジットカード情報入力
+      = form_with url: root_path, class: 'registration-card__form' do |f|
+        .registration-card__form__content
+
+          .registration-card__form__content__number
+            = f.label "カード番号", class: "bold"
+            %span.form-require 必須
+            = f.text_field :card_number, {placeholder: "半角数字のみ", maxlength: "19"}
+            %ul.card-images
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg', height: '20', width: '49', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg', height: '20', width: '34', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg', height: '20', width: '30', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg', height: '20', width: '32', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg', height: '20', width: '21', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg', height: '20', width: '32', class: 'card-images__image'
+              %li
+                = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg', height: '20', width: '32', class: 'card-images__image'
+
+          .registration-card__form__content__limit
+            = f.label "有効期限", class: "bold"
+            %span.form-require 必須
+            %br
+            .select.half
+              = f.select :card_limit_m, [["01", "01"], ["02", "02"]]
+              %i.icon-arrow-bottom
+              %span 月
+            .select.half
+              = f.select :card_limit_y, [["19", "19"], ["20", "20"]]
+              %i.icon-arrow-bottom
+              %span 年
+
+          .registration-card__form__content__securitycode
+            = f.label "セキュリテイコード", class: "bold"
+            %span.form-require 必須
+            = f.text_field :card_securitycode, {placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4"}
+
+          = f.button "追加する", class: 'registration-card__form__content__submit'
+  %footer.registration__footer
+    %a{href: "#", class: "registration__footer-logo"}= image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763", width: "80",height: "65"
+    %p
+      %small © 2019 Mercari
