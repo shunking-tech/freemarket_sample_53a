@@ -29,7 +29,7 @@
             = f.label :phone_number, "携帯電話の番号"
             %br/
             = f.text_field :phone_number, class: "registration-form__content__form-group__input registration-form__content__form-group__input--nickname"
-            = render "errors", errors: @user.errors[:phone_number]
+            = render "shared/user_errors", errors: @user.errors[:phone_number]
           %p
             本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
           = f.submit "SMSを送信する", class: "registration-form__content__btn"

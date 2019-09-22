@@ -30,23 +30,23 @@
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :last_name, autocomplete: "last_name", class: "registration-form__content__form-group__input", placeholder: "例）山田"
-            = render "errors", errors: @deliver_address.errors[:last_name]
+            = render "shared/user_errors", errors: @deliver_address.errors[:last_name]
             = f.text_field :first_name, autocomplete: "first_name", class: "registration-form__content__form-group__input", placeholder: "例）彩"
-            = render "errors", errors: @deliver_address.errors[:first_name]
+            = render "shared/user_errors", errors: @deliver_address.errors[:first_name]
           .registration-form__content__form-group
             = f.label :full_name, "お名前カナ"
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input", placeholder: "例）ヤマダ"
-            = render "errors", errors: @deliver_address.errors[:last_name_kana]
+            = render "shared/user_errors", errors: @deliver_address.errors[:last_name_kana]
             = f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "registration-form__content__form-group__input", placeholder: "例）アヤ"
-            = render "errors", errors: @deliver_address.errors[:first_name_kana]
+            = render "shared/user_errors", errors: @deliver_address.errors[:first_name_kana]
           .registration-form__content__form-group
             = f.label :zipcode, "郵便番号"
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :zipcode, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input", placeholder: "例）123-4567"
-            = render "errors", errors: @deliver_address.errors[:zipcode]
+            = render "shared/user_errors", errors: @deliver_address.errors[:zipcode]
           .registration-form__content__form-group
             = f.label :prefecture, "都道府県"
             %span.registration-form__content__form-group__form-require 必須
@@ -58,25 +58,25 @@
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :city, autocomplete: "city", class: "registration-form__content__form-group__input", placeholder: "例）横浜市緑区"
-            = render "errors", errors: @deliver_address.errors[:city]
+            = render "shared/user_errors", errors: @deliver_address.errors[:city]
           .registration-form__content__form-group
             = f.label :house_address, "番地"
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :house_address, autocomplete: "house_address", class: "registration-form__content__form-group__input", placeholder: "例）青山1-1-1"
-            = render "errors", errors: @deliver_address.errors[:house_address]
+            = render "shared/user_errors", errors: @deliver_address.errors[:house_address]
           .registration-form__content__form-group
             = f.label :building_name, "建物名"
             %span.registration-form__content__form-group__form-arbitrary 任意
             %br/
             = f.text_field :building_name, autocomplete: "building_name", class: "registration-form__content__form-group__input", placeholder: "例）柳ビル103"
-            = render "errors", errors: @deliver_address.errors[:building_name]
+            = render "shared/user_errors", errors: @deliver_address.errors[:building_name]
           .registration-form__content__form-group
             = f.label :phone_number, "電話"
             %span.registration-form__content__form-group__form-arbitrary 任意
             %br/
             = f.text_field :phone_number, autocomplete: "phone_number", class: "registration-form__content__form-group__input", placeholder: "例）09012345678"
-            = render "errors", errors: @deliver_address.errors[:phone_number]
+            = render "shared/user_errors", errors: @deliver_address.errors[:phone_number]
           = f.submit "次へ進む", class: "registration-form__content__btn"
   %footer.registration__footer
     = link_to root_path, class: "registration__footer__logo" do

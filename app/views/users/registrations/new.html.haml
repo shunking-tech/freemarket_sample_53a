@@ -30,25 +30,25 @@
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :nickname, autocomplete: "nickname", class: "registration-form__content__form-group__input", placeholder: "例）メルカリ太郎"
-            = render "errors", errors: @user.errors[:nickname]
+            = render "shared/user_errors", errors: @user.errors[:nickname]
           .registration-form__content__form-group
             = f.label :email, "メールアドレス"
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.email_field :email, autocomplete: "email", class: "registration-form__content__form-group__input", placeholder: "PC・携帯どちらでも可"
-            = render "errors", errors: @user.errors[:email]
+            = render "shared/user_errors", errors: @user.errors[:email]
           .registration-form__content__form-group
             = f.label :password, "パスワード"
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.password_field :password, autocomplete: "new-password", class: "registration-form__content__form-group__input", placeholder: "7文字以上"
-            = render "errors", errors: @user.errors[:password]
+            = render "shared/user_errors", errors: @user.errors[:password]
           .registration-form__content__form-group
             = f.label :password_confirmation, "パスワード(確認)"
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.password_field :password_confirmation, autocomplete: "new-password", class: "registration-form__content__form-group__input", placeholder: "7文字以上"
-            = render "errors", errors: @user.errors[:password_confirmation]
+            = render "shared/user_errors", errors: @user.errors[:password_confirmation]
           .registration-form__content__form-group
             %h3.registration-form__content__form-group__sub-head 本人確認
             %p.registration-form__content__form-group__text
@@ -59,16 +59,16 @@
             %br/
             = f.text_field :last_name, autocomplete: "last_name", class: "registration-form__content__form-group__input registration-form__content__form-group__input--last_name half", placeholder: "例）山田"
             = f.text_field :first_name, autocomplete: "first_name", class: "registration-form__content__form-group__input half", placeholder: "例）彩"
-            = render "errors", errors: @user.errors[:last_name]
-            = render "errors", errors: @user.errors[:first_name]
+            = render "shared/user_errors", errors: @user.errors[:last_name]
+            = render "shared/user_errors", errors: @user.errors[:first_name]
           .registration-form__content__form-group
             %label お名前カナ(全角)
             %span.registration-form__content__form-group__form-require 必須
             %br/
             = f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input registration-form__content__form-group__input--last_name_kana half", placeholder: "例）ヤマダ"
             = f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "registration-form__content__form-group__input half", placeholder: "例）アヤ"
-            = render "errors", errors: @user.errors[:last_name_kana]
-            = render "errors", errors: @user.errors[:first_name_kana]
+            = render "shared/user_errors", errors: @user.errors[:last_name_kana]
+            = render "shared/user_errors", errors: @user.errors[:first_name_kana]
           .registration-form__content__form-group
             = f.label :birth_date, "生年月日"
             %span.registration-form__content__form-group__form-require 必須
@@ -88,7 +88,7 @@
                 = select_tag :day, options_for_select([["--",""]]), class: "registration-form__content__form-group__birthday-select-wrap__select"
               %span 日
             .clearfix
-              = render "errors", errors: @user.errors[:birth_date]
+              = render "shared/user_errors", errors: @user.errors[:birth_date]
           %p.registration-form__content__info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         .registration-form__content
