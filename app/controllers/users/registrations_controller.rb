@@ -29,6 +29,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def sms_confirmation
+    @user = User.new
+  end
+
+  def deliver_address
+    # 現在、deliver_addressのテーブルがないためuserで代理
+    # Todo UserをDeliverAddressに変更
+    @deliver_address = User.new
+  end
+
+  def creditcard
+    
+  end
+
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
