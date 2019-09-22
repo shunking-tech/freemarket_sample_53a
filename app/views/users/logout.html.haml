@@ -1,9 +1,14 @@
+= render 'items/header_guide'
+
 %main.mypage-container.clearfix
 
   .content
     %section.logout__container
-      = form_tag root_path, method: :post, class: 'logout__form' do
+      = form_with url: root_path, method: :post, class: 'logout__form' do |f|
         .logout__content
-          = button_tag "ログアウト", type: 'submit', class: 'logout__submit'
+          = f.button "ログアウト", type: 'submit', class: 'logout__submit'
 
   = render 'users/mypage/side'
+  = render 'items/footer_btn'
+
+= render 'items/footer'
