@@ -13,17 +13,16 @@
     box-sizing: inherit;
     padding: 64px;
   }
-
-  // ボタンが入っているボックス
-  &__content {
-    box-sizing: inherit;
-    max-width: 320px;
-    margin: 0 auto;
-  }
-
+  
   // ボタン
   &__submit {
     @include button();
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+    line-height: 48px;
+    font-size: 14px;
+    text-align: center;
   }
 
 }
