@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy"
+    get "logout", to: "users/sessions#logout"
+    delete "logout", to: "users/sessions#destroy"
   end
+
   root 'items#index'
   resources :items, only: [:index, :new, :show]
   resources :users, only: :show do
@@ -18,7 +20,6 @@ Rails.application.routes.draw do
       get :identification
     end
   end
-  get 'logout', to: 'users#logout'
   get 'profile_edit', to: 'users#profile_edit'
   # ルートの仮置きです
 
