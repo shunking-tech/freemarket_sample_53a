@@ -106,6 +106,9 @@
       .registration-form {
         padding: 40px 40px 64px;
         border-top: 1px solid #f5f5f5;
+        &--top {
+          padding: 24px 16px 40px;
+        }
         &__content {
           max-width: 343px;
           margin: 0 auto;
@@ -268,6 +271,43 @@
             line-height: 48px;
             font-size: 14px;
             text-align: center;
+            &--mail {
+              margin: 0;
+              border-radius: 4px;
+              position: relative;
+              .fa-envelope {
+                position: absolute;
+                font-size: 22px;
+                top: 13px;
+                left: 20px;
+              }
+            }
+            &--facebook {
+              margin: 16px 0 0;
+              background: #385185;
+              border: 1px solid transparent;
+              border-radius: 4px;
+              position: relative;
+              .fa-facebook-square {
+                position: absolute;
+                font-size: 28px;
+                top: 10px;
+                left: 20px;
+              }
+            }
+            &--google {
+              margin: 16px 0 0;
+              background: $white;
+              border: #979797 solid 1px;
+              color: #333;
+              border-radius: 4px;
+              position: relative;
+              &--logo {
+                position: absolute;
+                top: 11px;
+                left: 20px;
+              }
+            }
           }
         }
       }
@@ -278,10 +318,33 @@
     margin: 0 auto;
     padding: 40px 0;
     text-align: center;
-    &-logo {
+    &__wrap {
+      position: absolute;
+      bottom: 40px;
+      left: 41%;
+    }
+    &--top {
+      height: calc(100vh - 552px);
+      position: relative;
+    }
+    &--sms_confirmation {
+      height: calc(100vh - 654px);
+      position: relative;
+    }
+    &--complete {
+      height: calc(100vh - 552px);
+      position: relative;
+    }
+    &__logo {
       width: 80px;
       height: 65px;
       margin: 40px auto 0;
+    }
+    p {
+      margin: 8px 0 0;
+      small {
+        font-size: 12px;
+      }
     }
   }
 }
