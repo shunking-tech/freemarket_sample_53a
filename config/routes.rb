@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -7,7 +6,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "log_in", to: "users/sessions#new"
-    get "sign_out", to: "users/sessions#destroy"
+    get "logout", to: "users/sessions#logout"
+    delete "logout", to: "users/sessions#destroy"
     get "registrations/sms_confirmation", to: "users/registrations#sms_confirmation"
     get "registrations/deliver_address", to: "users/registrations#deliver_address"
     get "registrations/registration_complete", to: "users/registrations#registration_complete"
