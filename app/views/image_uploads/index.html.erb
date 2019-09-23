@@ -1,0 +1,8 @@
+<%= form_for ImageUpload.new do |f|  %>
+  <%= f.file_field :image %>
+  <%= f.submit "upload" %>
+<% end %>
+<% @image_uploads.each do |image_upload| %>
+  <div>image ID: <%= image_upload.id %></div>
+  <div><%= image_tag image_upload.image.url %></div>
+<% end %>

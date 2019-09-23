@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   # ルートの仮置きです
 
   resources :trades, only: [:new, :create]
+
+  resources :image_uploads, only: [:index, :create]
 end
