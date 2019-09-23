@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "log_in", to: "users/sessions#new"
+    get "login", to: "users/sessions#new"
     get "logout", to: "users/sessions#logout"
     delete "logout", to: "users/sessions#destroy"
     get "registrations/sms_confirmation", to: "users/registrations#sms_confirmation"
