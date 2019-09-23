@@ -29,25 +29,25 @@
             = f.label :nickname, "ニックネーム"
             %span.registration-form__content__form-group__form-require 必須
             %br/
-            = f.text_field :nickname, autocomplete: "nickname", class: "registration-form__content__form-group__input", placeholder: "例）メルカリ太郎"
+            = f.text_field :nickname, autocomplete: "nickname", class: "registration-form__content__form-group__input #{has_error(@user.errors[:nickname])}", placeholder: "例）メルカリ太郎"
             = render "shared/user_errors", errors: @user.errors[:nickname]
           .registration-form__content__form-group
             = f.label :email, "メールアドレス"
             %span.registration-form__content__form-group__form-require 必須
             %br/
-            = f.email_field :email, autocomplete: "email", class: "registration-form__content__form-group__input", placeholder: "PC・携帯どちらでも可"
+            = f.email_field :email, autocomplete: "email", class: "registration-form__content__form-group__input #{has_error(@user.errors[:email])}", placeholder: "PC・携帯どちらでも可"
             = render "shared/user_errors", errors: @user.errors[:email]
           .registration-form__content__form-group
             = f.label :password, "パスワード"
             %span.registration-form__content__form-group__form-require 必須
             %br/
-            = f.password_field :password, autocomplete: "new-password", class: "registration-form__content__form-group__input", placeholder: "7文字以上"
+            = f.password_field :password, autocomplete: "new-password", class: "registration-form__content__form-group__input #{has_error(@user.errors[:password])}", placeholder: "7文字以上"
             = render "shared/user_errors", errors: @user.errors[:password]
           .registration-form__content__form-group
             = f.label :password_confirmation, "パスワード(確認)"
             %span.registration-form__content__form-group__form-require 必須
             %br/
-            = f.password_field :password_confirmation, autocomplete: "new-password", class: "registration-form__content__form-group__input", placeholder: "7文字以上"
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "registration-form__content__form-group__input #{has_error(@user.errors[:password_confirmation])}", placeholder: "7文字以上"
             = render "shared/user_errors", errors: @user.errors[:password_confirmation]
           .registration-form__content__form-group
             %h3.registration-form__content__form-group__sub-head 本人確認
@@ -57,16 +57,16 @@
             %label お名前(全角)
             %span.registration-form__content__form-group__form-require 必須
             %br/
-            = f.text_field :last_name, autocomplete: "last_name", class: "registration-form__content__form-group__input registration-form__content__form-group__input--last_name half", placeholder: "例）山田"
-            = f.text_field :first_name, autocomplete: "first_name", class: "registration-form__content__form-group__input half", placeholder: "例）彩"
+            = f.text_field :last_name, autocomplete: "last_name", class: "registration-form__content__form-group__input registration-form__content__form-group__input--last_name half #{has_error(@user.errors[:last_name])}", placeholder: "例）山田"
+            = f.text_field :first_name, autocomplete: "first_name", class: "registration-form__content__form-group__input half #{has_error(@user.errors[:first_name])}", placeholder: "例）彩"
             = render "shared/user_errors", errors: @user.errors[:last_name]
             = render "shared/user_errors", errors: @user.errors[:first_name]
           .registration-form__content__form-group
             %label お名前カナ(全角)
             %span.registration-form__content__form-group__form-require 必須
             %br/
-            = f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input registration-form__content__form-group__input--last_name_kana half", placeholder: "例）ヤマダ"
-            = f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "registration-form__content__form-group__input half", placeholder: "例）アヤ"
+            = f.text_field :last_name_kana, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input registration-form__content__form-group__input--last_name_kana half #{has_error(@user.errors[:last_name_kana])}", placeholder: "例）ヤマダ"
+            = f.text_field :first_name_kana, autocomplete: "first_name_kana", class: "registration-form__content__form-group__input half #{has_error(@user.errors[:first_name_kana])}", placeholder: "例）アヤ"
             = render "shared/user_errors", errors: @user.errors[:last_name_kana]
             = render "shared/user_errors", errors: @user.errors[:first_name_kana]
           .registration-form__content__form-group
@@ -77,15 +77,15 @@
             .registration-form__content__form-group__birthday-select
               .registration-form__content__form-group__birthday-select-wrap
                 = fa_icon "chevron-down", class: "fa-chevron-down-year"
-                = select_tag :year, options_for_select(years), prompt: "--", class: "registration-form__content__form-group__birthday-select-wrap__select"
+                = select_tag :year, options_for_select(years), prompt: "--", class: "registration-form__content__form-group__birthday-select-wrap__select #{has_error(@user.errors[:birth_date])}"
               %span 年
               .registration-form__content__form-group__birthday-select-wrap
                 = fa_icon "chevron-down", class: "fa-chevron-down-month"
-                = select_tag :month, options_for_select(months), prompt: "--", class: "registration-form__content__form-group__birthday-select-wrap__select"
+                = select_tag :month, options_for_select(months), prompt: "--", class: "registration-form__content__form-group__birthday-select-wrap__select #{has_error(@user.errors[:birth_date])}"
               %span 月
               .registration-form__content__form-group__birthday-select-wrap
                 = fa_icon "chevron-down", class: "fa-chevron-down-day"
-                = select_tag :day, options_for_select([["--",""]]), class: "registration-form__content__form-group__birthday-select-wrap__select"
+                = select_tag :day, options_for_select([["--",""]]), class: "registration-form__content__form-group__birthday-select-wrap__select #{has_error(@user.errors[:birth_date])}"
               %span 日
             .clearfix
               = render "shared/user_errors", errors: @user.errors[:birth_date]
@@ -93,10 +93,6 @@
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         .registration-form__content
           .registration-form__content__form-group
-            %p.registration-form__content__form-group__text-center
-              「次へ進む」のボタンを押すことにより、
-              %a{:href => "#"}> 利用規約
-              に同意したものとみなします
           = f.submit "次へ進む", class: "registration-form__content__btn"
   %footer.registration__footer
     = link_to root_path, class: "registration__footer__logo" do
