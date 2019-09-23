@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2019_09_22_120304) do
     t.string "last_name_kana", null: false
     t.string "birth_date", null: false
     t.string "phone_number"
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.string "house_address", null: false
+    t.string "prefecture"
+    t.string "city"
+    t.string "house_address"
     t.string "building_name"
-    t.string "zipcode", null: false
+    t.string "zipcode"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
