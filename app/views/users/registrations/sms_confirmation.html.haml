@@ -1,0 +1,44 @@
+.registration
+  %header.registration__header
+    %h1
+      = link_to root_path, class: "registration__header--logo" do
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
+    %nav.registration__header__bar
+      %ol.clearfix
+        %li.through
+          会員情報
+          .registration__header__bar__status
+        %li.active
+          電話番号認証
+          .registration__header__bar__status
+        %li
+          お届け先住所入力
+          .registration__header__bar__status
+        %li
+          支払い方法
+          .registration__header__bar__status
+        %li
+          完了
+          .registration__header__bar__status
+  %main.registration__main
+    %section.registration__main__section
+      %h2.registration__main__section__head 電話番号の確認
+      = form_with model: @user, class: "registration-form" do |f|
+        .registration-form__content
+          .registration-form__content__form-group.registration-form__content__form-group-first
+            = f.label :phone_number, "携帯電話の番号"
+            %br/
+            = f.text_field :phone_number, class: "registration-form__content__form-group__input", placeholder: "携帯電話の番号を入力"
+            = render "shared/user_errors", errors: @user.errors[:phone_number]
+          %p
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          = f.submit "SMSを送信する", class: "registration-form__content__btn"
+          %p
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+
+  %footer.registration__footer.registration__footer--sms_confirmation
+    .registration__footer__wrap
+      = link_to root_path, class: "registration__footer__logo" do
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763", width: "80",height: "65"
+      %p
+        %small © 2019 Mercari
