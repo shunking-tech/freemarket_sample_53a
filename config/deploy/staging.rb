@@ -1,4 +1,4 @@
-server '3.115.137.156', user: 'ec2-user', roles: %w{app db web}
+server 'stg.freemarket.gyabooo.work', user: 'ec2-user', roles: %w{app db web}
 
 set :rails_env, "staging"
 set :unicorn_rack_env, "staging"
