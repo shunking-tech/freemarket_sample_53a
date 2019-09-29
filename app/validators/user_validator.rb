@@ -39,7 +39,8 @@ class UserValidator < ActiveModel::Validator
   end
 
   def password_validate(record, password)
-    password_regex = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+    password_regex = /\A(?=.*?[a-z])(?=.*?\d).+\z/i
+    # (?=.*?[^@\s[[:blank:]]:\p{Hiragana}\p{Katakana}[ー－][一-龠々]、。\n])
     if password.blank?
       record.errors[:password].push("パスワードを入力してください", "パスワードは7文字以上128文字以下で入力してください", "英字と数字両方を含むパスワードを設定してください").shift()
     else
