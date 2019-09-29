@@ -28,5 +28,6 @@
 
 # Ignore images
 /public/uploads/*
+
 # Ignore env
 /.env
