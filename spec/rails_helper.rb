@@ -1,3 +1,7 @@
+# テストでログイン処理をするため
+require 'devise'
+require File.expand_path("spec/support/controller_macros.rb")
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -33,6 +37,9 @@ end
 RSpec.configure do |config|
   # factory_botの記法の省略をするための記述
   config.include FactoryBot::Syntax::Methods
+  # テストでログイン処理をするため
+  config.include Devise::TestHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
