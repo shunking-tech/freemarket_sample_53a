@@ -90,7 +90,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+
 gem 'devise'
 gem 'haml-rails'
-gem 'pry-rails'
 gem "font-awesome-rails"
+
+# .envファイル用
+gem 'dotenv-rails'
+
+# SNS認証
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
