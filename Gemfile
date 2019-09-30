@@ -94,3 +94,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'pry-rails'
 gem "font-awesome-rails"
+gem "active_hash"
+gem "ancestry"
+gem "enum_help"
+gem 'rails-i18n', '~> 5.1'

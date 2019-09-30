@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (3.0.0)
+      activesupport (>= 5.0.0)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -46,6 +48,8 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.3.3)
       sshkit (>= 1.6.1, != 1.7.0)
+    ancestry (3.0.7)
+      activerecord (>= 3.2.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -107,6 +111,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.8.0)
     erubis (2.7.0)
     excon (0.66.0)
@@ -230,6 +236,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (5.1.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -328,6 +337,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
+  ancestry
   bootsnap (>= 1.1.0)
   byebug
   capistrano
@@ -340,6 +351,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  enum_help
   factory_bot_rails
   faker
   fog-aws
@@ -354,6 +366,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails-controller-testing
+  rails-i18n (~> 5.1)
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
