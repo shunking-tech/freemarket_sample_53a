@@ -1,0 +1,27 @@
+ja:
+  enums:
+    item:
+      condition:
+        unused: "新品、未使用"
+        almost_new: "未使用に近い"
+        non_dirty: "目立った傷や汚れなし"
+        little_dirty: "やや傷や汚れあり"
+        dirty: "傷や汚れあり"
+        bad: "全体的に状態が悪い"
+      task:
+        exhibiting: "出品中"
+        waiting_shipping: "発送待ち"
+        rating_seller: "受け取り評価待ち"
+        rating_buyer: "評価待ち"
+        complete: "取引完了"
+        stopping: "出品停止"
+      payer_delivery_expense:
+        undecided: "未定"
+        yamato: "クロネコヤマト"
+        yu_pack: "ゆうパック"
+        yu_mail: "ゆうメール"
+      delivery_days:
+        within1_2days: "1~2日以内"
+        within2_3days: "2~3日以内"
+        within4_7days: "3~7日以内"
+  activerecord:
