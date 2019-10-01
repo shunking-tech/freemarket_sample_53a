@@ -86,7 +86,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_password
-    password = Devise.friendly_token.first(16)
+    password = Devise.friendly_token.first(14)
+    password.insert(rand(14), rand(9).to_s).insert(rand(15), ("A".."Z").to_a[rand(26)])
     params[:user][:password] = password
     params[:user][:password_confirmation] = password
   end
