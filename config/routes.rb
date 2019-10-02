@@ -6,14 +6,16 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
+    get "sign_up", to: "users/registrations#new"
     get "login", to: "users/sessions#new"
     get "logout", to: "users/sessions#logout"
     delete "logout", to: "users/sessions#destroy"
-    get "registrations/sms_confirmation", to: "users/registrations#sms_confirmation"
-    get "registrations/deliver_address", to: "users/registrations#deliver_address"
-    get "registrations/registration_complete", to: "users/registrations#registration_complete"
-    get "registrations/creditcard", to: "users/registrations#creditcard"
-    get "registrations/top", to: "users/registrations#top"
+
+    get "sign_up/top", to: "users/registrations#top"
+    get "sign_up/sms_authorization", to: "users/registrations#sms_authorization"
+    get "sign_up/deliver_address", to: "users/registrations#deliver_address"
+    get "sign_up/creditcard", to: "users/registrations#creditcard"
+    get "sign_up/finish", to: "users/registrations#finish"
   end
 
   root 'items#index'
