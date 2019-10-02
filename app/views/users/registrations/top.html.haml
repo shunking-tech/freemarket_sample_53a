@@ -25,9 +25,4 @@
             = link_to root_path, method: :post, class: "registration-form__content__btn registration-form__content__btn--google" do
               = image_tag '/google-logo.png', width: "26px", height: "26px", class: "registration-form__content__btn--google--logo"
               Googleで登録する
-  %footer.registration__footer.registration__footer--top
-    .registration__footer__wrap
-      = link_to root_path, class: "registration__footer__logo" do
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763", width: "80",height: "65"
-      %p
-        %small © 2019 Mercari
+  = render "registration_footer", current_page: "top"
