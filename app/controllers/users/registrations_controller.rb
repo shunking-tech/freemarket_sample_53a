@@ -39,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to root_url if user_signed_in?
   end
 
-  def sms_confirmation
+  def sms_authorization
     @user = User.new
   end
 
