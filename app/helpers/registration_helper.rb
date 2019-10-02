@@ -8,6 +8,10 @@ module RegistrationHelper
     ["会員情報", "電話番号認証", "お届け先住所入力", "支払い方法", "完了"]
   end
 
+  def check_status_number(status)
+    bar_lists.index(status)
+  end
+
   def bar_status(index, status_number)
     if index == status_number
       "active"
