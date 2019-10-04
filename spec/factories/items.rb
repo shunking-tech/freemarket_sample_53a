@@ -7,7 +7,7 @@ FactoryBot.define do
     task                              {1}
     payer_delivery_expense            {1}
     delivery_days                     {1}
-    prefecture                        {"大阪府"}
+    prefecture_id                     {27}
     user_id                           {1}
     category_id                       {1}
     size_id                           {1}
