@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: [:index, :new, :show]
+  resources :items, only: [:index, :new, :show] do
+    post "likes", to: "item_likes#create"
+    delete "likes", to: "item_likes#destroy"
+  end
   resources :users, only: [:show, :create] do
     resources :creditcards, only: [:index, :new, :create]
     # 【マークアップ】ユーザー本人確認ページ を表示するための仮ルーティング
