@@ -11,7 +11,7 @@ describe ItemLikesController do
       context 'log in' do
 
         before do
-          login user
+          login_user user
         end
 
         context 'save success' do
