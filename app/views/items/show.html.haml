@@ -1,24 +1,24 @@
 = render 'items/header_guide'
 
 .detail-item
-  %h1.detail-item__name="【新品】テスト01"
+  %h1.detail-item__name=@item.name
 
   .detail-item__content
     .detail-item--flex
       .detail-item__photo
 
         .detail-item__photo--image
-          .detail-item__photo--inner
-            = image_tag '/item_1.jpg'
+          .detail-item__photo--outer
+            - @item.item_images.each do |item_image|
+              .detail-item__photo--inner
+                = image_tag item_image.image.url
 
         .detail-item__photo-small
-          .detail-item__photo-small--image.active
-            .detail-item__photo-small--inner
-              = image_tag '/item_1.jpg'
-          -(1..6).each do
+          - @item.item_images.each do |item_image|
             .detail-item__photo-small--image
+              %span
               .detail-item__photo-small--inner
-                = image_tag '/item_2.jpg'
+                = image_tag item_image.image.url
 
       .detail-item__item-info
         %table.detail-item__item-info--table
@@ -26,83 +26,103 @@
             %tr
               %th 出品者
               %td
-                = link_to 'テスト', item_path
+                = link_to @item.user.nickname, user_path(@item.user)
                 %div
                   .detail-item__item-info--user-ratings
                     %svg.icon-good.svg-inline--fa.fa-laugh.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "laugh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
                       %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 152c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm88 272h-16c-73.4 0-134-55-142.9-126-1.2-9.5 6.3-18 15.9-18h270c9.6 0 17.1 8.4 15.9 18-8.9 71-69.5 126-142.9 126z", fill: "currentColor"}
-                    %span 33
+                    %span=@item.user.good_count
+
                   .detail-item__item-info--user-ratings
                     %svg.icon-normal.svg-inline--fa.fa-meh.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "meh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
                       %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z", fill: "currentColor"}
-                    %span 2
+                    %span=@item.user.normal_count
+
                   .detail-item__item-info--user-ratings
                     %svg.icon-bad.svg-inline--fa.fa-frown.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "frown", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
                       %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z", fill: "currentColor"}
-                    %span 0
+                    %span=@item.user.bad_count
             %tr
               %th カテゴリー
               %td
+                -# TODO:カテゴリのリンク変更
                 = link_to item_path do
-                  %div レディース
-                = link_to item_path do
-                  .detail-item__sub-category
-                    %i.icon-arrow-right
-                    パンツ
-                = link_to item_path do
-                  .detail-item__sub-sub-category
-                    %i.icon-arrow-right
-                    クロップドパンツ
+                  %div=@item.category.root.name
+                -# TODO:カテゴリのリンク変更
+                - @item.after_first_categories.each do |category|
+                  = link_to item_path do
+                    .detail-item__sub-category
+                      %i.icon-arrow-right
+                        = category.name
+
             %tr
               %th ブランド
               %td
-                = link_to item_path do
-                  %div
-                    エイチビューティーアンドユースユナイテッドアローズ
+                -# TODO:ブランドはあとで実装
+                -# - if @item.brand.present?
+                -#   = link_to item_path do
+                -#     %div=@item.brand.root.name
+                -# - else
+                  なし
             %tr
               %th 商品のサイズ
-              %td S
+              %td=@item.size.size
             %tr
               %th 商品の状態
-              %td 目立った傷や汚れなし
+              %td=@item.condition_i18n
             %tr
               %th 配送料の負担
-              %td 送料込み(出品者負担)
+              %td=@item.player_expense_detail
             %tr
               %th 配送の方法
-              %td 未定
+              %td=@item.shipping_method_i18n
             %tr
               %th 配送元地域
               %td
-                = link_to '大阪府', item_path
+                -# TODO:地域別の商品リンク先変更
+                = link_to @item.prefecture.name, item_path
             %tr
               %th 発送日の目安
-              %td 1~2日で発送
+              %td=@item.delivery_days_i18n
 
   .detail-item__price.text-center
-    %span.detail-item__price--text.bold="¥999"
+    %span.detail-item__price--text.bold="¥#{@item.delimited_price}"
     %span.detail-item__price--tax="(税込)"
-    %span.detail-item__price--shipping-fee="送料込み"
+    %span.detail-item__price--shipping-fee=@item.payer_delivery_expense_i18n
 
-  .detail-item__price-info.text-center
-    .detail-item__point-message="残高 ¥733 をお持ちです"
+  -# TODO:残高表示いるのかどうか
+  -# .detail-item__price-info.text-center
+  -#   .detail-item__point-message="残高 ¥733 をお持ちです"
 
-  = link_to '購入画面に進む', root_path, class: 'detail-item__buy'
+  = link_to '購入画面に進む', new_trade_path, class: 'detail-item__buy'
 
   .detail-item__description
     .detail-item__description__inner<>
-      これはテストです       あああ
-      これはテストです
-      やる気出ないよ〜〜〜〜
-      仕事やめたいよ〜〜〜〜
-      働きたくないよ〜〜〜〜
+      = @item.description
 
   .detail-item__links
     .detail-item__links--left
-      = button_tag type: "button", name: "like", data: { toggle: "like", id: "1" }, class: "detail-item__links__btn--like detail-item__links__btn" do
-        %i.icon-like
-        %span="いいね!"
-        %span=0
+
+      - if @item.seller?(current_user)
+        = link_to nil, { class: "detail-item__links__btn--like detail-item__links__btn not-allowed", method: :delete, remote: true } do
+          %i.icon-like.fa
+          %span="いいね!"
+          %span=@item.item_likes.count
+
+      - else
+
+        - if @item.liked_by?(current_user)
+          = link_to item_likes_path(@item), { class: "detail-item__links__btn--like detail-item__links__btn active", method: :delete, remote: true } do
+            %i.icon-like.fa
+            %span="いいね!"
+            %span=@item.item_likes.count
+
+        - else
+          = link_to item_likes_path(@item), { class: "detail-item__links__btn--like detail-item__links__btn", method: :post, remote: true } do
+            %i.icon-like.fa
+            %span="いいね!"
+            %span=@item.item_likes.count
+
       = link_to item_path, data: {open: "modal"}, class: "detail-item__links__btn detail-item__links__btn--report" do
         %i.icon-flag
         %span="不適切な商品の報告"
@@ -114,94 +134,93 @@
 
 
 .detail-item__message-box
+  -# TODO:余裕があれば実装
+  -# .detail-item__messages
+  -#   - @item.item_comments.each do |comment|
+  -#     .detail-item__message
+  -#       = link_to item_path, class: 'detail-item__message__user-icon' do
+  -#         %div
+  -#           -# TODO:アバターモデル追加
+  -#           = image_tag '/message_icon.jpg'
+  -#           %span.bold
+  -#             = @comment.user.nickname
+  -#       .detail-item__message__body
+  -#         .detail-item__message__body--text<>
+  -#           = @comment.content
+  -#         .detail-item__message__body__icons
+  -#           .detail-item__message__body__icons--left
+  -#             %i.icon-clock
+  -#             %span="39分前"
+  -#           .detail-item__message__body__icons--right
+  -#             = form_with url: item_path do
+  -#               = button_tag type: :submit do
+  -#                 %i.icon-flag 
+  -#         %i.icon-balloon
 
-  .detail-item__messages
-    - (1..5).each do
-      .detail-item__message
-        = link_to item_path, class: 'detail-item__message__user-icon' do
-          %div
-            = image_tag '/message_icon.jpg'
-            %span.bold
-              テストおお
-        .detail-item__message__body
-          .detail-item__message__body--text<>
-            なんで  aa
-            ここは
-            BR使うの？
-          .detail-item__message__body__icons
-            .detail-item__message__body__icons--left
-              %i.icon-clock
-              %span="39分前"
-            .detail-item__message__body__icons--right
-              = form_with url: item_path do
-                = button_tag type: :submit do
-                  %i.icon-flag 
-          %i.icon-balloon
-
+  -# TODO: 余裕があれば実装
   .detail-item__input-message
-    = form_with url: root_path, method: :post, class: 'detail-item__input-message__form' do |f|
+    = form_with url: item_path, method: :post, class: 'detail-item__input-message__form' do |f|
       %p="相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。"
       = f.text_area :body, class: 'detail-item__input-message__textarea'
       = f.button nil, type: 'submit', class: 'detail-item__input-message__submit detail-item__input-message__submit--btn-gray' do
         %span="コメントする"
 
+
 %ul.detail-item__nav
   %li.detail-item__nav--prev
-    = link_to root_path do
-      テスト1
-      %i.icon-arrow-left
+    = direction_item('prev', @item)
   %li.detail-item__nav--next
-    = link_to root_path do
-      テスト2
-      %i.icon-arrow-right
+    = direction_item('next', @item)
 
 
 .detail-item__sns
   .detail-item__sns--facebook
-    = link_to root_path, nil, class: 'detail-item__sns--button', target: :_blank do
-      %i.icon-facebook
+    = facebook_link
+
   .detail-item__sns--twitter
-    = link_to root_path, nil, class: 'detail-item__sns--button', target: :_blank do
-      %i.icon-twitter
+    = twitter_link(@item)
+
   .detail-item__sns--pinterest
-    = link_to root_path, nil, class: 'detail-item__sns--button', target: :_blank do
-      %i.icon-pinterest
+    = pinterest_link(@item)
 
 
 .detail-item__other-items
   .detail-item__other-items--users
     %h2.detail-item__other-items--title
-      = link_to 'TESTさんのその他の出品', root_path
+      = link_to "#{@item.user.nickname}さんのその他の出品", user_path(@item.user)
+
     .detail-item__other-items__contents
-      - (1..5).each do
+      - @item.user_other_items.limit(6).each do |item|
         .detail-item__other-items__content
-          = link_to item_path, nil do
+          = link_to item_path(item), nil do
             %figure.detail-item__other-items__content--figure
-              = image_tag '/other_item.jpg', class: "lazyloaded"
+              = image_tag item.item_images.first.image.url, class: "lazyloaded"
             .detail-item__other-items__content__box
-              %h3.detail-item__other-items__content__box--title.font-2="これはタイトルですあああああああああああああああああ"
+              %h3.detail-item__other-items__content__box--title.font-2=item.name
               .detail-item__other-items__content__box--footer
-                .detail-item__other-items__content__box--price.font-5="¥777"
+                .detail-item__other-items__content__box--price.font-5="¥#{item.delimited_price}"
                 .detail-item__other-items__content__box--like.font-2
                   %i.icon-like
-                  %span="4"
+                  %span=item.item_likes.count
 
   .detail-item__other-items--brand-category
     %h2.detail-item__other-items--title
-      = link_to 'マイブランドのTシャツ その他の出品', root_path
+      -# TODO:カテゴリー別のリンク先変更
+      = link_to "#{@item.category.name} (#{@item.category.root.name}) その他の出品", root_path
+
     .detail-item__other-items__contents
-      - (1..5).each do
+      - @item.category_other_items.limit(6).each do |item|
         .detail-item__other-items__content
-          = link_to item_path, nil do
+          = link_to item_path(item), nil do
             %figure.detail-item__other-items__content--figure
-              = image_tag '/other_item.jpg', class: "lazyloaded"
+              = image_tag item.item_images.first.image.url, class: "lazyloaded"
             .detail-item__other-items__content__box
-              %h3.detail-item__other-items__content__box--title.font-2="これはタイトルですあああああああああああああああああ"
+              %h3.detail-item__other-items__content__box--title.font-2=item.name
               .detail-item__other-items__content__box--footer
-                .detail-item__other-items__content__box--price.font-5="¥777"
+                .detail-item__other-items__content__box--price.font-5="¥#{item.get_delimited_price}"
                 .detail-item__other-items__content__box--like.font-2
                   %i.icon-like
-                  %span="4"
+                  %span=item.item_likes.count
 
 
 .detail-item__bread-crumbs
@@ -210,6 +229,6 @@
       = link_to 'メルカリ', root_path
       %i.icon-arrow-right
     %li
-      %span.detail-item__bread-crumbs--title="【新品】テスト01"
+      %span.detail-item__bread-crumbs--title=@item.name
 
 = render 'items/footer'
