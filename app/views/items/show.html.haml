@@ -94,7 +94,7 @@
   -# .detail-item__price-info.text-center
   -#   .detail-item__point-message="残高 ¥733 をお持ちです"
 
-  = link_to '購入画面に進む', new_trade_path, class: 'detail-item__buy'
+  = link_to '購入画面に進む', new_item_trade_path(@item), class: 'detail-item__buy'
 
   .detail-item__description
     .detail-item__description__inner<>
@@ -217,7 +217,7 @@
             .detail-item__other-items__content__box
               %h3.detail-item__other-items__content__box--title.font-2=item.name
               .detail-item__other-items__content__box--footer
-                .detail-item__other-items__content__box--price.font-5="¥#{item.get_delimited_price}"
+                .detail-item__other-items__content__box--price.font-5="¥#{item.delimited_price}"
                 .detail-item__other-items__content__box--like.font-2
                   %i.icon-like
                   %span=item.item_likes.count
