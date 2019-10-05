@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  include Scopes
 
   enum condition: [:unused, :almost_new, :non_dirty, :little_dirty, :dirty, :bad]
   enum task: [:exhibiting, :waiting_shipping, :rating_seller, :rating_buyer, :complete, :stopping]
@@ -15,4 +16,44 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :size
+
+  scope :category_items, -> (category_id) { where('category_id = ?', category_id) }
+
+  # MEMO: scopeがnilを返す場合は検索対象のモデルのallが適用されるためクラスメソッドで記述
+  def self.prev_item(item)
+    recently.where('created_at <= ? and id < ?', item.created_at, item.id).first
+  end
+
+  # MEMO: scopeがnilを返す場合は検索対象のモデルのallが適用されるためクラスメソッドで記述
+  def self.next_item(item)
+    recently.where('created_at >= ? and id > ?', item.created_at, item.id).last
+  end
+
+  def after_first_categories
+    category.path.slice(1..-1)
+  end
+
+  def delimited_price
+    price.to_s(:delimited)
+  end
+
+  def user_other_items
+    user.items.recently.where.not(id: self.id)
+  end
+
+  def category_other_items
+    category.items.recently.where.not(id: self.id)
+  end
+
+  def liked_by?(user)
+    item_likes.where(user_id: user).present?
+  end
+
+  def seller?(target_user)
+    unless target_user.nil?
+      user.id == target_user.id
+    else
+      false
+    end
+  end
 end
