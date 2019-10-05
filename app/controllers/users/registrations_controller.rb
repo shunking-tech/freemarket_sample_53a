@@ -11,7 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    if session[:sns_id]
+      set_password
+      super
+      update_sns_credential
+    else
+      super
+    end
   end
 
   # GET /resource/edit
@@ -27,6 +33,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     super
+  end
+
+  def top
+    redirect_to root_url if user_signed_in?
   end
 
   def sms_confirmation
@@ -52,6 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
+    change_to_kana
     devise_parameter_sanitizer.permit(
       :sign_up,
       keys: [:nickname,
@@ -63,6 +74,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
              :last_name,
              :last_name_kana,
              :birth_date])
+  end
+
+  private
+
+  def change_to_kana
+    first_name_kana = params[:user][:first_name_kana]
+    last_name_kana = params[:user][:last_name_kana]
+    params[:user][:first_name_kana] = first_name_kana.tr('ぁ-ん','ァ-ン')
+    params[:user][:last_name_kana] = last_name_kana.tr('ぁ-ん','ァ-ン')
+  end
+
+  def set_password
+    password = Devise.friendly_token.first(14)
+    password.insert(rand(14), rand(9).to_s).insert(rand(15), ("A".."Z").to_a[rand(26)])
+    params[:user][:password] = password
+    params[:user][:password_confirmation] = password
+  end
+
+  def update_sns_credential
+    sns = SnsCredential.find(session[:sns_id])
+    sns.update(user_id:  @user.id)
+    session[:sns_id] = nil
   end
 
   # If you have extra params to permit, append them to the sanitizer.
