@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_many :item_comments
-  has_many :item_images
+  has_many :item_images, dependent: :destroy
   has_many :item_likes
   has_many :liked_users, through: :items_likes, source: :user
   belongs_to_active_hash :prefecture
