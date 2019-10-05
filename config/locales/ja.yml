@@ -16,10 +16,18 @@ ja:
         complete: "取引完了"
         stopping: "出品停止"
       payer_delivery_expense:
+        seller_burden: "送料込み(出品者負担)"
+        buyer_burden: "着払い(購入者負担)"
+      shipping_method:
         undecided: "未定"
+        easy_mercari_post: "らくらくメルカリ便"
+        yu_mail: "ゆうメール"
+        letter_pack: "レターパック"
+        regular_mail: "普通郵便(定形、定形外)"
         yamato: "クロネコヤマト"
         yu_pack: "ゆうパック"
-        yu_mail: "ゆうメール"
+        click_post: "クリックポスト"
+        yu_packet: "ゆうパック"
       delivery_days:
         within1_2days: "1~2日以内"
         within2_3days: "2~3日以内"

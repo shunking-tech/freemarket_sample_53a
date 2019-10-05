@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_064016) do
     t.integer "condition", default: 0, null: false
     t.integer "task", default: 0, null: false
     t.integer "payer_delivery_expense", default: 0, null: false
+    t.integer "shipping_method", default: 0, null: false
     t.integer "delivery_days", default: 0, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
