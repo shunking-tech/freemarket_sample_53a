@@ -4,9 +4,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id]).decorate
     @item_comment = ItemComment.new
-    @item_comments = @item.item_comments
+    # 一旦、保留
+    # @item_comments = @item.item_comments
   end
 
   def new
