@@ -1,24 +1,34 @@
 require 'rails_helper'
 
 describe ItemLikesController do
-  let(:user) { create(:user) }
-  let(:item) { create(:item) }
 
-  describe 'Get #show' do
+  # データ作成
+  def create_data
+    # テスト用DBにデータを保存
+    user = create(:user)
+    create(:category)
+    create(:size)
+    item = create(:item)
+    # itemとuserをハッシュにして返す
+    return {item: item, user: user}
+  end
+
+  describe 'いいね機能' do
+    let(:data) { create_data }
 
     describe 'Post #create' do
 
       context 'log in' do
 
         before do
-          login_user user
+          login_user data[:user]
         end
 
         context 'save success' do
           it 'save success with item_like' do
             expect do
               post :create, params: {
-                item_id: item.id
+                item_id: data[:item]
               }
             end.to change(ItemLike, :count).by(1)
           end
@@ -39,7 +49,7 @@ describe ItemLikesController do
       context 'not login' do
         before do
           post :create, params: {
-            item_id: item.id
+            item_id: data[:item]
           }
         end
 
