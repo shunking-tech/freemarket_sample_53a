@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   devise_scope :user do
@@ -17,9 +18,13 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: [:index, :new, :show] do
+  resources :items, only: [:index, :new, :show, :destroy] do
     post "likes", to: "item_likes#create"
     delete "likes", to: "item_likes#destroy"
+    resources :trades, only: [:new, :create]
+    member do
+      get :mypage_item_show   # マイページから出品した商品の詳細を表示するためのルーティング
+    end
   end
   resources :users, only: [:show, :create] do
     resources :creditcards, only: [:index, :new, :create]
@@ -30,7 +35,4 @@ Rails.application.routes.draw do
   end
 
   get 'profile_edit', to: 'users#profile_edit'
-
-  # ルートの仮置きです
-  resources :trades, only: [:new, :create]
 end

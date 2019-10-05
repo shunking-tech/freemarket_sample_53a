@@ -1,0 +1,27 @@
+.detail-item {
+  background: #fff;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px;
+  width: 700px;
+  box-sizing: border-box;
+  &__edit {
+    font-size: 15px;
+    line-height: 60px;
+    display: block;
+    margin-top: 16px;
+    background: #ea352d;
+    color: #fff;
+    text-align: center;
+    transition: all ease-out .3s;
+  }
+  &__delete {
+    font-size: 15px;
+    line-height: 60px;
+    display: block;
+    margin-top: 16px;
+    background: #aaa;
+    color: #fff;
+    text-align: center;
+    transition: all ease-out .3s;
+  }
+}
