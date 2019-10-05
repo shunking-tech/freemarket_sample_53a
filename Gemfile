@@ -94,3 +94,6 @@ gem 'devise'
 gem 'haml-rails'
 gem 'pry-rails'
 gem "font-awesome-rails"
+
+# decorater追加
+gem 'draper'
