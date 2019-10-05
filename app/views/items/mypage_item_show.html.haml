@@ -1,0 +1,132 @@
+= render 'items/header_guide'
+
+.detail-item
+  %h1.detail-item__name=@item.name
+
+  .detail-item__content
+    .detail-item--flex
+      .detail-item__photo
+
+        .detail-item__photo--image
+          .detail-item__photo--inner
+            = image_tag @item.item_images[0].image
+
+        .detail-item__photo-small
+          .detail-item__photo-small--image.active
+            .detail-item__photo-small--inner
+              = image_tag @item.item_images[0].image
+          -@item.item_images.each do |item_image|
+            .detail-item__photo-small--image
+              .detail-item__photo-small--inner
+                = image_tag item_image.image
+
+      .detail-item__item-info
+        %table.detail-item__item-info--table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to 'テスト', user_path(current_user)
+                %div
+                  .detail-item__item-info--user-ratings
+                    %svg.icon-good.svg-inline--fa.fa-laugh.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "laugh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 152c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm88 272h-16c-73.4 0-134-55-142.9-126-1.2-9.5 6.3-18 15.9-18h270c9.6 0 17.1 8.4 15.9 18-8.9 71-69.5 126-142.9 126z", fill: "currentColor"}
+                    %span 未
+                  .detail-item__item-info--user-ratings
+                    %svg.icon-normal.svg-inline--fa.fa-meh.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "meh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z", fill: "currentColor"}
+                    %span 未
+                  .detail-item__item-info--user-ratings
+                    %svg.icon-bad.svg-inline--fa.fa-frown.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "frown", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z", fill: "currentColor"}
+                    %span 未
+            %tr
+              %th カテゴリー
+              %td
+                = link_to item_path do
+                  %div 未実装
+                = link_to item_path do
+                  .detail-item__sub-category
+                    %i.icon-arrow-right
+                    未実装
+                = link_to item_path do
+                  .detail-item__sub-sub-category
+                    %i.icon-arrow-right
+                    未実装
+            %tr
+              %th ブランド
+              %td
+                = link_to item_path do
+                  %div
+                    未実装
+            %tr
+              %th 商品のサイズ
+              %td enum未実装
+            %tr
+              %th 商品の状態
+              %td enum未実装
+            %tr
+              %th 配送料の負担
+              %td enum未実装
+            %tr
+              %th 配送の方法
+              %td enum未実装
+            %tr
+              %th 配送元地域
+              %td
+                = link_to @item.prefecture.name, item_path
+            %tr
+              %th 発送日の目安
+              %td enum未実装
+
+  .detail-item__price.text-center
+    %span.detail-item__price--text.bold="¥#{@item.price}"
+    %span.detail-item__price--tax="(税込)"
+    %span.detail-item__price--shipping-fee="送料込み"
+
+  .detail-item__description
+    .detail-item__description__inner<>
+      = @item.description
+
+.detail-item__message-box
+
+  .detail-item__messages
+    = link_to '商品の編集', "#", method: :delete, class: 'detail-item__edit'
+    %p.text-center or
+    = link_to '出品を一旦停止する', "#", method: :delete, class: 'detail-item__delete'
+    = link_to 'この商品を削除する', "/items/#{@item.id}", method: :delete, class: 'detail-item__delete'
+
+.detail-item__message-box
+
+  .detail-item__messages
+    - (1..5).each do
+      .detail-item__message
+        = link_to item_path, class: 'detail-item__message__user-icon' do
+          %div
+            = image_tag '/message_icon.jpg'
+            %span.bold
+              テストおお
+        .detail-item__message__body
+          .detail-item__message__body--text<>
+            なんで  aa
+            ここは
+            BR使うの？
+          .detail-item__message__body__icons
+            .detail-item__message__body__icons--left
+              %i.icon-clock
+              %span="39分前"
+            .detail-item__message__body__icons--right
+              = form_with url: item_path do
+                = button_tag type: :submit do
+                  %i.icon-flag 
+          %i.icon-balloon
+
+  .detail-item__input-message
+    = form_with url: root_path, method: :post, class: 'detail-item__input-message__form' do |f|
+      %p="相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。"
+      = f.text_area :body, class: 'detail-item__input-message__textarea'
+      = f.button nil, type: 'submit', class: 'detail-item__input-message__submit detail-item__input-message__submit--btn-gray' do
+        %span="コメントする"
+
+
+= render 'items/footer'

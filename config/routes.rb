@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: [:index, :new, :show]
+  resources :items, only: [:index, :new, :show, :destroy] do
+    member do
+      get :mypage_item_show   # マイページから出品した商品の詳細を表示するためのルーティング
+    end
+  end
   resources :users, only: [:show, :create] do
     resources :creditcards, only: [:index, :new, :create]
     # 【マークアップ】ユーザー本人確認ページ を表示するための仮ルーティング
