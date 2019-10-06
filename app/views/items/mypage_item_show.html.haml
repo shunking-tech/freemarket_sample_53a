@@ -94,7 +94,7 @@
     = link_to '商品の編集', "#", method: :delete, class: 'detail-item__edit'
     %p.text-center or
     = link_to '出品を一旦停止する', "#", method: :delete, class: 'detail-item__delete'
-    = link_to 'この商品を削除する', "/items/#{@item.id}", method: :delete, class: 'detail-item__delete'
+    = link_to 'この商品を削除する', item_path(@item.id), method: :delete, class: 'detail-item__delete'
 
 .detail-item__message-box
 
@@ -118,7 +118,7 @@
             .detail-item__message__body__icons--right
               = form_with url: item_path do
                 = button_tag type: :submit do
-                  %i.icon-flag 
+                  %i.icon-flag
           %i.icon-balloon
 
   .detail-item__input-message
