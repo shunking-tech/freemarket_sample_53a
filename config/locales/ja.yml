@@ -1,0 +1,35 @@
+ja:
+  enums:
+    item:
+      condition:
+        unused: "新品、未使用"
+        almost_new: "未使用に近い"
+        non_dirty: "目立った傷や汚れなし"
+        little_dirty: "やや傷や汚れあり"
+        dirty: "傷や汚れあり"
+        bad: "全体的に状態が悪い"
+      task:
+        exhibiting: "出品中"
+        waiting_shipping: "発送待ち"
+        rating_seller: "受け取り評価待ち"
+        rating_buyer: "評価待ち"
+        complete: "取引完了"
+        stopping: "出品停止"
+      payer_delivery_expense:
+        seller_burden: "送料込み(出品者負担)"
+        buyer_burden: "着払い(購入者負担)"
+      shipping_method:
+        undecided: "未定"
+        easy_mercari_post: "らくらくメルカリ便"
+        yu_mail: "ゆうメール"
+        letter_pack: "レターパック"
+        regular_mail: "普通郵便(定形、定形外)"
+        yamato: "クロネコヤマト"
+        yu_pack: "ゆうパック"
+        click_post: "クリックポスト"
+        yu_packet: "ゆうパック"
+      delivery_days:
+        within1_2days: "1~2日以内"
+        within2_3days: "2~3日以内"
+        within4_7days: "3~7日以内"
+  activerecord:

@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
 
   validates_with UserValidator
+  has_many :items
+  has_many :item_likes
+  has_many :liked_items, through: :item_likes, source: :item
+  has_many :item_comments
 
   def self.find_oauth(auth)
     uid = auth.uid
