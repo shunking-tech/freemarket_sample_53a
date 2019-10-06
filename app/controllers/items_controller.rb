@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:mypage_item_show, :destroy]
+
   def index
   end
 
@@ -6,11 +8,15 @@ class ItemsController < ApplicationController
   end
 
   def mypage_item_show
-    @item = Item.find(params[:id])
   end
 
   def destroy
-    Item.find(params[:id]).destroy
+    @item.destroy
     redirect_to controller: 'users', action: 'show', id: current_user.id
+  end
+
+  private
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
