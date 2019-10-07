@@ -1,0 +1,137 @@
+.session {
+  padding: 0;
+  &__header {
+    height: 128px;
+    text-align: center;
+    h1 {
+      margin: 40px 0 0;
+      margin-left: 0px;
+      display: inline-block;
+    }
+    &--logo {
+      display: inline-block;
+      line-height: 49px;
+      margin: 0 8px 0 0;
+    }
+  }
+
+  &__main {
+    &__section {
+      background: #fff;
+      max-width: none;
+      width: 456px;
+      margin: 0 auto;
+      &__no-account {
+        padding: 40px 64px;
+        text-align: center;
+        p {
+          font-size: 14px;
+          margin: 0;
+        }
+        &__btn {
+          @include button();
+          margin: 8px 0 0;
+          display: block;
+          line-height: 40px;
+          font-size: 14px;
+          border: 1px solid #0099e8;
+          background: #0099e8;
+        }
+      }
+      &__login-no-mail {
+        padding: 16px 16px 40px;
+        border-top: 1px solid #f5f5f5;
+        padding: 32px 64px;
+        text-align: center;
+        &__btn {
+          @include button();
+          margin: 24px 0 0;
+          display: block;
+          line-height: 48px;
+          font-size: 14px;
+          text-align: center;
+          &--facebook {
+            margin: 0;
+            background: #385185;
+            border: 1px solid transparent;
+            position: relative;
+            .fa-facebook-square {
+              position: absolute;
+              font-size: 28px;
+              top: 10px;
+              left: 20px;
+            }
+          }
+          &--google {
+            margin: 16px 0 0;
+            background: $white;
+            border: #979797 solid 1px;
+            color: #333;
+            position: relative;
+            &--logo {
+              position: absolute;
+              top: 11px;
+              left: 20px;
+            }
+          }
+        }
+      }
+      .session-form {
+        padding: 24px 64px;
+        &__content {
+          text-align: center;
+          &__form-group {
+            margin: 24px 0 0;
+            width: 100%;
+            &-first {
+              margin: 0;
+            }
+            &__input {
+              height: 48px;
+              width: 100%;
+              margin: 8px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+            }
+            .has-error {
+              border-color: $active_red;
+            }
+            .has-error-text {
+              color: $active_red;
+              line-height: 1.5;
+              font-size: 14px;
+              li {
+                margin: 8px 0 0;
+              }
+            }
+          }
+          &__btn {
+            @include button();
+            margin: 24px 0 0;
+            display: block;
+            line-height: 48px;
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  &__footer {
+    width: 456px;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    p {
+      margin: 8px 0 0;
+      small {
+        font-size: 12px;
+      }
+    }
+  }
+}

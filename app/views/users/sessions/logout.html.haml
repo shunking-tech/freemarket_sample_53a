@@ -4,9 +4,8 @@
 
   .content
     %section.logout__container
-      = form_with url: root_path, method: :post, class: 'logout__form' do |f|
-        .logout__content
-          = f.button "ログアウト", type: 'submit', class: 'logout__submit'
+      .logout__form
+        = link_to "ログアウト", logout_path, method: :delete, class: 'logout__submit'
 
   = render 'users/mypage/side'
   = render 'items/footer_btn'

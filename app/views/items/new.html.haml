@@ -21,7 +21,8 @@
                   .sellmain__page__box__form__upload__first__phone
                     .sellmain__page__box__form__upload__first__phone__items
                       %ul
-                  .sellmain__page__box__form__upload__first__pc
+                      -# ↓一旦labelで指定 のちにjsでdiv状態でtype fileしよう可能変更
+                  %label.sellmain__page__box__form__upload__first__pc
                     %input.sellmain__page__box__form__upload__first__pc__print{multiple: "multiple", name: "image1",style: "display: none;", type: "file"}
                     %pre.sellmain__page__box__form__upload__first__pc__text
                       :preserve
@@ -107,7 +108,7 @@
                             %input.input-fee{placeholder: "例）300", value: ""}/
                     %li.sell-money__fee
                       .sell-money__fee__left
-                        販売手数料
+                        販売手数料(10%)
                       .sell-money__fee__right
                     %li.sell-money__profit
                       販売利益

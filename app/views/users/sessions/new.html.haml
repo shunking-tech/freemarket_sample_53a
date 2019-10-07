@@ -1,0 +1,40 @@
+.session
+  %header.session__header
+    %h1
+      = link_to root_path, class: "session__header--logo" do
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
+  %main.session__main
+    %section.session__main__section
+      .session__main__section__no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", new_user_session_path, class: "session__main__section__no-account__btn"
+      .session__main__section__login-no-mail
+        - if Rails.env.development?
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class: "session__main__section__login-no-mail__btn session__main__section__login-no-mail__btn--facebook" do
+            = fa_icon "facebook-square"
+            Facebookでログイン
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "session__main__section__login-no-mail__btn session__main__section__login-no-mail__btn--google" do
+            = image_tag '/google-logo.png', width: "26px", height: "26px", class: "session__main__section__login-no-mail__btn--google--logo"
+            Googleでログイン
+        - else
+          = link_to root_path, class: "session__main__section__login-no-mail__btn session__main__section__login-no-mail__btn--facebook" do
+            = fa_icon "facebook-square"
+            Facebookでログイン
+          = link_to root_path, class: "session__main__section__login-no-mail__btn session__main__section__login-no-mail__btn--google" do
+            = image_tag '/google-logo.png', width: "26px", height: "26px", class: "session__main__section__login-no-mail__btn--google--logo"
+            Googleでログイン
+      = form_with model: @user, url: user_session_path, id: "new_user", class: "session-form", local: true do |f|
+        .session-form__content
+          .session-form__content__form-group.session-form__content__form-group-first
+            = f.email_field :email, autocomplete: "email", class: "session-form__content__form-group__input", placeholder: "メールアドレス"
+            = render "shared/user_errors", errors: @user.errors[:email]
+          .session-form__content__form-group
+            = f.password_field :password, autocomplete: "password", class: "session-form__content__form-group__input", placeholder: "パスワード"
+            = render "shared/user_errors", errors: @user.errors[:password]
+          = f.submit "ログイン", class: "session-form__content__btn"
+  %footer.session__footer.session__footer--top
+    .session__footer__wrap
+      = link_to root_path, class: "session__footer__logo" do
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763", width: "80",height: "65"
+      %p
+        %small © 2019 Mercari
