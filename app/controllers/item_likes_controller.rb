@@ -4,13 +4,8 @@ class ItemLikesController < ApplicationController
   def create
     like = current_user.item_likes.new(item_id: @item.id)
     respond_to do |format|
-      if like.save
-        format.html { redirect_to items_path(@item) }
-        format.js
-      else
-        format.html { redirect_to items_path(@item) }
-        format.js
-      end
+      format.html { redirect_to items_path(@item) }
+      format.js
     end
   end
 
