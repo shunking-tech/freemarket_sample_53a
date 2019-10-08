@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_064016) do
+ActiveRecord::Schema.define(version: 2019_10_05_193846) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,29 @@ ActiveRecord::Schema.define(version: 2019_09_29_064016) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_trades_on_buyer_id"
+    t.index ["item_id"], name: "index_trades_on_item_id"
+    t.index ["seller_id"], name: "index_trades_on_seller_id"
+  end
+
+  create_table "user_reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "score", null: false
+    t.string "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "trade_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trade_id"], name: "index_user_reviews_on_trade_id"
+    t.index ["user_id"], name: "index_user_reviews_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -115,4 +138,9 @@ ActiveRecord::Schema.define(version: 2019_09_29_064016) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
+  add_foreign_key "trades", "users", column: "buyer_id"
+  add_foreign_key "trades", "users", column: "item_id"
+  add_foreign_key "trades", "users", column: "seller_id"
+  add_foreign_key "user_reviews", "trades"
+  add_foreign_key "user_reviews", "users"
 end
