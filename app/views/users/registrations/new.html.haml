@@ -1,5 +1,5 @@
 .registration
-  = render "registration_header", status: "会員情報"
+  = render "users/registrations/registration_header", status: "会員情報"
   %main.registration__main
     %section.registration__main__section
       %h2.registration__main__section__head 会員情報入力
@@ -17,7 +17,7 @@
             %br/
             = f.email_field :email, autocomplete: "email", class: "registration-form__content__form-group__input #{has_error(@user.errors[:email])}", placeholder: "PC・携帯どちらでも可"
             = render "shared/user_errors", errors: @user.errors[:email]
-          = render "password_form", f: f unless @sns_id
+          = render "password_form", f: f unless @sns
           .registration-form__content__form-group
             %h3.registration-form__content__form-group__sub-head 本人確認
             %p.registration-form__content__form-group__text
@@ -63,4 +63,4 @@
         .registration-form__content
           .registration-form__content__form-group
           = f.submit "次へ進む", class: "registration-form__content__btn"
-  = render "registration_footer", current_page: nil
+  = render "users/registrations/registration_footer", current_page: nil
