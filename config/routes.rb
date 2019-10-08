@@ -35,10 +35,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create] do
     # クレジットカード
     resource :credit_card, except: [:edit, :update], module: :users
-      member do
-        get :profile
-        get :identification
-      end
+    member do
+      get :profile
+      get :identification
+    end
     end
 
   end
