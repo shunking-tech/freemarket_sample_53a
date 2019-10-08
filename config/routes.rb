@@ -39,8 +39,5 @@ Rails.application.routes.draw do
       get :profile
       get :identification
     end
-    end
-
   end
-
 end
