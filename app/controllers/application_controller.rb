@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth, if: :production?
+  before_action :basic_auth, if: :production? || :staging?
 
   private
 
   def production?
     Rails.env.production?
+  end
+
+  def staging?
+    Rails.env.staging?
   end
 
   def basic_auth
