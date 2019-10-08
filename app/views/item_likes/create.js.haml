@@ -1,0 +1,5 @@
+:plain
+  var like_link = $('.detail-item__links__btn--like');
+  like_link.toggleClass('active');
+  like_link.data('method', 'delete');
+  like_link.children('span:last').text("#{@item.item_likes.count}");
