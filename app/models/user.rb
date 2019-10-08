@@ -26,11 +26,9 @@ class User < ApplicationRecord
         sns = SnsCredential.new(uid: uid, provider: provider, user_id: user.id)
       else
         user = User.new(nickname: auth.info.name, email: auth.info.email)
-        sns = SnsCredential.create(uid: uid, provider: provider)
+        sns = SnsCredential.new(uid: uid, provider: provider)
       end
     end
-    # binding.pry
-    # hashでsnsのidを返り値として保持しておく
-    return { user: user , sns_id: sns.id }
+    return { user: user , sns: sns }
   end
 end

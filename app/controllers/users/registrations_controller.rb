@@ -11,10 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if session[:sns_id]
+    if session[:sns]
       set_password
       super
-      update_sns_credential
+      create_sns_credential
     else
       super
     end
@@ -92,10 +92,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params[:user][:password_confirmation] = password
   end
 
-  def update_sns_credential
-    sns = SnsCredential.find(session[:sns_id])
-    sns.update(user_id:  @user.id)
-    session[:sns_id] = nil
+  def create_sns_credential
+    sns = session[:sns]
+    session[:sns] = nil
+    sns[:user_id] = @user.id
+    SnsCredential.create(sns)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
