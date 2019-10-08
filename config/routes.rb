@@ -23,9 +23,12 @@ Rails.application.routes.draw do
   end
 
   # 商品画面
-  resources :items, only: [:index, :new, :show]
+  resources :items, only: [:index, :new, :show, :destroy] do
+    member do
+      get :mypage_item_show   # マイページから出品した商品の詳細を表示するためのルーティング
+    end
+  end
 
-  # プロフィール画面
   resources :users, only: [:show, :create] do
     # クレジットカード
     resource :credit_card, except: [:edit, :update], module: :users
