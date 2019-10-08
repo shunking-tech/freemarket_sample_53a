@@ -15,5 +15,6 @@ CarrierWave.configure do |config|
     config.asset_host = "https://#{config.fog_directory}.s3-ap-northeast-1.amazonaws.com"
   else
     config.storage = :file
+    config.asset_host = "http://localhost:3000"
   end
 end

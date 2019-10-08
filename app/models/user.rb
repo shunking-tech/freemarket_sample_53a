@@ -6,12 +6,13 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :sns_credentials, dependent: :destroy
-
-  validates_with UserValidator
   has_many :items
   has_many :item_likes
   has_many :liked_items, through: :item_likes, source: :item
   has_many :item_comments
+  has_many :user_reviews
+
+  validates_with UserValidator
 
   def self.find_oauth(auth)
     uid = auth.uid
@@ -34,5 +35,17 @@ class User < ApplicationRecord
       end
     end
     return { user: user , sns: sns }
+  end
+
+  def good_count
+    user_reviews.good_score.count
+  end
+
+  def normal_count
+    user_reviews.normal_score.count
+  end
+
+  def bad_count
+    user_reviews.bad_score.count
   end
 end

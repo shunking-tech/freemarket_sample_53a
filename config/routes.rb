@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   # 商品画面
   resources :items, only: [:index, :new, :show, :destroy] do
+    post "likes", to: "item_likes#create"
+    delete "likes", to: "item_likes#destroy"
+    resources :trades, only: [:new, :create]
     member do
       get :mypage_item_show   # マイページから出品した商品の詳細を表示するためのルーティング
     end
@@ -32,13 +35,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create] do
     # クレジットカード
     resource :credit_card, except: [:edit, :update], module: :users
-
     member do
       get :profile
       get :identification
     end
   end
-
-  # ルートの仮置きです
-  resources :trades, only: [:new, :create]
 end

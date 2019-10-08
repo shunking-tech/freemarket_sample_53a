@@ -1,7 +1,13 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:mypage_item_show, :destroy]
+  before_action :set_item, only: [:show, :mypage_item_show, :destroy]
 
   def index
+  end
+
+  def show
+    # 一旦、保留
+    # @item_comment = ItemComment.new
+    # @item_comments = @item.item_comments
   end
 
   def new
@@ -17,6 +23,6 @@ class ItemsController < ApplicationController
 
   private
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id]).decorate
   end
 end
