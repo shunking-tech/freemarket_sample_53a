@@ -8,7 +8,7 @@
       %h2.registration__main__section__head 新規会員登録
       .registration-form.registration-form--top
         .registration-form__content
-          = link_to root_path, class: "registration-form__content__btn registration-form__content__btn--mail" do
+          = link_to sign_up_path, class: "registration-form__content__btn registration-form__content__btn--mail", data: {turbolinks: false} do
             = fa_icon "envelope"
             メールアドレスで登録する
           - if Rails.env.development?
