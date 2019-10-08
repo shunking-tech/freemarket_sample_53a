@@ -97,6 +97,9 @@ gem 'fog-aws'
 gem 'devise'
 gem 'haml-rails'
 gem "font-awesome-rails"
+
+# decorater追加
+gem 'draper'
 gem "active_hash"
 gem "ancestry"
 gem "enum_help"
