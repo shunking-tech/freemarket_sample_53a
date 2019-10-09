@@ -1,7 +1,10 @@
-server '3.113.132.120', user: 'ec2-user', roles: %w{app db web}
+server 'freemarket.gyabooo.work', user: 'ec2-user', roles: %w{app db web}
 
 set :rails_env, "production"
 set :unicorn_rack_env, "production"
+set :application, 'freemarket_sample_53a'
+set :ssh_options, auth_methods: ['publickey'],
+                  keys: ['~/.ssh/freemarket_sample_53a.pem']
 
 # server-based syntax
 # ======================
