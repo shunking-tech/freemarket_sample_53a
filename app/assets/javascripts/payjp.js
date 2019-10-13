@@ -20,7 +20,7 @@ $(function() {
         number: document.getElementById("card_number").value,
         cvc: document.getElementById("card_securitycode").value,
         exp_month: document.getElementById("card_limit_m").value,
-        exp_year: document.getElementById("card_limit_y").value,
+        exp_year: "20" + document.getElementById("card_limit_y").value,
       };
 
       // カード情報のトークン作成
