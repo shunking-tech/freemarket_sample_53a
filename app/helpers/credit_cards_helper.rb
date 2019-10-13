@@ -1,6 +1,6 @@
 module CreditCardsHelper
 
-  # 使用期限の選択肢(month)
+  # 使用期限の選択肢(year)
   def limit_y
     years = []
     (Time.current.year..Time.current.year+10).each do |year|
@@ -9,7 +9,7 @@ module CreditCardsHelper
     years
   end
 
-  # 使用期限の選択肢(year)
+  # 使用期限の選択肢(month)
   def limit_m
     (1..12).map do |month|
       if month < 10
