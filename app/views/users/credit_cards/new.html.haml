@@ -7,7 +7,7 @@
       %h2.registration-card__head.bold
         クレジットカード情報入力
 
-      = form_with url: root_path, class: 'registration-card__form' do |f|
+      = form_with url: user_credit_card_path, method: :post, class: 'registration-card__form', id: 'registration-card__form' do |f|
         .registration-card__form__content
 
           .registration-card__form__content__number
@@ -35,11 +35,11 @@
             %span.form-require 必須
             %br
             .select.half
-              = f.select :card_limit_m, [["01", "01"], ["02", "02"]]
+              = f.select :card_limit_m, [["01", "1"], ["02", "2"], ["03", "3"], ["04", "4"], ["05", "5"], ["06", "6"], ["07", "7"], ["08", "8"], ["09", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]
               %i.icon-arrow-bottom
               %span 月
             .select.half
-              = f.select :card_limit_y, [["19", "19"], ["20", "20"]]
+              = f.select :card_limit_y, [["19", "2019"], ["20", "2020"], ["21", "2021"], ["22", "2022"], ["23", "2023"], ["24", "2024"], ["25", "2025"], ["26", "2026"], ["27", "2027"], ["28", "2028"], ["29", "2029"]]
               %i.icon-arrow-bottom
               %span 年
 
@@ -51,7 +51,8 @@
               %span ?
               カード裏面の番号とは？
 
-          = f.button "追加する", class: 'registration-card__form__content__submit'
+          #card_token
+          = f.button "追加する", class: 'registration-card__form__content__submit', id: 'registration-card__form__content__submit'
 
   = render 'users/mypage/side'
   = render 'items/footer_btn'
