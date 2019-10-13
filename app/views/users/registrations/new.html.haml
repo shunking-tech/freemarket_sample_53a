@@ -1,5 +1,5 @@
 .registration
-  = render "users/registrations/registration_header", status: "会員情報"
+  = render "registration_header", status: "会員情報"
   %main.registration__main
     %section.registration__main__section
       %h2.registration__main__section__head 会員情報入力
@@ -63,4 +63,4 @@
         .registration-form__content
           .registration-form__content__form-group
           = f.submit "次へ進む", class: "registration-form__content__btn"
-  = render "users/registrations/registration_footer", current_page: nil
+  = render "shared/reg_and_session_footer", current_page: nil
