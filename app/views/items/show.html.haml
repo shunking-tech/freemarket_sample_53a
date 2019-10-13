@@ -104,7 +104,7 @@
     .detail-item__links--left
 
       - if @item.seller?(current_user)
-        = link_to nil, { class: "detail-item__links__btn--like detail-item__links__btn not-allowed", method: :delete, remote: true } do
+        = link_to "javascript:void(0)", { class: "detail-item__links__btn--like detail-item__links__btn not-allowed"} do
           %i.icon-like.fa
           %span="いいね!"
           %span=@item.item_likes.count
