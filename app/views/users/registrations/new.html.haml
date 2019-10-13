@@ -3,7 +3,7 @@
   %main.registration__main
     %section.registration__main__section
       %h2.registration__main__section__head 会員情報入力
-      = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'registration-form', local: true do |f|
+      = form_with model: @user, url: sign_up_path, id: 'new_user', class: 'registration-form', local: true do |f|
         .registration-form__content
           .registration-form__content__form-group.registration-form__content__form-group-first
             = f.label :nickname, "ニックネーム"
