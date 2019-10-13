@@ -1,0 +1,3 @@
+class ItemCommentsController < ApplicationController
+  
+end

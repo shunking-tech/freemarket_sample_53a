@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
+  resources :posts, param: :id
   resources :items, only: [:index, :new, :show]
   resources :users, only: [:show, :create] do
     resources :creditcards, only: [:index, :new, :create]

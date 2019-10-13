@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(version: 2019_09_26_154437) do
     t.string "prefecture", null: false
     t.bigint "user_id"
     t.bigint "category_id"
-    t.bigint "size", null: false
+    t.bigint "size_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_154437) do
   add_foreign_key "item_comments", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "trade_comments", "trades"
   add_foreign_key "trade_comments", "users"

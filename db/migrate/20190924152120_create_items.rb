@@ -9,14 +9,14 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer     :payer_delivery_expense, null: false
       t.integer     :delivery_days,          null: false
       t.string      :prefecture,             null: false
-      t.bigint      :user_id,                null: false, foreign_key: true
+      t.bigint      :user_id,                null: false
       t.bigint      :category_id,               null: false
-      t.bigint      :size,                   null: false      
-    
-      t.timestamps
-
+      t.bigint      :size_id,                   null: false      
       t.references :user,           foreign_key: true
       t.references :category,       foreign_key: true
+      t.references :size,           foreign_key: true
+
+      t.timestamps
     end
 
     # add_index       :name,  unique: true
