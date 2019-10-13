@@ -28,6 +28,7 @@
 
 # Ignore images
 /public/uploads/*
+/db/fixtures/*
 
 # Ignore env
 /.env
