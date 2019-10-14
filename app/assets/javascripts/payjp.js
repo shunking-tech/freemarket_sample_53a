@@ -11,13 +11,29 @@ $(function() {
     // 追加するボタン
     let btn = $('#registration-card__form__content__submit');
 
+    // カード番号入力時にハイフンを補完
+    $(function(e) {
+      $('[data-type="card"]').on("keydown keyup change", function(t) {
+        var n = e(t.currentTarget)
+          , r = n.val().length;
+        // 入力されたキーによってキーコードを取得、数字が入力されたか判定
+        if (t.keyCode >= 48 && t.keyCode <= 58 || t.keyCode >= 96 && t.keyCode <= 105 || 229 === t.keyCode)
+          switch (r) {
+          case 4:
+          case 9:
+          case 14:
+            n.val(n.val() + "-")
+          }
+      })
+    });
+
     // 追加するボタンのクリック時に発火
     btn.on('click', function(e) {
       e.preventDefault();
 
       // 入力されたクレカ情報を取得
       let card = {
-        number: document.getElementById("card_number").value,
+        number: document.getElementById("card_number").value.replace(/-/g, ""),
         cvc: document.getElementById("card_securitycode").value,
         exp_month: document.getElementById("card_limit_m").value,
         exp_year: "20" + document.getElementById("card_limit_y").value,
