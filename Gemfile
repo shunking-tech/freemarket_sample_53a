@@ -115,6 +115,3 @@ gem 'omniauth-google-oauth2'
 
 # クレジットカード登録
 gem 'payjp'
-
-# ステージング環境へのデプロイ中に発生したエラー解決の為に
-gem 'unf_ext', '~> 0.0.7.6'
