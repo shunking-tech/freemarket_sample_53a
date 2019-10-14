@@ -31,11 +31,11 @@
             %span.form-require 必須
             %br
             .select.half
-              = f.select :card_limit_m, [["01", "01"], ["02", "02"]]
+              = f.select :card_limit_m, options_for_select(limit_m)
               %i.icon-arrow-bottom
               %span 月
             .select.half
-              = f.select :card_limit_y, [["19", "19"], ["20", "20"]]
+              = f.select :card_limit_y, options_for_select(limit_y)
               %i.icon-arrow-bottom
               %span 年
 
