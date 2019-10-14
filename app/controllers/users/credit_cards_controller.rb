@@ -48,7 +48,7 @@ class Users::CreditCardsController < ApplicationController
   private
   # payjp秘密鍵を取得
   def set_PAYJP_PRIVATE_KEY
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.payjp[:private_key]
   end
 
   # クレジットカード情報を取得
