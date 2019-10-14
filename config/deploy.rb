@@ -64,7 +64,7 @@ namespace :db do
   end
 end
 
-# db削除
+# db削除（DB削除したいときに利用）
 namespace :db do
   task :drop do
     on roles(:db) do |host|
