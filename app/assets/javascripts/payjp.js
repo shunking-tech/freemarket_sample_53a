@@ -7,22 +7,22 @@ $(function() {
     Payjp.setPublicKey("pk_test_71652c9d19ffd414661cd4d8");
 
     // クレジットカード登録フォーム
-    var form = $("#registration-card__form");
+    let form = $("#registration-card__form");
     // 追加するボタン
     let btn = $('#registration-card__form__content__submit');
 
     // カード番号入力時にハイフンを補完
     $(function(e) {
       $('[data-type="card"]').on("keydown keyup change", function(t) {
-        var n = e(t.currentTarget)
-          , r = n.val().length;
+        var card_number = e(t.currentTarget)
+          , number_length = card_number.val().length;
         // 入力されたキーによってキーコードを取得、数字が入力されたか判定
         if (t.keyCode >= 48 && t.keyCode <= 58 || t.keyCode >= 96 && t.keyCode <= 105 || 229 === t.keyCode)
-          switch (r) {
-          case 4:
-          case 9:
-          case 14:
-            n.val(n.val() + "-")
+          switch (number_length) {
+            case 4:
+            case 9:
+            case 14:
+              card_number.val(card_number.val() + "-")
           }
       })
     });
