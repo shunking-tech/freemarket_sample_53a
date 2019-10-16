@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   # 商品画面
-  resources :items, only: [:index, :new, :show, :destroy] do
+  resources :items, only: [:index, :new, :edit, :update, :show, :destroy, :create] do   # createは消す # 商品出品とコンフリクトするかも
     post "likes", to: "item_likes#create"
     delete "likes", to: "item_likes#destroy"
     resources :trades, only: [:new, :create]
