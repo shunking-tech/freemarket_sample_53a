@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     # 新規登録画面
     get "sign_up/top", to: "users/registrations#top"
     get "sign_up", to: "users/registrations#new"
+    post "sign_up", to: "users/registrations#create"
     get "sign_up/sms_authorization", to: "users/registrations#sms_authorization"
     get "sign_up/deliver_address", to: "users/registrations#deliver_address"
     get "sign_up/credit_card", to: "users/registrations#credit_card"
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
     member do
       get :profile
       get :identification
+      get :deliver_address
     end
   end
 

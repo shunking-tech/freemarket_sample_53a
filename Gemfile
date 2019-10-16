@@ -115,3 +115,6 @@ gem 'omniauth-google-oauth2'
 
 # ページネーション
 gem 'kaminari'
+
+# パンくず
+gem "gretel"

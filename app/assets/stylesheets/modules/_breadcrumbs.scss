@@ -1,0 +1,18 @@
+.breadcrumbs-wrap {
+  height: 48px;
+  line-height: 48px;
+  background: $white;
+  border-top: 1px solid $gray;
+  font-size: 14px;
+  padding-left: 90;
+  &__breadcrumbs{
+    width: 1020px;
+    margin: auto;
+  }
+  a {
+    color: #333;
+  }
+  .current {
+    font-weight: bold;
+  }
+}
