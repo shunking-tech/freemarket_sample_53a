@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_154437) do
+ActiveRecord::Schema.define(version: 2019_10_05_193846) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,37 +39,32 @@ ActiveRecord::Schema.define(version: 2019_09_26_154437) do
   end
 
   create_table "item_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_likes_on_item_id"
+    t.index ["user_id"], name: "index_item_likes_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description", null: false
-    t.integer "condition", null: false
-    t.integer "task", null: false
-    t.integer "payer_delivery_expense", null: false
-    t.integer "delivery_days", null: false
-    t.string "prefecture", null: false
-    t.bigint "user_id"
-    t.bigint "category_id"
-    t.bigint "size_id"
+    t.integer "condition", default: 0, null: false
+    t.integer "task", default: 0, null: false
+    t.integer "payer_delivery_expense", default: 0, null: false
+    t.integer "shipping_method", default: 0, null: false
+    t.integer "delivery_days", default: 0, null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
+    t.bigint "size_id", null: false
+    t.integer "prefecture_id", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "liked_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,14 +73,12 @@ ActiveRecord::Schema.define(version: 2019_09_26_154437) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "trade_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content", null: false
-    t.bigint "user_id", null: false
-    t.bigint "trade_id", null: false
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "uid"
+    t.string "provider"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trade_id"], name: "index_trade_comments_on_trade_id"
-    t.index ["user_id"], name: "index_trade_comments_on_user_id"
   end
 
   create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -140,11 +133,11 @@ ActiveRecord::Schema.define(version: 2019_09_26_154437) do
   add_foreign_key "item_comments", "items"
   add_foreign_key "item_comments", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "item_likes", "items"
+  add_foreign_key "item_likes", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
-  add_foreign_key "trade_comments", "trades"
-  add_foreign_key "trade_comments", "users"
   add_foreign_key "trades", "items"
   add_foreign_key "trades", "users", column: "buyer_id"
   add_foreign_key "trades", "users", column: "seller_id"

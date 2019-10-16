@@ -2,9 +2,6 @@ class ItemImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  version :thumb do
-    process resize_to_fit: [500, 500]
-  end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -47,4 +44,7 @@ class ItemImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  process resize_to_fill: [300, 300, "Center"]
+
 end

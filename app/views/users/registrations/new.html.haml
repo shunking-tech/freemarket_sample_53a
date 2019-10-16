@@ -1,25 +1,5 @@
 .registration
-  %header.registration__header
-    %h1
-      = link_to root_path, class: "registration__header--logo" do
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
-    %nav.registration__header__bar
-      %ol.clearfix
-        %li.active
-          会員情報
-          .registration__header__bar__status
-        %li
-          電話番号認証
-          .registration__header__bar__status
-        %li
-          お届け先住所入力
-          .registration__header__bar__status
-        %li
-          支払い方法
-          .registration__header__bar__status
-        %li
-          完了
-          .registration__header__bar__status
+  = render "users/registrations/registration_header", status: "会員情報"
   %main.registration__main
     %section.registration__main__section
       %h2.registration__main__section__head 会員情報入力
@@ -37,18 +17,7 @@
             %br/
             = f.email_field :email, autocomplete: "email", class: "registration-form__content__form-group__input #{has_error(@user.errors[:email])}", placeholder: "PC・携帯どちらでも可"
             = render "shared/user_errors", errors: @user.errors[:email]
-          .registration-form__content__form-group
-            = f.label :password, "パスワード"
-            %span.registration-form__content__form-group__form-require 必須
-            %br/
-            = f.password_field :password, autocomplete: "new-password", class: "registration-form__content__form-group__input #{has_error(@user.errors[:password])}", placeholder: "7文字以上"
-            = render "shared/user_errors", errors: @user.errors[:password]
-          .registration-form__content__form-group
-            = f.label :password_confirmation, "パスワード(確認)"
-            %span.registration-form__content__form-group__form-require 必須
-            %br/
-            = f.password_field :password_confirmation, autocomplete: "new-password", class: "registration-form__content__form-group__input #{has_error(@user.errors[:password_confirmation])}", placeholder: "7文字以上"
-            = render "shared/user_errors", errors: @user.errors[:password_confirmation]
+          = render "password_form", f: f unless @sns
           .registration-form__content__form-group
             %h3.registration-form__content__form-group__sub-head 本人確認
             %p.registration-form__content__form-group__text
@@ -94,8 +63,4 @@
         .registration-form__content
           .registration-form__content__form-group
           = f.submit "次へ進む", class: "registration-form__content__btn"
-  %footer.registration__footer
-    = link_to root_path, class: "registration__footer__logo" do
-      = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763", width: "80",height: "65"
-    %p
-      %small © 2019 Mercari
+  = render "users/registrations/registration_footer", current_page: nil

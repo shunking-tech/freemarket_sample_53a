@@ -1,0 +1,10 @@
+%header.registration__header
+  %h1
+    = link_to root_path, class: "registration__header--logo" do
+      = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
+  %nav.registration__header__bar
+    %ol.clearfix
+      - bar_lists.each_with_index do |list, index|
+        %li{class: bar_status(index, check_status_number(status))}
+          = list
+          .registration__header__bar__status

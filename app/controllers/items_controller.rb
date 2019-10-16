@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
-  # before_action :logged_in_user, only: [:index, :edit, :update]
-  def index
-    # @items = Item.all.order("id desc").limit(10)
-    @categories = Category.all
-    
+  before_action :set_item, only: [:show, :mypage_item_show, :destroy]
 
+  def index
+    @categories = Category.all
   end
 
   def show
@@ -15,15 +13,25 @@ class ItemsController < ApplicationController
     @items = []
   end
 
+  def show
+    # 一旦、保留
+    # @item_comment = ItemComment.new
+    # @item_comments = @item.item_comments
+  end
+
   def new
   end
 
-  def create
-    Item.create(item_params)
+  def mypage_item_show
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
   private
-  def item_params
-    params.permit(:name, :price, :description, :condition, :task, :payer_delivery_expensemage, :delivery_days, :prefecture, :user_id, :category, :size)
+  def set_item
+    @item = Item.find(params[:id]).decorate
   end
 end
