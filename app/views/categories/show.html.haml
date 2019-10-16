@@ -1,0 +1,40 @@
+= render 'items/header_guide'
+
+.recommended
+
+  .main__product
+    .category__header
+      .category__header__list
+        - @categories.each do |category|
+          = link_to "#{category.name}", category_path(category)
+
+    .main__product__contener
+      .main__product__contener__name
+        %h3="#{@category.name}の商品一覧 #{'(' + @items.current_page.to_s + ' ページ目)' unless @items.first_page?}"
+
+      .main__collection
+        .main__collection__box
+          - @items.each do |item|
+            .main__collection__box__parts
+              = link_to item_path(item.id), class: 'clear_arrow' do
+                %figure
+                  %figcaption
+                    .category__figcaption
+                      %span=item.name
+                      - unless item.item_likes.count.zero?
+                        .category__figcaption__icon
+                          %i.category__figcaption__icon__like.icon-like.fa
+                          %span.clear_after=item.item_likes.count
+                  .main__collection__box__parts__img
+                    %span="¥#{item.delimited_price}"
+                    = image_tag item.item_images.first.image.url
+
+    - if @items.current_page <= 3
+      = paginate @items, window: 0, left: 5, right: 0
+    - elsif @items.current_page > @items.total_pages - 3
+      = paginate @items, window: 0, left: 0, right: 5
+    - else
+      = paginate @items, window: 2, left: 0, right: 0
+
+= render 'items/footer'
+= render 'items/footer_btn';
