@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
   # before_action :logged_in_user, only: [:index, :edit, :update]
   def index
-    @items = Item.all.order("id desc").limit(10)
+    # @items = Item.all.order("id desc").limit(10)
     @categories = Category.all
+    
+
   end
 
   def show

@@ -43,7 +43,7 @@
 
         .main__collection
           .main__collection__box
-            - category.items.each do |item| 
+            - category.items.limit(10).each do |item| 
               .main__collection__box__parts
                 %figure
                   %figcaption

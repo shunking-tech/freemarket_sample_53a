@@ -309,11 +309,6 @@
 
           &__img{
             position: relative;
-            img{
-              max-width: 100%;
-              height: 188px;
-              grid-template-rows:auto;
-            }
             span{
               -webkit-box-align: center;
               -ms-flex-align: center;
@@ -333,7 +328,13 @@
               padding: 0 12px;
               position: absolute;
               z-index: 2;
+              float: left;
             }
+          img{
+            width: 100%;
+            height: 188px;
+            grid-template-rows:auto;
+          }
           }
         }
       }

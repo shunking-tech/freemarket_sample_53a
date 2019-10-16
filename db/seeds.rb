@@ -21,7 +21,7 @@ Category.create([
       {:size=>'FREE SIZE'},
     ])
 
-10.times do |index|
+50.times do |index|
   Item.create!(
     name: "名前#{index}",
     price: index,
@@ -37,6 +37,4 @@ Category.create([
   )
 end
 
-# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 

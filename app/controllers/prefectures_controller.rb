@@ -1,2 +1,0 @@
-class PrefecturesController < ApplicationController
-end

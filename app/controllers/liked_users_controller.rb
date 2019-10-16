@@ -1,2 +1,0 @@
-class LikedUsersController < ApplicationController
-end
