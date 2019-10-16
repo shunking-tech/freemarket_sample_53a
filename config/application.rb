@@ -32,5 +32,7 @@ module MercariClone
     end
 
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]   # 画像をアップロードするための設定 # 商品出品とコンフリクトするかも
   end
 end
