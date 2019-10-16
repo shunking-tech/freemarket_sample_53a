@@ -15,4 +15,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :size
+  
+  accepts_nested_attributes_for :item_images
+    
 end
