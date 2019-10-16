@@ -40,4 +40,7 @@ Rails.application.routes.draw do
       get :identification
     end
   end
+
+  # カテゴリ
+  resources :categories, only: [:index, :show]
 end
