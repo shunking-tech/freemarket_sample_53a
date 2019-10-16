@@ -34,7 +34,7 @@
 
   .main__product
     -# - (0...4).each do 
-    - @categories.each do |category| 
+    - @categories.limit(4).each do |category| 
       .main__product__contener
         .main__product__contener__name{id: category.id}
           -# %h3 レディース新着アイテム
