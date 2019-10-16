@@ -9,16 +9,16 @@
 
         .detail-item__photo--image
           .detail-item__photo--inner
-            = image_tag @item.item_images[0].image
+            = image_tag @item.item_images[0].image.url
 
         .detail-item__photo-small
           .detail-item__photo-small--image.active
             .detail-item__photo-small--inner
-              = image_tag @item.item_images[0].image
+              = image_tag @item.item_images[0].image.url
           -@item.item_images.each do |item_image|
             .detail-item__photo-small--image
               .detail-item__photo-small--inner
-                = image_tag item_image.image
+                = image_tag item_image.image.url
 
       .detail-item__item-info
         %table.detail-item__item-info--table
@@ -91,7 +91,7 @@
 .detail-item__message-box
 
   .detail-item__messages
-    = link_to '商品の編集', "#", method: :delete, class: 'detail-item__edit'
+    = link_to '商品の編集', edit_item_path(@item.id), class: 'detail-item__edit'
     %p.text-center or
     = link_to '出品を一旦停止する', "#", method: :delete, class: 'detail-item__delete'
     = link_to 'この商品を削除する', item_path(@item.id), method: :delete, class: 'detail-item__delete'
