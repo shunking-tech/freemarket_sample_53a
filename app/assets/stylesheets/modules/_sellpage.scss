@@ -20,7 +20,6 @@
       }
     }
   }
-
   h3{
     margin: 0;
   }
@@ -209,13 +208,59 @@
             div{
               p{
                 line-height: 1.5;
-                margin: 0;
+                margin :0 ;
                 a{
                   color: #0099e8;
                   text-decoration: none;
                 }
               }
             }
+          .sell_complete{
+            opacity: 1;
+            -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 3000;
+            overflow-x: hidden;
+            overflow-y: auto;
+            .model-card{
+              max-width: none;
+              width: 600px;
+              margin: 20px auto;
+              position: relative;
+              overflow: hidden;
+              background: #fff;
+              .modl-head{
+                text-align: center;
+                line-height: 80px;
+                font-size: 16px;
+              }
+              .next_sell-btn{
+                border-top: 1px solid #eee;
+                padding: 40px;
+              }
+              .text-center{
+                margin: 40px auto 0;
+                cursor: pointer;
+                background: #ea352d;
+                border: 1px solid #ea352d;
+                color: #fff;
+                display: block;
+                width: 100%;
+                line-height: 48px;
+                font-size: 14px;
+                text-align: center;
+                transition: all ease-out .3s;
+                text-decoration: none;
+                color: #0099e8;
+              }
+            }
+          }
           }
         }
         .selllay{
@@ -240,6 +285,7 @@
               cursor: auto;
               display: inline-block;
               width: 100%;
+              line-height: 48px;
               .sell-left{
                 width: 50%;
                 line-height: 48px;
@@ -276,10 +322,9 @@
           &__fee{
             padding: 24px 0;
             border-top: 1px solid #ccc;
-            .fee-left{
-              float: left;
+            .fee_left{
             }
-            .fee-right{
+            .fee_right{
               float: right;
             }
           }
@@ -287,11 +332,11 @@
             padding: 24px 0;
             border-top: 1px solid #ccc;
             font-weight: 600;
-            &__left{
+            .fee_left{
               font-size: 16px;
               float: left;
             }
-            &__right{
+            .fee_right{
               font-size: 34px;
               float: right;
             }
@@ -355,6 +400,7 @@
   label{
     font-weight: 600;
     display: inline-block;
+    width: 50%;
   }
   h2{
     display: block;
