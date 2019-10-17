@@ -45,10 +45,8 @@
             %tr
               %th カテゴリー
               %td
-                -# TODO:カテゴリのリンク変更
                 = link_to category_path(@item.category.root) do
                   %div=@item.category.root.name
-                -# TODO:カテゴリのリンク変更
                 - @item.after_first_categories.each do |category|
                   = link_to category_path(category) do
                     .detail-item__sub-category
@@ -205,8 +203,7 @@
 
   .detail-item__other-items--brand-category
     %h2.detail-item__other-items--title
-      -# TODO:カテゴリー別のリンク先変更
-      = link_to "#{@item.category.name} (#{@item.category.root.name}) その他の出品", root_path
+      = link_to "#{@item.category.name} (#{@item.category.root.name}) その他の出品", category_path(@item.category)
 
     .detail-item__other-items__contents
       - @item.category_other_items.limit(6).each do |item|
