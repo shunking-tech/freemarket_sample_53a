@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
 
+  def index
+  end
+
   def show
     @category = Category.find(params[:id])
     if @category.has_children?
@@ -11,11 +14,10 @@ class CategoriesController < ApplicationController
       @categories = @category.siblings
       @items = Item.category_items(@category.id).recently.page(params[:page]).per(PAGENATE)
     end
-    # binding.pry
   end
 
   private
 
-  PAGENATE = 20
+  PAGENATE = 5
 
 end
