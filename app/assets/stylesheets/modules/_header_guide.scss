@@ -1,8 +1,11 @@
 .mercari-header {
   background: $white;
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  z-index: 3;
+  z-index: 1;
+
+  &--box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  }
 
   img {
     vertical-align: middle;
@@ -337,7 +340,6 @@ ul.ddmenu {
   ul li {
     box-sizing: border-box;
     width: 224px;
-    
 
     a {
       line-height: 44px;
@@ -370,18 +372,6 @@ ul.ddmenu {
     li {
       box-sizing: border-box;
       width: 320px;
-      
-      a {
-        line-height: 44px;
-        text-align: left;
-        padding-left: 15px;
-        font-weight: normal;
-
-        &:hover {
-          background-color: $active-red;
-          color: $white;
-        }
-      }
     }
   }
 }
