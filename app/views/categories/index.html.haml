@@ -1,0 +1,33 @@
+- breadcrumb :categories
+= render 'items/header_guide'
+= render 'shared/breadcrumbs'
+
+.categories
+  .categories__title
+    %h3="カテゴリー一覧"
+
+  .categories__links
+    - @top_categories.each do |category|
+      = link_to category.name, "#category_#{category.id}", class: "categories__links__title"
+
+  // TODO: SELECT発行回数が多いので改善できたらする
+  - @top_categories.each do |category|
+    .categories__contents
+      %h3{id: "category_#{category.id}", class: "categories__contents__title"}=category.name
+      .categories__contents__body
+        .categories__contents__body__category-all
+          = link_to "すべて", category_path(category)
+
+        - category.children.each do |category_child|
+          .categories__contents__body__category-title
+            = category_child.name
+          .categories__contents__body__category-list
+            .categories__contents__body__category-list__item
+              =link_to "すべて", category_path(category_child)
+
+            - category_child.children.each do |category_grandchild|
+              .categories__contents__body__category-list__item
+                = link_to category_grandchild.name, category_path(category_grandchild)
+
+= render 'items/footer'
+= render 'items/footer_btn';
