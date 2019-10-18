@@ -31,7 +31,10 @@
 
                   .main__collection__box__parts__img
                     %span="¥#{item.delimited_price}"
-                    = image_tag item.item_images.first.image.url
+                    - if item.item_images.present?
+                      = image_tag item.item_images.first.image.url
+                    - else
+                      = image_tag '/300x300.png'
 
     // TODO: 冗長な気がするので時間あればうまくまとめる
     - if @items.current_page <= 3
