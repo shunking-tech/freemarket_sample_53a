@@ -1,4 +1,6 @@
+- breadcrumb :category, @category.path
 = render 'items/header_guide'
+= render 'shared/breadcrumbs'
 
 .recommended
 
@@ -14,6 +16,7 @@
 
       .main__collection
         .main__collection__box
+        
           - @items.each do |item|
             .main__collection__box__parts
               = link_to item_path(item.id), class: 'clear_arrow' do
@@ -25,10 +28,12 @@
                         .category__figcaption__icon
                           %i.category__figcaption__icon__like.icon-like.fa
                           %span.clear_after=item.item_likes.count
+
                   .main__collection__box__parts__img
                     %span="¥#{item.delimited_price}"
                     = image_tag item.item_images.first.image.url
 
+    // TODO: 冗長な気がするので時間あればうまくまとめる
     - if @items.current_page <= 3
       = paginate @items, window: 0, left: 5, right: 0
     - elsif @items.current_page > @items.total_pages - 3
