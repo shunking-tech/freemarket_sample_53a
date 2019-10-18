@@ -15,11 +15,25 @@
 
     .topmein-select-band
       .topmein-select-band__left
-        .topmein-select-band__left__category
-          = link_to root_path , class: "topmein-select-band__left__category__tag" do
-            %svg.topmein-select-band__left__category__tag__search{"aria-hidden": "true", height: "16", viewbox: "0 0 20 16", width: "20"}
-              %path{d: "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", fill: "currentColor", "fill-rule": "nonzero"}
-            カテゴリーから探す
+        %ul.topmein-select-band__left__category.ddmenu
+          %li
+            =link_to categories_path, class: "topmein-select-band__left__category__tag" do
+              %svg.topmein-select-band__left__category__tag__search{"aria-hidden": "true", height: "16", viewbox: "0 0 20 16", width: "20"}
+                %path{d: "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", fill: "currentColor", "fill-rule": "nonzero"}
+              カテゴリーから探す
+            %ul.ddmenu--top-level
+              - @top_categories.each do |top_category|
+                %li
+                  =link_to top_category.name, category_path(top_category)
+                  %ul.ddmenu--second-level
+                    - top_category.children.limit(@top_categories.count).each do |second_category|
+                      %li
+                        =link_to second_category.name, category_path(second_category)
+                        %ul.ddmenu--third-level
+                          - second_category.children.limit(@top_categories.count).each do |third_category|
+                            %li
+                              =link_to third_category.name, category_path(third_category)
+
         .topmein-select-band__left__category
           = link_to root_path , class: "topmein-select-band__left__category__tag" do
             %svg.topmein-select-band__left__category__tag__bland{"aria-hidden": "true", height: "16", viewbox: "0 0 23 16", width: "23"}>
@@ -27,32 +41,30 @@
             ブランドから探す
 
 
-
-
       %ul.topmein-select-band__right
-        %li.topmein-select-band__right__command
-          = link_to root_path , class: "topmein-select-band__right__command__box" do
-            %svg.topmein-select-band__right__command__box__menu{"aria-hidden": "true", height: "16", viewbox: "0 0 14 16", width: "14"}
-              %path{d: "M6.592 16c.89 0 1.632-.734 1.632-1.632H4.928c0 .898.742 1.632 1.664 1.632zm4.896-4.928V6.976c-.008-2.521-1.345-4.63-3.712-5.184v-.576C7.79.55 7.241 0 6.56 0c-.68 0-1.23.55-1.216 1.216v.576c-2.36.554-3.704 2.654-3.712 5.184v4.096L0 12.704v.832h13.12v-.832l-1.632-1.632zm-1.632.832h-6.56V6.976c0-2.024 1.238-3.68 3.296-3.68 2.026 0 3.264 1.656 3.264 3.68v4.928z", fill: "currentColor", "fill-rule": "nonzero"}
-            お知らせ
-            %span.topmein-select-band__right__command__box__icon
-              1
-        %li.topmein-select-band__right__command
-          = link_to root_path , class: "topmein-select-band__right__command__box" do
-            %svg.topmein-select-band__right__command__box__mark{"aria-hidden": "true", height: "16", viewbox: "0 0 21 16", width: "21"}
-              %path{d: "M6.682 12.657L1.67 7.642 0 9.313 6.682 16 21 1.672 19.33 0z", fill: "currentColor", "fill-rule": "nonzero"}
-            やることリスト
-            %span.topmein-select-band__right__command__box__icon
-              4
         - if user_signed_in?
+          %li.topmein-select-band__right__command
+            = link_to root_path , class: "topmein-select-band__right__command__box" do
+              %svg.topmein-select-band__right__command__box__menu{"aria-hidden": "true", height: "16", viewbox: "0 0 14 16", width: "14"}
+                %path{d: "M6.592 16c.89 0 1.632-.734 1.632-1.632H4.928c0 .898.742 1.632 1.664 1.632zm4.896-4.928V6.976c-.008-2.521-1.345-4.63-3.712-5.184v-.576C7.79.55 7.241 0 6.56 0c-.68 0-1.23.55-1.216 1.216v.576c-2.36.554-3.704 2.654-3.712 5.184v4.096L0 12.704v.832h13.12v-.832l-1.632-1.632zm-1.632.832h-6.56V6.976c0-2.024 1.238-3.68 3.296-3.68 2.026 0 3.264 1.656 3.264 3.68v4.928z", fill: "currentColor", "fill-rule": "nonzero"}
+              お知らせ
+              %span.topmein-select-band__right__command__box__icon
+                1
+          %li.topmein-select-band__right__command
+            = link_to root_path , class: "topmein-select-band__right__command__box" do
+              %svg.topmein-select-band__right__command__box__mark{"aria-hidden": "true", height: "16", viewbox: "0 0 21 16", width: "21"}
+                %path{d: "M6.682 12.657L1.67 7.642 0 9.313 6.682 16 21 1.672 19.33 0z", fill: "currentColor", "fill-rule": "nonzero"}
+              やることリスト
+              %span.topmein-select-band__right__command__box__icon
+                4
           %li.topmein-select-band__right__command
             = link_to current_user , class: "topmein-select-band__right__command__box" do
               = image_tag("/member_photo_noimage_thumb.png", alt: "", class: "topmein-select-band__right__command__box__mypage")
               マイページ
         - else
-          %li.topmein-select-band__right__command
-            = link_to "新規登録", sign_up_top_path
-          %li.topmein-select-band__right__command
+          %li.topmein-select-band__right__command__box--new
+            = link_to "新規会員登録", sign_up_top_path
+          %li.topmein-select-band__right__command__box--login
             = link_to "ログイン", sign_in_path
 
 
