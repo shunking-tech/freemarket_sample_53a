@@ -18,6 +18,6 @@ class CategoriesController < ApplicationController
 
   private
 
-  PAGENATE = 5
+  PAGENATE = 20
 
 end
