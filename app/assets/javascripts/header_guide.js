@@ -13,6 +13,17 @@ $(function () {
       $(".mercari-header").addClass('mercari-header--box-shadow');
     }
 
+    // マイページの矢印ホバー時の挙動
+    $(".ddmenu__mypage li ul li a").hover(
+      function (e) {
+        $(this).children('i').css('opacity', '1');
+        $(this).children('i').animate({ "right": '+=5px' }, "slow");
+      },
+      function (e) {
+        $(this).children('i').css('opacity', '0.3')
+        $(this).children('i').animate({ "right": '-=5px' }, "slow");
+      }
+    )
   });
 
 })
