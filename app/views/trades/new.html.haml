@@ -55,12 +55,12 @@
               変更する
             %i.icon-arrow-right
 
-      %section.buyer-info.buyer-payment
+      %section.buyer-info.buyer-payment{data: {buy: 'pay-method'}}
         .buyer-info__inner
           %h3.bold
             支払い方法
           - if @default_card_information.present?
-            %p.buyer-info__inner__body
+            %p.buyer-info__inner__body.default_card_information
               = "************ " + @default_card_information.last4
               %br
               = @card_limit
