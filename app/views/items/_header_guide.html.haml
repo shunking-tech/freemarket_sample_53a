@@ -57,10 +57,51 @@
               やることリスト
               %span.topmein-select-band__right__command__box__icon
                 4
-          %li.topmein-select-band__right__command
-            = link_to current_user , class: "topmein-select-band__right__command__box" do
-              = image_tag("/member_photo_noimage_thumb.png", alt: "", class: "topmein-select-band__right__command__box__mypage")
-              マイページ
+          %ul.topmein-select-band__right__command.ddmenu__mypage
+            %li
+              = link_to current_user , class: "topmein-select-band__right__command__box" do
+                = image_tag("/member_photo_noimage_thumb.png", alt: "", class: "topmein-select-band__right__command__box__mypage")
+                マイページ
+              %ul
+                -# %li
+                %li.mypage__list__top
+                  .mypage__list__top__background
+                    = image_tag "/sample-avatar.jpg", height: '60', width: '60'
+                  .mypage__list__top__username
+                    %span=current_user.full_name
+                  .mypage__list__top__userinfo
+                    %span="評価: #{current_user.user_reviews.count}"
+                    %span="出品数: #{current_user.items.count}"
+
+                %li
+                  = link_to current_user do
+                    %span="いいね!一覧"
+                    %i.icon-arrow-right
+                %li
+                  =link_to current_user do
+                    %span="出品した商品 - 出品中"
+                    %i.icon-arrow-right
+                %li
+                  =link_to current_user do
+                    %span="出品した商品 - 取引中"
+                    %i.icon-arrow-right
+                %li
+                  =link_to current_user do
+                    %span="出品した商品 - 売却済み"
+                    %i.icon-arrow-right
+                %li
+                  =link_to current_user do
+                    %span="出品した商品 - 出品中"
+                    %i.icon-arrow-right
+                %li
+                  =link_to current_user do
+                    %span="購入した商品 - 取引中"
+                    %i.icon-arrow-right
+                %li
+                  =link_to current_user do
+                    %span="購入した商品 - 過去の取引"
+                    %i.icon-arrow-right
+
         - else
           %li.topmein-select-band__right__command__box--new
             = link_to "新規会員登録", sign_up_top_path
