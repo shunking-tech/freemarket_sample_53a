@@ -136,24 +136,24 @@ car_body.children.create([{:name=>"国内自動車本体"}, {:name=>"外国自�
 other_petSupplies.children.create([{:name=>"ペットフード"}, {:name=>"犬用品"}, {:name=>"猫用品"}, {:name=>"魚用品/水草"}, {:name=>"小動物用品"}])
 
 
-# サンプル商品データの投入(ユーザー登録完了後に実行してください)
-1.upto(5) do |n|
-  Item.create!(
-    name: "サンプル#{n}",
-    price: "#{n}000".to_i,
-    description: "テスト#{n}",
-    condition: 0,
-    task: 0,
-    payer_delivery_expense: 0,
-    shipping_method: 0,
-    delivery_days: 0,
-    user_id: 1,
-    category_id: "#{n}".to_i,
-    size_id: "#{n}".to_i,
-    prefecture_id: "#{n}".to_i,
-  )
-  ItemImage.create!(
-    image: open("#{Rails.root}/db/fixtures/sample_image.jpg"), # 画像のファイル(.jpg)は用意したファイル名に修正してください
-    item_id: "#{n}".to_i,
-  )
-end
+# # サンプル商品データの投入(ユーザー登録完了後に実行してください)
+# 1.upto(5) do |n|
+#   Item.create!(
+#     name: "サンプル#{n}",
+#     price: "#{n}000".to_i,
+#     description: "テスト#{n}",
+#     condition: 0,
+#     task: 0,
+#     payer_delivery_expense: 0,
+#     shipping_method: 0,
+#     delivery_days: 0,
+#     user_id: 1,
+#     category_id: "#{n}".to_i,
+#     size_id: "#{n}".to_i,
+#     prefecture_id: "#{n}".to_i,
+#   )
+#   ItemImage.create!(
+#     image: open("#{Rails.root}/db/fixtures/sample_image.jpg"), # 画像のファイル(.jpg)は用意したファイル名に修正してください
+#     item_id: "#{n}".to_i,
+#   )
+# end
