@@ -22,6 +22,8 @@ class TradesController < Users::CreditCardsController
       currency: 'jpy',
       metadata: {trade_id: @trade.id},
     )
+    # 商品の状態を"waiting_shipping"に更新
+    @item.update_attributes(task: 1)
     redirect_to root_path
   end
 
