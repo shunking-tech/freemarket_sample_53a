@@ -40,6 +40,8 @@ class ItemsController < ApplicationController
         ItemImage.find(id).destroy
       end
     end
+
+    redirect_to action: 'mypage_item_show'
   end
 
   def destroy
