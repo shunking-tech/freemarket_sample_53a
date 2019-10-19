@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :size
 
-  scope :category_items, -> (category_id) { where('category_id = ?', category_id) }
+  scope :category_items, -> (category_id) { where(category_id: category_id) }
 
   # MEMO: scopeがnilを返す場合は検索対象のモデルのallが適用されるためクラスメソッドで記述
   def self.prev_item(item)
