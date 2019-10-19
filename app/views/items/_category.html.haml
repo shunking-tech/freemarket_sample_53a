@@ -33,7 +33,6 @@
           = link_to "インテリア・住まい・小物",'#4'
 
   .main__product
-    - binding.pry
     - @categories.limit(4).each do |category| 
       .main__product__contener
         .main__product__contener__name{id: category.id}
