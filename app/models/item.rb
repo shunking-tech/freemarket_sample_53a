@@ -57,4 +57,18 @@ class Item < ApplicationRecord
       false
     end
   end
+
+  validates :name,
+            :price,
+            :description,
+            :condition,
+            :task,
+            :payer_delivery_expense,
+            :shipping_method,
+            :delivery_days,
+            :user_id,
+            :category_id,
+            :size_id,
+            :prefecture_id,
+            presence: true
 end
