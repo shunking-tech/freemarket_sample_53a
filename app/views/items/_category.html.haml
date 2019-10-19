@@ -41,7 +41,7 @@
 
         .main__collection
           .main__collection__box
-            - Item.category_items(category.indirects.ids).limit(10).each do |item| 
+            - Item.category_items(category.indirects.ids).recently.limit(10).each do |item| 
               .main__collection__box__parts
                 = link_to item_path(item.id),nil do
                   %figure
