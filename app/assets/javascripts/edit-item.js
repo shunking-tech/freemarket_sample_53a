@@ -28,7 +28,16 @@ $(function (){
 
     // 画像の数を取得
     var number_images = $('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li').length;
-    var images_last_index = parseFloat($('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0].getAttribute('id').replace('edit-upload-list', ''));
+    console.log("保存されている画像の枚数"+number_images);
+
+    // 保存されている最後の画像
+    var images_last_list = $('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0];
+    var images_last_index; // 保存されている最後の画像のインデックス
+    if(images_last_list){ // 保存されている画像がある時
+      images_last_index = parseFloat($('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0].getAttribute('id').replace('edit-upload-list', ''));
+    }else{  // 保存されている画像がない時
+      images_last_index = -1;   // 最後の画像のインデックスを仮に-1とする
+    }
     console.log(images_last_index);
     var image_data = e.target.files[0];   // 選択された画像のデータを取得
     var reader = new FileReader();
@@ -41,10 +50,11 @@ $(function (){
     // 画像追加後の数を取得
     // number_images += 1;
     // 削除するアップローダーのインデックス
-    var delete_uploader_index = parseFloat($($('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0].getAttribute('id').replace('edit-upload-list', ''))['selector'])+1;
-    console.log("削除するアップロードフォームのインデックス"+delete_uploader_index);
+    // var delete_uploader_index = parseFloat($($('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0].getAttribute('id').replace('edit-upload-list', ''))['selector'])+1;
+    // console.log("削除するアップロードフォームのインデックス"+delete_uploader_index);
     console.log("画像追加後の数"+number_images+1);
-    rebuild_html_file_new(number_images+1, delete_uploader_index);
+    // rebuild_html_file_new(number_images+1, delete_uploader_index);
+    rebuild_html_file_new(number_images+1);
   })
 
   // 保存されている画像の「編集」をクリックした時
