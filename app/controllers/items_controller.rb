@@ -2,6 +2,15 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :mypage_item_show, :destroy]
 
   def index
+    @categories = Category.all
+  end
+
+  # def show
+  #   @item = Item.new 
+  # end
+
+  def search
+    @items = []
   end
 
   def show

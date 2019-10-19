@@ -24,32 +24,34 @@
     .main__category__Heading
       %ul.main__category__Heading__list
         %li
-          %a レディース
+          = link_to "レディース",'#1'
         %li
-          %a メンズ
+          = link_to "メンズ",'#2'
         %li
-          %a 家電・スマホ・カメラ
+          = link_to "ベビー・キッズ",'#3'
         %li
-          %a おもちゃ・ホビー・グッズ
+          = link_to "インテリア・住まい・小物",'#4'
 
   .main__product
-    - (0...4).each do
+    -# - (0...4).each do 
+    - @categories.limit(4).each do |category| 
       .main__product__contener
-        .main__product__contener__name
-          %h3 レディース新着アイテム
-          %a もっと見る
+        .main__product__contener__name{id: category.id}
+          -# %h3 レディース新着アイテム
+          %h3=category.name
+          = link_to "もっと見る ", root_path, class:"more_see"
 
         .main__collection
           .main__collection__box
-            - (0...10).each do
+            - category.items.limit(10).each do |item| 
               .main__collection__box__parts
-                %figure
-                  %figcaption
-                    %span
-                      できたできたできたできたできたできたできたできたできたできたできたできたできたできたできたできたできたできた
-                  .main__collection__box__parts__img
-                    %span
-                      ¥
-                      5,000
-                    = image_tag('/top_item.jpg')
-
+                = link_to item_path(item.id),nil do
+                  %figure
+                    %figcaption
+                      %span
+                        = item.name if item.name.present?
+                    .main__collection__box__parts__img
+                      %span
+                        ¥
+                        = item.price if item.price.present?
+                      = image_tag(item.item_images[0].image.url) if item.item_images.present?

@@ -32,4 +32,3 @@ ja:
         within1_2days: "1~2日以内"
         within2_3days: "2~3日以内"
         within4_7days: "3~7日以内"
-  activerecord:
