@@ -35,7 +35,7 @@
                       -#     = link_to '削除', '#', class: "editmain__page__box__form__upload__first__ul__li__button__delete"
                     = f.fields_for :item_images, class: "editmain__page__box__form__upload__first__pc" do |img|
                       -# ↓一旦labelで指定 のちにjsでdiv状態でtype fileしよう可能変更
-                      = img.label :image, class: "editmain__page__box__form__upload__first__pc" do
+                      = img.label :image, class: "editmain__page__box__form__upload__first__pc new_image", style: "width: 620px;" do
 
                         = img.file_field :image, class: "editmain__page__box__form__upload__first__pc__print"
 
