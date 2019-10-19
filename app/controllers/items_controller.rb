@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
-  def show
-    @item = Item.new 
-  end
+  # def show
+  #   @item = Item.new 
+  # end
 
   def search
     @items = []

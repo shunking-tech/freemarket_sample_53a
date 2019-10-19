@@ -28,9 +28,9 @@
         %li
           = link_to "メンズ",'#2'
         %li
-          = link_to "家電・スマホ・カメラ",'#3'
+          = link_to "ベビー・キッズ",'#3'
         %li
-          = link_to "おもちゃ・ホビー・グッズ",'#4'
+          = link_to "インテリア・住まい・小物",'#4'
 
   .main__product
     -# - (0...4).each do 
@@ -39,19 +39,19 @@
         .main__product__contener__name{id: category.id}
           -# %h3 レディース新着アイテム
           %h3=category.name
-          = link_to "もっと見る" , root_path
+          = link_to "もっと見る ", root_path, class:"more_see"
 
         .main__collection
           .main__collection__box
             - category.items.limit(10).each do |item| 
               .main__collection__box__parts
-                %figure
-                  %figcaption
-                    %span
-                      = item.name if item.name.present?
-                  .main__collection__box__parts__img
-                    %span
-                      ¥
-                      = item.price if item.price.present?
-                      -# = image_tag('/top_item.jpg')
-                    = image_tag(item.item_images[0].image.url) if item.item_images.present?
+                = link_to item_path(item.id),nil do
+                  %figure
+                    %figcaption
+                      %span
+                        = item.name if item.name.present?
+                    .main__collection__box__parts__img
+                      %span
+                        ¥
+                        = item.price if item.price.present?
+                      = image_tag(item.item_images[0].image.url) if item.item_images.present?
