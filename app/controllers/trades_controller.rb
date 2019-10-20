@@ -13,6 +13,7 @@ class TradesController < Users::CreditCardsController
   end
 
   def create
+    @trade = Trade.new(trade_params)
     if @trade.save
       # payjpに支払い情報を作成
       Payjp::Charge.create(
