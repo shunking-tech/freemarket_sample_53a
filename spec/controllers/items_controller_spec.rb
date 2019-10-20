@@ -13,6 +13,21 @@ describe ItemsController do
     return {item: item, user: user}
   end
 
+  describe '商品一覧' do
+    before do
+      get :index
+    end
+
+    let(:data) { create_data }
+    it "categoryインスタンス変数はテストデータと同じかな？" do
+      expect(assigns(:category)).to eq data[:category]
+    end
+
+    it 'ビューがitems_categoryファイルかどうかな？' do
+      expect(response).to render_template :index
+    end
+  end
+
   describe '商品詳細' do
     let(:data) { create_data }
 

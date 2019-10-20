@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :size
 
-  scope :category_items, -> (category_id) { where('category_id = ?', category_id) }
+  scope :category_items, -> (category_id) { where(category_id: category_id) }
 
   # MEMO: scopeがnilを返す場合は検索対象のモデルのallが適用されるためクラスメソッドで記述
   def self.prev_item(item)
@@ -38,11 +38,11 @@ class Item < ApplicationRecord
   end
 
   def user_other_items
-    user.items.recently.where.not(id: self.id)
+    user.items.includes(:item_images).recently.where.not(id: self.id)
   end
 
   def category_other_items
-    category.items.recently.where.not(id: self.id)
+    category.items.includes(:item_images).recently.where.not(id: self.id)
   end
 
   def liked_by?(user)
