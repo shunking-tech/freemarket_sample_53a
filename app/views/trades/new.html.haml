@@ -41,12 +41,12 @@
           %h3.bold
             配送先
           %address.buyer-info__inner__body
-            = "〒" + current_user.zipcode[0..2] + "-" + current_user.zipcode[3..6]
+            = "〒" + current_user.zipcode[0..2] + "-" + current_user.zipcode[3..6] if current_user.zipcode
             %br
             = current_user.prefecture
             = current_user.city
             = current_user.house_address
-            = current_user.building_name if current_user.building_name.present?
+            = current_user.building_name
             %br
             = current_user.last_name
             = current_user.first_name
