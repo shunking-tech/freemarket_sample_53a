@@ -115,3 +115,5 @@ gem 'omniauth-google-oauth2'
 
 # クレジットカード登録
 gem 'payjp'
+# パンくず
+gem "gretel"
