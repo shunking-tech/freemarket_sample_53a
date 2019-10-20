@@ -2,12 +2,13 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :mypage_item_show, :destroy]
 
   def index
-    @categories = Category.all
+    root_categories = Category.where(ancestry: nil)
+    @categories = []
+    root_categories.each do |category|
+      @categories.push({category: category, count: category.belongs_items.count})
+    end
+    @categories = @categories.sort_by {|a| -a[:count]}.map { |obj| obj[:category] }.take(4)
   end
-
-  # def show
-  #   @item = Item.new 
-  # end
 
   def search
     @items = []
@@ -32,6 +33,6 @@ class ItemsController < ApplicationController
 
   private
   def set_item
-    @item = Item.find(params[:id]).decorate
+    @item = Item.includes(:item_images).find(params[:id]).decorate
   end
 end
