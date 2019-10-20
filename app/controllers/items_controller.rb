@@ -2,12 +2,15 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :mypage_item_show, :destroy]
 
   def index
-    root_categories = Category.where(ancestry: nil)
-    @categories = []
-    root_categories.each do |category|
-      @categories.push({category: category, count: category.belongs_items.count})
-    end
-    @categories = @categories.sort_by {|a| -a[:count]}.map { |obj| obj[:category] }.take(4)
+    # 一旦、保留
+    # root_categories = Category.where(ancestry: nil)
+    # @categories = []
+    # root_categories.each do |category|
+    #   @categories.push({category: category, count: category.belongs_items.count})
+    # end
+    # @categories = @categories.sort_by {|a| -a[:count]}.map { |obj| obj[:category] }.take(4)
+
+    @categories = Category.where(ancestry: nil).limit(4)
   end
 
   def search
