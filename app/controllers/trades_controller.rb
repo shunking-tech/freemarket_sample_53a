@@ -13,7 +13,7 @@ class TradesController < Users::CreditCardsController
   end
 
   def create
-    if @trade = Trade.create(trade_params)
+    if @trade.save
       # payjpに支払い情報を作成
       Payjp::Charge.create(
         amount: @item.price,
@@ -23,8 +23,10 @@ class TradesController < Users::CreditCardsController
       )
       # 商品の状態を"waiting_shipping"に更新
       @item.update_attributes(task: 1)
+      return redirect_to user_path(current_user.id)
+    else
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   private
