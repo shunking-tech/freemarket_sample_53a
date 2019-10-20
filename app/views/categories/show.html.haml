@@ -17,24 +17,7 @@
       .main__collection
         .main__collection__box
         
-          - @items.each do |item|
-            .main__collection__box__parts
-              = link_to item_path(item.id), class: 'clear_arrow' do
-                %figure
-                  %figcaption
-                    .category__figcaption
-                      %span=item.name
-                      - unless item.item_likes.count.zero?
-                        .category__figcaption__icon
-                          %i.category__figcaption__icon__like.icon-like.fa
-                          %span.clear_after=item.item_likes.count
-
-                  .main__collection__box__parts__img
-                    %span="¥#{item.delimited_price}"
-                    - if item.item_images.present?
-                      = image_tag item.item_images.first.image.url
-                    - else
-                      = image_tag '/300x300.png'
+          = render @category, locals: { items: @items }
 
     // TODO: 冗長な気がするので時間あればうまくまとめる
     - if @items.current_page <= 3
