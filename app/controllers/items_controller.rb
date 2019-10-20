@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     # end
     # @categories = @categories.sort_by {|a| -a[:count]}.map { |obj| obj[:category] }.take(4)
 
-    @categories = Category.where(ancestry: nil).limit(4)
+    @categories = Category.roots.limit(4)
   end
 
   def search
