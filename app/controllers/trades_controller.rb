@@ -13,16 +13,17 @@ class TradesController < Users::CreditCardsController
   end
 
   def create
-    @trade = Trade.create(trade_params)
-    # payjpに支払い情報を作成
-    Payjp::Charge.create(
-      amount: @item.price,
-      customer: @credit_card.customer_id,
-      currency: 'jpy',
-      metadata: {trade_id: @trade.id},
-    )
-    # 商品の状態を"waiting_shipping"に更新
-    @item.update_attributes(task: 1)
+    if @trade = Trade.create(trade_params)
+      # payjpに支払い情報を作成
+      Payjp::Charge.create(
+        amount: @item.price,
+        customer: @credit_card.customer_id,
+        currency: 'jpy',
+        metadata: {trade_id: @trade.id},
+      )
+      # 商品の状態を"waiting_shipping"に更新
+      @item.update_attributes(task: 1)
+    end
     redirect_to root_path
   end
 
