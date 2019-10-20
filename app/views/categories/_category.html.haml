@@ -1,0 +1,19 @@
+.main__collection
+  .main__collection__box
+    - if defined? limit
+      - items = category.belongs_items(limit)
+    - else
+      - items = category.belongs_items
+
+    - items.each do |item|
+      .main__collection__box__parts
+        = link_to item_path(item) do
+          %figure
+            %figcaption
+              %span
+                = item.name if item.name.present?
+            .main__collection__box__parts__img
+              %span
+                ¥
+                = item.price if item.price.present?
+              = image_tag(item.item_images.first.image.url) if item.item_images.present?
