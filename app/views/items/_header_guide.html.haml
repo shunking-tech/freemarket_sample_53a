@@ -22,17 +22,7 @@
                 %path{d: "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", fill: "currentColor", "fill-rule": "nonzero"}
               カテゴリーから探す
             %ul.ddmenu--top-level
-              - @top_categories.each do |top_category|
-                %li
-                  =link_to top_category.name, category_path(top_category)
-                  %ul.ddmenu--second-level
-                    - top_category.children.limit(@top_categories.count).each do |second_category|
-                      %li
-                        =link_to second_category.name, category_path(second_category)
-                        %ul.ddmenu--third-level
-                          - second_category.children.limit(@top_categories.count).each do |third_category|
-                            %li
-                              =link_to third_category.name, category_path(third_category)
+              - ddmenu_list(Category.roots)
 
         .topmein-select-band__left__category
           = link_to root_path , class: "topmein-select-band__left__category__tag" do
@@ -63,7 +53,6 @@
                 = image_tag("/member_photo_noimage_thumb.png", alt: "", class: "topmein-select-band__right__command__box__mypage")
                 マイページ
               %ul
-                -# %li
                 %li.mypage__list__top
                   .mypage__list__top__background
                     = image_tag "/sample-avatar.jpg", height: '60', width: '60'
