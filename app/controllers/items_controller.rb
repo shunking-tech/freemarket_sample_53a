@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :mypage_item_show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     # 一旦、保留
