@@ -9,7 +9,7 @@ RSpec.describe Trade, type: :model do
       @another_user = create(:user)
       @size = create(:size)
       @category = create(:category)
-      @item = create(:item)
+      @item = create(:item, user_id: @user.id)
     end
     # factory_botが有効かどうかテスト
     it "userを登録できるか" do
@@ -36,36 +36,35 @@ RSpec.describe Trade, type: :model do
 
     context '購入可能' do
       it "seller_id, buyer_id, item_id, starusがある場合は購入可能" do
-        trade = create(:trade)
-        expect(trade).to be_valid
+        expect(build(:trade, seller_id: @item.user_id, buyer_id: @another_user.id, item_id: @item.id, status: 1)).to be_valid
       end
     end
 
 
     context '購入不可' do
       it "seller_idがない場合は購入不可" do
-        trade = build(:trade, seller_id: nil)
+        trade = build(:trade, seller_id: nil, buyer_id: @another_user.id, item_id: @item.id, status: 1)
         trade.valid?
         expect(trade.errors[:seller]).to include("を入力してください")
       end
       it "buyer_idがない場合は購入不可" do
-        trade = build(:trade, buyer_id: nil)
+        trade = build(:trade, seller_id: @item.user_id, buyer_id: nil, item_id: @item.id, status: 1)
         trade.valid?
         expect(trade.errors[:buyer]).to include("を入力してください")
       end
       it "seller_idとbuyer_idが同じ場合は購入不可" do
-        trade = build(:trade, seller_id: @user.id, buyer_id: @user.id)
+        trade = build(:trade, seller_id: @item.user_id, buyer_id: @user.id, item_id: @item.id, status: 1)
         trade.valid?
         expect(trade.errors[:seller_id]).to include("が同一人物です")
         expect(trade.errors[:buyer_id]).to include("が同一人物です")
       end
       it "item_idがない場合は購入不可" do
-        trade = build(:trade, item_id: nil)
+        trade = build(:trade, seller_id: @item.user_id, buyer_id: @another_user.id, item_id: nil, status: 1)
         trade.valid?
         expect(trade.errors[:item]).to include("を入力してください")
       end
       it "statusがない場合は購入不可" do
-        trade = build(:trade, status: nil)
+        trade = build(:trade, seller_id: @item.user_id, buyer_id: @another_user.id, item_id: @item.id, status: nil)
         trade.valid?
         expect(trade.errors[:status]).to include("を入力してください")
       end
