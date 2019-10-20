@@ -15,11 +15,24 @@
             %li.registrated-card
 
         .registration-card__body__inner
-          .registration-card__body__inner__add-card
-            .registration-card__body__inner__add-card__btn
-              = link_to new_user_credit_card_path do
-                %i.icon-card
-                クレジットカードを追加する
+          - if @default_card_information.present?
+            %ul
+              %li
+                = form_with url: user_credit_card_path, method: :delete do |f|
+                  = f.text_field :user_id, {type: "hidden", value: "#{@credit_card.user_id}"}
+                  = f.button "削除する", class: 'registration-card__body__inner__delete'
+                  %figure
+                    = image_tag @brand_icon, height: '20', width: '29', class: 'brand-icon'
+                  .registration-card__body__inner__card-info
+                    = "************ " + @default_card_information.last4
+                  .registration-card__body__inner__card-info
+                    = @card_limit
+          - else
+            .registration-card__body__inner__add-card
+              .registration-card__body__inner__add-card__btn
+                = link_to new_user_credit_card_path do
+                  %i.icon-card
+                  クレジットカードを追加する
 
         .registration-card__body__lower
           = link_to root_path, traget: "_blank" do

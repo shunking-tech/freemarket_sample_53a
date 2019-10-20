@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :size
+  has_one :trade
 
   scope :category_items, -> (category_id) { where(category_id: category_id) }
 
