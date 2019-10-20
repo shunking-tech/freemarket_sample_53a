@@ -54,7 +54,7 @@ RSpec.describe Trade, type: :model do
         expect(trade.errors[:buyer]).to include("を入力してください")
       end
       it "seller_idとbuyer_idが同じ場合は購入不可" do
-        trade = build(:trade, seller_id: 1, buyer_id: 1)
+        trade = build(:trade, seller_id: @user.id, buyer_id: @user.id)
         trade.valid?
         expect(trade.errors[:seller_id]).to include("が同一人物です")
         expect(trade.errors[:buyer_id]).to include("が同一人物です")
