@@ -1,17 +1,25 @@
 .main__collection
   .main__collection__box
-    - if defined? limit
-      - items = category.belongs_items(limit)
-    - else
-      - items = category.belongs_items
+  
+    - unless defined? items
+      - if defined? limit
+        - items = category.belongs_items(limit)
+      - else
+        - items = category.belongs_items
 
     - items.each do |item|
       .main__collection__box__parts
         = link_to item_path(item) do
-          %figure
+        
+          %figure.category__figcaption
             %figcaption
-              %span
-                = item.name if item.name.present?
+              %span=item.name if item.name.present?
+              - if current_page?(category_path(category))
+                - unless item.item_likes.count.zero?
+                  .category__figcaption__icon
+                    %i.category__figcaption__icon__like.icon-like.fa
+                    %span.clear_after=item.item_likes.count
+
             .main__collection__box__parts__img
               %span
                 ¥
