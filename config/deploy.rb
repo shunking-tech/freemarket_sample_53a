@@ -52,30 +52,6 @@ end
 
 # db作成
 before 'deploy:migrate', 'db:create'
-namespace :db do
-  task :create do
-    on roles(:db) do |host|
-      with rails_env: fetch(:rails_env) do
-        within current_path do
-          execute :bundle, :exec, :rake, 'db:create'
-        end
-      end
-    end
-  end
-end
-
-# db削除（DB削除したいときに利用）
-namespace :db do
-  task :drop do
-    on roles(:db) do |host|
-      with rails_env: fetch(:rails_env) do
-        within current_path do
-          execute :bundle, :exec, :rake, 'db:drop'
-        end
-      end
-    end
-  end
-end
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
