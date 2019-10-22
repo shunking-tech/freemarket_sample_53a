@@ -92,7 +92,10 @@
   -# .detail-item__price-info.text-center
   -#   .detail-item__point-message="残高 ¥733 をお持ちです"
 
-  = link_to '購入画面に進む', new_item_trade_path(@item), class: 'detail-item__buy'
+  - if @item.seller?(current_user)
+    = link_to '購入画面に進む', "javascript:void(0)", class: 'detail-item__buy detail-item__buy--not-allowed'
+  - else
+    = link_to '購入画面に進む', new_item_trade_path(@item), class: 'detail-item__buy'
 
   .detail-item__description
     .detail-item__description__inner<>
