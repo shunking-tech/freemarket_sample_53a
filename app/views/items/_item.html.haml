@@ -1,0 +1,16 @@
+.main__collection__box__parts
+  = link_to item_path(item) do
+  
+    %figure.category__figcaption
+      %figcaption
+        %span=item.name if item.name.present?
+        - if current_page?(category_path(category)) && !item.item_likes.count.zero?
+          .category__figcaption__icon
+            %i.category__figcaption__icon__like.icon-like.fa
+            %span.clear_after=item.item_likes.count
+
+      .main__collection__box__parts__img
+        %span
+          ¥
+          = item.price if item.price.present?
+        = image_tag(item.item_images.first.image.url) if item.item_images.present?

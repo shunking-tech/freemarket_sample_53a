@@ -42,4 +42,7 @@ Rails.application.routes.draw do
       get :deliver_address
     end
   end
+
+  # カテゴリ
+  resources :categories, only: [:index, :show]
 end

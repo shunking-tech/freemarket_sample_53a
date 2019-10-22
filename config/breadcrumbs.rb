@@ -34,6 +34,21 @@ crumb :sign_out do
   parent :mypage
 end
 
+crumb :categories do
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
+crumb :category do |categories|
+  categories.each do |category|
+    link category.name, category
+  end
+  if params[:page].presence
+    link "#{params[:page]} ページ目"
+  end
+  parent :categories
+end
+
 # crumb :project do |project|
 #   link project.name, project_path(project)
 #   parent :projects

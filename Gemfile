@@ -115,5 +115,9 @@ gem 'omniauth-google-oauth2'
 
 # クレジットカード登録
 gem 'payjp'
+
+# ページネーション
+gem 'kaminari'
+
 # パンくず
 gem "gretel"

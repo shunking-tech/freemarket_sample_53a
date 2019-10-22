@@ -1,19 +1,20 @@
-.main__collection
-  .main__collection__box
-    - if defined? limit
-      - items = category.belongs_items(limit)
-    - else
-      - items = category.belongs_items
+- unless defined? items
+  - if defined? limit
+    - items = category.belongs_items(limit)
+  - else
+    - items = category.belongs_items
 
-    - items.each do |item|
-      .main__collection__box__parts
-        = link_to item_path(item) do
-          %figure
-            %figcaption
-              %span
-                = item.name if item.name.present?
-            .main__collection__box__parts__img
-              %span
-                ¥
-                = item.price if item.price.present?
-              = image_tag(item.item_images.first.image.url) if item.item_images.present?
+.main__product__contener
+
+  - if current_page?(root_path)
+    .main__product__contener__name{id: category.id}
+      %h3=category.name
+      = link_to "もっと見る ", category_path(category), class:"more_see"
+
+  - elsif current_page?(category)
+    .main__product__contener__name
+      %h3="#{category.name}の商品一覧 #{'(' + items.current_page.to_s + ' ページ目)' unless items.first_page?}"
+
+  .main__collection
+    .main__collection__box
+      = render partial: items, locals: { category: category }

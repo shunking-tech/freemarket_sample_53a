@@ -25,6 +25,6 @@ class ItemLikesController < ApplicationController
   end
 
   def move_to_login
-    redirect_to login_url unless user_signed_in?
+    redirect_to sign_in_url unless user_signed_in?
   end
 end
