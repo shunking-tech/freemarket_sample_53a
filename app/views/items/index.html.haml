@@ -29,13 +29,7 @@
           %li= link_to category.name,"##{category.id}"
 
   .main__product
-    - @categories.each do |category| 
-      .main__product__contener
-        .main__product__contener__name{id: category.id}
-          %h3=category.name
-          = link_to "もっと見る ", category_path(category), class:"more_see"
-
-        = render partial: category, locals: { limit: 10 }
+    = render partial: @categories, locals: { limit: 10 }
 
 = render 'items/footer';
 = render 'items/footer_btn';
