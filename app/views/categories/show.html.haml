@@ -10,14 +10,7 @@
         - @categories.each do |category|
           = link_to "#{category.name}", category_path(category)
 
-    .main__product__contener
-      .main__product__contener__name
-        %h3="#{@category.name}の商品一覧 #{'(' + @items.current_page.to_s + ' ページ目)' unless @items.first_page?}"
-
-      .main__collection
-        .main__collection__box
-        
-          = render @category, locals: { items: @items }
+    = render partial: @category, locals: { items: @items }
 
     // TODO: 冗長な気がするので時間あればうまくまとめる
     - if @items.current_page <= 3
