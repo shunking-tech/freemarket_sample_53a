@@ -1,6 +1,11 @@
 .mercari-header {
   background: $white;
   position: relative;
+  z-index: 1;
+
+  &--box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  }
 
   img {
     vertical-align: middle;
@@ -120,6 +125,11 @@
           font-weight: 600;
           line-height: 36px;
           white-space: nowrap;
+
+          &:hover{
+            color: rgb(0, 149, 238);
+          }
+
           &__search{
             max-width: 100%;
             max-height: 100%;
@@ -197,7 +207,46 @@
             width: 20px;
             border-radius: 50%;
           }
+
+          &--new {
+            text-align: center;
+            a {
+              background-color: rgb(234, 53, 45);
+              color: rgb(255, 255, 255);
+              display: block;
+              font-size: 14px;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgb(234, 53, 45);
+              border-image: initial;
+              border-radius: 4px;
+              padding: 8px 10px;
+            }
           }
+
+          &--login {
+            text-align: center;
+            margin-left: 11px;
+            a {
+              background-color: rgb(255, 255, 255);
+              color: rgb(0, 149, 238);
+              display: block;
+              font-size: 14px;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgb(0, 149, 238);
+              border-image: initial;
+              border-radius: 4px;
+              padding: 8px 10px;
+              transition: all 0.3s ease-out 0s;
+              &:hover {
+                background-color: rgb(0, 149, 238);
+                color: $white;
+                transition: all 0.3s ease-out 0s;
+              }
+            }
+          }
+        }
         &__command:first-child{
           padding-left: 0px;
         }
@@ -207,6 +256,7 @@
         &__command:last-child{
           padding-right: 0px;
         }
+
       }
     }
     &__user{
@@ -246,5 +296,168 @@
         }
       }
     }
+  }
+}
+
+// カテゴリーのドロップダウン
+// 参考URL（コピペ）：https://allabout.co.jp/gm/gc/23911/7/
+.ddmenu {
+  margin: 0px;
+  padding: 0px 0px 0px 15px;
+  position: relative;
+
+  li {
+    width: 100%;
+    display: inline-block;
+    list-style-type: none;
+    height: 44px;
+
+    // 「カテゴリーから探す」にマウスが乗った時、2階層目を表示
+    &:hover > ul {
+      display: block;
+    }
+  }
+
+  a {
+    background-color: $white;
+    display: block;
+    height: 100%;
+  }
+
+  ul {
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    position: absolute;
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #eee;
+    background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    top: 44px;
+  }
+
+  // 1階層目の要素
+  ul li {
+    box-sizing: border-box;
+    width: 224px;
+
+    a {
+      line-height: 44px;
+      text-align: left;
+      padding-left: 15px;
+      font-weight: normal;
+
+      &:hover {
+        background-color: $active-red;
+        color: $white;
+      }
+    }
+  }
+
+  // 2階層目および3階層目の要素
+  ul ul {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+  }
+
+  // 3階層目のみの設定
+  ul ul ul {    
+    li {
+      box-sizing: border-box;
+      width: 320px;
+    }
+  }
+}
+
+ul.ddmenu__mypage {
+  position: relative;
+  
+  li {
+    height: 44px;
+
+    ul {
+      display: none;
+      position: absolute;
+      background-color: $white;
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+      top: 44px;
+      right: 0;
+
+      .mypage__list__top {
+        width: 320px;
+        height: 100%;
+
+        &__background {
+          position: relative;
+          background: image-url("/user-bg.jpg");
+          height: 80px;
+
+          img {
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+
+        &__username {
+          text-align: center;
+          padding-top: 30px;
+        }
+
+        &__userinfo {
+          display: flex;
+          justify-content: center;
+          padding: 10px 0;
+
+          span:first-child {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      li {
+        box-sizing: border-box;
+        width: 320px;
+        border-top: 1px solid #eee;
+
+        a {
+          line-height: 44px;
+          text-align: left;
+          padding-left: 15px;
+          font-weight: normal;
+          display: flex;
+          justify-content: space-between;
+          
+          i {
+            margin-right: 15px;
+            opacity: 0.3;
+          }
+
+          &:hover {
+            background-color: #eee;
+          }
+        }
+      }
+    }
+
+    &:hover > ul {
+      display: block;
+    }
+  }
+
+  a {
+    background-color: $white;
+    display: block;
+    height: 100%;
   }
 }

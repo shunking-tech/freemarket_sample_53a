@@ -48,4 +48,8 @@ class User < ApplicationRecord
   def bad_count
     user_reviews.bad_score.count
   end
+
+  def full_name
+    "#{last_name}#{first_name}"
+  end
 end
