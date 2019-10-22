@@ -4,7 +4,7 @@
     %figure.category__figcaption
       %figcaption
         %span=item.name if item.name.present?
-        - if defined? category && current_page?(category_path(category)) && !item.item_likes.count.zero?
+        - if current_page?(category_path(category)) && !item.item_likes.count.zero?
           .category__figcaption__icon
             %i.category__figcaption__icon__like.icon-like.fa
             %span.clear_after=item.item_likes.count
