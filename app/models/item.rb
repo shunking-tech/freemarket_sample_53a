@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :size
+  has_one :trade
 
   scope :category_items, -> (category_id) { where(category_id: category_id) }
 
@@ -38,11 +39,11 @@ class Item < ApplicationRecord
   end
 
   def user_other_items
-    user.items.recently.where.not(id: self.id)
+    user.items.includes(:item_images).recently.where.not(id: self.id)
   end
 
   def category_other_items
-    category.items.recently.where.not(id: self.id)
+    category.items.includes(:item_images).recently.where.not(id: self.id)
   end
 
   def liked_by?(user)

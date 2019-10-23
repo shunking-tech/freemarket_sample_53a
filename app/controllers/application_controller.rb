@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production_or_staging?
+  before_action :authenticate_user!
 
   private
 

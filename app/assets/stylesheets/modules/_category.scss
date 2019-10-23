@@ -32,21 +32,30 @@
         padding: 0px;
         height: 390px;
         width: 100%;
-        background-image: image-url("/top-banner-autumn-fes.jpg");
-        background-size: auto;
+        background-image: image-url("/top-subliminal-pa-ko.jpg");
+        background-size: 50%;
         background-position: center center;
       }
         &__list{
-
+          overflow: hidden;
           position: relative;
           display: block;
-          margin: 0px;
+          margin: 0 auto;
           padding: 0px;
           height: 390px;
-          width: 3840px;
           cursor: pointer;
           box-sizing: border-box;
-          touch-action: pan-y pinch-zoom;
+          max-width: 100%;
+          text-align:cente;
+          img{
+            display: none;
+            position: absolute;
+
+            
+            
+          }
+
+  
 
           &__slide{
             box-sizing: border-box;
@@ -203,9 +212,25 @@
   .main__product{
     padding: 42px 0px 100px;
 
+    .category__header {
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+        a {
+          margin-right: 15px;
+          margin-bottom: 15px;
+          &:hover {
+            text-decoration: underline;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
     &__contener{
       width: 1020px;
-      height: 573px;
+      // height: 573px;
       margin-bottom: 60px;
 
       &__name{
@@ -256,7 +281,7 @@
 
     .main__collection{
       width: 1020px;
-      height: 524px;
+      // height: 524px;
 
       &__box{
         grid-template-columns: repeat(5, 1fr);
@@ -295,7 +320,7 @@
                 height: 2.8em;
                 overflow: hidden;
                 position: relative;
-                &::after {
+                &:not(.clear_after)::after {
                   bottom: 0;
                   content: "";
                   height: 50%;
@@ -327,17 +352,77 @@
               letter-spacing: .02em;
               padding: 0 12px;
               position: absolute;
-              z-index: 2;
-              float: left;
             }
-          img{
-            width: 100%;
-            height: 188px;
-            grid-template-rows:auto;
+            img{
+              width: 100%;
+              height: 188px;
+              grid-template-rows:auto;
+            }
           }
+          .category__figcaption {
+            position: relative;
+            width: 100%;
+
+            &__icon {
+              position: absolute;
+              display: inline-flex;
+              align-items: flex-start;
+              right: 5px;
+              bottom: 2px;
+
+              &__like {
+                margin-right: 5px;
+              }
+
+              span {
+                height: 100%;
+              }
+            }
           }
         }
+
       }
+    }
+
+    // カテゴリー別ページ
+    .pagination {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .first, .prev, .next, .last, .page {
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid rgb(204, 204, 204);
+        background-color: $white;
+        color:#333;
+        width: 44px;
+        height: 44px;
+        text-align: center;
+        line-height: 44px;
+
+        &:hover {
+          background-color: rgb(242, 242, 242);
+        }
+      }
+    }
+
+    .current {
+      display: inline-block;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid gray;
+      background-color: $active_red;
+      color: $white;
+      width: 44px;
+      height: 44px;
+      text-align: center;
+      line-height: 44px;
     }
   }
 }

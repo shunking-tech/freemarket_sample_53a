@@ -333,6 +333,11 @@ a {
     text-align: center;
     font-weight: 600;
     transition: all ease-out .3s;
+
+    &--not-allowed {
+      background: $dark_gray;
+      cursor: not-allowed;
+    }
   }
 
   &__description {
