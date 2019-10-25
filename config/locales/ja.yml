@@ -1,7 +1,22 @@
 ja:
+  activerecord:
+    attributes:
+      item:
+        condition: "商品の状態"
+        category: "カテゴリー"
+        name: "商品名"
+        price: "300以上9999999以下"
+        description: "商品の詳細"
+        shipping_method: "発送の方法"
+        delivery_days: "発送までの日数"
+        size: "サイズ"
+        prefecture: "発送元の地域"
+        payer_delivery_expense: "発送料の負担"
+
   enums:
     item:
       condition:
+        prompt: "---"
         unused: "新品、未使用"
         almost_new: "未使用に近い"
         non_dirty: "目立った傷や汚れなし"
@@ -32,4 +47,3 @@ ja:
         within1_2days: "1~2日以内"
         within2_3days: "2~3日以内"
         within4_7days: "3~7日以内"
-  activerecord:
