@@ -32,16 +32,22 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
     delete_image_ids = delete_image_id_params[:delete_image_id]
+    if delete_image_ids && delete_image_ids.length == @item.item_images.length
+      @error = "画像がありません"
+      render :edit
+    elsif @item.update(item_params)
 
-    if delete_image_ids
-      delete_image_ids.each do |id|
-        ItemImage.find(id).destroy
+      if delete_image_ids
+        delete_image_ids.each do |id|
+          ItemImage.find(id).destroy
+        end
       end
-    end
 
-    redirect_to action: 'mypage_item_show'
+      redirect_to action: 'mypage_item_show'
+    else
+      render :edit
+    end
   end
 
   def destroy
