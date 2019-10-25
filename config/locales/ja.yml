@@ -31,8 +31,8 @@ ja:
         complete: "取引完了"
         stopping: "出品停止"
       payer_delivery_expense:
-        seller_burden: "送料込み(出品者負担)"
-        buyer_burden: "着払い(購入者負担)"
+        seller_burden: "送料込み"
+        buyer_burden: "着払い"
       shipping_method:
         undecided: "未定"
         easy_mercari_post: "らくらくメルカリ便"
@@ -47,3 +47,4 @@ ja:
         within1_2days: "1~2日以内"
         within2_3days: "2~3日以内"
         within4_7days: "3~7日以内"
+

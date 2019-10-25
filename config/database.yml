@@ -11,6 +11,7 @@
 #
 default: &default
   adapter: mysql2
+  charset: utf8
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
@@ -47,9 +48,16 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: freemarket_sample_53a_staging
+  username: <%= Rails.application.credentials.db[:staging][:username] %>
+  password: <%= Rails.application.credentials.db[:staging][:password] %>
+  socket: /var/lib/mysql/mysql.sock
+
 production:
   <<: *default
   database: freemarket_sample_53a_production
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
+  username: <%= Rails.application.credentials.db[:production][:username] %>
+  password: <%= Rails.application.credentials.db[:production][:password] %>
   socket: /var/lib/mysql/mysql.sock

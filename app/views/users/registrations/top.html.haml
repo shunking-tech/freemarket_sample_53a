@@ -1,14 +1,12 @@
 .registration
   %header.registration__header
-    %h1.registration__header--top-h1
-      = link_to root_path, class: "registration__header--logo" do
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763", width: "185px",height: "49px"
+    = render 'shared/reg_and_session_header'
   %main.registration__main
     %section.registration__main__section
       %h2.registration__main__section__head 新規会員登録
       .registration-form.registration-form--top
         .registration-form__content
-          = link_to root_path, class: "registration-form__content__btn registration-form__content__btn--mail" do
+          = link_to sign_up_path, class: "registration-form__content__btn registration-form__content__btn--mail", data: {turbolinks: false} do
             = fa_icon "envelope"
             メールアドレスで登録する
           - if Rails.env.development?
@@ -25,9 +23,4 @@
             = link_to root_path, method: :post, class: "registration-form__content__btn registration-form__content__btn--google" do
               = image_tag '/google-logo.png', width: "26px", height: "26px", class: "registration-form__content__btn--google--logo"
               Googleで登録する
-  %footer.registration__footer.registration__footer--top
-    .registration__footer__wrap
-      = link_to root_path, class: "registration__footer__logo" do
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2482339763", width: "80",height: "65"
-      %p
-        %small © 2019 Mercari
+  = render "shared/reg_and_session_footer", current_page: "top"

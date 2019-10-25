@@ -1,0 +1,8 @@
+%header.registration__header
+  = render 'shared/reg_and_session_header'
+  %nav.registration__header__bar
+    %ol.clearfix
+      - bar_lists.each_with_index do |list, index|
+        %li{class: bar_status(index, check_status_number(status))}
+          = list
+          .registration__header__bar__status

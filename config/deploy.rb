@@ -3,7 +3,7 @@
 lock '3.11.0'
 
 # Capistranoのログの表示に利用する
-set :application, 'freemarket_sample_53a'
+# set :application, 'freemarket_sample_53a'
 
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:shunking-tech/freemarket_sample_53a.git'
@@ -15,8 +15,8 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1' #rubyのバージョン
 
 # どの公開鍵を利用してデプロイするか
-set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/freemarket_sample_53a.pem']
+# set :ssh_options, auth_methods: ['publickey'],
+#                   keys: ['~/.ssh/freemarket_sample_53a.pem']
 
 # プロセス番号を記載したファイルの場所
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
@@ -34,6 +34,43 @@ namespace :deploy do
       on roles(:app), in: :sequence, wait: 10 do
         unless test("[ -f #{shared_path}/config/master.key ]")
           upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
+      end
+    end
+  end
+end
+
+# mysqlの再起動を実施
+before 'deploy:migrate', 'mysql:restart'
+namespace :mysql do
+  task :restart do
+    on roles(:db) do
+      execute "sudo service mysqld restart"
+    end
+  end
+end
+
+# db作成
+before 'deploy:migrate', 'db:create'
+namespace :db do
+  task :create do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:create'
+        end
+      end
+    end
+  end
+end
+
+# db削除（DB削除したいときに利用）
+namespace :db do
+  task :drop do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:drop'
         end
       end
     end

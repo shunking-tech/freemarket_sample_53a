@@ -2,7 +2,7 @@
   %nav
     %ul.items
       %li
-        = link_to root_path, class: "items__item active" do
+        = link_to current_user, class: "items__item active" do
           マイページ
           %i.icon-arrow-right
       %li
@@ -20,7 +20,7 @@
           いいね！一覧
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to new_item_path, class: "items__item" do
           出品する
           %i.icon-arrow-right
       %li
@@ -76,15 +76,15 @@
       設定
     %ul.items
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to profile_user_path(current_user), class: "items__item" do
           プロフィール
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to deliver_address_user_path(current_user), class: "items__item" do
           発送元・お届け先住所変更
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to user_credit_card_path(current_user), class: "items__item" do
           支払い方法
           %i.icon-arrow-right
       %li
@@ -92,7 +92,7 @@
           メール/パスワード
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to identification_user_path(current_user), class: "items__item" do
           本人情報
           %i.icon-arrow-right
       %li
@@ -100,6 +100,6 @@
           電話番号の確認
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to sign_out_path, class: "items__item" do
           ログアウト
           %i.icon-arrow-right

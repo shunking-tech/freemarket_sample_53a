@@ -12,8 +12,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
-      session[:sns_id] = @sns_id
       render template: "users/registrations/new"
+      session[:sns] = @sns
     end
   end
 
@@ -26,6 +26,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def set_user_and_sns_id
     info = User.find_oauth(request.env["omniauth.auth"])
     @user = info[:user]
-    @sns_id = info[:sns_id]
+    @sns = info[:sns]
   end
 end

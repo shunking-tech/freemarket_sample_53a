@@ -1,0 +1,19 @@
+.registration
+  = render "registration_header", status: "電話番号認証"
+  %main.registration__main
+    %section.registration__main__section
+      %h2.registration__main__section__head 電話番号の確認
+      = form_with model: @user, class: "registration-form" do |f|
+        .registration-form__content
+          .registration-form__content__form-group.registration-form__content__form-group-first
+            = f.label :phone_number, "携帯電話の番号"
+            %br/
+            = f.text_field :phone_number, class: "registration-form__content__form-group__input", placeholder: "携帯電話の番号を入力"
+            = render "shared/user_errors", errors: @user.errors[:phone_number]
+          %p
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          = f.submit "SMSを送信する", class: "registration-form__content__btn"
+          %p
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+
+  = render "shared/reg_and_session_footer", current_page: "sms_authorization"

@@ -134,4 +134,3 @@ ticket_music.children.create([{:name=>"男性アイドル"}, {:name=>"女性ア�
 car_body.children.create([{:name=>"国内自動車本体"}, {:name=>"外国自動車本体"}])
 # その他の孫要素
 other_petSupplies.children.create([{:name=>"ペットフード"}, {:name=>"犬用品"}, {:name=>"猫用品"}, {:name=>"魚用品/水草"}, {:name=>"小動物用品"}])
-

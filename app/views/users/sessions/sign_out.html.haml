@@ -1,11 +1,12 @@
+- breadcrumb :sign_out, current_user
 = render 'items/header_guide'
-
+= render 'shared/breadcrumbs'
 %main.mypage-container.clearfix
 
   .content
     %section.logout__container
       .logout__form
-        = link_to "ログアウト", logout_path, method: :delete, class: 'logout__submit'
+        = link_to "ログアウト", sign_out_path, method: :delete, class: 'logout__submit'
 
   = render 'users/mypage/side'
   = render 'items/footer_btn'

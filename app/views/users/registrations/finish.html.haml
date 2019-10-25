@@ -1,0 +1,13 @@
+.registration
+  = render "registration_header", status: "完了"
+  %main.registration__main
+    %section.registration__main__section
+      %h2.registration__main__section__head 会員登録完了
+      .registration-form
+        .registration-form__content
+          %p.registration-form__content__complete-message
+            ありがとうございます。
+            %br/
+            会員登録が完了しました。
+          = link_to "メルカリをはじめる",root_path ,class: "registration-form__content__btn"
+  = render "shared/reg_and_session_footer", current_page: "finish"

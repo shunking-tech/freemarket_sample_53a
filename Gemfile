@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'faker'
 
   # デバッグのためのgem
   gem 'pry-rails'
@@ -66,6 +67,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
+  gem 'bullet'
 end
 
 group :test do
@@ -75,11 +80,9 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 
-  # テストのためのgem
-  gem 'faker'
 end
 
-group :production do
+group :production, :staging do
   gem 'unicorn', '5.4.1'
 end
 
@@ -94,6 +97,9 @@ gem 'fog-aws'
 gem 'devise'
 gem 'haml-rails'
 gem "font-awesome-rails"
+
+# decorater追加
+gem 'draper'
 gem "active_hash"
 gem "ancestry"
 gem "enum_help"
@@ -106,3 +112,12 @@ gem 'dotenv-rails'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
+# クレジットカード登録
+gem 'payjp'
+
+# ページネーション
+gem 'kaminari'
+
+# パンくず
+gem "gretel"

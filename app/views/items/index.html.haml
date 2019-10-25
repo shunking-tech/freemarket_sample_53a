@@ -1,4 +1,40 @@
 = render 'items/header_guide';
-= render 'items/category';
+
+.recommended
+  .main
+    .main__box
+      .main__slideshow
+        .main__slideshow__frame
+          %ul.main__slideshow__list
+            = image_tag"/top-banner-autumn-fes.jpg"
+            = image_tag"/top-banner-camp.jpg"
+            = image_tag"/top-banner-super-exhibition-fes.jpg"
+            = image_tag"/top-banner-enari-fes.jpg"
+
+            %li.main__slideshow__list__slide
+              = link_to root_path do
+                .active
+        .main__slideshow__left
+          .main__slideshow__left__box
+
+        .main__slideshow__right
+          .main__slideshow__right__box
+
+        .main__slideshow__button
+          .main__slideshow__button__box
+            %span
+            %span
+            %span
+
+  .main__category
+    %h2 人気のカテゴリー
+    .main__category__Heading
+      %ul.main__category__Heading__list
+        - @categories.each do |category|
+          %li= link_to category.name,"##{category.id}"
+
+  .main__product
+    = render partial: @categories, locals: { limit: 10 }
+
 = render 'items/footer';
 = render 'items/footer_btn';

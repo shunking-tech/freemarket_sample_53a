@@ -1,0 +1,24 @@
+- breadcrumb :category, @category.path
+= render 'items/header_guide'
+= render 'shared/breadcrumbs'
+
+.recommended
+
+  .main__product
+    .category__header
+      .category__header__list
+        - @categories.each do |category|
+          = link_to "#{category.name}", category_path(category)
+
+    = render partial: @category, locals: { items: @items }
+
+    // TODO: 冗長な気がするので時間あればうまくまとめる
+    - if @items.current_page <= 3
+      = paginate @items, window: 0, left: 5, right: 0
+    - elsif @items.current_page > @items.total_pages - 3
+      = paginate @items, window: 0, left: 0, right: 5
+    - else
+      = paginate @items, window: 2, left: 0, right: 0
+
+= render 'items/footer'
+= render 'items/footer_btn';

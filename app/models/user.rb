@@ -6,12 +6,14 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :sns_credentials, dependent: :destroy
-
-  validates_with UserValidator
   has_many :items
   has_many :item_likes
   has_many :liked_items, through: :item_likes, source: :item
   has_many :item_comments
+  has_many :user_reviews
+  has_one :credit_card
+
+  validates_with UserValidator
 
   def self.find_oauth(auth)
     uid = auth.uid
@@ -30,11 +32,25 @@ class User < ApplicationRecord
         sns = SnsCredential.new(uid: uid, provider: provider, user_id: user.id)
       else
         user = User.new(nickname: auth.info.name, email: auth.info.email)
-        sns = SnsCredential.create(uid: uid, provider: provider)
+        sns = SnsCredential.new(uid: uid, provider: provider)
       end
     end
-    # binding.pry
-    # hashでsnsのidを返り値として保持しておく
-    return { user: user , sns_id: sns.id }
+    return { user: user , sns: sns }
+  end
+
+  def good_count
+    user_reviews.good_score.count
+  end
+
+  def normal_count
+    user_reviews.normal_score.count
+  end
+
+  def bad_count
+    user_reviews.bad_score.count
+  end
+
+  def full_name
+    "#{last_name}#{first_name}"
   end
 end
