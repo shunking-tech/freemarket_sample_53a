@@ -18,4 +18,15 @@ class Item < ApplicationRecord
   
   accepts_nested_attributes_for :item_images
     
+  with_options presence: true do
+    validates :name 
+    validates :price
+    validates :description
+    validates :condition
+    validates :task 
+    validates :shipping_method
+    validates :delivery_days
+    validates :prefecture
+    validates :payer_delivery_expense
+  end
 end
