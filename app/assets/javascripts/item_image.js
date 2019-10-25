@@ -23,12 +23,9 @@ $(function (){
 
   // 新規の画像を選択した時
   $(document).on('change', '.new_image', function(e){
-    console.log('new_image_selected!!!')
-    console.log("削除された画像の数"+deleted_images_counter);
 
     // 画像の数を取得
     var number_images = $('.sellmain__page__box__form__upload__first__ul__li__button__delete').parents('li').length;
-    console.log("保存されている画像の枚数"+number_images);
 
     // 保存されている最後の画像
     var images_last_list = $('.sellmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0];
@@ -38,12 +35,10 @@ $(function (){
     }else{  // 保存されている画像がない時
       images_last_index = -1;   // 最後の画像のインデックスを仮に-1とする
     }
-    console.log(images_last_index);
     var image_data = e.target.files[0];   // 選択された画像のデータを取得
     var reader = new FileReader();
     reader.readAsDataURL(image_data);
     reader.onload = function(load_image_e) {
-      console.log("画像追加前の最後のインデックス"+images_last_index);
       create_html_file_sell(images_last_index+1, load_image_e.target.result);
     }
 
@@ -54,30 +49,21 @@ $(function (){
     // var delete_uploader_index = parseFloat($($('.sellmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0].Attribute('id').replace('sell-upload-list', ''))['selector'])+1;
     // 複数投稿してサイドformを出現させたい場合は上のものを　replace('sell-upload-list', '')　が再度file_fieldを表示させる
     // console.log("削除するアップロードフォームのインデックス"+delete_uploader_index);
-    console.log("画像追加後の数"+number_images+1);
     rebuild_html_file_new(number_images+1, delete_uploader_index);
     rebuild_html_file_new(number_images+1);
   })
 
   // 保存されている画像の「編集」をクリックした時
   $(document).on('click', '.editmain__page__box__form__upload__first__ul__li__button__sell', function(click_e){
-    console.log('edit_click!!!')
     var image_index = click_e.target.getAttribute('id').replace('edit-upload-button', ''); // 「編集」をクリックされた画像のインデックスを取得
-    console.log("画像のインデックス＝" + image_index);
     // 画像のinputタグの内容が変更された時(「編集」をクリックした時のイベントにネスト)
     $(document).on('change', `input[id*=${image_index}]`, function(change_e){
-      console.log('image_change!!!')
       var image_data = change_e.target.files[0];   // 選択された画像のデータを取得
-      console.log("選択された画像データ↓");
-      console.log(image_data);
 
       var reader = new FileReader();
       reader.readAsDataURL(image_data);
       reader.onload = function(load_image_e) {
         $(click_e.target).parent().parent().find('figure').find('img').attr('src', load_image_e.target.result );
-        console.log("クリックされた「編集」の親の親要素↓");
-        console.log($(click_e.target).parent().parent());
-        console.log("imgタグに反映された選択された画像のURL＝" + $(click_e.target).parents('li').find('figure').find('img').attr('src'));
       }
     })
   })
@@ -101,7 +87,6 @@ $(function (){
     var number_images = $('.sellmain__page__box__form__upload__first__ul__li__button__delete').parents('li').length;  // 画像の数を取得
     rebuild_html_file_new(number_images, target_id_number);
     deleted_images_counter += 1;
-    console.log("削除された画像の数"+deleted_images_counter);
   })
 
 
@@ -124,8 +109,6 @@ $(function (){
 
   // 保存されている画像を編集・削除するための要素を生成する
   function create_html_file_sell(index, url){
-    console.log("create_html_file_sell!!!")
-    console.log("追加する編集要素のインデックス"+index)
     var html_sell_upload = `
                           <li class="sellmain__page__box__form__upload__first__ul__li" id="sell-upload-list${index}">
                             <figure class="sellmain__page__box__form__upload__first__ul__li__image">
@@ -142,15 +125,11 @@ $(function (){
 
   // アップロードフォームを保存されている画像の数によって再構築する
   function rebuild_html_file_new(number_images, delete_uploader_index = number_images){
-    console.log('rebuild!!!');
-    console.log("削除するアップロードフォームのインデックス　"+delete_uploader_index);
-    console.log("画像の数　"+number_images);
     // loadイベントの時、アップロードフォームが１つ余計に生成されるため、画像の数とアップロードフォームのインデックスが同じなら、アップロードフォームのラベルを削除する
     if(number_images == delete_uploader_index){
       $('.sellmain__page__box__form__upload__first__pc')[delete_uploader_index].remove();
     }
     var number_labels = $('.sellmain__page__box__form__upload__first__pc').length; // アップロードフォームのラベル数を取得
-    console.log("labelの数　"+number_labels);
     if($('.new_image')){
       $('.new_image').attr('class','sellmain__page__box__form__upload__first__pc');
     }
@@ -176,8 +155,6 @@ $(function (){
         $('.sellmain__page__box__form__upload__first__pc')[delete_uploader_index].remove();
       }
       $('.sellmain__page__box__form__upload__first__pc__print')[delete_uploader_index].remove();
-      console.log("labelの数　"+$('.sellmain__page__box__form__upload__first__pc').length);
-      console.log("inputの数　"+$('.sellmain__page__box__form__upload__first__pc__print').length);
       $('.overflow-auto').append(html_new_upload);
     }else{      // 画像が10枚の時アップロードフォームを消す
       $('.sellmain__page__box__form__upload__first__pc').hide();
