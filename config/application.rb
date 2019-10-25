@@ -34,5 +34,6 @@ module MercariClone
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
 
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
 end
