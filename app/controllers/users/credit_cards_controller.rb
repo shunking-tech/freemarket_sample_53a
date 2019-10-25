@@ -53,7 +53,7 @@ class Users::CreditCardsController < ApplicationController
 
   # クレジットカード情報を取得
   def set_credit_card
-    @credit_card = CreditCard.where(user_id: current_user.id).first
+    @credit_card = CreditCard.find_by(user_id: current_user.id)
   end
 
   # 使用期限を取得
