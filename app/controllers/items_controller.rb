@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:mypage_item_show, :destroy]
+  before_action :set_item, only: [:mypage_item_show, :edit, :update, :destroy]
 
   def index
     @item = Item.all
@@ -8,45 +8,58 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.build
+  end
+
+  def create
+    @item = Item.new(item_params)
+    @item.size_id = 2 #デフォルトで入れておきます
+      if params[:item][:item_images_attributes] && @item.save
+        redirect_to root_path notice: "出品されました"
+      else
+        render :new
+        flash.now[:alert] = "未入力項目があります"
+      end
+  end
+
+  def mypage_item_show
+  end
+
+  def edit
+    @item.item_images.build
+    @parents = Category.all.order("id ASC").limit(13)
+    gon.item_images = @item.item_images       # 保存されている画像の配列変数をjavascriptで使えるようにする
+  end
+
+  def update
+    @item.update(item_params)
+    delete_image_ids = delete_image_id_params[:delete_image_id]
+
+    if delete_image_ids
+      delete_image_ids.each do |id|
+        ItemImage.find(id).destroy
+      end
+    end
+
+    redirect_to action: 'mypage_item_show'
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to controller: 'users', action: 'show', id: current_user.id
+  end
+
+  def search
+    if params(@item)
+      @c_item = Item.find(params[:id]).children
+    else
+      @t_item = Item.find(params[:item_id]).children
+    end
     respond_to do |format|
       format.html
       format.json
     end
   end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to new_item_path
-    else
-      render :new
-    end
-  end
-
-  def mypage_item_show
-  end
-
-  def destroy
-    if @item.user_id == current_user.id
-      @item.destroy
-      redirect_to controller: 'users', action: 'show', id: current_user.id , notice: "商品を削除しました"
-    end
-  end
-
-  def edit
-    @item.item_images.each do |img|
-      @image = img.image
-    end
-  end
-
-  def update
-    if @item.user_id == current_user.id
-      @item.update(item_params)
-      redirect_to item_path(@item)
-    else
-      render :edit
-    end
-  end
   private
   def set_item
     @item = Item.find(params[:id])
@@ -66,6 +79,10 @@ class ItemsController < ApplicationController
                                   :prefecture_id,
                                   item_images_attributes:[:id, :image, :item_id]
   ).merge(user_id: current_user.id)
+  end
+
+  def delete_image_id_params
+    params.permit(delete_image_id:[])
   end
 
 end
