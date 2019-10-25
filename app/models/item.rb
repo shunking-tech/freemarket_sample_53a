@@ -57,4 +57,8 @@ class Item < ApplicationRecord
       false
     end
   end
+
+  def trading?
+    task.include?('waiting_shipping') || task.include?('rating_seller') || task.include?('rating_buyer')
+  end
 end
