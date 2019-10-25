@@ -71,4 +71,12 @@ class Item < ApplicationRecord
             :size_id,
             :prefecture_id,
             presence: true
+
+  validate :item_images_exist
+
+  private
+
+  def item_images_exist
+    errors.add(:item_images, "を選択してください") if item_images.blank?
+  end
 end
