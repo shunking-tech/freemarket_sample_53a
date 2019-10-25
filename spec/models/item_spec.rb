@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Item, type: :model do
   describe '商品登録' do
 
     it '商品名(name)が空の時、エラー' do
@@ -73,6 +73,12 @@ RSpec.describe User, type: :model do
       item = build(:item, prefecture_id: "")
       item.valid?
       expect(item.errors[:prefecture_id]).to include("を入力してください")
+    end
+
+    it '画像(item_image)が未選択の時、エラー' do
+      item = build(:item)
+      item.valid?
+      expect(item.errors[:item_images]).to include("を選択してください")
     end
 
   end
