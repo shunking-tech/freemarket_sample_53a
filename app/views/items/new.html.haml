@@ -1,8 +1,6 @@
 .sellpage
   = render 'items/logo-header'
   = render 'items/logo-footer'
-
-
   %main.sellmain
     %section.sellmain__page
       #sell_list
@@ -10,36 +8,39 @@
           .sellmain__page__box
             %h2.sellmain__page__box__top 
               商品の情報を入力
-            = form_with model: @item ,url: items_path, local: true do |f|
+
+
+            = form_with model: @item, local: true, class: "sellpage__page__box__form" do |f|
               .sellmain__page__box__form
                 .sellmain__page__box__form__upload
                   %h3.sellmain__page__box__form__upload__haed
                     / react-text: 7
                     出品画像
-                    %span.require_sheet
-                      必須
+                    %span.require_sheet 必須
                     / /react-text
-                  %p
-                    最大10枚までアップロードできます
+                  %p 最大10枚までアップロードできます
                   .sellmain__page__box__form__upload__first
                     .sellmain__page__box__form__upload__first__phone
                       .sellmain__page__box__form__upload__first__phone__items
-                        %ul
-                        %label{class:"sellmain__page__box__form__upload__first__pc have-item-#{@item}"}
-                          .sellmain__page__box__form__upload__first__pc__print.have-item-0
-                            = f.fields_for :item_images ,ItemImage.new do |item_image|
-                              = item_image.file_field :image ,id: "file",style: "display: none;"
-                            -# - 5.times do
-                            -#   =f.fields_for :item_images, ItemImage.new, multiple: true do |image|
-                            -# = f.file_field :image ,multiple: true
-                          %pre.sellmain__page__box__form__upload__first__pc__text
-                            :preserve
-                              ドラッグアンドドロップ
-                              またはクリックしてファイルをアップロード
-                          %i.icon-camera
-                    -# - if item.errors.any?
-                    -#   %ul.item_sell_error
-                    -#     画像がありません
+                        
+                    .overflow-auto
+                    %ul.sellmain__page__box__form__upload__first__ul
+                      -# jqueryで自動的に生成する内容
+                      -# %li.sellmain__page__box__form__upload__first__ul__li
+                      -#   %figure.sellmain__page__box__form__upload__first__ul__li__image
+                      -#     = image_tag @item.item_images[0].image.url, size: "116*116"
+                      -#   .sellmain__page__box__form__upload__first__ul__li__button
+                      -#     = link_to '編集', '#', class: "sellmain__page__box__form__upload__first__ul__li__button__edit"
+                      -#     = link_to '削除', '#', class: "sellmain__page__box__form__upload__first__ul__li__button__delete"
+                    = f.fields_for :item_images, class: "sellmain__page__box__form__upload__first__pc" do |img|
+                      -# ↓一旦labelで指定 のちにjsでdiv状態でtype fileしよう可能変更
+                      = img.label :image, class: "sellmain__page__box__form__upload__first__pc new_image", style: "width: 620px;" do
+                        = img.file_field :image, class: "sellmain__page__box__form__upload__first__pc__print" ,style: "display: none;"
+                        %pre.sellmain__page__box__form__upload__first__pc__text
+                          :preserve
+                            ドラッグアンドドロップ
+                            またはクリックしてファイルをアップロード
+                        %i.icon-camera
 
                 .sellmain__page__box__form__content
                   .sellmain__page__box__form__content__group
@@ -49,12 +50,12 @@
                         必須
                     %div
                       = f.text_field :name , placeholder: "商品名(必須 40文字まで)", class: "input-box", value: ""
+                      = render 'layouts/error/name'
                   .sellmain__page__box__form__content__group
-                    %label
-                      商品の説明
-                      %span.require_sheet
-                        必須
+                    = f.label :description, "商品の説明"
+                    %span.require_sheet 必須
                     = f.text_area :description, placeholder: "商品の説明(必須 1,000文字いない) (色、素材、重さ、定価、注意点など) 例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5" ,class: "textarea-box"
+                    = render 'layouts/error/description'
 
                 .sellmain__page__box__form__content.clearfix
                   %h3.sellmain__page__box__form__content__sub 商品の詳細
@@ -67,18 +68,19 @@
                         .select-block
                           %i.icon-arrow-bottom
                           = f.collection_select :category_id, Category.all, :id, :name ,{ prompt: "---"}, {class: "select-block__choice"}
-                    -# 服装などを選択した際にのみ以下サイズは表示されますが
-                    -# 表示方法はJSを使用してが本来ですが
-                    -# 実装段階でsize_idが引数内に設定していない場合
-                    -# DBに保存されないという状態だったので、一旦こちらに初期段階でsizeが入力できる状態にしています
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :size , {class: 'form-label'} do
-                        サイズ
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.collection_select :size_id, Size.all, :id, :size ,{ prompt: "---"}, {class: "select-block__choice"}
+                          = render 'layouts/error/ecategory'
+                          -# ↓controllerで一旦size_idをデフォルトで1で入力しておく
+                          -# 洋服などを選んだ場合のみサイズの下のviewを表示させる
+                    -# .sellmain__page__box__form__content__box__details
+                    -#   = f.label :size , {class: 'form-label'} do
+                    -#     サイズ
+                    -#     %span.require_sheet 必須
+                    -#   %div
+                    -#     .select-block
+                    -#       %i.icon-arrow-bottom
+                    -#       = f.collection_select :size_id, Size.all, :id, :size ,{ prompt: "---"}, {class: "select-block__choice"}
+                    -#       = render 'layouts/error/esize'
+          
                     .sellmain__page__box__form__content__box__details
                       = f.label :condition , {class: 'form-label'} do
                         商品の状態
@@ -87,6 +89,8 @@
                         .select-block
                           %i.icon-arrow-bottom
                           = f.select :condition, Item.conditions.keys.map {|k| [I18n.t("enums.item.condition.#{k}"), k]},{include_blank: "---", selected: "---"},{class: "select-block__choice"}
+                          = render 'layouts/error/condition'
+          
 
                 .sellmain__page__box__form__content.clearfix
                   %h3.sellmain__page__box__form__content__sub 配送について
@@ -101,18 +105,17 @@
                         .select-block
                           %i.icon-arrow-bottom
                           = f.select :payer_delivery_expense, Item.payer_delivery_expenses.keys.map {|k| [I18n.t("enums.item.payer_delivery_expense.#{k}"), k]}, {include_blank: "---", selected: "---"},{class: "select-block__choice"}
+                          = render 'layouts/error/payer_delivery_expense'
 
-                  
-                    -# .sellmain__page__box__form__content__box__details
-                    -#   = f.label :shipping_method , {class: 'form-label'} do
-                    -#     発送の方法
-                    -#     %span.require_sheet 必須
-                    -#   %div
-                    -#     .select-block
-                    -#       %i.icon-arrow-bottom
-                    -#       = f.select :shipping_method, Item.shipping_methods.keys.map {|k| [I18n.t("enums.shipping_method.#{k}"), k]}, {include_blank: "---", selected: "---"},{class: "select-block__choice"}
-                      発送方法のみenumは起動するのですが、記述されているものがうまく表示されない
-
+                    .sellmain__page__box__form__content__box__details
+                      = f.label :shipping_method , {class: 'form-label'} do
+                        発送の方法
+                        %span.require_sheet 必須
+                      %div
+                        .select-block
+                          %i.icon-arrow-bottom
+                          = f.select :shipping_method, Item.shipping_methods.keys.map {|k| [I18n.t("enums.item.shipping_method.#{k}"), k]}, {include_blank: "---", selected: "---"},{class: "select-block__choice"}
+                          = render 'layouts/error/shipping_method'
 
                     .sellmain__page__box__form__content__box__details
                       = f.label :prefecture , {class: 'form-label'} do
@@ -122,6 +125,7 @@
                         .select-block
                           %i.icon-arrow-bottom
                           = f.collection_select :prefecture_id, Prefecture.all, :id, :name ,{prompt: "---"}, {class: "select-block__choice"}
+                          = render 'layouts/error/eprefecture'
                     .sellmain__page__box__form__content__box__details
                       = f.label :delivery_days ,{class: 'form-label'} do
                         発送までの日数
@@ -130,6 +134,7 @@
                         .select-block
                           %i.icon-arrow-bottom
                           = f.select :delivery_days, Item.delivery_days.keys.map {|k| [I18n.t("enums.item.delivery_days.#{k}"), k]},{include_blank: "---", selected: "---"},{class: "select-block__choice"}
+                          = render 'layouts/error/delivery_days'
 
                 .sellmain__page__box__form__content.clearfix
                   %h3.sellmain__page__box__form__content__sub 販売価格(300〜9,999,999)
@@ -146,31 +151,17 @@
                             ¥
                             %div
                               = f.text_field :price, placeholder: '例)300', class: 'input-fee'
+                          = render 'layouts/error/price'
                       %li.sell-money__fee
-                        .fee_left
+                        .fee-left
                           販売手数料(10%)
-                        .fee_right 
+                        .sell-money__fee__right
                           -
                       %li.sell-money__profit
-                        .fee_left
+                        .fee-left
                           販売利益
-                        .fee_right 
+                        .sell-money__profit__right
                           -
-                -# 商品出品が確定した時のFlash画面
-                -# .sell_complete{role: "dialog", tabindex: "-1"}
-                -#   .model-card
-                -#     %div
-                -#       %h3.model-head 出品が完了しました
-                -#       .sell-modal-body{"data-gtm-vis-first-on-screen-6824027_198" => "1051328", "data-gtm-vis-has-fired-6824027_198" => "1", "data-gtm-vis-recent-on-screen-6824027_198" => "1051328", "data-gtm-vis-total-visible-time-6824027_198" => "100"}
-                -#         あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。
-                -#         =link_to root_path ,class:"next_sell-btn" do
-                -#           続けて出品する
-                -#         -# 下のlink先はマイページの商品詳細画面
-                -#         %p.text-center
-                -#           =link_to root_path do
-                -#             商品ページへ行ってシェアする
-
-
 
                 .sellmain__page__box__form__content.clearfix
                   %div
