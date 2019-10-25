@@ -76,6 +76,61 @@
               box-sizing: border-box;
               padding: 0px;
               margin: 16px -80px 0 0 ;
+              &__ul{
+                display: block;
+                width: auto;
+                height: auto;
+                list-style: none;
+                &__li{
+                  float: left;
+                  width: 116px;
+                  margin: 0px 0px 10px 10px;
+                  &__image{
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 2px 2px 0 2px;
+                    background: #f5f5f5;
+                    width: 116px;
+                    height: 114px;
+                    img{
+                      min-width: 112px;
+                      min-height: 112px;
+                      max-width: 100%;
+                      max-height: 100%
+                    }
+                  }
+                  &__button{
+                    font-size: 0;
+                    cursor: pointer;
+                    &__edit{
+                      display: inline-block;
+                      height: 48px;
+                      background: #f5f5f5;
+                      width: 50%;
+                      text-align: center;
+                      line-height: 44px;
+                      font-size: 14px;
+                      color: #0099e8;
+                      font-weight: lighter;
+                      cursor: pointer;
+                    }
+                    &__delete{
+                      display: inline-block;
+                      height: 48px;
+                      background: #f5f5f5;
+                      width: 50%;
+                      text-align: center;
+                      line-height: 44px;
+                      font-size: 14px;
+                      border-left: 1px solid #eee;
+                      box-sizing: border-box;
+                    }
+                  }
+                }
+                &__li:nth-of-type(5n+1){
+                  margin: 0;
+                }
+              }
               &__pc{
                 background-attachment: scroll;
                 background-clip: border-box;
