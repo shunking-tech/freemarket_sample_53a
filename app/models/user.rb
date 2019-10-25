@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :liked_items, through: :item_likes, source: :item
   has_many :item_comments
   has_many :user_reviews
+  has_one :credit_card
 
   validates_with UserValidator
 

@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'faker'
 
   # デバッグのためのgem
   gem 'pry-rails'
@@ -79,8 +80,6 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 
-  # テストのためのgem
-  gem 'faker'
 end
 
 group :production, :staging do
@@ -113,6 +112,9 @@ gem 'dotenv-rails'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
+# クレジットカード登録
+gem 'payjp'
 
 # ページネーション
 gem 'kaminari'
