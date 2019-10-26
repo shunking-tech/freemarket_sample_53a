@@ -37,9 +37,11 @@ class ItemsController < ApplicationController
   end
 
   def mypage_item_show
+    check_my_item
   end
 
   def edit
+    check_my_item
     @item.item_images.build
     @parents = Category.all.order("id ASC").limit(13)
     gon.item_images = @item.item_images       # 保存されている画像の配列変数をjavascriptで使えるようにする
@@ -93,4 +95,13 @@ class ItemsController < ApplicationController
   def delete_image_id_params
     params.permit(delete_image_id:[])
   end
+
+  def check_my_item
+    # 表示しようとしているitemが、ログイン中ユーザーが出品したitemではない場合、マイページにリダイレクト
+    if @item.user_id != current_user.id
+      redirect_to controller: 'users', action: 'show', id: current_user.id
+      return
+    end
+  end
+
 end
