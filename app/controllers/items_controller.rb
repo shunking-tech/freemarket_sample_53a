@@ -106,7 +106,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, 
+    params.require(:item).permit(:name,
                                   :price,
                                   :description,
                                   :condition,
@@ -118,7 +118,7 @@ class ItemsController < ApplicationController
                                   :size_id,
                                   :prefecture_id,
                                   item_images_attributes:[:id, :image, :item_id]
-  ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 
   def delete_image_id_params

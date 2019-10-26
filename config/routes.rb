@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post "sign_up", to: "users/registrations#create"
     get "sign_up/sms_authorization", to: "users/registrations#sms_authorization"
     get "sign_up/deliver_address", to: "users/registrations#deliver_address"
+    post "sign_up/deliver_address", to: "users/registrations#deliver_address_create"
     get "sign_up/credit_card", to: "users/registrations#credit_card"
     get "sign_up/finish", to: "users/registrations#finish"
   end
@@ -36,10 +37,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create] do
     # クレジットカード
     resource :credit_card, except: [:edit, :update], module: :users
+    # お届け先住所
+    resource :deliver_address, except: [:edit, :destroy], module: :users
     member do
       get :profile
       get :identification
-      get :deliver_address
     end
   end
 
