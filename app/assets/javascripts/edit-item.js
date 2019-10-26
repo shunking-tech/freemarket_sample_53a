@@ -3,7 +3,7 @@ $(function (){
   // 読み込み時
   $(document).on('turbolinks:load', function(){
     // 画像をアップロードするフォームの要素を取得
-    var label_file_upload = document.getElementsByClassName('editmain__page__box__form__upload__first__pc')
+    var label_file_upload = $('.editmain__page__box__form__upload__first__pc');
     var number_images = label_file_upload.length - 1      // 保存されている画像の数 配列の最後の要素は画像が保存されていなくても表示されるフォームであるため、-1する
     if(label_file_upload.length > 1){       // アップロードのフォームが2つ以上ある時、つまり、保存されている時がある時
       // 保存されている画像の数の分だけループを回す
@@ -50,10 +50,7 @@ $(function (){
     // 画像追加後の数を取得
     // number_images += 1;
     // 削除するアップローダーのインデックス
-    // var delete_uploader_index = parseFloat($($('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li')[0].getAttribute('id').replace('edit-upload-list', ''))['selector'])+1;
-    // console.log("削除するアップロードフォームのインデックス"+delete_uploader_index);
     console.log("画像追加後の数"+number_images+1);
-    // rebuild_html_file_new(number_images+1, delete_uploader_index);
     rebuild_html_file_new(number_images+1);
   })
 
@@ -82,18 +79,18 @@ $(function (){
 
   // 保存されている画像の「削除」をクリックした時
   $(document).on('click', '.editmain__page__box__form__upload__first__ul__li__button__delete', function(e){
-    var target = $(e.target);             // クリックされた要素を取得
+    var delete_item = $(e.currentTarget);             // クリックされた要素を取得
+    // 画像を編集するための要素を削除する
+    delete_item.parents('li').remove();
+
     var saved_image_input_tags = $('input[type="hidden"][id]');                 // 保存されている画像のinputタグを取得
-    var target_id_number = target.attr('id').replace('delete-upload-button', '');     // クリックされた要素のidから番号のみ抜き出す
+    var target_id_number = delete_item.attr('id').replace('delete-upload-button', '');     // クリックされた要素のidから番号のみ抜き出す
     var clicked_saved_image_input_tag = saved_image_input_tags[target_id_number];     // クリックした要素と対応する画像のinputタグを取得
     var clicked_saved_image_id = clicked_saved_image_input_tag.getAttribute("value"); // inputタグのvalue属性から画像のidを取得
-    
+
     // paramsに削除する画像のidを渡すためのinput(type="hidden")タグを生成する
     var create_html_input_delete_image_id = `<input type="hidden" name="delete_image_id[]" value="${clicked_saved_image_id}">`;
     $('.overflow-auto').append(create_html_input_delete_image_id);
-
-    // 画像を編集するための要素を削除する
-    target.parents('li').remove();
 
     // 新規画像アップロードフォームの幅を変えて再構築
     var number_images = $('.editmain__page__box__form__upload__first__ul__li__button__delete').parents('li').length;  // 画像の数を取得
@@ -105,7 +102,7 @@ $(function (){
 
 
   //--------------以下、メソッド--------------
-  
+
   // 販売手数料と販売利益を計算して、表示に反映させる
   function view_calc_fee_profit(){
     var price = $('.input-fee').val();
@@ -124,17 +121,15 @@ $(function (){
   function create_html_file_edit(index, url){
     console.log("create_html_file_edit!!!")
     console.log("追加する編集要素のインデックス"+index)
-    var html_edit_upload = `
-                          <li class="editmain__page__box__form__upload__first__ul__li" id="edit-upload-list${index}">
-                            <figure class="editmain__page__box__form__upload__first__ul__li__image">
-                              <img src=${url}>
-                            </figure>
-                            <div class="editmain__page__box__form__upload__first__ul__li__button">
-                              <label class="editmain__page__box__form__upload__first__ul__li__button__edit" id="edit-upload-button${index}" for="item_item_images_attributes_${index}_image">編集</label>
-                              <a class="editmain__page__box__form__upload__first__ul__li__button__delete" id="delete-upload-button${index}">削除</a>
-                            </div>
-                          </li>
-                            `
+    var html_edit_upload = `<li class="editmain__page__box__form__upload__first__ul__li" id="edit-upload-list${index}">
+                              <figure class="editmain__page__box__form__upload__first__ul__li__image">
+                                <img src=${url}>
+                              </figure>
+                              <div class="editmain__page__box__form__upload__first__ul__li__button">
+                                <label class="editmain__page__box__form__upload__first__ul__li__button__edit" id="edit-upload-button${index}" for="item_item_images_attributes_${index}_image">編集</label>
+                                <a class="editmain__page__box__form__upload__first__ul__li__button__delete" id="delete-upload-button${index}">削除</a>
+                              </div>
+                            </li>`
     $('.editmain__page__box__form__upload__first__ul').append(html_edit_upload);
   }
 
@@ -145,7 +140,7 @@ $(function (){
     console.log("画像の数　"+number_images);
     // loadイベントの時、アップロードフォームが１つ余計に生成されるため、画像の数とアップロードフォームのインデックスが同じなら、アップロードフォームのラベルを削除する
     if(number_images == delete_uploader_index){
-      $('.editmain__page__box__form__upload__first__pc')[delete_uploader_index].remove();
+      $('.editmain__page__box__form__upload__first__pc').remove([delete_uploader_index]);
     }
     var number_labels = $('.editmain__page__box__form__upload__first__pc').length; // アップロードフォームのラベル数を取得
     console.log("labelの数　"+number_labels);
@@ -158,22 +153,13 @@ $(function (){
     }
     if(number_images < 10){      // 画像が10枚未満の時、アップロードフォームを再構築
       // number_images += 10;
-      var html_new_upload = `
-      <label class="editmain__page__box__form__upload__first__pc" for="item_item_images_attributes_${number_labels}_image" style="width: calc(${upload_width}px);">
-        <input class="editmain__page__box__form__upload__first__pc__print new_image" type="file" name="item[item_images_attributes][${number_labels}][image]" id="item_item_images_attributes_${number_labels}_image">
-        <pre class="editmain__page__box__form__upload__first__pc__text">
-ドラッグアンドドロップ
-またはクリックしてファイルをアップロード
-        </pre>
-        <i class="icon-camera"></i>
-      </label>
-      `
+      var html_new_upload = `<label class="editmain__page__box__form__upload__first__pc" for="item_item_images_attributes_${number_labels}_image" style="width: calc(${upload_width}px);">
+                              <input class="editmain__page__box__form__upload__first__pc__print new_image" type="file" name="item[item_images_attributes][${number_labels}][image]" id="item_item_images_attributes_${number_labels}_image">
+                              <pre class="editmain__page__box__form__upload__first__pc__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード</pre>
+                              <i class="icon-camera"></i>
+                            </label>`
       $('.editmain__page__box__form__upload__first__pc').hide();
       // // loadイベントの時、アップロードフォームが１つ余計に生成されるため、画像の数とアップロードフォームのインデックスが同じなら、アップロードフォームを削除する
-      // if(number_images == delete_uploader_index){
-      //   $('.editmain__page__box__form__upload__first__pc')[delete_uploader_index].remove();
-      // }
-      // $('.editmain__page__box__form__upload__first__pc__print')[delete_uploader_index].remove();
       console.log("labelの数　"+$('.editmain__page__box__form__upload__first__pc').length);
       console.log("inputの数　"+$('.editmain__page__box__form__upload__first__pc__print').length);
       $('.overflow-auto').append(html_new_upload);
