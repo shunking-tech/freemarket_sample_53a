@@ -8,16 +8,16 @@
 
         .detail-item__photo--image
           .detail-item__photo--inner
-            = image_tag @item.item_images[0].image
+            = image_tag @item.item_images.first.image.url
 
         .detail-item__photo-small
           .detail-item__photo-small--image.active
             .detail-item__photo-small--inner
-              = image_tag @item.item_images[0].image
+              = image_tag @item.item_images.first.image.url
           -@item.item_images.each do |item_image|
             .detail-item__photo-small--image
               .detail-item__photo-small--inner
-                = image_tag item_image.image
+                = image_tag item_image.image.url
 
       .detail-item__item-info
         %table.detail-item__item-info--table
