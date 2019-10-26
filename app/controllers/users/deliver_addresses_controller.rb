@@ -18,7 +18,7 @@ class Users::DeliverAddressesController < ApplicationController
   end
 
   def update
-    @deliver_address = DeliverAddress.find(params[:id])
+    @deliver_address = current_user.deliver_address
     if @deliver_address.update(deliver_address_params)
       redirect_to action: "show"
     else
