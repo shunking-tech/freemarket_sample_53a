@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       user = create(:user)
       another_user = build(:user, email: user.email)
       another_user.valid?
-      expect(another_user.errors[:email]).to include("has already been taken")
+      expect(another_user.errors[:email]).to include("はすでに存在します")
     end
 
     # passwordが空の場合、登録できないことを確かめる
@@ -62,7 +62,7 @@ RSpec.describe User, type: :model do
     it "passwordはあるが、password_confirmationが空の場合、登録できない" do
       user = build(:user, password_confirmation: "")
       user.valid?
-      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません", "パスワード (確認) を入力してください")
     end
 
     # passwordが6字以下の時、登録できない

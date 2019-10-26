@@ -8,13 +8,13 @@
       %h2.registration-card__head.bold
         クレジットカード情報入力
 
-      = form_with url: root_path, class: 'registration-card__form' do |f|
+      = form_with url: user_credit_card_path, method: :post, class: 'registration-card__form', id: 'registration-card__form' do |f|
         .registration-card__form__content
 
           .registration-card__form__content__number
             = f.label "カード番号", class: "bold"
             %span.form-require 必須
-            = f.text_field :card_number, {placeholder: "半角数字のみ", maxlength: "19"}
+            = f.text_field :card_number, {placeholder: "半角数字のみ", maxlength: "19", data: {type: 'card'}}
             %ul.card-images
               %li
                 = image_tag '/visa.svg', height: '20', width: '49', class: 'card-images__image'
@@ -36,11 +36,11 @@
             %span.form-require 必須
             %br
             .select.half
-              = f.select :card_limit_m, [["01", "01"], ["02", "02"]]
+              = f.select :card_limit_m, options_for_select(limit_m)
               %i.icon-arrow-bottom
               %span 月
             .select.half
-              = f.select :card_limit_y, [["19", "19"], ["20", "20"]]
+              = f.select :card_limit_y, options_for_select(limit_y)
               %i.icon-arrow-bottom
               %span 年
 
@@ -52,7 +52,8 @@
               %span ?
               カード裏面の番号とは？
 
-          = f.button "追加する", class: 'registration-card__form__content__submit'
+          #card_token
+          = f.button "追加する", class: 'registration-card__form__content__submit', id: 'registration-card__form__content__submit'
 
   = render 'users/mypage/side'
   = render 'items/footer_btn'

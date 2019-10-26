@@ -1,175 +1,6 @@
-@include text-center();
-@include fonts();
-
-/*
-アニメーション
-*/
-@keyframes liked {
-  0% {transform: scaleY(1)}
-  30% {transform: scaleY(0.7)}
-  50% {transform: scaleY(1.2)}
-  70% {transform: scaleY(1)}
-  80% {transform: scaleX(1.2) scaleY(0.8)}
-  86% {transform: scaleX(0.8) scaleY(1.2)}
-  92% {transform: scaleX(1.2) scaleY(0.8)}
-  98% {transform: scaleX(0.8) scaleY(1.2)}
-  100% {transform: scaleX(1) scaleY(1)}
-}
-
-/*
-アイコン関連
-*/
-.icon-good {
-  color: #ef5185;
-  display: inline-block;
-  font-size: 12px;
-  vertical-align: middle;
-}
-
-.icon-normal {
-  color: #fba933;
-  display: inline-block;
-  font-size: 12px;
-  vertical-align: middle;
-}
-
-.icon-bad {
-  color: #6ab5d8;;
-  display: inline-block;
-  font-size: 12px;
-  vertical-align: middle;
-}
-
-.icon-arrow-right {
-  &::before {
-    content: '\f054';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  display: inline-block;
-  font-size: 12px;
-}
-
-.icon-arrow-left {
-  &::before {
-    content: '\f053';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  display: inline-block;
-  font-size: 12px;
-}
-
-.icon-like {
-  &::before {
-    content: '\f08a';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 16px;
-  vertical-align: middle;
-  color: #ccc;
-}
-
-.icon-flag {
-  &::before {
-    content: '\f11d';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 14px;
-  vertical-align: middle;
-}
-
-.icon-lock {
-  &::before {
-    content: '\f023';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 14px;
-  vertical-align: middle;
-}
-
-.icon-clock {
-  &::before {
-    content: '\f017';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 16px;
-  vertical-align: middle;
-}
-
-.icon-balloon {
-  &:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 3px; 
-    left: -19px;
-    border: 8px solid transparent;
-    border-right: 18px solid #eef0f4;
-    -webkit-transform: rotate(35deg);
-    transform: rotate(35deg);
-  }
-}
-
-.icon-facebook {
-  &::before {
-    content: '\f082';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 30px;
-  border-radius: 2px;
-  line-height: 30px;
-  color: #fff;
-}
-
-.icon-twitter {
-  &::before {
-    content: '\f099';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 30px;
-  border-radius: 2px;
-  line-height: 30px;
-  color: #fff;
-}
-
-.icon-pinterest {
-  &::before {
-    content: '\f0d2';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 20px;
-  border-radius: 2px;
-  line-height: 20px;
-  color: #fff;
-}
-
-.icon-pinterest {
-  &::before {
-    content: '\f0d2';
-  }
-  font-family: FontAwesome;
-  font-style: normal;
-  font-size: 20px;
-  border-radius: 2px;
-  line-height: 20px;
-  color: #fff;
-}
-
 /*
 コンテンツ
 */
-a {
-  color: #0099e8;
-}
-
 .detail-item {
 
   background: #fff;
@@ -210,10 +41,34 @@ a {
       position: relative;
     }
 
+    // &__soldout {
+    //   z-index: 2;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   border-top: 60px solid $active_red;
+    //   border-right: 60px solid transparent;
+    //   border-bottom: 60px solid transparent;
+    //   border-left: 60px solid $active_red;
+
+    //   &--text {
+    //     z-index: 2;
+    //     position: absolute;
+    //     top: 30px;
+    //     left: 3px;
+    //     transform: rotate(-48deg);
+    //     color: $white;
+    //     font-size: 24px;
+    //     font-weight: 500;
+    //     letter-spacing: 4px;
+    //   }
+    // }
+
     &--image {
       width: 300px;
       height: 300px;
       overflow: hidden;
+      // position: relative;
 
       ul {
         width: 1vw;
@@ -658,7 +513,7 @@ a {
       }
     }
   }
-  
+
   @include sns-icons();
 
   &__other-items {

@@ -16,6 +16,21 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :size
+  
+  accepts_nested_attributes_for :item_images
+    
+  with_options presence: true do
+    validates :name 
+    validates :price
+    validates :description
+    validates :condition
+    validates :task 
+    validates :shipping_method
+    validates :delivery_days
+    validates :prefecture
+    validates :payer_delivery_expense
+  end
+  has_one :trade
 
   scope :category_items, -> (category_id) { where(category_id: category_id) }
 
@@ -55,5 +70,9 @@ class Item < ApplicationRecord
     else
       false
     end
+  end
+
+  def trading?
+    task.include?('waiting_shipping') || task.include?('rating_seller') || task.include?('rating_buyer')
   end
 end

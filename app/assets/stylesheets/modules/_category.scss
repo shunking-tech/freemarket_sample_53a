@@ -32,21 +32,30 @@
         padding: 0px;
         height: 390px;
         width: 100%;
-        background-image: image-url("/top-banner-autumn-fes.jpg");
-        background-size: auto;
+        background-image: image-url("/top-subliminal-pa-ko.jpg");
+        background-size: 50%;
         background-position: center center;
       }
         &__list{
-
+          overflow: hidden;
           position: relative;
           display: block;
-          margin: 0px;
+          margin: 0 auto;
           padding: 0px;
           height: 390px;
-          width: 3840px;
           cursor: pointer;
           box-sizing: border-box;
-          touch-action: pan-y pinch-zoom;
+          max-width: 100%;
+          text-align:cente;
+          img{
+            display: none;
+            position: absolute;
+
+            
+            
+          }
+
+  
 
           &__slide{
             box-sizing: border-box;

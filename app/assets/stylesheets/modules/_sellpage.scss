@@ -20,7 +20,6 @@
       }
     }
   }
-
   h3{
     margin: 0;
   }
@@ -77,42 +76,80 @@
               box-sizing: border-box;
               padding: 0px;
               margin: 16px -80px 0 0 ;
+              &__ul{
+                width: auto;
+                height: auto;
+                list-style: none;
+                &__li{
+                  float: left;
+                  width: 116px;
+                  margin: 0px 0px 10px 10px;
+                  &__image{
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 2px 2px 0 2px;
+                    background: #f5f5f5;
+                    width: 116px;
+                    height: 114px;
+                    img{
+                      min-width: 112px;
+                      min-height: 112px;
+                      max-width: 100%;
+                      max-height: 100%;
+                      height: auto;
+                      width: auto;
+                      position: static;
+                      transform: none;
+                    }
+                  }
+                  &__button{
+                    font-size: 0;
+                    cursor: pointer;
+                    &__edit{
+                      display: inline-block;
+                      height: 48px;
+                      background: #f5f5f5;
+                      width: 50%;
+                      text-align: center;
+                      line-height: 44px;
+                      font-size: 14px;
+                      color: #0099e8;
+                      font-weight: lighter;
+                      cursor: pointer;
+                    }
+                    &__delete{
+                      display: inline-block;
+                      height: 48px;
+                      background: #f5f5f5;
+                      width: 50%;
+                      text-align: center;
+                      line-height: 44px;
+                      font-size: 14px;
+                      border-left: 1px solid #eee;
+                      box-sizing: border-box;
+                    }
+                  }
+                }
+                &__li:nth-of-type(5n+1){
+                  margin: 0;
+                }
+              }
               &__pc{
-                background-attachment: scroll;
-                background-clip: border-box;
                 background-color: rgb(245, 245, 245);
-                background-image: none;
-                background-origin: padding-box;
-                background-position-x: 0%;
-                background-position-y: 0%;
-                background-size: auto;
                 border-color: rgb(204, 204, 204);
                 border-style: dashed;
                 border-width: 1px;
                 border-image-outset: 0px;
                 border-image-repeat: stretch;
                 border-image-slice: 100%;
-                border-image-source: none;
                 border-image-width: 1;
                 box-sizing: border-box;
                 color: rgb(51, 51, 51);
-                cursor: pointer;
-                display: block;
                 float: right;
-                font-size: 0px;
                 font-weight: 400;
-                line-height: 0px;
-                margin: 0px;
                 min-height: 162px;
                 padding: 40px;
                 position: relative;
-                text-align: center;
-                text-size-adjust: 100%;
-                transition-delay: 0s, 0s;
-                transition-duration: 0.3s, 0.3s;
-                transition-property: box-shadow, -webkit-box-shadow;
-                transition-timing-function: ease-out, ease-out;
-                width: 620px;
                 &__print{
                   border: 0;
                   outline: 0;
@@ -209,13 +246,59 @@
             div{
               p{
                 line-height: 1.5;
-                margin: 0;
+                margin :0 ;
                 a{
                   color: #0099e8;
                   text-decoration: none;
                 }
               }
             }
+          .sell_complete{
+            opacity: 1;
+            -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 3000;
+            overflow-x: hidden;
+            overflow-y: auto;
+            .model-card{
+              max-width: none;
+              width: 600px;
+              margin: 20px auto;
+              position: relative;
+              overflow: hidden;
+              background: #fff;
+              .modl-head{
+                text-align: center;
+                line-height: 80px;
+                font-size: 16px;
+              }
+              .next_sell-btn{
+                border-top: 1px solid #eee;
+                padding: 40px;
+              }
+              .text-center{
+                margin: 40px auto 0;
+                cursor: pointer;
+                background: #ea352d;
+                border: 1px solid #ea352d;
+                color: #fff;
+                display: block;
+                width: 100%;
+                line-height: 48px;
+                font-size: 14px;
+                text-align: center;
+                transition: all ease-out .3s;
+                text-decoration: none;
+                color: #0099e8;
+              }
+            }
+          }
           }
         }
         .selllay{
@@ -232,6 +315,7 @@
           opacity: 0;
         }
         .sell-money{
+          display:list-item;
           &__group{
             padding: 0 0 24px;
             border: 0;
@@ -240,6 +324,7 @@
               cursor: auto;
               display: inline-block;
               width: 100%;
+              line-height: 48px;
               .sell-left{
                 width: 50%;
                 line-height: 48px;
@@ -277,17 +362,18 @@
             padding: 24px 0;
             border-top: 1px solid #ccc;
             .fee-left{
-              float: left;
+              display: inline-block;
             }
-            .fee-right{
+            &__right{
               float: right;
+              font-size: 14px;
             }
           }
           &__profit{
             padding: 24px 0;
             border-top: 1px solid #ccc;
             font-weight: 600;
-            &__left{
+            .fee-left{
               font-size: 16px;
               float: left;
             }
@@ -355,6 +441,7 @@
   label{
     font-weight: 600;
     display: inline-block;
+    width: 50%;
   }
   h2{
     display: block;

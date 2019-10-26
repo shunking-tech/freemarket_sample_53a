@@ -1,0 +1,5 @@
+-if @item.errors.any? 
+  .alert
+    %ul
+      %li= @item.errors.full_messages_for(:delivery_days).first
+      

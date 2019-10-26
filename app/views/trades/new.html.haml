@@ -11,14 +11,14 @@
       %section.buy-item
         .buy-item__inner
           %h3.buy-item__inner__image
-            = image_tag 'http://via.placeholder.com/300x300', class: 'lazyloaded'
+            = image_tag @item.item_images.first.image.url, class: 'lazyloaded'
           %p.buy-item__inner__title.bold
-            中古新品サンプルアイテム
-          = form_with url: root_path, class: 'buy-item__inner__form' do |f|
+            = @item.name
+          = form_with model: [@item, @trade], class: 'buy-item__inner__form' do |f|
             %p.buy-item__inner__form__price.bold
-              ¥12,345
+              ="¥#{@item.delimited_price}"
               %span.buy-item__inner__form__fee
-                送料込み
+                = @item.payer_delivery_expense_i18n
             %ul.buy-item__inner__form__mercari-point
               %li
                 .buy-item__inner__form__mercari-point__optional
@@ -28,11 +28,12 @@
                 .buy-item__inner__form__actual-price__content
                   支払い金額
                 .buy-item__inner__form__actual-price__content
-                  %span{data: {buy: {pay: "12345"}}}
-                    ¥12,345
-            = f.text_field :seller_id, {type: "hidden", value: "12345"}
-            = f.text_field :buyer_id, {type: "hidden", value: "67890"}
-            = f.text_field :item_id, {type: "hidden", value: "99999"}
+                  %span{data: {buy: {pay: "#{@item.price}"}}}
+                    ="¥#{@item.delimited_price}"
+            = f.hidden_field :seller_id, value: @item.user_id
+            = f.hidden_field :buyer_id, value: current_user.id
+            = f.hidden_field :item_id, value: @item.id
+            = f.hidden_field :status, value: 1
             = f.button "購入する", class: 'buy-item__inner__form__submit'
 
       %section.buyer-info
@@ -40,29 +41,36 @@
           %h3.bold
             配送先
           %address.buyer-info__inner__body
-            〒542-0076
+            = "〒" + current_user.zipcode[0..2] + "-" + current_user.zipcode[3..6] if current_user.zipcode
             %br
-            大阪府大阪市中央区難波5丁目1-60
+            = current_user.prefecture
+            = current_user.city
+            = current_user.house_address
+            = current_user.building_name
             %br
-            なんばスカイオ 15階
-            %br
-            TECH::EXPERT なんばスカイオ校
+            = current_user.last_name
+            = current_user.first_name
           = link_to root_path, class: "buyer-info__inner__fix" do
             %span
               変更する
             %i.icon-arrow-right
 
-      %section.buyer-info.buyer-payment
+      %section.buyer-info.buyer-payment{data: {buy: 'pay-method'}}
         .buyer-info__inner
           %h3.bold
             支払い方法
-          %p.buyer-info__inner__body
-            ************1234
-            %br
-            12/34
-          %figure
-            = image_tag '/jcb.svg', alt: 'jcb', height: '20', width: '26'
-          = link_to root_path, class: "buyer-info__inner__fix" do
+          - if @default_card_information.present?
+            %p.buyer-info__inner__body.default_card_information
+              = "************ " + @default_card_information.last4
+              %br
+              = @card_limit
+            %figure
+              = image_tag @brand_icon, height: '20', width: '29', class: 'brand-icon'
+          - else
+            %p.buyer-info__inner__body
+              \ /
+
+          = link_to user_credit_card_path(current_user), class: "buyer-info__inner__fix" do
             %span
               変更する
             %i.icon-arrow-right
