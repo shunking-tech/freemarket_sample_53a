@@ -1,4 +1,6 @@
 .main__collection__box__parts
+  - if item.task.include?('complete')
+    = render 'shared/soldout'
   = link_to item_path(item) do
   
     %figure.category__figcaption
