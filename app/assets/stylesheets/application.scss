@@ -6,6 +6,7 @@
 @import "./config/variable";
 // base style group end
 
+@import "./modules/common";
 @import "./modules/header_guide";
 @import "./modules/category";
 @import "./modules/categories";
@@ -28,3 +29,4 @@
 @import "./modules/conformation";
 @import "./modules/mypage_item_show";
 @import "./modules/edit_item";
+@import "./layout/error";

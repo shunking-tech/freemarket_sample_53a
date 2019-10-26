@@ -7,7 +7,9 @@
     .detail-item--flex
       .detail-item__photo
 
-        .detail-item__photo--image
+        .detail-item__photo--image.soldout
+          - if @item.task.include?('complete')
+            = render 'shared/soldout'
           .detail-item__photo--outer
             - @item.item_images.each do |item_image|
               .detail-item__photo--inner
@@ -93,7 +95,13 @@
   -#   .detail-item__point-message="残高 ¥733 をお持ちです"
 
   - if @item.seller?(current_user)
-    = link_to '購入画面に進む', "javascript:void(0)", class: 'detail-item__buy detail-item__buy--not-allowed'
+    = link_to '出品した商品です', "javascript:void(0)", class: 'detail-item__buy detail-item__buy--not-allowed'
+  - elsif @item.trading?
+    = link_to '取引中です', "javascript:void(0)", class: 'detail-item__buy detail-item__buy--not-allowed'
+  - elsif @item.task.include?('complete')
+    = link_to '売り切れました', "javascript:void(0)", class: 'detail-item__buy detail-item__buy--not-allowed'
+  - elsif @item.task.include?('stopping')
+    = link_to '出品停止中です', "javascript:void(0)", class: 'detail-item__buy detail-item__buy--not-allowed'
   - else
     = link_to '購入画面に進む', new_item_trade_path(@item), class: 'detail-item__buy'
 
@@ -193,6 +201,8 @@
     .detail-item__other-items__contents
       - @item.user_other_items.limit(6).each do |item|
         .detail-item__other-items__content
+          - if item.task.include?('complete')
+            = render 'shared/soldout'
           = link_to item_path(item), nil do
             %figure.detail-item__other-items__content--figure
               - if item.item_images.present?
@@ -214,6 +224,8 @@
     .detail-item__other-items__contents
       - @item.category_other_items.limit(6).each do |item|
         .detail-item__other-items__content
+          - if item.task.include?('complete')
+            = render 'shared/soldout'
           = link_to item_path(item), nil do
             %figure.detail-item__other-items__content--figure
               - if item.item_images.present?

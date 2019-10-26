@@ -1,7 +1,7 @@
 .mercari-header {
   background: $white;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 
   &--box-shadow {
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
@@ -369,7 +369,7 @@
   }
 
   // 3階層目のみの設定
-  ul ul ul {    
+  ul ul ul {
     li {
       box-sizing: border-box;
       width: 320px;
