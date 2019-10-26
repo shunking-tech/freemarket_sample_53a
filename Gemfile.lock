@@ -169,6 +169,10 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.2.1)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     gretel (3.0.9)
       rails (>= 3.1.0)
     haml (5.1.2)
@@ -440,6 +444,7 @@ DEPENDENCIES
   faker
   fog-aws
   font-awesome-rails
+  gon
   gretel
   haml-rails
   jbuilder (~> 2.5)

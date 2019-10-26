@@ -35,4 +35,19 @@ module ItemsHelper
       end
     end
   end
+
+  def payer_delivery_expense_explanation(select)
+    select = Item.payer_delivery_expenses_i18n.invert
+    return_hash = {}
+    select.each{|key, value|
+      if select.invert[value] == Item.payer_delivery_expenses_i18n[:seller_burden]
+        return_hash[select.invert[value] += "(出品者負担)"] = select[key]
+      elsif select.invert[value] == Item.payer_delivery_expenses_i18n[:buyer_burden]
+        return_hash[select.invert[value] += "(購入者負担)"] = select[key]
+      else
+      end
+    }
+    return return_hash
+  end
+
 end
