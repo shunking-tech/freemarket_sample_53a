@@ -1,0 +1,56 @@
+@mixin sns-icons() {
+  &__sns {
+    margin: 24px auto;
+    padding: 32px 0 24px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    background-color: $white;
+
+    a {
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &--facebook, &--twitter, &--line, &--pinterest {
+      margin: 0 8px 8px 0;
+      text-align: center;
+      box-sizing: border-box;
+      width: 44px;
+      height: 44px;
+    }
+
+    &--facebook {
+      a {
+        background: #385185;
+      }
+    }
+
+    &--twitter {
+      a {
+        background: #5d9dc9;
+      }
+    }
+
+    &--line {
+      a {
+        background: #00c137;
+      }
+    }
+
+    &--pinterest {
+      a {
+        background: #aa262a;
+      }
+    }
+  }
+}

@@ -1,9 +1,17 @@
-- breadcrumb :mypage
+- if current_page?(user_path(current_user))
+  - breadcrumb :mypage
+- else
+  - breadcrumb :user, @user
+
 = render 'items/header_guide'
 = render 'shared/breadcrumbs'
-%main.mypage-container.clearfix
-  = render 'users/mypage/content'
-  = render 'users/mypage/side'
-  = render 'items/footer_btn'
+
+- if current_page?(user_path(current_user))
+  %main.mypage-container.clearfix
+    = render 'users/mypage/content'
+    = render 'users/mypage/side'
+    = render 'items/footer_btn'
+- else
+  = render @user
 
 = render 'items/footer'

@@ -8,6 +8,12 @@ crumb :mypage do
   parent :root
 end
 
+# 他のユーザーページ
+crumb :user do |user|
+  link "#{user.nickname}", user_path(user)
+  parent :root
+end
+
 # マイページ以下
 crumb :profile do
   link "プロフィール", profile_user_path(current_user)
