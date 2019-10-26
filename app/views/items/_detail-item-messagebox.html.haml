@@ -1,0 +1,30 @@
+-# TODO:余裕があれば実装
+-# .detail-item__messages
+-#   - @item.item_comments.each do |comment|
+-#     .detail-item__message
+-#       = link_to item_path, class: 'detail-item__message__user-icon' do
+-#         %div
+-#           -# TODO:アバターモデル追加
+-#           = image_tag '/message_icon.jpg'
+-#           %span.bold
+-#             = @comment.user.nickname
+-#       .detail-item__message__body
+-#         .detail-item__message__body--text<>
+-#           = @comment.content
+-#         .detail-item__message__body__icons
+-#           .detail-item__message__body__icons--left
+-#             %i.icon-clock
+-#             %span="39分前"
+-#           .detail-item__message__body__icons--right
+-#             = form_with url: item_path do
+-#               = button_tag type: :submit do
+-#                 %i.icon-flag 
+-#         %i.icon-balloon
+
+-# TODO: 余裕があれば実装
+.detail-item__input-message
+  = form_with url: item_path, method: :post, class: 'detail-item__input-message__form' do |f|
+    %p="相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。"
+    = f.text_area :body, class: 'detail-item__input-message__textarea'
+    = f.button nil, type: 'submit', class: 'detail-item__input-message__submit detail-item__input-message__submit--btn-gray' do
+      %span="コメントする"
