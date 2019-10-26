@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   # 商品画面
-  resources :items, only: [:index, :new, :show, :destroy] do
+  resources :items, only: [:index, :new, :show, :create, :destroy] do
     post "likes", to: "item_likes#create"
     delete "likes", to: "item_likes#destroy"
     resources :trades, only: [:new, :create]
