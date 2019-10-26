@@ -89,7 +89,6 @@ class Item < ApplicationRecord
 
   validate :item_images_exist
 
-  private
 
   def item_images_exist
     errors.add(:item_images, "を選択してください") if item_images.blank?
