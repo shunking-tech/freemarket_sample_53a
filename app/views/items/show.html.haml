@@ -201,9 +201,9 @@
     .detail-item__other-items__contents
       - @item.user_other_items.limit(6).each do |item|
         .detail-item__other-items__content
-          - if item.task.include?('complete')
-            = render 'shared/soldout'
           = link_to item_path(item), nil do
+            - if item.task.include?('complete')
+              = render 'shared/soldout'
             %figure.detail-item__other-items__content--figure
               - if item.item_images.present?
                 = image_tag item.item_images.first.image.url, class: "lazyloaded"
@@ -224,9 +224,9 @@
     .detail-item__other-items__contents
       - @item.category_other_items.limit(6).each do |item|
         .detail-item__other-items__content
-          - if item.task.include?('complete')
-            = render 'shared/soldout'
           = link_to item_path(item), nil do
+            - if item.task.include?('complete')
+              = render 'shared/soldout'
             %figure.detail-item__other-items__content--figure
               - if item.item_images.present?
                 = image_tag item.item_images.first.image.url, class: "lazyloaded"
