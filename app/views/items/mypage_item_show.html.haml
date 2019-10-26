@@ -11,9 +11,6 @@
             = image_tag @item.item_images[0].image.url
 
         .detail-item__photo-small
-          .detail-item__photo-small--image.active
-            .detail-item__photo-small--inner
-              = image_tag @item.item_images[0].image.url
           -@item.item_images.each do |item_image|
             .detail-item__photo-small--image
               .detail-item__photo-small--inner
