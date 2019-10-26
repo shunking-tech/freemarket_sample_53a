@@ -7,10 +7,9 @@
     .detail-item--flex
       .detail-item__photo
 
-        .detail-item__photo--image
+        .detail-item__photo--image.soldout
           - if @item.task.include?('complete')
-            .detail-item__photo__soldout
-            %span.detail-item__photo__soldout--text="SOLD"
+            = render 'shared/soldout'
           .detail-item__photo--outer
             - @item.item_images.each do |item_image|
               .detail-item__photo--inner
@@ -202,6 +201,8 @@
     .detail-item__other-items__contents
       - @item.user_other_items.limit(6).each do |item|
         .detail-item__other-items__content
+          - if item.task.include?('complete')
+            = render 'shared/soldout'
           = link_to item_path(item), nil do
             %figure.detail-item__other-items__content--figure
               - if item.item_images.present?
@@ -223,6 +224,8 @@
     .detail-item__other-items__contents
       - @item.category_other_items.limit(6).each do |item|
         .detail-item__other-items__content
+          - if item.task.include?('complete')
+            = render 'shared/soldout'
           = link_to item_path(item), nil do
             %figure.detail-item__other-items__content--figure
               - if item.item_images.present?

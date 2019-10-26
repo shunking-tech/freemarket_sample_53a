@@ -1,0 +1,127 @@
+@include mercari-style();
+@include soldout();
+@include text-center();
+@include fonts();
+@include soldout();
+@include bold();
+@include hidden-large();
+@include lazyloaded();
+
+/*
+アニメーション
+*/
+@keyframes liked {
+  0% {transform: scaleY(1)}
+  30% {transform: scaleY(0.7)}
+  50% {transform: scaleY(1.2)}
+  70% {transform: scaleY(1)}
+  80% {transform: scaleX(1.2) scaleY(0.8)}
+  86% {transform: scaleX(0.8) scaleY(1.2)}
+  92% {transform: scaleX(1.2) scaleY(0.8)}
+  98% {transform: scaleX(0.8) scaleY(1.2)}
+  100% {transform: scaleX(1) scaleY(1)}
+}
+
+/*
+アイコン関連
+*/
+.icon-good {
+  color: #ef5185;
+  display: inline-block;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.icon-normal {
+  color: #fba933;
+  display: inline-block;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.icon-bad {
+  color: #6ab5d8;;
+  display: inline-block;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.icon-arrow-right {
+  &::before {
+    content: '\f054';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.icon-arrow-left {
+  &::before {
+    content: '\f053';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.icon-like {
+  &::before {
+    content: '\f08a';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #ccc;
+}
+
+.icon-flag {
+  &::before {
+    content: '\f11d';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.icon-lock {
+  &::before {
+    content: '\f023';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.icon-clock {
+  &::before {
+    content: '\f017';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.icon-balloon {
+  &:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #eef0f4;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+}
+
+// リンクの色
+a {
+  color: #0099e8;
+}
