@@ -122,7 +122,7 @@ class UserValidator < ActiveModel::Validator
 
   def city_validate(record, city)
     if city && 50 < city.length
-      record.errors[:zipcode] << "50文字以下で入力してください"
+      record.errors[:city] << "50文字以下で入力してください"
     end
   end
 
