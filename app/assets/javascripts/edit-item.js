@@ -1,7 +1,7 @@
 $(function (){
   var deleted_images_counter = 0;
   // 読み込み時
-  $(window).on('load', function(){
+  $(document).on('turbolinks:load', function(){
     // 画像をアップロードするフォームの要素を取得
     var label_file_upload = document.getElementsByClassName('editmain__page__box__form__upload__first__pc')
     var number_images = label_file_upload.length - 1      // 保存されている画像の数 配列の最後の要素は画像が保存されていなくても表示されるフォームであるため、-1する
@@ -14,7 +14,7 @@ $(function (){
     }
 
     view_calc_fee_profit();
-  })
+  });
 
   // 価格入力時
   $('.input-fee').on('input', function(){
