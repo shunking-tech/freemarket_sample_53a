@@ -22,7 +22,7 @@
         = f.label :zipcode, "郵便番号"
         %span.registration-form__content__form-group__form-require 必須
         %br/
-        = f.text_field :zipcode, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input #{has_error(@deliver_address.errors[:zipcode])}", placeholder: "例) 123-4567"
+        = f.text_field :zipcode, autocomplete: "last_name_kana", class: "registration-form__content__form-group__input #{has_error(@deliver_address.errors[:zipcode])} input-zipcode", placeholder: "例) 123-4567", maxlength: "8"
         = render "shared/input_errors", errors: @deliver_address.errors[:zipcode]
       .registration-form__content__form-group
         = f.label :prefecture, "都道府県"

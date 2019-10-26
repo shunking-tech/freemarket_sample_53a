@@ -88,7 +88,7 @@ class DeliverAddressValidator < ActiveModel::Validator
   end
 
   def zipcode_validate(record, zipcode)
-    zipcode_regex = /\A\d{7}\z/
+    zipcode_regex = /\A\d{3}-\d{4}\z/
     if zipcode.blank?
       record.errors[:zipcode] << "入力してください"
       record.errors[:zipcode] << "フォーマットが不適切です" if zipcode.match(zipcode_regex) == nil
