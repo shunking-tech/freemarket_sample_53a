@@ -1,7 +1,21 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :mypage_item_show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    # 一旦、保留
+    # root_categories = Category.where(ancestry: nil)
+    # @categories = []
+    # root_categories.each do |category|
+    #   @categories.push({category: category, count: category.belongs_items.count})
+    # end
+    # @categories = @categories.sort_by {|a| -a[:count]}.map { |obj| obj[:category] }.take(4)
+
+    @categories = Category.roots.limit(4)
+  end
+
+  def search
+    @items = []
   end
 
   def show
@@ -57,8 +71,7 @@ class ItemsController < ApplicationController
 
   private
   def set_item
-    # @item = Item.find(params[:id]).decorate　よくわからないため、一旦decorateを削除
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id]).decorate
   end
 
   # 商品出品とコンフリクトするかも

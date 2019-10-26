@@ -53,8 +53,8 @@ describe ItemLikesController do
           }
         end
 
-        it 'redirects to login_path' do
-          expect(response).to redirect_to(login_path)
+        it 'redirects to new_user_session_path' do
+          expect(response).to redirect_to(new_user_session_path)
         end
       end
     end

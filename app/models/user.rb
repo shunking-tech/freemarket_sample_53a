@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :liked_items, through: :item_likes, source: :item
   has_many :item_comments
   has_many :user_reviews
+  has_one :credit_card
 
   validates_with UserValidator
 
@@ -47,5 +48,9 @@ class User < ApplicationRecord
 
   def bad_count
     user_reviews.bad_score.count
+  end
+
+  def full_name
+    "#{last_name}#{first_name}"
   end
 end
