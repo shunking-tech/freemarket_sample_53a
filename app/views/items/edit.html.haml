@@ -92,7 +92,7 @@
                     %span.require_sheet 必須
                     .select-block
                       %i.icon-arrow-bottom
-                      = f.select :payer_delivery_expense, Item.payer_delivery_expenses_i18n.invert, {}, class: "select-block__choice", placeholder: 0
+                      = f.select :payer_delivery_expense, payer_delivery_expense_explanation(Item.payer_delivery_expenses_i18n.invert), {}, class: "select-block__choice", selected: @item.payer_delivery_expense
                     = render 'layouts/error/payer_delivery_expense'
                   .editmain__page__box__form__content__box__details
                     = f.label :prefecture_id, "発送元の地域"
