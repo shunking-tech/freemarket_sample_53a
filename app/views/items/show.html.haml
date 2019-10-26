@@ -8,10 +8,10 @@
       .detail-item__photo
 
         .detail-item__photo--image
+          - if @item.task.include?('complete')
+            .detail-item__photo__soldout
+            %span.detail-item__photo__soldout--text="SOLD"
           .detail-item__photo--outer
-            - if @item.task.include?('complete')
-              .detail-item__photo__soldout
-              %span.detail-item__photo__soldout--text="SOLD"
             - @item.item_images.each do |item_image|
               .detail-item__photo--inner
                 = image_tag item_image.image.url
