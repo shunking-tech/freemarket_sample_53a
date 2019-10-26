@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post "sign_up", to: "users/registrations#create"
     get "sign_up/sms_authorization", to: "users/registrations#sms_authorization"
     get "sign_up/deliver_address", to: "users/registrations#deliver_address"
+    post "sign_up/deliver_address", to: "users/registrations#deliver_address_create"
     get "sign_up/credit_card", to: "users/registrations#credit_card"
     get "sign_up/finish", to: "users/registrations#finish"
   end
