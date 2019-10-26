@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :item_comments
   has_many :user_reviews
   has_one :credit_card
+  has_one :deliver_address
 
   validates_with UserValidator
 
