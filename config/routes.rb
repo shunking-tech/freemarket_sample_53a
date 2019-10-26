@@ -36,10 +36,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create] do
     # クレジットカード
     resource :credit_card, except: [:edit, :update], module: :users
+    # お届け先住所
+    resource :deliver_address, except: [:edit, :destroy], module: :users
     member do
       get :profile
       get :identification
-      get :deliver_address
     end
   end
 
