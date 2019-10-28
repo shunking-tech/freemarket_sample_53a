@@ -15,7 +15,7 @@ crumb :profile do
 end
 
 crumb :deliver_address do
-  link " 発送元・お届け先住所変更", deliver_address_user_path(current_user)
+  link " 発送元・お届け先住所変更", user_deliver_address_path(current_user)
   parent :mypage
 end
 
