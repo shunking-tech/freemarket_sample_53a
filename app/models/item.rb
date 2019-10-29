@@ -11,7 +11,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :item_comments
   has_many :item_images, dependent: :destroy
-  accepts_nested_attributes_for :item_images      # itemとitem_imagesを同時にcreate,updateするために必要 # 商品出品とコンフリクトするかも
   has_many :item_likes
   has_many :liked_users, through: :items_likes, source: :user
   belongs_to_active_hash :prefecture
