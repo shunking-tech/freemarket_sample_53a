@@ -1,25 +1,4 @@
-class UserValidator < ActiveModel::Validator
-
-  def validate(record)
-    validate_methods.each do |method|
-      method.slice!(0, 6)
-      validate_method = method.gsub(/, /, ", record.").chomp
-      eval(validate_method)
-    end
-  end
-
-  private
-
-  def validate_methods
-    methods = []
-    File.open("./app/validators/user_validator.rb") do |file|
-      file.each_line do |line|
-        methods << line if line =~ /.+_validate/
-      end
-    end
-    methods.shift()
-    return methods
-  end
+class UserValidator < DefaultValidator
 
   def nickname_validate(record, nickname)
     if nickname.blank?
