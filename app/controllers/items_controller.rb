@@ -32,12 +32,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.size_id = 2 #デフォルトで入れておきます
-      if params[:item][:item_images_attributes] && @item.save!
-        redirect_to root_path notice: "出品されました"
+      if params[:item][:item_images_attributes] && @item.save
+        redirect_to root_path
       else
         binding.pry
         render :new
-        flash.now[:alert] = "未入力項目があります"
       end
   end
 
