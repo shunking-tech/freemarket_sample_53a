@@ -1,5 +1,4 @@
 $(function () {
-  var deleted_images_counter = 0;
 
   // 販売手数料と販売利益を計算して、表示に反映させる
   function view_calc_fee_profit() {
@@ -15,10 +14,11 @@ $(function () {
       }
   }
 
-  // 価格入力時
-  $('.input-fee').on('input', function() {
-    view_calc_fee_profit();
-  })
-
+  $(document).on('turbolinks:load', function() {
+    // 価格入力時に手数料と販売利益を計算
+    $('.input-fee').on('input', function() {
+      view_calc_fee_profit();
+    })
+  });
 
 });
