@@ -132,7 +132,7 @@
                         .edit-right
                           ¥
                           %div
-                            = f.text_field :price, placeholder: "例）300", class: "input-fee"
+                            = f.text_field :price, placeholder: "例）300", class: "input-fee", maxlength: "7"
                       = render 'layouts/error/price'
                     %li.edit-money__fee
                       .edit-money__fee__left
