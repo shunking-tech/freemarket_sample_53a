@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
       if params[:item][:item_images_attributes] && @item.save
         redirect_to root_path
       else
-        binding.pry
         render :new
       end
   end
@@ -53,34 +52,21 @@ class ItemsController < ApplicationController
 
   def update
     delete_image_ids = delete_image_id_params[:delete_image_id]
+
     if delete_image_ids && delete_image_ids.length == @item.item_images.length
       @error = "画像がありません"
       render :edit
     elsif @item.update(item_params)
-
       if delete_image_ids
         delete_image_ids.each do |id|
           ItemImage.find(id).destroy
         end
       end
-
       redirect_to action: 'mypage_item_show'
     else
       render :edit
     end
-  end
 
-  def update
-    @item.update(item_params)
-    delete_image_ids = delete_image_id_params[:delete_image_id]
-
-    if delete_image_ids
-      delete_image_ids.each do |id|
-        ItemImage.find(id).destroy
-      end
-    end
-
-    redirect_to action: 'mypage_item_show'
   end
 
   def destroy
