@@ -32,9 +32,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.size_id = 2 #デフォルトで入れておきます
-      if params[:item][:item_images_attributes] && @item.save
+      if params[:item][:item_images_attributes] && @item.save!
         redirect_to root_path notice: "出品されました"
       else
+        binding.pry
         render :new
         flash.now[:alert] = "未入力項目があります"
       end
@@ -86,18 +87,6 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to controller: 'users', action: 'show', id: current_user.id
-  end
-
-  def search
-    if params(@item)
-      @c_item = Item.find(params[:id]).children
-    else
-      @t_item = Item.find(params[:item_id]).children
-    end
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   private
