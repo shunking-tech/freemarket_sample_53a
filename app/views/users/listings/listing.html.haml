@@ -1,4 +1,11 @@
-- breadcrumb :mypage
+- case active_page
+- when 'listing'
+  - breadcrumb :listing
+- when 'in_progress'
+  - breadcrumb :in_progress
+- when 'completed'
+  - breadcrumb :completed
+
 = render 'items/header_guide'
 = render 'shared/breadcrumbs'
 
