@@ -1,5 +1,10 @@
 = render 'items/header_guide'
 .detail-item
+  - if /waiting_shipping|rating_seller|rating_buyer/ =~ @item.task
+    %span.detail-item__mypage-item-show__task.detail-item__mypage-item-show__task--state=@item.task_i18n
+  - else
+    %span.detail-item__mypage-item-show__task=@item.task_i18n
+
   = render partial: 'items/detail-item-top', locals: { item: @item }
 
   .detail-item__description
