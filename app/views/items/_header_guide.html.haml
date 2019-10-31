@@ -67,20 +67,16 @@
                     %span="いいね!一覧"
                     %i.icon-arrow-right
                 %li
-                  =link_to current_user do
+                  =link_to listing_user_path(current_user) do
                     %span="出品した商品 - 出品中"
                     %i.icon-arrow-right
                 %li
-                  =link_to current_user do
+                  =link_to in_progress_user_path(current_user) do
                     %span="出品した商品 - 取引中"
                     %i.icon-arrow-right
                 %li
-                  =link_to current_user do
+                  =link_to completed_user_path(current_user) do
                     %span="出品した商品 - 売却済み"
-                    %i.icon-arrow-right
-                %li
-                  =link_to current_user do
-                    %span="出品した商品 - 出品中"
                     %i.icon-arrow-right
                 %li
                   =link_to current_user do
