@@ -41,34 +41,10 @@
       position: relative;
     }
 
-    // &__soldout {
-    //   z-index: 2;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   border-top: 60px solid $active_red;
-    //   border-right: 60px solid transparent;
-    //   border-bottom: 60px solid transparent;
-    //   border-left: 60px solid $active_red;
-
-    //   &--text {
-    //     z-index: 2;
-    //     position: absolute;
-    //     top: 30px;
-    //     left: 3px;
-    //     transform: rotate(-48deg);
-    //     color: $white;
-    //     font-size: 24px;
-    //     font-weight: 500;
-    //     letter-spacing: 4px;
-    //   }
-    // }
-
     &--image {
       width: 300px;
       height: 300px;
       overflow: hidden;
-      // position: relative;
 
       ul {
         width: 1vw;

@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-
-  before_action :set_item, only: [:show, :mypage_item_show, :destroy]
+  before_action :set_item, only: [:show, :mypage_item_show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -32,35 +31,41 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.size_id = 2 #デフォルトで入れておきます
       if params[:item][:item_images_attributes] && @item.save
-        redirect_to root_path notice: "出品されました"
+        redirect_to root_path
       else
         render :new
-        flash.now[:alert] = "未入力項目があります"
       end
   end
 
   def mypage_item_show
+    check_my_item
   end
 
   def edit
+    check_my_item
     @item.item_images.build
     @parents = Category.all.order("id ASC").limit(13)
     gon.item_images = @item.item_images       # 保存されている画像の配列変数をjavascriptで使えるようにする
   end
 
   def update
-    @item.update(item_params)
     delete_image_ids = delete_image_id_params[:delete_image_id]
 
-    if delete_image_ids
-      delete_image_ids.each do |id|
-        ItemImage.find(id).destroy
+    if delete_image_ids && delete_image_ids.length == @item.item_images.length
+      @error = "画像がありません"
+      render :edit
+    elsif @item.update(item_params)
+      if delete_image_ids
+        delete_image_ids.each do |id|
+          ItemImage.find(id).destroy
+        end
       end
+      redirect_to action: 'mypage_item_show'
+    else
+      render :edit
     end
 
-    redirect_to action: 'mypage_item_show'
   end
 
   def destroy
@@ -68,21 +73,9 @@ class ItemsController < ApplicationController
     redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
-  def search
-    if params(@item)
-      @c_item = Item.find(params[:id]).children
-    else
-      @t_item = Item.find(params[:item_id]).children
-    end
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
-
   private
   def set_item
-    @item = Item.includes(:item_images).find(params[:id]).decorate
+    @item = Item.find(params[:id]).decorate
   end
 
   def item_params
@@ -103,6 +96,14 @@ class ItemsController < ApplicationController
 
   def delete_image_id_params
     params.permit(delete_image_id:[])
+  end
+
+  def check_my_item
+    # 表示しようとしているitemが、ログイン中ユーザーが出品したitemではない場合、マイページにリダイレクト
+    if @item.user_id != current_user.id
+      redirect_to controller: 'users', action: 'show', id: current_user.id
+      return
+    end
   end
 
 end
