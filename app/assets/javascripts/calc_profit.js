@@ -15,6 +15,8 @@ $(function () {
   }
 
   $(document).on('turbolinks:load', function() {
+    // ページ読み込み時に計算
+    view_calc_fee_profit();
     // 価格入力時に手数料と販売利益を計算
     $('.input-fee').on('input', function() {
       view_calc_fee_profit();
