@@ -1,0 +1,15 @@
+%li.listings__content__items__found
+  = link_to mypage_item_show_item_path(item), class: "listings__content__item" do
+    .listings__content__item__image
+      = image_tag item.item_images.first.image.url if item.item_images.present?
+    .listings__content__item__info
+      .listings__content__item__info__title=item.name
+      .listings__content__item__info__text
+        %i.icon-like
+        %span.listings__content__item__info__like=item.item_likes.count
+        %i.icon-comment
+        %span.listings__content__item__info__comment=item.item_comments.count
+        %span.listings__content__item__info__tag="#{active_item_tag}"
+        - if active_page.include?('in_progress')
+          %span.listings__content__item__info__tag.listings__content__item__info__tag--state=item.task_i18n
+    %i.icon-arrow-right

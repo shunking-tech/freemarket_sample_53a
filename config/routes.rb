@@ -39,9 +39,16 @@ Rails.application.routes.draw do
     resource :credit_card, except: [:edit, :update], module: :users
     # お届け先住所
     resource :deliver_address, except: [:edit, :destroy], module: :users
+    
     member do
       get :profile
       get :identification
+
+      scope 'listings', module: :users, controller: 'listings' do
+        get :listing
+        get :in_progress
+        get :completed
+      end
     end
   end
 

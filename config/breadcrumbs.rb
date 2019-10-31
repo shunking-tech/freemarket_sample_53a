@@ -8,6 +8,21 @@ crumb :mypage do
   parent :root
 end
 
+crumb :listing do
+  link "出品した商品 - 出品中", listing_user_path(current_user)
+  parent :mypage
+end
+
+crumb :in_progress do
+  link "出品した商品 - 取引中", in_progress_user_path(current_user)
+  parent :mypage
+end
+
+crumb :completed do
+  link "出品した商品 - 売却済み", completed_user_path(current_user)
+  parent :mypage
+end
+
 # マイページ以下
 crumb :profile do
   link "プロフィール", profile_user_path(current_user)
