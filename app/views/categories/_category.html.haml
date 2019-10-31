@@ -1,5 +1,7 @@
 - unless defined? items
-  - if defined? limit
+  - if current_page?(root_path)
+    - items = category.roots_items(limit)
+  - elsif defined? limit
     - items = category.belongs_items(limit)
   - else
     - items = category.belongs_items
