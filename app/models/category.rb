@@ -13,6 +13,6 @@ class Category < ApplicationRecord
   end
 
   def roots_items(limit = nil)
-    Item.category_items(Category.roots.ids).recently.limit(limit).includes(:item_images)
+    Item.category_items(id).recently.limit(limit).includes(:item_images)
   end
 end
