@@ -88,7 +88,7 @@ $(function () {
     var reader = new FileReader();
     reader.readAsDataURL(image_data);
     reader.onload = function(load_image_e) {
-      create_html_file_edit(images_last_index+1, load_image_e.target.result);
+      create_html_file_edit(images_last_index, load_image_e.target.result);
     }
     rebuild_html_file_new(number_images+1);
   })
