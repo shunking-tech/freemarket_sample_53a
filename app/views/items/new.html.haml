@@ -1,186 +1,153 @@
-.sellpage
+.editpage
   = render 'items/logo-header'
   = render 'items/logo-footer'
-  %main.sellmain
-    %section.sellmain__page
-      #sell_list
-        %div{"data-reactroot": ""}
-          .sellmain__page__box
-            %h2.sellmain__page__box__top 
-              商品の情報を入力
 
 
-            = form_with model: @item, local: true, class: "sellpage__page__box__form" do |f|
-              .sellmain__page__box__form
-                .sellmain__page__box__form__upload
-                  %h3.sellmain__page__box__form__upload__haed
-                    / react-text: 7
-                    出品画像
-                    %span.require_sheet 必須
-                    / /react-text
-                  %p 最大10枚までアップロードできます
-                  .sellmain__page__box__form__upload__first
-                    .sellmain__page__box__form__upload__first__phone
-                      .sellmain__page__box__form__upload__first__phone__items
-                        
-                    .overflow-auto
-                    %ul.sellmain__page__box__form__upload__first__ul
+  %main.editmain
+    %section.editmain__page
+      #edit_list
+        %div{"data-reactroot":  ""}
+          .editmain__page__box
+            %h2.editmain__page__box__top 商品の情報を入力
+
+            = form_with model: @item, local: true, class: "editmain__page__box__form" do |f|
+
+              .editmain__page__box__form__upload
+                %h3.editmain__page__box__form__upload__haed
+                  / react-text: 7
+                  出品画像
+                  / /react-text
+                  %span.require_sheet 必須
+                %p 最大10枚までアップロードできます
+                .editmain__page__box__form__upload__first
+                  .editmain__page__box__form__upload__first__phone
+                    .editmain__page__box__form__upload__first__phone__items
+                      %ul.editmain__page__box__form__upload__first__phone__items__ul
+
+                  .overflow-auto
+                    %ul.editmain__page__box__form__upload__first__ul
                       -# jqueryで自動的に生成する内容
-                      -# %li.sellmain__page__box__form__upload__first__ul__li
-                      -#   %figure.sellmain__page__box__form__upload__first__ul__li__image
+                      -# %li.editmain__page__box__form__upload__first__ul__li
+                      -#   %figure.editmain__page__box__form__upload__first__ul__li__image
                       -#     = image_tag @item.item_images[0].image.url, size: "116*116"
-                      -#   .sellmain__page__box__form__upload__first__ul__li__button
-                      -#     = link_to '編集', '#', class: "sellmain__page__box__form__upload__first__ul__li__button__edit"
-                      -#     = link_to '削除', '#', class: "sellmain__page__box__form__upload__first__ul__li__button__delete"
-                    = f.fields_for :item_images, class: "sellmain__page__box__form__upload__first__pc" do |img|
+                      -#   .editmain__page__box__form__upload__first__ul__li__button
+                      -#     = link_to '編集', '#', class: "editmain__page__box__form__upload__first__ul__li__button__edit"
+                      -#     = link_to '削除', '#', class: "editmain__page__box__form__upload__first__ul__li__button__delete"
+                    = f.fields_for :item_images, class: "editmain__page__box__form__upload__first__pc" do |img|
                       -# ↓一旦labelで指定 のちにjsでdiv状態でtype fileしよう可能変更
-                      = img.label :image, class: "sellmain__page__box__form__upload__first__pc new_image", style: "width: 620px;" do
-                        = img.file_field :image, class: "sellmain__page__box__form__upload__first__pc__print" ,style: "display: none;"
-                        %pre.sellmain__page__box__form__upload__first__pc__text
+                      = img.label :image, class: "editmain__page__box__form__upload__first__pc new_image", style: "width: 620px;" do
+                        = img.file_field :image, class: "editmain__page__box__form__upload__first__pc__print"
+
+                        %pre.editmain__page__box__form__upload__first__pc__text
                           :preserve
                             ドラッグアンドドロップ
                             またはクリックしてファイルをアップロード
                         %i.icon-camera
+                = render 'layouts/error/item_images'
 
-                .sellmain__page__box__form__content
-                  .sellmain__page__box__form__content__group
-                    = f.label :name ,{class: 'form-label'} do
-                      商品名
-                      %span.require_sheet
-                        必須
-                    %div
-                      = f.text_field :name , placeholder: "商品名(必須 40文字まで)", class: "input-box", value: ""
-                      = render 'layouts/error/name'
-                  .sellmain__page__box__form__content__group
-                    = f.label :description, "商品の説明"
-                    %span.require_sheet 必須
-                    = f.text_area :description, placeholder: "商品の説明(必須 1,000文字いない) (色、素材、重さ、定価、注意点など) 例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5" ,class: "textarea-box"
-                    = render 'layouts/error/description'
-
-                .sellmain__page__box__form__content.clearfix
-                  %h3.sellmain__page__box__form__content__sub 商品の詳細
-                  .sellmain__page__box__form__content__box
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :category , {class: 'form-label'} do
-                        カテゴリー
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.collection_select :category_id, Category.all, :id, :name ,{ prompt: "---"}, {class: "select-block__choice"}
-                          = render 'layouts/error/ecategory'
-                          -# ↓controllerで一旦size_idをデフォルトで1で入力しておく
-                          -# 洋服などを選んだ場合のみサイズの下のviewを表示させる
-                    -# .sellmain__page__box__form__content__box__details
-                    -#   = f.label :size , {class: 'form-label'} do
-                    -#     サイズ
-                    -#     %span.require_sheet 必須
-                    -#   %div
-                    -#     .select-block
-                    -#       %i.icon-arrow-bottom
-                    -#       = f.collection_select :size_id, Size.all, :id, :size ,{ prompt: "---"}, {class: "select-block__choice"}
-                    -#       = render 'layouts/error/esize'
-          
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :condition , {class: 'form-label'} do
-                        商品の状態
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.select :condition, Item.conditions.keys.map {|k| [I18n.t("enums.item.condition.#{k}"), k]},{include_blank: "---", selected: "---"},{class: "select-block__choice"}
-                          = render 'layouts/error/condition'
-          
-
-                .sellmain__page__box__form__content.clearfix
-                  %h3.sellmain__page__box__form__content__sub 配送について
-                  = link_to  root_path ,target:'_blank', class:"question-mark" do
-                    ?
-                  .sellmain__page__box__form__content__box
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :payer_delivery_expense , {class: 'form-label'} do
-                        発送料の負担
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.select :payer_delivery_expense, Item.payer_delivery_expenses.keys.map {|k| [I18n.t("enums.item.payer_delivery_expense.#{k}"), k]}, {include_blank: "---", selected: "---"},{class: "select-block__choice"}
-                          = render 'layouts/error/payer_delivery_expense'
-
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :shipping_method , {class: 'form-label'} do
-                        発送の方法
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.select :shipping_method, Item.shipping_methods.keys.map {|k| [I18n.t("enums.item.shipping_method.#{k}"), k]}, {include_blank: "---", selected: "---"},{class: "select-block__choice"}
-                          = render 'layouts/error/shipping_method'
-
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :prefecture , {class: 'form-label'} do
-                        発送元の地域
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.collection_select :prefecture_id, Prefecture.all, :id, :name ,{prompt: "---"}, {class: "select-block__choice"}
-                          = render 'layouts/error/eprefecture'
-                    .sellmain__page__box__form__content__box__details
-                      = f.label :delivery_days ,{class: 'form-label'} do
-                        発送までの日数
-                        %span.require_sheet 必須
-                      %div
-                        .select-block
-                          %i.icon-arrow-bottom
-                          = f.select :delivery_days, Item.delivery_days.keys.map {|k| [I18n.t("enums.item.delivery_days.#{k}"), k]},{include_blank: "---", selected: "---"},{class: "select-block__choice"}
-                          = render 'layouts/error/delivery_days'
-
-                .sellmain__page__box__form__content.clearfix
-                  %h3.sellmain__page__box__form__content__sub 販売価格(300〜9,999,999)
-                  = link_to root_path , target:'_blank' , class:'question-mark' do
-                    ?
-                  .sellmain__page__box__form__content__box
-                    %ul.sell-money
-                      %li.sell-money__group
-                        .sell-money__group__box
-                          = f.label :price, { class: 'form-label' } do
-                            価格
-                            %span.require_sheet 必須
-                          .sell-right
-                            ¥
-                            %div
-                              = f.text_field :price, placeholder: '例)300', class: 'input-fee'
-                          = render 'layouts/error/price'
-                      %li.sell-money__fee
-                        .fee-left
-                          販売手数料(10%)
-                        .sell-money__fee__right
-                          -
-                      %li.sell-money__profit
-                        .fee-left
-                          販売利益
-                        .sell-money__profit__right
-                          -
-
-                .sellmain__page__box__form__content.clearfix
+              .editmain__page__box__form__content
+                .editmain__page__box__form__content__group
+                  = f.label :name, "商品名"
+                  %span.require_sheet 必須
                   %div
-                    %p
-                      = link_to root_path, target: '_blank' do
-                        禁止されている出品
-                      、
-                      = link_to root_path, target: '_blank' do
-                        行為
-                      を必ずご確認ください。
-                    %p
-                      またブランド品でシリアルナンバー等がある場合はご記載ください。
-                      = link_to root_path, target: '_blank' do
-                        偽ブランドの発売
-                      は犯罪であり処罰される可能性があります。
-                    %p
-                      また、出品をもちまして
-                      = link_to root_path do
-                        加盟店規約
-                      に同意したことになります。
-                    = f.submit "出品する" ,class: 'sell-first-btn'
-                    = link_to 'もどる', :back, class: 'back-gray-btn'
+                    = f.text_field :name, placeholder: "商品名（必須 40文字まで)", class: "input-box"
+                  = render 'layouts/error/name'
+
+                .editmain__page__box__form__content__group
+                  = f.label :description, "商品の説明"
+                  %span.require_sheet 必須
+                  = f.text_area :description, class: "textarea-box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+                  = render 'layouts/error/description'
+
+              .editmain__page__box__form__content.clearfix
+                %h3.editmain__page__box__form__content__sub 商品の詳細
+                .editmain__page__box__form__content__box
+                  .editmain__page__box__form__content__box__details
+                    = f.label :category_id, "カテゴリー"
+                    %span.require_sheet 必須
+                    %div
+                      .select-block
+                        %i.icon-arrow-bottom
+                        = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :name, { prompt: "---"}, {class: "select-block__choice"}
+                        -# %option 以下レディースやメンズなどの選択view
+                    = render 'layouts/error/ecategory'
+
+                  .editmain__page__box__form__content__box__details
+                    = f.label :size , {class: 'form-label'} do
+                      サイズ
+                      %span.require_sheet 必須
+                    %div
+                      .select-block
+                        %i.icon-arrow-bottom
+                        = f.collection_select :size_id, Size.all, :id, :size ,{ prompt: "---"}, {class: "select-block__choice"}
+                        = render 'layouts/error/esize'
+
+                  .editmain__page__box__form__content__box__details
+                    = f.label :condition, "商品の状態"
+                    %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      = f.select :condition, Item.conditions_i18n.invert, {include_blank: "---", selected: "---"}, class: "select-block__choice", placeholder: 0
+                      -# %option　以下　状態のview
+                    = render 'layouts/error/condition'
+
+              .editmain__page__box__form__content.clearfix
+                %h3.editmain__page__box__form__content__sub 配送について
+                =link_to  root_path ,target:"_blank", class:"question-mark" do
+                  ?
+                .editmain__page__box__form__content__box
+                  .editmain__page__box__form__content__box__details
+                    = f.label :payer_delivery_expense, "発送料の負担"
+                    %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      = f.select :payer_delivery_expense, payer_delivery_expense_explanation(Item.payer_delivery_expenses_i18n.invert), {include_blank: "---", selected: "---"}, class: "select-block__choice", selected: @item.payer_delivery_expense
+                    = render 'layouts/error/payer_delivery_expense'
+                  .editmain__page__box__form__content__box__details
+                    = f.label :prefecture_id, "発送元の地域"
+                    %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---", selected: "---"}, class: "select-block__choice", placeholder: 0
+                    = render 'layouts/error/eprefecture'
+                  .editmain__page__box__form__content__box__details
+                    = f.label :delivery_days, "発送までの日数"
+                    %span.require_sheet 必須
+                    .select-block
+                      %i.icon-arrow-bottom
+                      = f.select :delivery_days, Item.delivery_days_i18n.invert, {include_blank: "---", selected: "---"}, class: "select-block__choice", placeholder: 0
+                    = render 'layouts/error/delivery_days'
+
+              .editmain__page__box__form__content.clearfix
+                %h3.editmain__page__box__form__content__sub 販売価格(300〜9,999,999)
+                =link_to  root_path ,target:"_blank", class:"question-mark" do
+                  ?
+                .editmain__page__box__form__content__box
+                  %ul.edit-money
+                    %li.edit-money__group
+                      .edit-money__group__box
+                        .edit-left
+                          = f.label :price, "価格"
+                          %span.require_sheet 必須
+                        .edit-right
+                          ¥
+                          %div
+                            = f.text_field :price, placeholder: "例）300", class: "input-fee", maxlength: "7"
+                      = render 'layouts/error/price'
+                    %li.edit-money__fee
+                      .edit-money__fee__left
+                        販売手数料(10%)
+                      .edit-money__fee__right
+                        &ndash;
+                    %li.edit-money__profit
+                      販売利益
+                      .edit-money__profit__left
+                      .edit-money__profit__right
+                        &ndash;
+
+              .editmain__page__box__form__content.clearfix
+                = f.submit "出品する", class: "edit-first-btn"
+                =link_to "キャンセル", :back , class: 'back-gray-btn'
+            .editlay
+
+

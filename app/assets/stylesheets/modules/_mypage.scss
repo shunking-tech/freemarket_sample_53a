@@ -11,7 +11,6 @@
     .user-icon {
       height: 200px;
       position: relative;
-      // padding: 20px;
       background: image-url("/user-bg.jpg");
       background-repeat: no-repeat;
       background-size: cover;
@@ -117,7 +116,6 @@
             display: block;
             padding: 16px;
             color: $black;
-            // min-height: 80px;
             figure {
               margin: 0;
               position: relative;
@@ -168,7 +166,6 @@
               position: absolute;
               top: 50%;
               right: 16px;
-              // color: $dark_gray;
               transition: all ease-out .2s;
             }
           }
@@ -360,7 +357,6 @@
             font-style: normal;
             display: inline-block;
             position: absolute;
-            // top: 50%;
             right: 16px;
             color: $dark_gray;
             transition: all ease-out .2s;
