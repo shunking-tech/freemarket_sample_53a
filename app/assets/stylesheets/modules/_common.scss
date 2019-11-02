@@ -121,6 +121,54 @@
   }
 }
 
+.icon-facebook {
+  &::before {
+    content: '\f082';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 30px;
+  border-radius: 2px;
+  line-height: 30px;
+  color: #fff;
+}
+
+.icon-twitter {
+  &::before {
+    content: '\f099';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 30px;
+  border-radius: 2px;
+  line-height: 30px;
+  color: #fff;
+}
+
+.icon-pinterest {
+  &::before {
+    content: '\f0d2';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 20px;
+  border-radius: 2px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.icon-pinterest {
+  &::before {
+    content: '\f0d2';
+  }
+  font-family: FontAwesome;
+  font-style: normal;
+  font-size: 20px;
+  border-radius: 2px;
+  line-height: 20px;
+  color: #fff;
+}
+
 // リンクの色
 a {
   color: #0099e8;
