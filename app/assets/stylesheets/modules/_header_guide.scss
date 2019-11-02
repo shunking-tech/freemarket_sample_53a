@@ -306,6 +306,19 @@
   padding: 0px 0px 0px 15px;
   position: relative;
 
+  .active_top {
+    background-color: $active-red;
+    color: $white;
+  }
+  
+  .active_gray {
+    background-color: $gray;
+    color: inherit;
+  }
+
+  &__ddmenu--2-level.ddmenu-category_link {
+    pointer-events : auto;
+  }
   li {
     width: 100%;
     display: inline-block;
@@ -347,11 +360,6 @@
       text-align: left;
       padding-left: 15px;
       font-weight: normal;
-
-      &:hover {
-        background-color: $active-red;
-        color: $white;
-      }
     }
   }
 
