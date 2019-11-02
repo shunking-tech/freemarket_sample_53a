@@ -41,6 +41,7 @@
           %h3.bold
             配送先
           %address.buyer-info__inner__body
+          - if current_user.deliver_address
             = "〒" + current_user.deliver_address.zipcode
             %br
             = current_user.deliver_address.prefecture.name
