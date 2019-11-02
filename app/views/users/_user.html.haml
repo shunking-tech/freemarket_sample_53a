@@ -1,32 +1,34 @@
 .detail-user
 
   .detail-user__header
-    .detail-user__header__avatar
-    .detail-user__header__name
+    = link_to user_path(@user) do
+      .detail-user__header__avatar
+        = image_tag '/sample-avatar.jpg'
+      .detail-user__header__name
+        %span=@user.nickname
     .detail-user__header__info
       %span="評価 #{user.user_reviews.count}"
       %span="出品数 #{user.items.count}"
 
   .detail-user__ratings
     .detail-user__ratings__box
-      %svg.icon-good.svg-inline--fa.fa-laugh.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "laugh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
+      %svg.icon-good.svg-inline--fa.fa-laugh.fa-w-16{width: '24px', height: '24px', "aria-hidden": "true", "data-icon": "laugh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
         %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 152c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm88 272h-16c-73.4 0-134-55-142.9-126-1.2-9.5 6.3-18 15.9-18h270c9.6 0 17.1 8.4 15.9 18-8.9 71-69.5 126-142.9 126z", fill: "currentColor"}
-      %span=user.good_count
+      %span.detail-user__ratings__box--text=user.good_count
 
     .detail-user__ratings__box
-      %svg.icon-normal.svg-inline--fa.fa-meh.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "meh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
+      %svg.icon-normal.svg-inline--fa.fa-meh.fa-w-16{width: '24px', height: '24px', "aria-hidden": "true", "data-icon": "meh", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
         %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z", fill: "currentColor"}
-      %span=user.normal_count
+      %span.detail-user__ratings__box--text=user.normal_count
 
     .detail-user__ratings__box
-      %svg.icon-bad.svg-inline--fa.fa-frown.fa-w-16{width: '16px', height: '17px', "aria-hidden": "true", "data-icon": "frown", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
+      %svg.icon-bad.svg-inline--fa.fa-frown.fa-w-16{width: '24px', height: '24px', "aria-hidden": "true", "data-icon": "frown", "data-prefix": "fas", focusable: "false", role: "img", viewbox: "0 0 496 512", xmlns: "http://www.w3.org/2000/svg"}
         %path{d: "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z", fill: "currentColor"}
-      %span=user.bad_count
+      %span.detail-user__ratings__box--text=user.bad_count
 
   .detail-user__description
     .detail-user__description__text
       %span=user.description
-    .detail-user__description__icons
 
   .detail-user__sns
     .detail-user__sns--facebook
@@ -35,4 +37,23 @@
     .detail-user__sns--twitter
       = twitter_link(@user)
 
-
+  .detail-user__items
+    %h2.detail-user__items__title="この出品者の商品"
+    .detail-user__items__contents
+      - @user.items.includes(:item_images).recently.each do |item|
+        .detail-user__items__content
+          = link_to item_path(item), nil do
+            - if item.task.include?('complete')
+              = render 'shared/soldout'
+            %figure.detail-user__items__content--figure
+              - if item.item_images.present?
+                = image_tag item.item_images.first.image.url, class: "lazyloaded"
+              - else
+                = image_tag('/not_found.png')
+            .detail-user__items__content__box
+              %h3.detail-user__items__content__box--title.font-2=item.name
+              .detail-user__items__content__box--footer
+                .detail-user__items__content__box--price.font-5="¥#{item.delimited_price}"
+                .detail-user__items__content__box--like.font-2
+                  %i.icon-like
+                  %span=item.item_likes.count
