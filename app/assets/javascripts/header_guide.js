@@ -23,6 +23,35 @@ $(function () {
         $(this).children('i').animate({ "right": '-=5px' }, "slow");
       }
     )
+
+    // ドロップダウンリストのホバー時の波形色
+    $(".ddmenu--top-level").children('li').hover(
+      function (e) {
+        $(e.currentTarget).children('a').addClass('active_top')
+      },
+      function (e) {
+        $(e.currentTarget).children('a').removeClass('active_top')
+      }
+    );
+
+    $(".ddmenu--1-level").children('li').hover(
+      function (e) {
+        $(e.currentTarget).children('a').addClass('active_gray')
+      },
+      function (e) {
+        $(e.currentTarget).children('a').removeClass('active_gray')
+      }
+    );
+
+    $(".ddmenu--2-level").children('li').hover(
+      function (e) {
+        $(e.currentTarget).children('a').addClass('active_gray')
+      },
+      function (e) {
+        $(e.currentTarget).children('a').removeClass('active_gray')
+      }
+    );
+
   });
 
 })
