@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   include Scopes
+  include Commentable
 
   enum condition: [:unused, :almost_new, :non_dirty, :little_dirty, :dirty, :bad]
   enum task: [:exhibiting, :waiting_shipping, :rating_seller, :rating_buyer, :complete, :stopping]
@@ -9,22 +10,21 @@ class Item < ApplicationRecord
   enum delivery_days: [:within1_2days, :within2_3days, :within4_7days]
 
   belongs_to :user
-  has_many :item_comments
   has_many :item_images, dependent: :destroy
   has_many :item_likes
   has_many :liked_users, through: :items_likes, source: :user
   belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :size
-  
+
   accepts_nested_attributes_for :item_images
-    
+
   with_options presence: true do
-    validates :name 
+    validates :name
     validates :price
     validates :description
     validates :condition
-    validates :task 
+    validates :task
     validates :shipping_method
     validates :delivery_days
     validates :prefecture
