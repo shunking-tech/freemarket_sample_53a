@@ -1,0 +1,84 @@
+@mixin other-items {
+  width: 700px;
+  margin: 0 auto;
+
+  > div {
+    padding-bottom: 30px;
+    &:last-child {
+      padding-bottom: 0;
+      margin-bottom: 40px;
+    }
+  }
+
+  &--title {
+    margin: 24px 0 8px;
+    font-weight: 700;
+
+    a:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
+
+  &__contents {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 20px;
+  }
+
+  &__content {
+    background: #fff;
+
+    a {
+      width: 100%;
+      display: inline-block;
+      color: #333;
+    }
+
+    &--figure {
+      margin: 0;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    &__box {
+      padding: 16px;
+
+      &--title {
+        font-weight: 400;
+        height: 3em;
+        line-height: 1.5;
+        word-break: break-word;
+        white-space: normal;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+
+        &::after {
+          display: block;
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 50%;
+          height: 1.5em;
+          background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+        }
+      }
+
+      &--footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 8px 0 0;
+      }
+
+      &--price {
+        font-size: 17px;
+      }
+    }
+  }
+}
