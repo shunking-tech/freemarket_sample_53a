@@ -41,15 +41,15 @@
           %h3.bold
             配送先
           %address.buyer-info__inner__body
-            = "〒" + current_user.zipcode[0..2] + "-" + current_user.zipcode[3..6] if current_user.zipcode
+            = "〒" + current_user.deliver_address.zipcode
             %br
-            = current_user.prefecture
-            = current_user.city
-            = current_user.house_address
-            = current_user.building_name
+            = current_user.deliver_address.prefecture.name
+            = current_user.deliver_address.city
+            = current_user.deliver_address.house_address
+            = current_user.deliver_address.building_name
             %br
-            = current_user.last_name
-            = current_user.first_name
+            = current_user.deliver_address.last_name
+            = current_user.deliver_address.first_name
           = link_to root_path, class: "buyer-info__inner__fix" do
             %span
               変更する
