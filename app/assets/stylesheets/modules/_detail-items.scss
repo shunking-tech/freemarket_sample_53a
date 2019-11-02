@@ -9,6 +9,23 @@
   width: 700px;
   box-sizing: border-box;
 
+  &__mypage-item-show {
+    &__task {
+      display: inline-block;
+      box-sizing: border-box;
+      background-color: rgb(0, 149, 238);
+      color: $white;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 12px;
+
+      &--state {
+        background-color: goldenrod;
+      }
+    }
+  }
+
   &--flex {
     display: flex;
     align-items: flex-start;

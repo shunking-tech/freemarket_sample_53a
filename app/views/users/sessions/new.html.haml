@@ -5,7 +5,7 @@
     %section.session__main__section
       .session__main__section__no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", new_user_session_path, class: "session__main__section__no-account__btn"
+        = link_to "新規会員登録", sign_up_path, class: "session__main__section__no-account__btn"
       .session__main__section__login-no-mail
         - if Rails.env.development?
           = link_to user_facebook_omniauth_authorize_path, method: :post, class: "session__main__section__login-no-mail__btn session__main__section__login-no-mail__btn--facebook" do
@@ -25,9 +25,9 @@
         .session-form__content
           .session-form__content__form-group.session-form__content__form-group-first
             = f.email_field :email, autocomplete: "email", class: "session-form__content__form-group__input", placeholder: "メールアドレス"
-            = render "shared/user_errors", errors: @user.errors[:email]
+            = render "shared/input_errors", errors: @user.errors[:email]
           .session-form__content__form-group
             = f.password_field :password, autocomplete: "password", class: "session-form__content__form-group__input", placeholder: "パスワード"
-            = render "shared/user_errors", errors: @user.errors[:password]
+            = render "shared/input_errors", errors: @user.errors[:password]
           = f.submit "ログイン", class: "session-form__content__btn"
   = render "shared/reg_and_session_footer", current_page: nil

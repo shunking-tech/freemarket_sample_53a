@@ -72,6 +72,26 @@ class Item < ApplicationRecord
     end
   end
 
+  validates :name,
+            :price,
+            :description,
+            :condition,
+            :task,
+            :payer_delivery_expense,
+            :shipping_method,
+            :delivery_days,
+            :user_id,
+            :category_id,
+            :size_id,
+            :prefecture_id,
+            presence: true
+
+  validate :item_images_exist
+
+
+  def item_images_exist
+    errors.add(:item_images, "を選択してください") if item_images.blank?
+  end
   def trading?
     task.include?('waiting_shipping') || task.include?('rating_seller') || task.include?('rating_buyer')
   end

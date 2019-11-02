@@ -97,6 +97,7 @@ gem 'fog-aws'
 gem 'devise'
 gem 'haml-rails'
 gem "font-awesome-rails"
+gem 'gon'   # railsで宣言した変数をjavascriptで使えるようにする
 
 # decorater追加
 gem 'draper'

@@ -243,19 +243,19 @@
               position: relative;
               background: $white;
               &__select {
-                outline: 0;
-                -webkit-appearance: none;
-                color: #888;
-                height: 48px;
                 width: 100%;
-                margin: 8px 0 0;
-                padding: 10px 16px 8px;
+                position: relative;
+                z-index: 2;
+                height: 48px;
+                padding: 0 16px;
                 border-radius: 4px;
                 border: 1px solid #ccc;
-                background: #fff;
-                line-height: 1.5;
+                background: 0;
                 font-size: 16px;
-                box-sizing: border-box;
+                line-height: 1.5;
+                cursor: pointer;
+                outline: 0;
+                -webkit-appearance: none;
               }
               .fa-chevron-down {
                 position: absolute;

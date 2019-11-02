@@ -24,15 +24,15 @@
           出品する
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to listing_user_path(current_user), class: "items__item" do
           出品した商品 - 出品中
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to in_progress_user_path(current_user), class: "items__item" do
           出品した商品 - 取引中
           %i.icon-arrow-right
       %li
-        = link_to root_path, class: "items__item" do
+        = link_to completed_user_path(current_user), class: "items__item" do
           出品した商品 - 売却済み
           %i.icon-arrow-right
       %li
@@ -80,7 +80,7 @@
           プロフィール
           %i.icon-arrow-right
       %li
-        = link_to deliver_address_user_path(current_user), class: "items__item" do
+        = link_to user_deliver_address_path(current_user), class: "items__item" do
           発送元・お届け先住所変更
           %i.icon-arrow-right
       %li

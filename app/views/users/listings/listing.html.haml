@@ -1,0 +1,28 @@
+- case active_page
+- when 'listing'
+  - breadcrumb :listing
+- when 'in_progress'
+  - breadcrumb :in_progress
+- when 'completed'
+  - breadcrumb :completed
+
+= render 'items/header_guide'
+= render 'shared/breadcrumbs'
+
+%main.mypage-container.clearfix
+  .content
+    .listings
+      = listings_title
+      .listings__content
+        %ul.listings__content__list
+          - listings_list(['listing', 'in_progress', 'completed'])
+        %ul.listings__content__items
+          - if @items.present?
+            = render partial: 'users/listings/item', collection: @items
+          - else
+            %li.listings__content__items__not-found="#{active_item_tag}の商品がありません"
+
+  = render 'users/mypage/side'
+  = render 'items/footer_btn'
+
+= render 'items/footer'

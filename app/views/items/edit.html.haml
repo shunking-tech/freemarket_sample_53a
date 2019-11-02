@@ -36,6 +36,7 @@
                     = f.fields_for :item_images, class: "editmain__page__box__form__upload__first__pc" do |img|
                       -# ↓一旦labelで指定 のちにjsでdiv状態でtype fileしよう可能変更
                       = img.label :image, class: "editmain__page__box__form__upload__first__pc new_image", style: "width: 620px;" do
+
                         = img.file_field :image, class: "editmain__page__box__form__upload__first__pc__print"
 
                         %pre.editmain__page__box__form__upload__first__pc__text
@@ -68,26 +69,16 @@
                     %div
                       .select-block
                         %i.icon-arrow-bottom
-                        = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :name, { prompt: "---"}, {class: "select-block__choice"}
+                        = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :name, {prompt: ""}, {class: "select-block__choice"}
                         -# %option 以下レディースやメンズなどの選択view
                     = render 'layouts/error/ecategory'
-
-                  .editmain__page__box__form__content__box__details
-                    = f.label :size , {class: 'form-label'} do
-                      サイズ
-                      %span.require_sheet 必須
-                    %div
-                      .select-block
-                        %i.icon-arrow-bottom
-                        = f.collection_select :size_id, Size.all, :id, :size ,{ prompt: "---"}, {class: "select-block__choice"}
-                        = render 'layouts/error/esize'
 
                   .editmain__page__box__form__content__box__details
                     = f.label :condition, "商品の状態"
                     %span.require_sheet 必須
                     .select-block
                       %i.icon-arrow-bottom
-                      = f.select :condition, Item.conditions_i18n.invert, {include_blank: "---", selected: "---"}, class: "select-block__choice", placeholder: 0
+                      = f.select :condition, Item.conditions_i18n.invert, {}, class: "select-block__choice", placeholder: 0
                       -# %option　以下　状態のview
                     = render 'layouts/error/condition'
 
@@ -101,21 +92,21 @@
                     %span.require_sheet 必須
                     .select-block
                       %i.icon-arrow-bottom
-                      = f.select :payer_delivery_expense, payer_delivery_expense_explanation(Item.payer_delivery_expenses_i18n.invert), {include_blank: "---", selected: "---"}, class: "select-block__choice", selected: @item.payer_delivery_expense
+                      = f.select :payer_delivery_expense, payer_delivery_expense_explanation(Item.payer_delivery_expenses_i18n.invert), {}, class: "select-block__choice", selected: @item.payer_delivery_expense
                     = render 'layouts/error/payer_delivery_expense'
                   .editmain__page__box__form__content__box__details
                     = f.label :prefecture_id, "発送元の地域"
                     %span.require_sheet 必須
                     .select-block
                       %i.icon-arrow-bottom
-                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---", selected: "---"}, class: "select-block__choice", placeholder: 0
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "select-block__choice", placeholder: 0
                     = render 'layouts/error/eprefecture'
                   .editmain__page__box__form__content__box__details
                     = f.label :delivery_days, "発送までの日数"
                     %span.require_sheet 必須
                     .select-block
                       %i.icon-arrow-bottom
-                      = f.select :delivery_days, Item.delivery_days_i18n.invert, {include_blank: "---", selected: "---"}, class: "select-block__choice", placeholder: 0
+                      = f.select :delivery_days, Item.delivery_days_i18n.invert, {}, class: "select-block__choice", placeholder: 0
                     = render 'layouts/error/delivery_days'
 
               .editmain__page__box__form__content.clearfix
@@ -146,8 +137,6 @@
                         &ndash;
 
               .editmain__page__box__form__content.clearfix
-                = f.submit "出品する", class: "edit-first-btn"
+                = f.submit "変更する", class: "edit-first-btn"
                 =link_to "キャンセル", :back , class: 'back-gray-btn'
             .editlay
-
-

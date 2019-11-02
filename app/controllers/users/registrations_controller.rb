@@ -44,9 +44,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def deliver_address
-    # 現在、deliver_addressのテーブルがないためuserで代理
-    # Todo UserをDeliverAddressに変更
-    @deliver_address = User.new
+    @deliver_address = DeliverAddress.new
+  end
+
+  def deliver_address_create
+    # 本当はdeliver_addressのコントローラでやりたいが、現状は仕方なく
+    @deliver_address = DeliverAddress.new(deliver_address_params)
+    if @deliver_address.save
+      redirect_to action: "credit_card"
+    else
+      render :deliver_address
+    end
   end
 
   # GET /resource/cancel
@@ -97,6 +105,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:sns] = nil
     sns[:user_id] = @user.id
     SnsCredential.create(sns)
+  end
+
+  def deliver_address_params
+    params.require(:deliver_address).permit(
+      :first_name,
+      :last_name,
+      :first_name_kana,
+      :last_name_kana,
+      :zipcode,
+      :prefecture_id,
+      :city,
+      :house_address,
+      :building_name,
+      :phone_number
+    ).merge(user_id: current_user.id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

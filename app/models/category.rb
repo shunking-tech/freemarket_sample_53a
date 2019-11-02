@@ -11,4 +11,8 @@ class Category < ApplicationRecord
       Item.category_items(id).recently.includes(:item_images)
     end
   end
+
+  def roots_items(limit = nil)
+    Item.category_items(id).recently.limit(limit).includes(:item_images)
+  end
 end

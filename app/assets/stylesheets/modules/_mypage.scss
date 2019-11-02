@@ -116,7 +116,6 @@
             display: block;
             padding: 16px;
             color: $black;
-            // min-height: 80px;
             figure {
               margin: 0;
               position: relative;
@@ -167,7 +166,6 @@
               position: absolute;
               top: 50%;
               right: 16px;
-              // color: $dark_gray;
               transition: all ease-out .2s;
             }
           }
@@ -359,7 +357,6 @@
             font-style: normal;
             display: inline-block;
             position: absolute;
-            // top: 50%;
             right: 16px;
             color: $dark_gray;
             transition: all ease-out .2s;

@@ -14,6 +14,21 @@ crumb :user do |user|
   parent :root
 end
 
+crumb :listing do
+  link "出品した商品 - 出品中", listing_user_path(current_user)
+  parent :mypage
+end
+
+crumb :in_progress do
+  link "出品した商品 - 取引中", in_progress_user_path(current_user)
+  parent :mypage
+end
+
+crumb :completed do
+  link "出品した商品 - 売却済み", completed_user_path(current_user)
+  parent :mypage
+end
+
 # マイページ以下
 crumb :profile do
   link "プロフィール", profile_user_path(current_user)
@@ -21,7 +36,7 @@ crumb :profile do
 end
 
 crumb :deliver_address do
-  link " 発送元・お届け先住所変更", deliver_address_user_path(current_user)
+  link " 発送元・お届け先住所変更", user_deliver_address_path(current_user)
   parent :mypage
 end
 
