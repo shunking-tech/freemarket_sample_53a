@@ -8,7 +8,7 @@
         %i.icon-like
         %span.listings__content__item__info__like=item.item_likes.count
         %i.icon-comment
-        %span.listings__content__item__info__comment=item.item_comments.count
+        %span.listings__content__item__info__comment=item.comments.count
         %span.listings__content__item__info__tag="#{active_item_tag}"
         - if active_page.include?('in_progress')
           %span.listings__content__item__info__tag.listings__content__item__info__tag--state=item.task_i18n
