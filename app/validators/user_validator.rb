@@ -122,4 +122,12 @@ class UserValidator < DefaultValidator
       record.errors[:zipcode] << "フォーマットが不適切です"
     end
   end
+
+  private
+
+  def instance_variable_set_record_attributes(record)
+    record.class.column_names.push("password", "password_confirmation").each do |column|
+      instance_variable_set("@#{column}", eval("record.#{column}"))
+    end
+  end
 end
