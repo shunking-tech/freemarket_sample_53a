@@ -50,7 +50,7 @@
             %br
             = current_user.deliver_address.last_name
             = current_user.deliver_address.first_name
-          = link_to root_path, class: "buyer-info__inner__fix" do
+          = link_to user_deliver_address_path(current_user), class: "buyer-info__inner__fix" do
             %span
               変更する
             %i.icon-arrow-right
